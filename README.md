@@ -1,10 +1,10 @@
-# UBHD-OMPPortal
-UBHD-OMPPortal is a flexible, responsive Frontend portal for [pkp](https://pkp.sfu.ca/) 's [Open Monograph Press](https://pkp.sfu.ca/omp/)  written in python programming language and  based on the python web framework [web2py](http://www.web2py.com).
+# UBHD_OMParthistoricum
+UBHD_OMParthistoricum is a flexible, responsive Frontend portal for [pkp](https://pkp.sfu.ca/) 's [Open Monograph Press](https://pkp.sfu.ca/omp/)  written in python programming language and  based on the python web framework [web2py](http://www.web2py.com).
 
 # Demo
 - Heidelberg University Publishing  [Web](http://heiup.uni-heidelberg.de/)
 - Customized lens based HTML Viewer [Full book](http://heiup.uni-heidelberg.de/reader/index/43/heiUP_habenstein_abwesenheit_2015.xml) ,  [Chapter ](http://heiup.uni-heidelberg.de/reader/index/43/43-69-209-1-10-20150717.xml) ,  [Chapter with images](http://heiup.uni-heidelberg.de/reader/index/43/43-69-220-1-10-20150723.xml#figures)
-![alt tag](static/images/UBHD-OMPPortal.png)
+![alt tag](static/images/UBHD_OMParthistoricum.png)
 
 # Features
 - Responsive design (based on twitter bootstrap)
@@ -24,9 +24,9 @@ UBHD-OMPPortal is a flexible, responsive Frontend portal for [pkp](https://pkp.s
      2. Unzip it
      3. change directory to the the unzipped folder
      4. If you have python installed : run ```python2.7 web2py.py``` or install [python](https://www.python.org/downloads/release/python-2710/) for your distribution
-- Install UBHD-OMPPortal
+- Install UBHD_OMParthistoricum
      1. ```cd  web2py_folder/applications/```
-     2. ```git clone https://github.com/UB-Heidelberg/UBHD-OMPPortal.git press_name```
+     2. ```git clone https://github.com/UB-Heidelberg/UBHD-OMParthistoricum.git press_name```
        - Notice:  press_name *should* contain only characters, numbers or _
        - Please do not use **-** in the **press_name**
      3. Change the settings for your local omp installation private/appconfig.ini
