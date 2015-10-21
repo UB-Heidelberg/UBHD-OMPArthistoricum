@@ -41,5 +41,7 @@ databases/*
 .idea/*
 sessions/*
 static/monographs/*
+private/
+errors/*
 
 
