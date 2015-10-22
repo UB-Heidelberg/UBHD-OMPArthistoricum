@@ -16,12 +16,13 @@
                 <article>
                     <div class="post-heading">
                         <h4>{{=subs[entry]['authors']}}</h4>
-                            <h4>{{=subs[entry]['cleanTitle']}}<br />
+                            <h4>{{=subs[entry]['title']}}<br />
                                 {{=subs[entry]['subtitle']}}</h4>
                     </div>
                     <p>
                         <i class="icon-quote-left"></i>
-                        {{=re.compile(r'<[^>]+>').sub('',subs[entry]['abstract'])}}
+                        {{#=re.compile(r'<[^>]+>').sub('',subs[entry]['abstract'])}}
+                        {{=XML(subs[entry]['abstract'])}}
                     </p>
                     <div class="widget">
                         <h5 class="widgetheading"></h5>
