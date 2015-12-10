@@ -1,513 +1,144 @@
-<!DOCTYPE html>
-
-<html lang="de">
-
-<head>
-
-    <meta charset="utf-8">
-
-    <title></title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <meta name="description" content=""/>
-
-    <meta name="author" content="http://bootstraptaste.com"/>
-
-    <!-- css -->
-
-    <link href="css/bootstrap.min.css" rel="stylesheet"/>
-
-    <link href="css/fancybox/jquery.fancybox.css" rel="stylesheet">
-
-    <link href="css/jcarousel.css" rel="stylesheet"/>
-
-    <link href="css/flexslider.css" rel="stylesheet"/>
-
-    <link href="css/style.css" rel="stylesheet"/>
-
-    <!-- Theme skin -->
-
-    <link href="skins/default.css" rel="stylesheet"/>
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-
-    <!--[if lt IE 9]>
-
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-
-    <![endif]-->
-
-</head>
-
-<body>
-
-<div id="wrapper">
-
-<!-- start header -->
-
-<div class="container">
-
+{{extend 'layout.html'}}
+<section id="content">
+  <div style="height: 20px"></div>
+  <div class="container">
     <div class="row">
+      <div class="col-lg-3">
+        <article>
+          <div class="post-image">
+            {{=IMG(_src=cover_image)}}
+          </div>
+        </article>
+        <div class="box">
+          <div class="box-gray alignleft" style="height: auto;">
 
-        <div class="col-lg-12">
+            <h5 style="color: #656565; margin-bottom: 0.5em;">{{=T('How to cite this title')}}</h5>
+            <p>{{=authors}}<br>
+              <i>{{=cleanTitle}}
+                {{if len(subtitle)>0:}}
+                : {{=subtitle}}
+                {{pass}}
+              </i>
+              {{=press_name}},
+            </p>
+            {{if publication_format_settings_doi:}}
+            <p>
+              DOI: <a href="http://dx.doi.org/{{=publication_format_settings_doi['setting_value']}}" title="DOI: {{=authors}}, {{=cleanTitle}}, {{=press_name}}, 2015">{{=publication_format_settings_doi['setting_value']}}</a>
+            </p>
+            {{pass}}
+            <h5 style="color: #656565; margin-bottom: 0.3em;">{{=T('Licenses')}}</h5>
+            {{if session.forced_language =='de': }}
+            <p>Dieses Werk ist unter der<br> <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de" title="Homepage Creative Commons; Lizenz CC BY-SA 4.0">Creative Commons-Lizenz 4.0<br/> (CC BY-SA 4.0)</a> veröffentlicht.<br>
+              <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de" title="Homepage Creative Commons; Lizenz CC BY-SA 4.0"><img alt="Creative Commons Lizenz BY-SA 4.0" src="/static/images/catalog/cc_by-sa-4-0_88x31.png" /></a></p>
+            {{elif session.forced_language =='en': }}
+            <p>This work is licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/" title="Homepage Creative Commons; License CC BY-SA 4.0">Creative Commons License 4.0<br/> (CC BY-SA 4.0)</a> .<br>
+              <a href="https://creativecommons.org/licenses/by-sa/4.0/" title="Homepage Creative Commons; Lizenz CC BY-SA 4.0"><img alt="Creative Commons License BY-SA 4.0" src="/static/images/catalog/cc_by-sa-4-0_88x31.png" /></a></p>
+            {{pass}}
+            {{if len(identification_codes)>0:}}
+            <h5 style="color: #656565; margin-bottom: 0.3em; margin-top: 1.2em;">ISBN</h5>
+            <p>
+              {{for i in identification_codes:}}
+                {{=i}} ({{=identification_codes[i]}})
+              <br>
+              {{pass}}
+            </p>
+            {{pass}}
+            <!--<p><B>Statistik</B></p>-->
+            {{if published_date:}}
+            <p>{{=T('Published')}} {{=published_date.first()['date'][6:8]}}.{{=published_date.first()['date'][4:6]}}.{{=published_date.first()['date'][0:4]}}</p>
+            {{pass}}
 
-            <ul class="nav navbar-nav pull-right">
-
-                <li class=""><a href="kontakt.html">Kontakt | </a></li>
-
-                <li class=""><a href="login.html">Login |</a></li>
-
-                <li class=" "><a href="suche.html">Suche |</a></li>
-
-                <li class=""><a href="faq.html">FAQ |</a></li>
-
-                <li class=""><a href="#">EN</a></li>
-
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <article>
+          <div class="">
+            <div class="btn-group" role="group" aria-label="1">
+              {{for fullbook in full_files:}}
+                {{if fullbook['original_file_name'].rsplit('.')[1].lower()==myconf.take('omp.xml_category_name').lower():}}
+                <li type="button" class="btn btn-default"><a href="{{=URL(myconf.take('web.application'), 'reader', 'index/'+str(fullbook['submission_id'])+'/'+str(fullbook['submission_id'])+'-'+str(fullbook['genre_id'])+'-'+str(fullbook['file_id'])+'-'+str(fullbook['revision'])+'-'+str(fullbook['file_stage'])+'-'+str(fullbook["date_uploaded"].strftime('%Y%m%d'))+'.'+str(fullbook['original_file_name']).rsplit('.')[1])}}" target="_blank">{{=T('Read')}}</a></li>
+                {{pass}}
+              {{pass}}
+            </div>
+            <div class="btn-group" role="group" aria-label="2">
+              {{for fullbook in full_files:}}
+              {{if fullbook['original_file_name'].rsplit('.')[1].lower()==myconf.take('omp.doi_format_name').lower():}}
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                {{=T('Download')}}
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation"><a role="menuitem" tabindex="-1"  href="{{=URL(myconf.take('web.application'), 'reader', 'download/'+str(fullbook['submission_id'])+'/'+str(fullbook['submission_id'])+'-'+str(fullbook['genre_id'])+'-'+str(fullbook['file_id'])+'-'+str(fullbook['revision'])+'-'+str(fullbook['file_stage'])+'-'+str(fullbook["date_uploaded"].strftime('%Y%m%d'))+'.'+str(fullbook['original_file_name']).rsplit('.')[1])}}">PDF</a></li>
+              </ul>
+              {{pass}}
+              {{pass}}
+            </div>
+            <div class="btn-group" role="group" aria-label="2">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                {{=T('Print On Demand')}}
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                {{for i in representatives:}}
+                <li role="presentation"><a role="menuitem"  href="{{=i['url']}}" target='_blank'>{{=i['name']}}</a></li>
+                {{pass}}
+              </ul>
+            </div>
+            <div class="post-heading">
+              <br/>
+              <h5><a href="#">{{=authors}}</a></h5>
+            </div>
+            <h3>{{=cleanTitle}}</h3>
+            <h4>{{=subtitle}}</h4>
+            <p>
+              <i class="icon-quote-left"></i>
+              {{=XML(abstract)}}
+            </p>
+            <p>{{=XML(author_bio['setting_value'])}}</p>
+          </div>
+          <div class="widget">
+            <h5 class="widgetheading"></h5>
+            <ul class="tags">
             </ul>
-
-        </div>
-
+          </div>
+          <div class="widget">
+            <!---a class="btn btn-default" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"-->
+            
+            {{if len(chapters)>0:}}
+            <h4>{{=T('Contents')}} </h4>
+            <div  id="collapseExample">
+              <table class="table">
+                {{type_dict={} }}
+                {{=TR()}}
+                {{=TD()}}
+                {{for i  in publication_formats:}}
+                {{if i.publication_format_settings.setting_value == myconf.take('omp.xml_category_name'):}}
+                {{=TD('HTML')}}
+                {{else:}}
+                {{=TD(i.publication_format_settings.setting_value)}}
+                {{pass}}
+                {{type_dict[i.publication_formats.publication_format_id]=i.publication_format_settings.setting_value}}
+                {{pass}}
+                {{num=0}}
+                {{for i in chapters:}}
+                {{if num%len(publication_formats)==0: }}
+                {{=TR()}}
+                {{=TD(str(i.submission_chapter_settings.setting_value))}}
+                {{pass}}
+                {{if str(type_dict[i.submission_files.assoc_id]).lower() ==  myconf.take('omp.xml_category_name').lower(): }}
+                {{=TD(A(I(_class="fa fa-html5"), _href=URL(myconf.take('web.application'), 'reader', 'index/'+str(i.submission_files.submission_id)+'/'+str(i.submission_files.submission_id)+'-'+str(i.submission_files.genre_id)+'-'+str(i.submission_files.file_id)+'-'+str(i.submission_files.revision)+'-'+str(i.submission_files.file_stage)+'-'+str(i.submission_files.date_uploaded.strftime('%Y%m%d'))+'.'+str(type_dict[i.submission_files.assoc_id]).lower())))}}
+                {{else:}}
+                {{=TD(A(I(_class="fa fa-file-text-o"), _href=URL(myconf.take('web.application'), 'reader', 'download/'+str(i.submission_files.submission_id)+'/'+str(i.submission_files.submission_id)+'-'+str(i.submission_files.genre_id)+'-'+str(i.submission_files.file_id)+'-'+str(i.submission_files.revision)+'-'+str(i.submission_files.file_stage)+'-'+str(i.submission_files.date_uploaded.strftime('%Y%m%d'))+'.'+str(type_dict[i.submission_files.assoc_id]).lower())))}}
+                {{pass}}
+                {{num = num +1 }}
+                {{pass}}
+              </table>
+            </div>
+            {{pass}}
+          </div>
+        </article>
+      </div>
     </div>
-
-</div>
-
-<div class="container">
-
-    <img id="hup-logo" src="img/press/logo_hup.jpg" height="100px"/>
-
-</div>
-
-<div class="container">
-
-    <header>
-        <div class="col-lg-12">
-            <div class="navbar navbar-default navbar-static-top" style="width:100%">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">4
-                            <span class="icon-bar"></span>
-
-                        </button>
-                        <a class="navbar-brand" href="index.html">
-
-                        </a>
-                    </div>
-                    <div class="navbar-collapse collapse pull-left ">
-                        <ul class="nav navbar-nav">
-                            <li><a href="index.html">Home</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
-                                   data-delay="0" data-close-others="false">Über uns <b class=" icon-angle-down"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="ms.html"> Mission Statement</a></li>
-                                    <li><a href="profil.html">Profil</a></li>
-                                    <li><a href="wb.html">Wissenschaftlicher Beirat</a></li>
-                                    <li><a href="team.html">Team</a></li>
-
-                                    <!--<li><a href="partner.html">Partner</a></li>-->
-
-
-                                </ul>
-                            </li>
-                            <li><a href="books.html">Bücher</a></li>
-                            <li class="dropdown active">
-
-                                <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown"
-                                   data-delay="0" data-close-others="false">Publizieren <b
-                                        class=" icon-angle-down"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="richtlinien.html"> Informationen für Autoren</a></li>
-                                    <li><a href="index.html">Book Proposal</a></li>
-                                    <li><a href="rechteundlizenzen.html"> Rechte und Lizenzen</a></li>
-
-
-
-                                </ul>
-                            </li>
-
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown"
-                                   data-delay="0" data-close-others="false">Qualitätssicherung <b
-                                        class=" icon-angle-down"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="index.html"> Peer Review</a></li>
-                                    <!--<li><a href="wi.html">wissenschaftliche Integrität</a></li>-->
-                                    <li><a href="pk.html"> Plagiatskontrolle</a></li>
-                                    <li><a href="ds.html"> Datenschutz</a></li>
-
-
-                                </ul>
-                            </li>
-
-
-                        </ul>
-                    </div>
-
-                    <!-- second -->
-                    <div class="navbar-collapse collapse pull-right visible-lg hidden-md">
-                        <ul class="nav navbar-nav">
-                            <li><a> <img src="img/press/social-media-icons.png" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            </a></li>
-                            <!-- https://www.addthis.com/get/responsive-sharing-buttons -->
-
-
-                        </ul>
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
-
-
-    </header>
-<!-- end header -->
-
-<!-- end header -->
-
-	<!---section id="inner-headline">
-
-	<div class="container">
-
-		<div class="row">
-
-			<div class="col-lg-12">
-
-				<ul class="breadcrumb">
-
-					<li><a href="#"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
-
-					<li class="active">Blog</li>
-
-				</ul>
-
-			</div>
-
-		</div>
-
-	</div>
-
-	</section-->
-
-	<section id="content">
-
-        <div style="height: 20px"></div>
-
-	<div class="container">
-
-		<div class="row">
-
-			<div class="col-lg-3">
-
-				<article>
-
-						<div class="post-image">
-
-							<!--div class="post-heading">
-
-								<h3><a href="#">Book1</a></h3>
-
-							</div-->
-
-							<img src="img/press/Cover1German.jpg"/>
-
-						</div>
-
-					</article>
-
-                    <div class="box">
-
-						<div class="box-gray alignleft">
-
-
-                            <p><B>Empfohlene Zitierweise </B></p>
-
-                            <p>Habenstein, Astrid #######</p>
-                            <p>DOI: http://dx.doi.org/########</p>
-
-                            <p><B>Lizenz</B></p>
-
-                            <p>Open Access / Creative Commons ##</p>
-
-                            <p><B>Statistik</B></p>
-
-                             <p>Veröffentlicht am ## ## 2015</p>
-                        </div>
-
-                    </div>
-
-            </div>
-
-			<div class="col-lg-9">
-
-                <article>
-
-                    <div class="">
-
-                        <div class="btn-group" role="group" aria-label="1">
-
-                        <li type="button" class="btn btn-default"><a href="lens/index.html" target="_blank">Lesen</a></li>
-
-                        </div>
-
-                        <div class="btn-group" role="group" aria-label="2">
-
-                          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-
-                            Download
-
-                            <span class="caret"></span>
-
-                          </button>
-
-                          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="Einleitung_Habenstein_AristokratischeInteraktion.pdf">PDF</a></li>
-
-                          </ul>
-
-                    </div>
-
-                        <div class="btn-group" role="group" aria-label="2">
-
-                            <li type="button" class="btn btn-default">Print On Demand</li>
-
-                        </div>
-
-                        <div class="post-heading">
-
-                            <h3><a href="#">Abwesenheit von Rom</a></h3>
-
-                        </div>
-
-                        <h5><a href="#">Astrid Habenstein</a></h5>
-
-                        <h4>Aristokratische Interaktion in der späten römischen Republik und in der Kaiserzeit</h4>
-
-                        <p>
-
-                            <i class="icon-quote-left"></i>
-
-                            Der immensen ideellen Bedeutung, die der Stadt Rom seit der späten Republik zugemessen wurde, entsprach bis in das 2. Jhd. n. Chr. die reale Vorrangstellung der Urbs im Imperium Romanum: In Rom trafen die gesellschaftlich und politisch maßgebenden Akteure und Gruppen aufeinander, hier versuchten sie in Form komplexer Interaktionen gegenseitiges Verständnis und Einvernehmen herzustellen. Bis in die Kaiserzeit betrachtete die Senatsaristokratie die interagierende Präsenz in Rom als wesentliche Größe ihrer Lebensführung. Zumindest im 1. Jhd. n. Chr. konnten sich auch die Kaiser nicht vom Referenzrahmen der Stadt lösen. Umso interessanter sind Formen und Anlässe aristokratischer oder kaiserlicher Absenz. Welche Funktionen die Abwesenheit von Rom im System der aristokratischen Interaktion hatte und welche Implikationen dies für Politik und Gesellschaft der späten Republik und frühen Kaiserzeit mit sich brachte, ist Gegenstand der vorliegenden Studie.
-
-                        </p>
-
-                    </div>
-
-                    <div class="widget">
-
-                        <h5 class="widgetheading"></h5>
-
-                        <ul class="tags">
-
-                        </ul>
-
-                    </div>
-
-                    <div class="widget">
-
-                        <a class="btn btn-default" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-
-                            Inhaltsverzeichnis
-
-                        </a>
-
-                        <div class="collapse" id="collapseExample">
-
-                        <ul class="list-group pull-left">
-
-  <li class="list-group-item">Einleitung</li>
-
-  <li class="list-group-item">Vorwort und Dank</li>
-
-  <li class="list-group-item">Absenz und aristokratische Lebensführung: Die römische Villa</li>
-
-  <li class="list-group-item">Rückzug, Absenz und aristokratische Politik in der späten Republik und frühen Kaiserzeit</li>
-
-  <li class="list-group-item">‚Rückzug‘ und Herrschaft: Der Kaiser</li>
-
-  <li class="list-group-item">Quellen- und Literaturverzeichnis</li>
-
-</ul>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-			</div>
-
-		</div>
-
-	</div>
-
-	</section>
-
-<footer>
-
-    <div class="container">
-
-        <div class="row">
-
-            <div class="col-lg-6">
-
-                <div class="widget" style="margin-left: 10px">
-
-                    <h5 class="widgetheading">Kontakt:
-
-                    </h5>
-
-                    <address>
-
-                        <strong>Heidelberg University Publishing
-
-                        </strong><br>
-
-                        Universitätsbibliothek Heidelberg<br>
-
-                        Plöck 107-109, 69117 Heidelberg
-
-                    </address>
-
-                    <p> <b>Dr. Veit Probst</b> <br>
-
-                        Telefon: +49 6221 54 2280,  <br>
-
-                        Fax: +49 6221 54 2623<br>
-
-                        Email: heiup@ub.uni-heidelberg.de
-
-                    </p>
-
-                </div>
-
-            </div>
-
-            <div class="col-lg-6">
-
-                <div class="widget" >
-
-                    <h5 class="widgetheading">Seiten</h5>
-
-                    <ul class="link-list">
-
-                        <li><a href="#">Home</a></li>
-
-                        <li><a href="#">Über Uns</a></li>
-
-                        <li><a href="#">Bücher</a></li>
-
-                        <li><a href="#">Publizieren</a></li>
-
-                        <li><a href="#">Qualitätssicherung</a></li>
-
-                    </ul>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <div id="sub-footer">
-
-        <div class="container">
-
-            <div class="row">
-
-                <div class="col-lg-3">
-
-                         <div id="cr_bootstrap" class="copyright">
-
-                            Template by &nbsp;<a href="http://bootstraptaste.com/free-bootstrap-template-corporate-moderna/">bootstraptaste.com</a>
-
-                        </div>
-
-                </div>
-
-                <div class="col-lg-3">
-
-                    <a href="impressum.html">Impressum</a>
-
-                </div>
-
-                <div id="cr_pkp" class="col-lg-3">
-
-                    <a href="https://pkp.sfu.ca/" title="Homepage PKP - Public Knowledge Project"><img class="" alt="Public Knowledge Project" src="http://books.ub.uni-heidelberg.de/lib/pkp/templates/images/pkp_brand.png"></a>
-
-                </div>
-
-                <div id="footer_sn" class="col-lg-3">
-                    <ul class="social-network">
-
-                        <li><a href="#" data-placement="top" title="Facebook"><i class="fa fa-facebook fa-1x"></i></a>
-
-                        </li>
-
-                        <li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter fa-1x"></i></a>
-
-                        </li>
-
-                        <li><a href="#" data-placement="top" title="Linkedin"><i class="fa fa-linkedin fa-1x"></i></a>
-
-                        </li>
-
-                        <li><a href="#" data-placement="top" title="Pinterest"><i class="fa fa-pinterest fa-1x"></i></a>
-
-                        </li>
-
-                        <li><a href="#" data-placement="top" title="Google plus"><i class="fa fa-google-plus fa-1x"></i></a>
-
-                        </li>
-
-                    </ul>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</footer>
-
-</div>
-
-<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
-
-<!-- javascript
-
-    ================================================== -->
-
-<!-- Placed at the end of the document so the pages load faster -->
-
-<script src="js/jquery.js"></script>
-
-<script src="js/jquery.easing.1.3.js"></script>
-
-<script src="js/bootstrap.min.js"></script>
-
-<script src="js/jquery.fancybox.pack.js"></script>
-
-<script src="js/jquery.fancybox-media.js"></script>
-
-<script src="js/google-code-prettify/prettify.js"></script>
-
-<script src="js/portfolio/jquery.quicksand.js"></script>
-
-<script src="js/portfolio/setting.js"></script>
-
-<script src="js/jquery.flexslider.js"></script>
-
-<script src="js/animate.js"></script>
-
-<script src="js/custom.js"></script>
-
-</body>
-
-</html>
+  </div>
+</section>

@@ -41,6 +41,12 @@ databases/*
 .idea/*
 sessions/*
 static/monographs/*
+<<<<<<< HEAD
 private/*
 errors/*
+=======
+private/
+errors/*
+
+>>>>>>> 2d667a76a1a1fcb1c7d098059c549f9d0b701e75
 
