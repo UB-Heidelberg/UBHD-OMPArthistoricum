@@ -34,11 +34,8 @@ def index():
         authors = authors[:-2]
           
       subs.setdefault(i.submission_id, {})['authors'] = authors
-<<<<<<< HEAD
     if len(subs) == 0:
       redirect( URL('home', 'index'))  
-=======
->>>>>>> 2d667a76a1a1fcb1c7d098059c549f9d0b701e75
     return dict(submissions=submissions, subs=subs)
 
 
@@ -124,14 +121,8 @@ def book():
         db.representatives.url,
         orderby=db.representatives.representative_id)
 
-<<<<<<< HEAD
-    full_files = db((db.submission_files.submission_id == book_id) & (db.submission_files.genre_id == myconf.take('omp.monograph_type_id'))).select(db.submission_files.original_file_name, db.submission_files.submission_id, db.submission_files.genre_id,
-    #full_files = db((db.submission_files.submission_id == book_id) & (db.submission_files.file_stage >= 5)).select(db.submission_files.original_file_name, db.submission_files.submission_id, db.submission_files.genre_id,
-=======
-    #full_files = db((db.submission_files.submission_id == book_id) & (db.submission_files.genre_id == myconf.take('omp.monograph_type_id'))).select(db.submission_files.original_file_name, db.submission_files.submission_id, db.submission_files.genre_id,
     full_files = db((db.submission_files.submission_id == book_id) & (db.submission_files.file_stage >= 5)).select(db.submission_files.original_file_name, db.submission_files.submission_id, db.submission_files.genre_id,
->>>>>>> 2d667a76a1a1fcb1c7d098059c549f9d0b701e75
-                                                                                                                                                    db.submission_files.file_id, db.submission_files.revision, db.submission_files.file_stage, db.submission_files.date_uploaded)
+db.submission_files.file_id, db.submission_files.revision, db.submission_files.file_stage, db.submission_files.date_uploaded)
 
     for j in press_settings:
         if j.setting_name == 'name':
