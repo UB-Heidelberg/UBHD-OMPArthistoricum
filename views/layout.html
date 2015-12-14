@@ -245,22 +245,22 @@
                      </h5>
                 {{if session.forced_language=='de':}}
                      <address>
-                         <strong>Heidelberg University Publishing</strong><br>
+                         <strong>Dr. Maria Effinger</strong><br>
                          Universitätsbibliothek Heidelberg<br>
                          Plöck 107-109<br>
                          69117 Heidelberg<br>
-                         Tel.: +49 6221 54-2569<br>
-                         E-Mail: heiup@ub.uni-heidelberg.de
+                         Tel.: +49 6221 54-3561<br>
+                         E-Mail: effinger@ub.uni-heidelberg.de
                      </address>
                {{elif session.forced_language=='en':}}
                    <address>
-                         <strong>Heidelberg University Publishing</strong><br>
+                         <strong>Dr. Maria Effinger</strong><br>
                          Universitätsbibliothek Heidelberg<br>
                          Plöck 107-109<br>
                          69117 Heidelberg<br>
                          Germany<br>
-                         Tel.: +49 6221 54-2569<br>
-                         E-Mail: heiup@ub.uni-heidelberg.de
+                         Tel.: +49 6221 54-3561<br>
+                         E-Mail: effinger@ub.uni-heidelberg.de
                      </address>
                 {{pass}} 
                      </p>
@@ -275,29 +275,28 @@
                 {{pass}}     
                      <ul class="link-list">
                         <li><a href="{{=URL(myconf.take('web.application'),'home','index')}}">{{=T('Home')}}</a></li>
-                        <li>{{=T('About us')}} | <a href="{{=URL(myconf.take('web.application'),'about_us','mission_statement')}}">Mission Statement</a></li>
+<!--                        <li>{{=T('About us')}} | <a href="{{=URL(myconf.take('web.application'),'about_us','mission_statement')}}">Mission Statement</a></li>-->
+                        <li><a href="{{=URL(myconf.take('web.application'),'about_us','index')}}">{{=T('About us')}}</a></li>
                         <li><a href="{{=URL(myconf.take('web.application'),'catalog','index')}}">{{=T('Books')}}</a></li>
                         <li><a href="{{=URL(myconf.take('web.application'),'series','index')}}">{{=T('Series')}}</a></li>
                         <li><a href="{{=URL(myconf.take('web.application'),'editor','index')}}">{{=T('Editor')}}</a></li>
 
 <!--                        <li><a href="{{=URL(myconf.take('web.application'),'journals','index')}}">{{=T('Journals')}}</a></li>                         -->
 <!--                        <li><a href="{{=URL(myconf.take('web.application'),'campusmedia','index')}}">Campus Media</a></li>-->
-                        <li>{{=T('Publishing')}} | <a href="{{=URL(myconf.take('web.application'),'publishing','for_authors')}}">{{=T('Information for Authors')}}</a></li>
+<!--                        <li>{{=T('Publishing')}} | <a href="{{=URL(myconf.take('web.application'),'publishing','for_authors')}}">{{=T('Information for Authors')}}</a></li>-->
+                        <li><a href="{{=URL(myconf.take('web.application'),'publishing','index')}}">{{=T('Publishing')}}</a></li>
 <!--                        <li>{{=T('Quality Control')}} | <a href="{{=URL(myconf.take('web.application'),'quality_control','peer_review')}}">Peer Review</a></li>-->
                      </ul>
                  </div>
              </div>
              <div class="col-lg-4">
-               <div id="footer_logo_ub" class="widget"><a href="http://www.uni-heidelberg.de" title="Homepage Universität Heidelberg"><img alt="Logo - Universität Heidelberg - Universitätsbibliothek Heidelberg" src="{{=URL(myconf.take('web.application'),'static','/images/press/logo_footer_grau.png')}}" /></a>
-               </div>
-             </div>                        
-         </div>
-     </div>
-     <div id="sub-footer"  class="screen">
-         <div class="container">
-             <div class="row">
-                  <div id="footer_sn" class="col-lg-4">
-                     <ul class="social-network">
+                {{if session.forced_language=='de':}}
+                     <a href="/contact/imprint.html">Impressum</a>
+                {{elif session.forced_language=='en':}}
+                     <a href="/contact/imprint.html">Legal Notice</a>
+                {{pass}}
+
+                <ul class="social-network">
                          <li><a href="https://www.facebook.com/sharer/sharer.php?u={{=myconf.take('web.url')+request.url}}" data-placement="top" title="Facebook"><i class="fa fa-facebook fa-1x"></i></a>
                          </li>
                          <li><a href="http://twitter.com/home?status={{=myconf.take('web.url')+request.url}}" data-placement="top" title="Twitter"><i class="fa fa-twitter fa-1x"></i></a>
@@ -306,19 +305,31 @@
                          </li>
                          <li><a href="https://plus.google.com/share?url={{=myconf.take('web.url')+request.url}}" data-placement="top" title="Google plus"><i class="fa fa-google-plus fa-1x"></i></a>
                          </li>
-                     </ul>
+                 </ul>
+
+             </div>                        
+         </div>
+     </div>
+     <div id="sub-footer"  class="screen">
+         <div class="container">
+             <div class="row">
+                 <div class="footer_logo_col">
+                     <div id="footer_logo_ub" class="widget"><a href="http://www.ub.uni-heidelberg.de" title="Homepage Universitätsbibliothek Heidelberg"><img alt="Logo - Universitätsbibliothek Heidelberg" src="{{=URL(myconf.take('web.application'),'static','/images/press/footer_logoUBHei.png')}}" /></a></div>
                  </div>
                  
-                 <div class="col-lg-4">
-                {{if session.forced_language=='de':}}
-                     <a href="/contact/imprint.html">Impressum</a>
-                {{elif session.forced_language=='en':}}
-                     <a href="/contact/imprint.html">Legal Notice</a>
-                {{pass}}     
+                 <div class="footer_logo_col">
+                     <div id="footer_logo_dfg" class="widget"><a href="http://www.dfg.de" title="Deutsche Forschungsgesellschaft"><img alt="Logo - Deutsche Forschungsgesellschaft" src="{{=URL(myconf.take('web.application'),'static','/images/press/footer_logoDFG.png')}}" /></a></div>
                  </div>
-                 <div class="col-lg-4">
+
+                 <div class="footer_logo_col">
+                     <div id="footer_logo_ahn" class="widget"><a href="http://www.arthistoricum.net/" title="Homepage Arthistoricum.net"><img alt="Logo - Arthistoricum.net" src="{{=URL(myconf.take('web.application'),'static','/images/press/footer_logoAHN.png')}}" /></a></div>
+                 </div>
+
+                 <div class="footer_logo_col">
+                     <div id="footer_logo_pkp">
                          Template by&nbsp;<a href="http://bootstraptaste.com/free-bootstrap-template-corporate-moderna/">bootstraptaste.com</a><br />
                      <a href="https://pkp.sfu.ca/" title="Homepage PKP - Public Knowledge Project"><img class="" alt="Public Knowledge Project" src="http://books.ub.uni-heidelberg.de/lib/pkp/templates/images/pkp_brand.png"></a>
+                     </div>
                  </div>
              
                  
