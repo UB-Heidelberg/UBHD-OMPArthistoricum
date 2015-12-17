@@ -8,11 +8,11 @@ from gluon.storage import Storage
 settings = Storage()
 
 settings.migrate = True
-settings.title = 'Heidelberg University Publishing - heiUP'
+settings.title = 'arthistoricum.net - ART-Books'
 settings.subtitle = ''
 settings.author_email = 'heiup@ub.uni-heidelberg.de'
-settings.keywords = 'heiUP, Heidelberg University Publishing, Universitätsverlag Heidelberg, Universitätsbibliothek Heidelberg, Universität Heidelberg, digitales Publizieren, Open Access, omp, python, mysql, knv, onix'
-settings.description = 'Heidelberg University Publishing ist ein Open-Access-Verlag für wissenschaftliche Publikationen - qualitätsgeprüft und in mehreren Formaten.'
+settings.keywords = 'heiUP, Heidelberg University Publishing, Universitätsverlag Heidelberg, Universitätsbibliothek Heidelberg, Universität Heidelberg, digitales Publizieren, Open Access, omp, python, mysql, knv, onix, arthistoricum'
+settings.description = 'arthistoricum.net - ART-Books ist ein Open-Access-Verlag für kunstwissenschaftliche Publikationen - qualitätsgeprüft und in mehreren Formaten.'
 settings.layout_theme = 'Default'
 # settings.database_uri = 'sqlite://storage.sqlite'
 # settings.database_uri = 'mysql://omp-user:omp-password@localhost:3306/omptest'
