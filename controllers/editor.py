@@ -16,3 +16,6 @@ def book_proposal():
 
 def rights_and_licences():
     return dict()
+
+def index():
+  return dict()

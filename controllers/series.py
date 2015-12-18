@@ -10,4 +10,5 @@ def hst():
 	return dict()
 
 def index():
-	return dict()
+  series = db(db.series.press_id==myconf.take("omp.press_id") & (db.series.series_id==db.series_settings.series_id)).select(db.series.series_id, db.series_settings.image)
+  return dict(series= series)
