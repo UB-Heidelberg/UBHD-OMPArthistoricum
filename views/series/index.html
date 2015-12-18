@@ -1,12 +1,17 @@
 {{extend 'layout.html'}}
 
 
-{{=series}}
-<div id="main" class="container">
 
+<div id="main" class="container">
+  
+
+ 
 
 <section id="content">
-    <div class="container">
+  {{=DIV(_class="container")
+  }}
+    
+  {{for row in series_metadata:}}
         <div class="row">
 	
             <div class="col-lg-2">
@@ -21,25 +26,25 @@
             <div class="col-lg-10">
                <article>
                         <div class="post-heading">
-			            <h3>Heidelberg Studies in Transculturality </h3>
-          
+	
+          <h3> {{=row['title']}} </h3>
                         </div>
-                       {{if session.forced_language=='de':}}
+                       
                        <p>
                         <i class="icon-quote-left"></i>
-                        HST ist eine peer-review-geprüfte Open-Access-Schriftenreihe zum Thema Transkulturalität. Sie untersucht kulturelle, soziale und regionale Formationen, die sich durch den Kontakt mit anderen Regionen und Kulturen konstituierten und durch ihn transformiert wurden.
+                        {{=XML(row['description'])}}
                        </p> 
                        
                        
-                       
-                {{pass}} 			  
+
+     
                     <div class="widget">
                         <h5 class="widgetheading"></h5>
                         <ul class="tags">
              
-                            <li><a href="series/hst.html">Mehr</a></li><br>
+                            <li><a href="{{=URL(myconf.take('web.application'),'catalog','series/'+str(row['path']))}}">{{=T('More information')}}</a></li><br>
 
-                            <!--<li><a href="http://heiup.uni-heidelberg.de/journals/index.php/transcultural/index">zur Zeitschrift</a></li>-->
+                       
 
                             
 
@@ -52,6 +57,7 @@
             </div>
 
         </div>
-</div>
+  {{pass}}
+
 </div>
 </section>

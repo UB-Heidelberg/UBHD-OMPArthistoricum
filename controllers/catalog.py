@@ -5,6 +5,42 @@ Distributed under the GNU GPL v3. For full terms see the file
 LICENSE.md
 '''
 
+def series():
+    abstract, author, cleanTitle, subtitle = '', '', '', ''
+    locale = 'de_DE'
+    if session.forced_language == 'en':
+        locale = 'en_US'
+    ignored_submissions =  myconf.take('omp.ignore_submissions') if myconf.take('omp.ignore_submissions') else -1
+    
+    if request.args is None:
+      redirect( URL('home', 'index'))
+    series = request.args[0]
+    
+    
+    query = ((db.submissions.context_id == myconf.take('omp.press_id'))  &  (db.submissions.submission_id!=ignored_submissions) & (db.submissions.status == 3) & (
+        db.submission_settings.submission_id == db.submissions.submission_id) & (db.submission_settings.locale == locale) & (db.submissions.context_id==db.series.press_id) & (db.series.path==series) & (db.submissions.context_id == myconf.take('omp.press_id')) & (db.submissions.series_id==db.series.series_id) &(db.submissions.context_id==db.series.press_id) & (db.series.path==series))
+    submissions = db(query).select(db.submission_settings.ALL,orderby=db.submissions.submission_id)
+    subs = {}
+    
+    for i in submissions:
+      authors=''
+      if i.setting_name == 'abstract':
+          subs.setdefault(i.submission_id, {})['abstract'] = i.setting_value
+      if i.setting_name == 'subtitle':
+          subs.setdefault(i.submission_id, {})['subtitle'] = i.setting_value
+      if i.setting_name == 'title':
+          subs.setdefault(i.submission_id, {})[
+              'title'] = i.setting_value
+      author_q = ((db.authors.submission_id == i.submission_id))
+      authors_list = db(author_q).select(
+          db.authors.first_name, db.authors.last_name)
+      for j in authors_list:
+          authors += j.first_name + ' ' + j.last_name + ', '
+      if authors.endswith(', '):
+        authors = authors[:-2]
+          
+      subs.setdefault(i.submission_id, {})['authors'] = authors
+    return dict(submissions=submissions, subs=subs)
 
 def index():
     abstract, author, cleanTitle, subtitle = '', '', '', ''
