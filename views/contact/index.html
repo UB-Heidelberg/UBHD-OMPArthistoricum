@@ -7,15 +7,22 @@
             <p>
 
 
-                <strong> Heidelberg University Publishing</strong> <br>
-
-                Universitätsbibliothek Heidelberg <br>
-
-                Plöck 107-109 <br>
-
-                69117 Heidelberg <br>
-                Tel.: +49 6221 54-2569<br>
-                Email: heiup@ub.uni-heidelberg.de
+              {{if session.forced_language=='de':}}
+                     <strong>Dr. Maria Effinger</strong><br>
+                         Universitätsbibliothek Heidelberg<br>
+                         Plöck 107-109<br>
+                         69117 Heidelberg<br>
+                         Tel.: +49 6221 54-3561<br>
+                         E-Mail: effinger@ub.uni-heidelberg.de
+              {{elif session.forced_language=='en':}}
+                         <strong>Dr. Maria Effinger</strong><br>
+                         Universitätsbibliothek Heidelberg<br>
+                         Plöck 107-109<br>
+                         69117 Heidelberg<br>
+                         Germany<br>
+                         Tel.: +49 6221 54-3561<br>
+                         E-Mail: effinger@ub.uni-heidelberg.de
+                {{pass}}
                 </p>
 
 

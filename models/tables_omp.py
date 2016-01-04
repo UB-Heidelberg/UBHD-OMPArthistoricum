@@ -146,6 +146,17 @@ db.define_table("publication_format_settings",
                 migrate=False
                 )
 
+db.define_table("series",
+                Field("series_id", "integer"),
+                Field("press_id", "integer"),
+                Field("seq", "integer"),
+                Field("featured", "integer"),
+                Field("editor_restricted", "integer"),
+                Field("path","string"),
+                Field("image","text"),
+                migrate=False
+                )
+
 db.define_table("series_settings",
                 Field("series_id", "integer"),
                 Field("locale", "string"),
