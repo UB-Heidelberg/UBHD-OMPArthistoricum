@@ -6,17 +6,13 @@ LICENSE.md
 '''
 
 
-def mission_statement():
-    return dict()
-
-
 def profile():
     return dict()
 
 
-def advisory_board():
+def our_service():
     return dict()
 
 
-def team():
+def technology():
     return dict()
