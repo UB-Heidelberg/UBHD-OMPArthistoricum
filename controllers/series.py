@@ -21,6 +21,7 @@ def index():
       metadata = {}
       prev_series = row['series_settings']['series_id']
       metadata['path'] = row['series']['path']
+      metadata['image'] = row['series']['image']
       series_metadata.append(metadata)
       
     for t in types:

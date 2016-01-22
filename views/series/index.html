@@ -1,5 +1,5 @@
 {{extend 'layout.html'}}
-
+{{import json}}
 
 
 <div id="main" class="container">
@@ -17,7 +17,9 @@
             <div class="col-lg-2">
                 <article>
                     <div class="post-image">
-		 	<img src="/UBHD_OMPPortal/static/images/series/hst.jpg">
+			{{if len(row['image']) > 7 :}}
+		 	<img src="{{=URL(myconf.take('web.application'),'static','series/'+row['image'][4:].split(';')[1].split('"')[1])}}"/>
+			{{pass}}
                   </div>
 
                 </article>
