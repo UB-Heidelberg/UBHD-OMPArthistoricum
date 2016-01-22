@@ -2,7 +2,10 @@
 
 <div id="main" class="container">
 
+{{
+ = db((db.submission_files.submission_id == book_id) & (db.submission_files.genre_id == myconf.take('omp.monograph_type_id'))).select(db.submission_files.original_file_name, db.submission_files.submission_id, db.submission_files.genre_id,db.submission_files.file_id, db.submission_files.revision, db.submission_files.file_stage, db.submission_files.date_uploaded)
 
+}}
 <section id="content">
   <div style="height: 20px"></div>
   <div class="container">
@@ -63,7 +66,6 @@
                    <div class="tab-content">
                      <div class="tab-pane active" id="one2">
                        <table class="table">                
-                         
                          {{file_ids=[]}}
                                      
                          
