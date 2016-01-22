@@ -73,9 +73,15 @@
                 <ul class="nav nav-pills pull-right">
                     <li><a href="{{=URL(myconf.take('web.application'),'contact','index')}}" style="padding-right: 0;">{{=T('Contact')}}</a></li>
                     <li>{{if session.forced_language=='de':}}
-                        <a href="/contact/imprint.html">Impressum</a>
+                        <a href="{{=URL(myconf.take('web.application'),'contact','imprint')}}" style="padding-right: 0;">{{=T('Legal Notice')}}</a>
                         {{elif session.forced_language=='en':}}
-                        <a href="/contact/imprint.html">Legal Notice</a>
+                        <der ul.nav li a {
+        font-size:12px;
+        border-bottom:2px solid #0077bb;
+        font-weight:700;
+        text-transform:uppercase;
+}
+a href="{{=URL(myconf.take('web.application'),'contact','imprint')}}" style="padding-right: 0;">{{=T('Legal Notice')}}</a>
                         {{pass}}
                     </li>
          <!--<li><a href="suche.html">{{=T('Search')}} |</a></li>-->
@@ -122,7 +128,7 @@
                                        data-delay="0" data-close-others="false">{{=T('About us')}}<b class=" icon-angle-down"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="{{=URL(myconf.take('web.application'),'about_us', 'profile')}}"> {{=T('Profil')}}</a></li>
-<!--                                        <li><a href="{{=URL(myconf.take('web.application'),'about_us','our_service')}}">{{=T('Our Service')}}</a></li>-->
+                                        <li><a href="{{=URL(myconf.take('web.application'),'about_us','our_service')}}">{{=T('Our Service')}}</a></li>
                                         <li><a href="{{=URL(myconf.take('web.application'),'about_us','technology')}}"> {{=T('Technology')}}</a></li>
                                         
 
@@ -165,7 +171,7 @@
 
                         <!-- second -->
                         <div class="navbar-collapse collapse pull-right visible-lg hidden-md">
-                            <ul class="nav navbar-nav">
+                            <ul class="nav navbar-navi social-media">
 
 
                                 <li>
@@ -211,7 +217,34 @@
     {{end}}
     <!-- Main ========================================= -->
     <!-- Begin page content -->
+<script type="text/javascript" charset="utf-8">
+    $(window).load(function() {
+        $('.flexslider').flexslider();
+    });
+</script>
+
+
     <div class="container-fluid">
+            <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-12">
+
+                    <!-- Slider -->
+
+                    <div id="main-slider" class="flexslider">
+
+                        <ul class="slides">
+                            <li>
+                                <img id="hup-logo" src="{{=URL(myconf.take('web.application'),'static','images/press/slideshow/01_ebook_reader.jpg')}}" />
+                            </li>
+                        </ul>
+
+                    </div>
+            </div>
+        </div>
+      </div>
       {{if left_sidebar_enabled:}}
         <div class="col-md-3 left-sidebar">
             {{block left_sidebar}}
@@ -269,7 +302,6 @@
 
                         <div class="col-lg-3">
                           <div id="footer_logo_pkp" class="widget">
-                          Template by&nbsp;<a href="http://bootstraptaste.com/free-bootstrap-template-corporate-moderna/">bootstraptaste.com</a><br />
                           <a href="https://pkp.sfu.ca/" title="Homepage PKP - Public Knowledge Project"><img class="" alt="Public Knowledge Project" src="http://books.ub.uni-heidelberg.de/lib/pkp/templates/images/pkp_brand.png"></a>
                           </div>
                         </div>

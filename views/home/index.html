@@ -11,14 +11,13 @@
     <section id="featured">
 
         <!-- start slider -->
-
+<!--
         <div class="container">
 
             <div class="row">
 
                 <div class="col-lg-12">
 
-                    <!-- Slider -->
 
                     <div id="main-slider" class="flexslider">
 
@@ -30,14 +29,13 @@
 
                     </div>
 
-                    <!-- end slider -->
 
                 </div>
 
             </div>
 
         </div>
-
+-->
     </section>
 
     <section id="content">
@@ -54,16 +52,16 @@
 
                             <div class="box">
                                 {{if session.forced_language =='de': }}                
-                                <!--div class="box-gray aligncenter">
+                                <div class="box-gray aligncenter">
 
                                     <h4>Neuerscheinung</h4>
 
-				   {{=IMG(_src=URL(myconf.take('web.application'),'static','monographs/43/simple/cover.jpg'),_width='145px')}}
-                                </div-->
+				   {{=IMG(_src=URL(myconf.take('web.application'),'static','monographs/49/simple/cover.jpg'),_width='145px')}}
+                                </div>
 
                                 <div class="box-bottom">
 
-                                    {{=A(T('More'),_href=URL('catalog','book/43'))}}
+                                    {{=A(T('More'),_href=URL('catalog','book/49'))}}
 
                                 </div>
 
@@ -71,12 +69,12 @@
                         <div class="box-gray aligncenter">
    
    <h4>New Titles</h4>
-				   {{=IMG(_src=URL(myconf.take('web.application'),'static','monographs/43/simple/cover.jpg'),_width='145px')}}
+				   {{=IMG(_src=URL(myconf.take('web.application'),'static','monographs/49/simple/cover.jpg'),_width='145px')}}
                                 </div>
 
              <div class="box-bottom">
 
-                  {{=A(T('More Information'),_href=URL('catalog','book/43'))}}
+                  {{=A(T('More Information'),_href=URL('catalog','book/49'))}}
 
               </div>
                {{pass}}  
@@ -90,29 +88,26 @@
 
               <div class="box-gray aligncenter">
               {{if session.forced_language =='de': }}  
-                  <p class="boxText">
+                  <h4>Neuerscheinung</h4>
+               </div>
 
-                      <b>arthistoricum.net - ART-Books</b> bietet Ihnen eine technische Plattform zur Veröffentlichung elektronischer Bücher im Open Access. Das Angebot richtet sich an Kunstwissenschaftlerinnen und Kunstwissenschaftler weltweit.
+               <div class="box-bottom">
 
-                  </p>
+                  {{=A(T('More'),_href=URL('catalog','book/49'))}}
+
+               </div>
           {{elif session.forced_language =='en': }}
+                <h4>New Titles</h4>
+               </div>
+
+               <div class="box-bottom">
+
+                  {{=A(T('More Information'),_href=URL('catalog','book/49'))}}
+
+               </div>
           
-                 <p class="boxText">
-
-                      <b>arthistoricum.net - ART-Books</b> bietet Ihnen eine technische Plattform zur Veröffentlichung elektronischer Bücher im Open Access. Das Angebot richtet sich an Kunstwissenschaftlerinnen und Kunstwissenschaftler weltweit.
-                  </p>
                 {{pass}}  
-              </div>
 
-              <div class="box-bottom">
-              
-              {{if session.forced_language =='de': }}        
-                  <a href="http://www.arthistoricum.net/publizieren/e-books-mit-omp/">Mehr</a>
-              {{elif session.forced_language =='en': }}
-                  <a href="http://www.arthistoricum.net/publizieren/e-books-mit-omp/">More Information</a>
-                    {{pass}}                                  
-
-              </div>
 
           </div>
 
@@ -224,20 +219,20 @@ The aim of this annual event is to promote free access to scholarly publications
 
                                 <div class="box-gray aligncenter">
    {{if session.forced_language =='de': }}
-                                    <h4>Demnächst</h4>
+                                    <h4>Serien</h4>
    {{elif session.forced_language =='en': }}
-   <h4>Forthcoming</h4>                                    
+   <h4>Series</h4>                                    
                                        {{pass}}                                    
 
-                                    <img src="{{=URL(myconf.take('web.application'),'static','images/press/home/Cover2English.jpg')}}" width="145px"/>
+                                    {{=IMG(_src=URL(myconf.take('web.application'),'static','monographs/26/simple/cover.jpg'),_width='145px')}}
 
                                 </div>
 
                                 <div class="box-bottom">
    {{if session.forced_language =='de': }}
-                                    <a href="http://heiup.uni-heidelberg.de/catalog">Mehr</a>
+                                    {{=A(T('More'),_href=URL('catalog','series/mps'))}}
       {{elif session.forced_language =='en': }}
-                                    <a href="http://heiup.uni-heidelberg.de/catalog">More Information</a>
+                                    {{=A(T('More Information'),_href=URL('catalog','series/mps'))}}
                                       {{pass}}         
                                 </div>
 
@@ -249,55 +244,54 @@ The aim of this annual event is to promote free access to scholarly publications
 
                             <div class="box">
 
-                                <div class="box-gray">
-                                    
-                                    <b><span style="text-align: left">Heidelberg Studies in Transculturality</span></b>
-                                                                       
-                                    {{if session.forced_language =='de': }}
-                                    
-                                    <p class="boxText">
-                                    HST ist eine Peer-Review-geprüfte Open-Access-Schriftenreihe zum Thema Transkulturalität. Sie untersucht kulturelle, soziale und regionale Formationen, die sich durch den Kontakt mit anderen Regionen und Kulturen konstituierten und durch ihn transformiert wurden.                             </p>
-                                    {{elif session.forced_language =='en': }}
-                                    <p class="boxText">
-                                    HST is a peer-reviewed, open access book series promoting research on transcultuality. The series features works that investigate cultural, social, and regional formations that have themselves been constituted and transformed through contact with other regions and cultures.                           </p>
-                                    {{pass}}
+                                <div class="box-gray aligncenter">
+                                   {{if session.forced_language =='de': }}
+                                    <h4>Serien</h4>
+                                   {{elif session.forced_language =='en': }}
+                                    <h4>Series</h4>
+                                   {{pass}}
+
+                                   {{=IMG(_src=URL(myconf.take('web.application'),'static','images/series/serien_cover.png'),_width='145px')}}
+                                
 
                                 </div>
 
                                 <div class="box-bottom">&nbsp;
-   <!--{{if session.forced_language =='de': }}
-                                    <a href="http://heiup.uni-heidelberg.de/#"><span style="color: #EFEFEF;">Mehr</span>
+                                {{if session.forced_language =='de': }}
+                                    {{=A(T('More'),_href=URL(''))}}
+<!--                                {{=A(T('More'),_href=URL('catalog','series/mps'))}}-->
       {{elif session.forced_language =='en': }}
-                                    <a href="http://heiup.uni-heidelberg.de/#"><span style="color: #EFEFEF;">More</span>
-                                      {{pass}}-->         
+                                    {{=A(T('More Information'),_href=URL(''))}}
+<!--                                {{=A(T('More Information'),_href=URL('catalog','series/mps'))}}-->
+                                {{pass}}
                                 </div>
 
                             </div>
 
                         </div>
 
-                        <div class="col-lg-6" >
+                        <div class="col-lg-6" id="boxAktuelles">
 
-                            <!--<div>-->
+                        <div class="box">
+                        <div class="box-gray aligncenter">
+                        <h4>arthistoricum.net – ART-Books </h4>
+                        <p class="boxText">
+                         ist die Open-Access-Publikationsplattform von arthistoricum.net für wissenschaftliche E-Books aus den Fachbereichen Kunstgeschichte, Fotografie und Design.<br />
+Wir unterstützen Open Access als Publikationsmodell für die Verbreitung von Forschungsergebnissen und veröffentlichen sowohl Erstpublikationen ("goldener Weg") als auch Zweitveröffentlichungen ("grüner Weg"). Das kostenfreie Angebot richtet sich an Kunstwissenschaftlerinnen und Kunstwissenschaftler weltweit.<br />
+Zum Einsatz kommt die Open-Source-Software OMP des Public Knowledge Project (PKP).
+                        </p>
+                        </div>
+ 
+              <div class="box-bottom">&nbsp;</div>
+                      </div>
+                        </div>
 
-                                <!-- TWITTER TIMELINE-->
 
- 				<div>
-                                    <a class="twitter-timeline"  href="https://twitter.com/UniHeidelberg" data-widget-id="521961404698341376"  height='350'>{{=T('Tweets by @UniHeidelberg')}}</a>
-                                    <script>!function (d, s, id) {
-                                        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
-                                        if (!d.getElementById(id)) {
-                                            js = d.createElement(s);
-                                            js.id = id;
-                                            js.src = p + "://platform.twitter.com/widgets.js";
-                                            fjs.parentNode.insertBefore(js, fjs);
-                                        }
-                                    }(document, "script", "twitter-wjs");</script>
-                                </div>
 
-                                <!-- /TWITTER TIMELINE -->
 
-                            <!--</div>-->
+
+
+
 
                         </div>
 

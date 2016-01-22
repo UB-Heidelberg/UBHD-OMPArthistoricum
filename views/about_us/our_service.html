@@ -4,25 +4,37 @@
     <div class="row">
         <div class="col-lg-12">
             <h3>  {{if session.forced_language =='de': }}
-                Mission Statement
+                Unser Angebot
                 {{elif session.forced_language =='en': }}
-                Mission Statement
+                Our service
             {{pass}}
             </h3>
 
             <p>
                 {{if session.forced_language =='de': }}
-<h4>Exzellente Forschung sichtbar machen</h4>
-<p>Heidelberg University Publishing steht für den freien Zugang zu hervorragenden wissenschaftlichen Publikationen. Wir begreifen die Möglichkeiten digitalen Publizierens als Auftrag, Forschungsergebnisse über Disziplingrenzen hinweg sichtbar zu machen. Das bedeutet für uns: Wir publizieren im Open Access, wir verfolgen eine konsequente e-Strategie, wir nutzen innovative digitale Publikationsformen und sichern die Qualität durchgängig durch ein doppeltes Peer-Review-Verfahren. Darüber hinaus bieten wir unseren Autorinnen und Autoren die Veröffentlichung ihrer Schriften als hochwertiges gedrucktes Buch an. Für die Aufnahme eines Manuskripts in unseren Verlag ist nicht die Herkunft, sondern die Qualität der Publikation entscheidend.</p>
+<p>Die Universitätsbibliothek Heidelberg gewährleistet das nachhaltige Hosting der Software Open Monograph Press (OMP) für Ihre Monografie, Ihr Sammelwerk oder Ihre Schriftenreihe. Dieses Angebot ist im Regelfall kostenfrei.</p>
 
-<p>Dem Konzept der Comprehensive University entsprechend fördern wir aus disziplinärer Stärke heraus Formen des interdisziplinären Austauschs. Zu unserem Portfolio gehören vorrangig Monographien, Sammelbände/Proceedings und Lehrbücher. Mithilfe innovativer technischer Verfahren publizieren wir zudem wissenschaftliche Bildbände und multimediale Objekte. Dabei arbeiten wir eng mit nationalen und internationalen Partnern der Universität Heidelberg zusammen.</p>
+<p>Wir bieten vor Ort in  Heidelberg eine Einführung in die Bedienung von OMP und in dessen Funktionen und Arbeitsprozesse und übernehmen nach Absprache einen Teil der notwendigen Aufgaben.</p>
+
+<p>Die Publikation des Werkes erfolgt parallel in mehreren Versionen: sowohl in digitaler Form (als PDF- und ggf. auch als  HTML-Datei) als auch als gedrucktes Buch (Hard- oder Softcover), erhältlich im Sortiments- wie auch im Online-Buchhandel.</p>
+
+<p>Alle Publikationen erhalten eine ISBN-Nummer (<a href="https://de.wikipedia.org/wiki/Internationale_Standardbuchnummer" title="ISBN bei Wikipedia">Internationale Standardbuchnummer</a>) und eine DOI (<a href="https://de.wikipedia.org/wiki/Digital_Object_Identifier" title="DOI bei Wikipedia">Digital Object Identifier</a>), um den dauerhaften Zugang und die Sichtbarkeit der Veröffentlichungen zu gewährleisten. Durch die formale und inhaltliche Erschließung sind die Publikationen in nationalen und internationalen Bibliothekskatalogen (HEIDI, SWB, KVK, WorldCat, DOAB etc.) nachgewiesen sowie im Volltext über Suchmaschinen indexiert.<br />
+Weitere Informationen finden Sie unter "<a href="{{=URL(myconf.take('web.application'),'publishing','for_authors')}}">{{=T('Information for Authors')}}</a>".</p>
+
+<p>Wenn Sie Interesse an unserem Angebot haben, melden Sie sich bei <a href="{{=URL(myconf.take('web.application'),'contact','index')}}" style="padding-right: 0;">uns</a> – egal, ob sich Ihr Open-Access-E-Book noch in der Planungsphase befindet oder ob eine bereits im Printformat existierende Schriftenreihe in eine elektronische Ausgabe transformiert werden soll.</p>
 
 {{elif session.forced_language =='en': }}
-<h4>Excellent Research Made Visible</h4>
-<p>The mission of Heidelberg University Publishing is to provide open access to outstanding academic publications. We see the opportunities afforded by digital publishing as a way to advance the visibility of research output beyond the confines of academic disciplines. For us, this means that we publish open access, follow a consistent e-strategy, use innovative digital publication formats, and ensure quality with double-blind peer review. In addition to electronic formats, we offer high-quality printed versions of all our titles. Our decision to accept a submission does not depend on its provenance, but on its quality.</p>
 
-<p>In keeping with our role as a Comprehensive University, we facilitate forms of interdisciplinary exchange that grow from the strengths of our academic disciplines. Our portfolio includes primarily monographs, edited volumes/proceedings, and textbooks. We also use innovative technology to publish scholarly illustrated books and multimedia objects. In all these endeavors, we collaborate with various national and international partners of the university.</p>
+<p>Die Universitätsbibliothek Heidelberg gewährleistet das nachhaltige Hosting der Software Open Monograph Press (OMP) für Ihre Monografie, Ihr Sammelwerk oder Ihre Schriftenreihe. Dieses Angebot ist im Regelfall kostenfrei.</p>
 
+<p>Wir bieten vor Ort in  Heidelberg eine Einführung in die Bedienung von OMP und in dessen Funktionen und Arbeitsprozesse und übernehmen nach Absprache einen Teil der notwendigen Aufgaben.</p>
+
+<p>Die Publikation des Werkes erfolgt parallel in mehreren Versionen: sowohl in digitaler Form (als PDF- und ggf. auch als  HTML-Datei) als auch als gedrucktes Buch (Hard- oder Softcover), erhältlich im Sortiments- wie auch im Online-Buchhandel.</p>
+
+<p>Alle Publikationen erhalten eine ISBN-Nummer (<a href="https://de.wikipedia.org/wiki/Internationale_Standardbuchnummer" title="ISBN bei Wikipedia">Internationale Standardbuchnummer</a>) und eine DOI (<a href="https://de.wikipedia.org/wiki/Digital_Object_Identifier" title="DOI bei Wikipedia">Digital Object Identifier</a>), um den dauerhaften Zugang und die Sichtbarkeit der Veröffentlichungen zu gewährleisten. Durch die formale und inhaltliche Erschließung sind die Publikationen in nationalen und internationalen Bibliothekskatalogen (HEIDI, SWB, KVK, WorldCat, DOAB etc.) nachgewiesen sowie im Volltext über Suchmaschinen indexiert.<br />
+Weitere Informationen finden Sie unter "<a href="{{=URL(myconf.take('web.application'),'publishing','for_authors')}}">{{=T('Information for Authors')}}</a>".</p>
+
+<p>Wenn Sie Interesse an unserem Angebot haben, melden Sie sich bei <a href="{{=URL(myconf.take('web.application'),'contact','index')}}" style="padding-right: 0;">uns</a> – egal, ob sich Ihr Open-Access-E-Book noch in der Planungsphase befindet oder ob eine bereits im Printformat existierende Schriftenreihe in eine elektronische Ausgabe transformiert werden soll.</p>
 
                 {{pass}}
 

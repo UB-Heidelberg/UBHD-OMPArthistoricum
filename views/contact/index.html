@@ -2,19 +2,18 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12" style="height: 500px">
-            <h3>            {{=T('Contact')}}</h3>
-
-            <p>
-
-
+        <div id="main" class="container"> 
               {{if session.forced_language=='de':}}
-                     <strong>Dr. Maria Effinger</strong><br>
+                         <h3>Kontakt</h3>
+                         <strong>Dr. Maria Effinger</strong><br>
                          Universitätsbibliothek Heidelberg<br>
                          Plöck 107-109<br>
                          69117 Heidelberg<br>
+                         Deutschland<br>
                          Tel.: +49 6221 54-3561<br>
                          E-Mail: effinger@ub.uni-heidelberg.de
               {{elif session.forced_language=='en':}}
+                         <h3>Contact</h3>
                          <strong>Dr. Maria Effinger</strong><br>
                          Universitätsbibliothek Heidelberg<br>
                          Plöck 107-109<br>
@@ -24,7 +23,7 @@
                          E-Mail: effinger@ub.uni-heidelberg.de
                 {{pass}}
                 </p>
-
+        </div>
 
         </div>
     </div>
