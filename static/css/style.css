@@ -183,7 +183,6 @@ header  .navbar-nav > li > a {
     padding-bottom: 6px;
     padding-top: 5px;
     margin-left: 2px;
-    line-height: 30px;
 	font-weight: 700;
     -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
@@ -246,22 +245,28 @@ header ul.nav li {
 
 header ul.nav li a {	
 	font-size:12px;
-	border:none;
-	font-weight:700;
+	border-bottom:2px solid #0077bb;
+	font-weight:100;
 	text-transform:uppercase;
 }
+
+header ul.social-media li a {
+        border:none;
+}
+
 
 header ul.nav li ul li a {	
 	font-size:12px;
 	border:none;
-	font-weight:300;
+	font-weight:100;
 	text-transform:uppercase;
 }
 
 
 .navbar .nav > li > a {
-  color: #0077bb;
+  color: #444444;
   text-shadow: none;
+  font-style:italic;
 }
 
 .navbar .nav a:hover {
@@ -2102,7 +2107,7 @@ li.active {
 .flex-caption .btn-theme,
 .widget ul.tags li a,
 .widget ul.tags li a:hover {
-  background: #900 !important;
+  background: #0077bb !important;
   border: none;
 }
 
@@ -2234,11 +2239,6 @@ footer {
 #footer_sn {
 }
 
-.footer_logo_col {
-  width:25%;
-  float:left;
-}
-
 
 #footer_logo_ub img {
   width: 60%;
@@ -2275,7 +2275,7 @@ footer {
 }
 
 #footer_logo_pkp {
-  margin-top:10%;
+  margin-top:15%;
 }
 
 #footer_logo_pkp img{
