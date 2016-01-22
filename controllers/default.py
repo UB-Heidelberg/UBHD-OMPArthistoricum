@@ -28,10 +28,6 @@ def error():
     return dict()
 
 
-def get_knv_metadata():
-    if not db(db.t_knv_metadata.submission_id == request.args(0)).select(db.t_knv_metadata.submission_id):
-        redirect(URL('error'))
-    return dict(data=db(db.t_knv_metadata.submission_id == request.args(0)).select())
 
 
 def set_knv_metadata():
