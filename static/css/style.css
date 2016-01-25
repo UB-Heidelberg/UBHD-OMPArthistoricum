@@ -48,6 +48,13 @@ h1,h2, h3, h4, h5, h6 {
 
 #service-navi {background-color:#fff;}
 
+#service-navi a {color:#aeaeae;
+                font-size:14px;}
+
+#service-navi a:hover {color: #0077bb;
+               background-color:#fff;
+               }
+
 #main {background-color:#fff;
        padding:1.9em;
 }

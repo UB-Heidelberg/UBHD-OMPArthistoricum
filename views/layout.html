@@ -72,18 +72,7 @@
 
                 <ul class="nav nav-pills pull-right">
                     <li><a href="{{=URL(myconf.take('web.application'),'contact','index')}}" style="padding-right: 0;">{{=T('Contact')}}</a></li>
-                    <li>{{if session.forced_language=='de':}}
-                        <a href="{{=URL(myconf.take('web.application'),'contact','imprint')}}" style="padding-right: 0;">{{=T('Legal Notice')}}</a>
-                        {{elif session.forced_language=='en':}}
-                        <der ul.nav li a {
-        font-size:12px;
-        border-bottom:2px solid #0077bb;
-        font-weight:700;
-        text-transform:uppercase;
-}
-a href="{{=URL(myconf.take('web.application'),'contact','imprint')}}" style="padding-right: 0;">{{=T('Legal Notice')}}</a>
-                        {{pass}}
-                    </li>
+                    <li><a href="{{=URL(myconf.take('web.application'),'contact','imprint')}}" style="padding-right: 0;">{{=T('Legal Notice')}}</a></li>
          <!--<li><a href="suche.html">{{=T('Search')}} |</a></li>-->
                     <!--<li><a href="faq.html">FAQ |</a></li>-->
                      {{if session.forced_language=='en':}}
