@@ -1,5 +1,7 @@
 {{extend 'layout.html'}}
 
+<div id="main" class="container">
+
 <section id="content">
   <div style="height: 20px"></div>
   <div class="container">
@@ -60,9 +62,8 @@
                    <div class="tab-content">
                      <div class="tab-pane active" id="one2">
                        <table class="table">                
-                         
                          {{file_ids=[]}}
-                       
+                                     
                          
                           {{for fullbook in full_files:}}
                           {{file_id=str(fullbook['submission_id'])+'-'+str(fullbook['file_id'])+'-'+fullbook['original_file_name'].rsplit('.')[1].lower()}}
@@ -216,25 +217,11 @@
                 {{if num%len(publication_formats)==0: }}
                 {{=TR()}}
                 {{=TD(str(i.submission_chapter_settings.setting_value))}}
-                
                 {{pass}}
                 {{if str(type_dict[i.submission_files.assoc_id]).lower() ==  myconf.take('omp.xml_category_name').lower(): }}
-		{{link=URL(myconf.take('web.application'), 'reader', 'index/'+str(i.submission_files.submission_id)+'/'+str(i.submission_files.submission_id)+'-'+str(i.submission_files.genre_id)+'-'+str(i.submission_files.file_id)+'-'+str(i.submission_files.revision)+'-'+str(i.submission_files.file_stage)+'-'+str(i.submission_files.date_uploaded.strftime('%Y%m%d'))+'.'+str(type_dict[i.submission_files.assoc_id]).lower())}}
-                {{if vgwort_server : }}
-		{{code=db((db.submission_file_settings.setting_name=="vgWortPublic") & (db.submission_file_settings.file_id==i.submission_files.file_id)).select(db.submission_file_settings.setting_value).first()['setting_value']}}
-                {{link = vgwort_server+code+'?l='+myconf.take("web.url")+link}}
-                {{pass}}
-
-                {{=TD(A(I(_class="fa fa-html5"), _href=link))}}
+                {{=TD(A(I(_class="fa fa-html5"), _href=URL(myconf.take('web.application'), 'reader', 'index/'+str(i.submission_files.submission_id)+'/'+str(i.submission_files.submission_id)+'-'+str(i.submission_files.genre_id)+'-'+str(i.submission_files.file_id)+'-'+str(i.submission_files.revision)+'-'+str(i.submission_files.file_stage)+'-'+str(i.submission_files.date_uploaded.strftime('%Y%m%d'))+'.'+str(type_dict[i.submission_files.assoc_id]).lower())))}}
                 {{else:}}
-		{{link=URL(myconf.take('web.application'), 'reader', 'download/'+str(i.submission_files.submission_id)+'/'+str(i.submission_files.submission_id)+'-'+str(i.submission_files.genre_id)+'-'+str(i.submission_files.file_id)+'-'+str(i.submission_files.revision)+'-'+str(i.submission_files.file_stage)+'-'+str(i.submission_files.date_uploaded.strftime('%Y%m%d'))+'.'+str(type_dict[i.submission_files.assoc_id]).lower())}}
-		{{if vgwort_server : }}
-
-		{{code=db((db.submission_file_settings.setting_name=="vgWortPublic") & (db.submission_file_settings.file_id==i.submission_files.file_id)).select(db.submission_file_settings.setting_value).first()['setting_value']}}
-		{{link = vgwort_server+code+'?l='+myconf.take("web.url")+link}}
-
-		 {{pass}}
-                {{=TD(A(I(_class="fa fa-file-text-o"), _href=link))}}
+                {{=TD(A(I(_class="fa fa-file-text-o"), _href=URL(myconf.take('web.application'), 'reader', 'download/'+str(i.submission_files.submission_id)+'/'+str(i.submission_files.submission_id)+'-'+str(i.submission_files.genre_id)+'-'+str(i.submission_files.file_id)+'-'+str(i.submission_files.revision)+'-'+str(i.submission_files.file_stage)+'-'+str(i.submission_files.date_uploaded.strftime('%Y%m%d'))+'.'+str(type_dict[i.submission_files.assoc_id]).lower())))}}
                 {{pass}}
                 {{num = num +1 }}
                 {{pass}}
@@ -246,18 +233,69 @@
       </div>
     </div>
   </div>
+</div>
 </section>
 
 <script>
-  var ids={{=XML(file_ids)}};
-  var full_xml, full_pdf;
-   {{ if 'full_xml' in  locals():}}
-    full_xml = "{{=full_xml}}";
+   $('#statistik-button').click(function(){
+     $('#oas').slideToggle()
+   });
+   var script = 'oastats-plus.cgi';
+   var ids=''
+  {{for x in file_ids:}} 
+   ids += "{{=x}}"+',';
+  {{pass}}
+  if (window.location.protocol == "https:") {
+         script = 'oastats.cgi';
+  }
+  //var url="../../static/js/oastats.json";
+  var url = "../../../cgi-bin/"+script+"?repo=omphp&type=json&ids="+ids;
+  
+  var count, chapter_pdf, chapter_xml,full_xml, full_pdf;
+  full_xml = 0;
+  full_pdf = 0;
+  chapter_pdf = 0;
+  chapter_xml = 0;
+  
+  {{ if 'full_xml' in  locals():}}
+    full_xml = {{=full_xml}}
   {{pass}}
   {{ if 'full_pdf' in  locals():}}
-    full_pdf= "{{=full_pdf}}";
+    full_pdf= {{=full_pdf}}
   {{pass}}
-
+  
+  
+  var full_file_ids = [];
+  
+  $.getJSON( url, function( data ) {
+   $.each(data, function(index,value) {
+    count = 0;
+    $.each(value.all_years, function(index2,value2) {
+          count += value2.volltext;
+          if (index.indexOf('xml') > -1 ) {
+               if (index != full_xml) {
+                  chapter_xml+= parseInt(value2.volltext);
+                }
+           }
+           
+          if (index.indexOf('pdf') > -1) {
+              if (index != full_pdf) {
+             chapter_pdf+= parseInt(value2.volltext);
+           }
+          }
+         
+        $('#chapter_pdf').text(parseInt(chapter_pdf));
+        $('#chapter_xml').text(parseInt(chapter_xml));
+      });
+      $('#'+index).text(parseInt(count));
+       
+  });
+  }).fail(function() {
+      $('#statistik-button').hide();
+      console.log("statistik service unavaliable");
+  });
+  
+  
+    
 
 </script>
-<script src="{{=URL(myconf.take('web.application'),'static','js/stats.js')}}" data-ids="{{=XML(file_ids)}}" data-full_pdf=full_pdf data-full_xml=full_xml ></script>
