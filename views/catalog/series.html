@@ -29,11 +29,7 @@
                     <div class="widget">
                         <h5 class="widgetheading"></h5>
                         <ul class="tags">
-                            {{if session.forced_language =='de': }}
-                            <li><a href="{{=URL(myconf.take('web.application'),'catalog','book/'+str(entry))}}">{{=T('Mehr' )}}</a></li>
-                            {{elif session.forced_language =='en': }}
-                            <li><a href="{{=URL(myconf.take('web.application'),'catalog','book/'+str(entry))}}">{{=T('More Information' )}}</a></li>
-                            {{pass}}
+                            <li><a href="{{=URL(myconf.take('web.application'),'catalog','book/'+str(entry))}}">{{=T('To the eBook' )}}</a></li>
                         </ul>
                     </div>
                 </article>
