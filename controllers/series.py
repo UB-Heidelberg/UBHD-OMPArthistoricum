@@ -8,7 +8,13 @@ locale = 'de_DE'
 if session.forced_language == 'en':
   locale = 'en_US'
 
+def mps_info():
+	return dict()
+
 def hst():
+	return dict()
+
+def vmps_info():
 	return dict()
 
 def index():
