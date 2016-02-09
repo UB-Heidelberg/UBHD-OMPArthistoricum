@@ -16,12 +16,19 @@ def series():
       redirect( URL('home', 'index'))
     series = request.args[0]
     
-    
     query = ((db.submissions.context_id == myconf.take('omp.press_id'))  &  (db.submissions.submission_id!=ignored_submissions) & (db.submissions.status == 3) & (
         db.submission_settings.submission_id == db.submissions.submission_id) & (db.submission_settings.locale == locale) & (db.submissions.context_id==db.series.press_id) & (db.series.path==series) & (db.submissions.context_id == myconf.take('omp.press_id')) & (db.submissions.series_id==db.series.series_id) &(db.submissions.context_id==db.series.press_id) & (db.series.path==series))
     submissions = db(query).select(db.submission_settings.ALL,orderby=db.submissions.submission_id)
     subs = {}
-    
+
+    series_title = ""
+    rows = db(db.series.path == series).select(db.series.series_id)
+    if len(rows) == 1:
+        series_id = rows[0]['series_id']
+    	rows = db((db.series_settings.series_id == series_id) & (db.series_settings.setting_name == 'title') & (db.series_settings.locale == locale)).select(db.series_settings.setting_value)
+	if rows:
+	    series_title=rows[0]['setting_value']
+
     for i in submissions:
       authors=''
       if i.setting_name == 'abstract':
@@ -40,7 +47,7 @@ def series():
         authors = authors[:-2]
           
       subs.setdefault(i.submission_id, {})['authors'] = authors
-    return dict(submissions=submissions, subs=subs)
+    return dict(submissions=submissions, subs=subs, series_title=series_title)
 
 def index():
     abstract, author, cleanTitle, subtitle = '', '', '', ''
