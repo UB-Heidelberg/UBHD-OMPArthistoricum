@@ -11,9 +11,6 @@ if session.forced_language == 'en':
 def mps_info():
 	return dict()
 
-def hst():
-	return dict()
-
 def vmps_info():
 	return dict()
 

@@ -6,16 +6,12 @@ LICENSE.md
 '''
 
 
-def for_authors():
-    return dict()
-
-
-def book_proposal():
-    return dict()
-
-
-def rights_and_licences():
-    return dict()
 
 def index():
   return dict()
+
+def skd():
+  return dict()
+
+
+
