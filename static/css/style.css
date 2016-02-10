@@ -2173,6 +2173,7 @@ li.active {
 
 #infoBoxRechts {
   float: right;
+  background-color:#f7f7f7;
 }
 
 .boxListe {
