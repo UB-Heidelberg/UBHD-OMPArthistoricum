@@ -13,5 +13,7 @@ def index():
 def skd():
   return dict()
 
+def ap():
+  return dict()
 
 

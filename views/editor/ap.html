@@ -1,0 +1,39 @@
+{{extend 'layout.html'}}
+
+<div id="main" class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>  {{if session.forced_language =='de': }}
+                ad picturam Fachverlag für kunstwissenschaftliche Literatur e. K.   
+                {{elif session.forced_language =='en': }}
+                ad picturam Fachverlag für kunstwissenschaftliche Literatur e. K.
+            {{pass}}
+            </h3>
+
+            <p>
+                {{if session.forced_language =='de': }}
+
+                <div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL(myconf.take('web.application'),'static','images/editor/ad_picturam_logo.png'),_width='230px')}}</p>
+         
+                <p><b>Kontakt</b><br>
+                ad picturam<br>
+                Fachverlag für kunstwissenschaftliche<br />Literatur e. K.<br>
+                Im Ried 4b<br>
+                D-79249 Merzhausen<br><br>
+                Tel. 0049 - (0)761 - 38411024 <br>
+                E-Mail: info@ad-picturam.de<br>
+                Internet: <a href="http://www.ad-picturam.de/" title="Homepage">ad picturam</a></p>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p> 
+{{elif session.forced_language =='en': }}
+
+
+                {{pass}}
+
+
+            </p>
+
+        </div>
+    </div>
+  </div>
+
