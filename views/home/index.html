@@ -220,9 +220,9 @@
 
                                 <div class="box-gray aligncenter">
    {{if session.forced_language =='de': }}
-                                    <h4>Serien</h4>
+                                    <h4>Reihe</h4>
    {{elif session.forced_language =='en': }}
-   <h4>Series</h4>                                    
+                                    <h4>Series</h4>                                    
                                        {{pass}}                                    
 
                                     {{=IMG(_src=URL(myconf.take('web.application'),'static','monographs/26/simple/cover.jpg'),_width='145px')}}
@@ -247,7 +247,7 @@
 
                                 <div class="box-gray aligncenter">
                                    {{if session.forced_language =='de': }}
-                                    <h4>Serien</h4>
+                                    <h4>Reihe</h4>
                                    {{elif session.forced_language =='en': }}
                                     <h4>Series</h4>
                                    {{pass}}
@@ -259,11 +259,9 @@
 
                                 <div class="box-bottom">&nbsp;
                                 {{if session.forced_language =='de': }}
-                                    {{=A(T('More'),_href=URL(''))}}
-<!--                                {{=A(T('More'),_href=URL('catalog','series/mps'))}}-->
+                                {{=A(T('More'),_href=URL('series','eva_info'))}}
       {{elif session.forced_language =='en': }}
-                                    {{=A(T('More Information'),_href=URL(''))}}
-<!--                                {{=A(T('More Information'),_href=URL('catalog','series/mps'))}}-->
+                                {{=A(T('More Information'),_href=URL('series','eva_info'))}}
                                 {{pass}}
                                 </div>
 

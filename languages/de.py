@@ -165,7 +165,7 @@
 'Imprint': 'Imprint',
 'in OMP nicht angegeben': 'in OMP nicht angegeben',
 'Index': 'Index',
-'Information about the series': 'Informationen zur Serie',
+'Information about the series': 'Informationen zur Reihe',
 'Information for authors': 'Informationen für Autoren',
 'Information for Authors': 'Informationen für Autoren',
 'Inhaltsverzeichnis': 'Inhaltsverzeichnis',

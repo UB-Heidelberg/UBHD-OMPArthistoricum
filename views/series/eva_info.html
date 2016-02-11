@@ -1,0 +1,59 @@
+{{extend 'layout.html'}}
+
+<div id="main" class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>  {{if session.forced_language =='de': }}
+                EVA Berlin - Elektronische Medien & Kunst, Kultur, Historie  
+                {{elif session.forced_language =='en': }}
+                EVA Berlin - Elektronische Medien & Kunst, Kultur, Historie 
+            {{pass}}
+            </h3>
+
+
+                {{if session.forced_language =='de': }}
+                <div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL(myconf.take('web.application'),'static','images/series/eva_logo.png'),_width='230px')}}</p>
+                <br>
+                <p><b>Kontakt</b><br>
+                Dr. Andreas Bienert<br>
+                Staatliche Museen zu Berlin - Preußischer Kulturbesitz<br>
+                T: +49(0) 30 266 42 33 01<br>
+                eva-berlin@smb.spk-berlin.de<br><br>
+                </div>
+
+                <p>Die <a href="http://www.eva-berlin.de/" title="Homepage der EVA-Konferenzen">EVA-Konferenzen</a> sind ein internationales Forum für Anwender, Entwickler und Vermittler elektronischer Dokumentations- und Kommunikationstechniken im Kulturbereich. An den Veranstaltungsorten in Berlin, Florenz, London, St. Petersburg und Jerusalem werden ambitionierte Digitalisierungsprojekte mit Bezug zum kulturellen Erbe, netzbasierte Forschungs- und Vermittlungskooperationen sowie informationstechnische Serviceangebote für Museen, Bibliotheken und Archive vorgestellt.</p>
+                <p>Der Schwerpunkt der Berliner EVA-Konferenzen liegt auf aktuellen, praxisnahen und technologisch avancierten Projekten. Konferenz, Workshop und begleitende Ausstellung präsentieren erfolgreiche Umsetzungen und innovative Ansätze. Neue technische Potentiale des netzbasierten Informationsaustauschs, der elektronischen Dokumentation und der digitalen Reproduktion werden ebenso thematisiert wie die methodische Orientierung oder Lizensierungsfragen. Der Diskurs zwischen Gedächtnisinstitutionen, Technologieanbietern und öffentlichen Verwaltungen regt zu kooperativer Zusammenarbeit an.</p>
+                <p>Teilnehmer sind:
+                <ul>
+                      <li> Museen, Bibliotheken, Archive und deren Verbände</li>
+                      <li>Kultur- und Bildungsministerien, Museums- und Denkmalämter, weitere kulturell orientierte Institutionen</li>
+                      <li>Forschungsstätten der Bildverarbeitung, Computergraphik, Informations- und Medienwissenschaften</li>
+                      <li>Anbieter von Multimedia- und Bildverarbeitungssystemen, Hard- und Software, Online- Informationsdiensten, Datenbanken</li>
+                 </ul>
+                 </p>
+<p>Die bislang fünfzehn gedruckt erschienenen Konferenzbände werden <b>in Kürze</b> auf arthistoricum.net - eBOOKS sukzessive <b>online im OPEN ACCESS</b> bereit gestellt</p>
+
+<div class="widget">
+         <ul class="tags">
+                            <li>
+                              <a href="http://heiup.uni-heidelberg.de/UBHD_OMParthistoricum/catalog/series/eva">{{=T('Volumes')}}</a>
+                            </li>
+
+         </ul>
+</div>
+
+                     {{elif session.forced_language =='en': }}
+<div class="widget">
+         <ul class="tags">
+                            <li>
+                              <a href="http://heiup.uni-heidelberg.de/UBHD_OMParthistoricum/catalog/series/eva">{{=T('Volumes')}}</a>
+                            </li>
+
+        </ul>
+</div>
+{{pass}}
+
+        </div>
+    </div>
+</div>
+
