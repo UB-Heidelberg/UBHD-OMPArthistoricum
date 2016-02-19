@@ -29,6 +29,7 @@ def series():
 	if rows:
 	    series_title=rows[0]['setting_value']
 
+
     for i in submissions:
       authors=''
       if i.setting_name == 'abstract':
@@ -57,9 +58,14 @@ def index():
     ignored_submissions =  myconf.take('omp.ignore_submissions') if myconf.take('omp.ignore_submissions') else -1
     query = ((db.submissions.context_id == myconf.take('omp.press_id')) &  (db.submissions.submission_id!=ignored_submissions) & (db.submissions.status == 3) & (
         db.submission_settings.submission_id == db.submissions.submission_id) & (db.submission_settings.locale == locale))
-    submissions = db(query).select(db.submission_settings.ALL,orderby=db.submissions.submission_id)
+    submissions = db(query).select(db.submission_settings.ALL,orderby=~db.submissions.date_submitted)
     subs = {}
+ 
+
+    order = []
     for i in submissions:
+      if not i.submission_id in order:
+          order.append(i.submission_id)
       authors=''
       if i.setting_name == 'abstract':
           subs.setdefault(i.submission_id, {})['abstract'] = i.setting_value
@@ -79,7 +85,7 @@ def index():
       subs.setdefault(i.submission_id, {})['authors'] = authors
     if len(subs) == 0:
       redirect( URL('home', 'index'))  
-    return dict(submissions=submissions, subs=subs)
+    return dict(submissions=submissions, subs=subs, order=order)
 
 
 def book():
@@ -154,7 +160,8 @@ def book():
             identification_codes[
                 identification_code['value']] = name['setting_value']
 
-    published_date = db(pub_query & (db.publication_format_settings.setting_value == myconf.take('omp.doi_format_name')) & (
+    date_pub_query =  (db.publication_formats.submission_id == book_id) & (db.publication_format_settings.publication_format_id == db.publication_formats.publication_format_id)
+    published_date = db(date_pub_query & (db.publication_format_settings.setting_value == myconf.take('omp.doi_format_name')) & (
         db.publication_dates.publication_format_id == db.publication_format_settings.publication_format_id)).select(db.publication_dates.date)
 
     representatives = db(
