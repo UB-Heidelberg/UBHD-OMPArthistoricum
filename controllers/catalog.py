@@ -12,7 +12,7 @@ def series():
         locale = 'en_US'
     ignored_submissions =  myconf.take('omp.ignore_submissions') if myconf.take('omp.ignore_submissions') else -1
     
-    if request.args is None:
+    if request.args == []:
       redirect( URL('home', 'index'))
     series = request.args[0]
     
