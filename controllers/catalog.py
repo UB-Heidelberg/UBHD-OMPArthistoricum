@@ -22,13 +22,16 @@ def series():
     subs = {}
 
     series_title = ""
+    series_subtitle = ""
     rows = db(db.series.path == series).select(db.series.series_id)
     if len(rows) == 1:
         series_id = rows[0]['series_id']
     	rows = db((db.series_settings.series_id == series_id) & (db.series_settings.setting_name == 'title') & (db.series_settings.locale == locale)).select(db.series_settings.setting_value)
 	if rows:
 	    series_title=rows[0]['setting_value']
-
+	rows = db((db.series_settings.series_id == series_id) & (db.series_settings.setting_name == 'subtitle') & (db.series_settings.locale == locale)).select(db.series_settings.setting_value)
+        if rows:
+            series_subtitle=rows[0]['setting_value']
 
     for i in submissions:
       authors=''
@@ -48,7 +51,7 @@ def series():
         authors = authors[:-2]
           
       subs.setdefault(i.submission_id, {})['authors'] = authors
-    return dict(submissions=submissions, subs=subs, series_title=series_title)
+    return dict(submissions=submissions, subs=subs, series_title=series_title, series_subtitle=series_subtitle)
 
 def index():
     abstract, author, cleanTitle, subtitle = '', '', '', ''
