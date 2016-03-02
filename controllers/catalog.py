@@ -34,6 +34,9 @@ def series():
             series_subtitle=rows[0]['setting_value']
 
     for i in submissions:
+      series_position = db(db.submissions.submission_id == i.submission_id).select(db.submissions.series_position).first()['series_position']
+      if series_position:
+         subs.setdefault(i.submission_id, {})['series_position'] = series_position
       authors=''
       if i.setting_name == 'abstract':
           subs.setdefault(i.submission_id, {})['abstract'] = i.setting_value

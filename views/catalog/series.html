@@ -21,6 +21,9 @@
                         <h4>{{=subs[entry]['authors']}}</h4>
                             <h4>{{=subs[entry]['title']}}<br />
                                 {{=subs[entry]['subtitle']}}</h4>
+				{{if subs[entry].has_key('series_position'):}}
+				    <p><i>{{=T('Vol.')}} {{=subs[entry]['series_position']}}</i></p>
+				{{pass}}
                     </div>
                     <p>
                         <i class="icon-quote-left"></i>

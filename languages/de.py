@@ -373,6 +373,8 @@
 'Videos': 'Videos',
 'View': 'Ansicht',
 'View Journal': 'Zur Zeitschrift',
+'Vol.': 'Band',
+'Volume': 'Band',
 'Volumes': 'Bände',
 'Vorbestelldatum': 'Vorbestelldatum',
 'Vorbestellpreis EURO AT': 'Vorbestellpreis EURO AT',
