@@ -1,6 +1,8 @@
 {{extend 'layout.html'}}
 <div id="main" class="container">
 {{import re}}
+{{import os}}
+
 <section id="content">
 <div class="container">
 <div class="row">
@@ -10,8 +12,7 @@
 </div>
 </div>
 </div>
-
-    {{for entry in subs:}}
+    {{for entry in order:}}
     <div class="container" height="400px">
         <div class="row">
             <div class="col-lg-3">
