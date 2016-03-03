@@ -2,9 +2,15 @@
 <div id="main" class="container">
 {{import re}}
 <section id="content">
+<div class="container">
+<div class="row">
+<div class="col-lg-3">
 <h2>{{=series_title}}</h2>
   <h3>{{=series_subtitle}}</h3>
-    <div style="height: 20px"></div>
+</div>
+</div>
+</div>
+
     {{for entry in subs:}}
     <div class="container" height="400px">
         <div class="row">
@@ -22,7 +28,7 @@
                             <h4>{{=subs[entry]['title']}}<br />
                                 {{=subs[entry]['subtitle']}}</h4>
 				{{if subs[entry].has_key('series_position'):}}
-				    <p><i>{{=T('Vol.')}} {{=subs[entry]['series_position']}}</i></p>
+				    <p><i>{{=series_title}}, {{=T('Vol.')}} {{=subs[entry]['series_position']}}</i></p>
 				{{pass}}
                     </div>
                     <p>

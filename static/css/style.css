@@ -2002,6 +2002,41 @@ article img.pull-right, article .align-right{
 		font-size:14px;
 	}
 
+        .container, .col-lg-9, #boxAktuelles
+        {
+           width:100% !important;
+        }
+       .col-lg-12, .col-md-12, .container-fluid, footer
+        {
+           padding:0 !important;
+        }
+       #main
+        {
+           padding:2em !important;
+        }
+       footer #sub-footer .container .col-lg-12 .row .col-lg-3 img
+        {
+           width:50%;
+           margin-left: 20%;
+        }
+       #service-navi
+        {
+           padding-top:1em;
+           padding-right:1.5em;
+        }
+       #heiup-logo
+        {
+           width:auto !important;
+        }
+       #main-slider
+        {
+           display:none;
+        }
+       #infoBoxRechts
+        {
+           width:100%;
+           margin:0;
+        }
 
 }
 
@@ -2011,6 +2046,64 @@ article img.pull-right, article .align-right{
 
 
 /*Anpassungen WWW Heidelberg*/
+
+@media (min-width: 481px) and (max-width: 1230px) {
+       body
+        {
+           padding-left:3%;
+           padding-right:3%;
+        }
+       .container, .col-lg-9, #boxAktuelles
+        {
+           width:100% !important;
+        }
+       .col-lg-12, .col-md-12, footer, .container-fluid
+        {
+           padding:0 !important;
+        }
+       #service-navi
+        {
+           padding-top:1em;
+           padding-right:1.5em;
+        }
+       #heiup-logo
+        {
+           width:auto !important;
+        }
+       .row
+        {
+           margin:0 !important;
+        }
+       #content
+        {
+           padding:10px 0 0 !important;
+        }
+       #main
+        {
+           padding:0 !important;
+        }
+       #main .row
+        {
+           padding:1em !important;
+        }
+       .box
+        {
+           margin-bottom:1em;
+        }
+       footer #sub-footer .container .col-lg-12 .row .col-lg-3
+        {
+           width:25%;
+           float:left;
+        }
+       footer #sub-footer .container .col-lg-12 .row .col-lg-3 img
+        {
+           width:100%;
+        }
+       #footer_logo_pkp
+        {
+           margin-top:30% !important;
+        }
+}
 
 
 .container {
