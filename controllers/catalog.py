@@ -37,7 +37,10 @@ def series():
             series_subtitle=rows[0]['setting_value']
 
     series_positions = {}
+    order = []
     for i in submissions:
+      if not i.submission_id in order:
+	order.append(i.submission_id)
       series_position = db(db.submissions.submission_id == i.submission_id).select(db.submissions.series_position).first()['series_position']
       if series_position:
          subs.setdefault(i.submission_id, {})['series_position'] = series_position
@@ -65,7 +68,8 @@ def series():
         authors = authors[:-2]
           
       subs.setdefault(i.submission_id, {})['authors'] = authors
-      order = [e[0] for e in sorted(series_positions.items(), key=itemgetter(1), reverse=True)]
+      if series_positions != {}:
+        order = [e[0] for e in sorted(series_positions.items(), key=itemgetter(1), reverse=True)]
 
     return dict(submissions=submissions, subs=subs, order=order, series_title=series_title, series_subtitle=series_subtitle)
 
