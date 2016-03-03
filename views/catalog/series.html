@@ -29,7 +29,7 @@
                             <h4>{{=subs[entry]['title']}}<br />
                                 {{=subs[entry]['subtitle']}}</h4>
 				{{if subs[entry].has_key('series_position'):}}
-				    <p><i>{{=series_title}}, {{=T('Vol.')}} {{=subs[entry]['series_position']}}</i></p>
+				    <p><i>{{=series_title}}{{if series_subtitle:}} – {{pass}}{{=series_subtitle}}, {{=T('Vol.')}} {{=subs[entry]['series_position']}}</i></p>
 				{{pass}}
                     </div>
                     <p>
