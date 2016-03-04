@@ -2057,6 +2057,14 @@ article img.pull-right, article .align-right{
 
 /*Anpassungen WWW Heidelberg*/
 
+@media (min-width:769px) and (max-width: 979px)
+       {
+       .navbar-default .navbar-nav > .open > a {
+       padding-left: 5px !important;
+       padding-right: 5px !important;
+       }
+}
+
 @media (min-width: 481px) and (max-width: 1230px) {
        body
         {
