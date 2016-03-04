@@ -2014,6 +2014,14 @@ article img.pull-right, article .align-right{
         {
            padding:2em !important;
         }
+       .title_volumes
+        {
+           margin-left:0.3em;
+        }
+       .subtitle_volumes
+        {
+           margin-left:0.5em;
+        }
        footer #sub-footer .container .col-lg-12 .row .col-lg-3 img
         {
            width:50%;
@@ -2095,6 +2103,14 @@ article img.pull-right, article .align-right{
        .box
         {
            margin-bottom:1em;
+        }
+       .title_volumes
+        {
+           margin-left:0.3em;
+        }
+       .subtitle_volumes
+        {
+           margin-left:0.5em;
         }
        footer #sub-footer .container .col-lg-12 .row .col-lg-3
         {
