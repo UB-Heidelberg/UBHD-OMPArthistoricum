@@ -2040,10 +2040,12 @@ article img.pull-right, article .align-right{
 
 }
 
-@media (max-width: 360px) {
-
+@media (max-width: 768px) {
+       #infoBoxRechts
+        {
+          width:100% !important;
+        }
 }
-
 
 /*Anpassungen WWW Heidelberg*/
 
@@ -2085,6 +2087,10 @@ article img.pull-right, article .align-right{
        #main .row
         {
            padding:1em !important;
+        }
+       #main .content .container .row .col-lg-12
+        {
+        /*   padding-left:1em;*/
         }
        .box
         {
