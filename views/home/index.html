@@ -227,15 +227,15 @@
                                     <h4>Series</h4>                                    
                                        {{pass}}                                    
 
-                                    {{=IMG(_src=URL(myconf.take('web.application'),'static','monographs/26/simple/cover.jpg'),_width='145px')}}
+                                    {{=IMG(_src=URL(myconf.take('web.application'),'static','images/home/kursaechsische_kartographie.jpg'),_width='145px')}}
 
                                 </div>
 
                                 <div class="box-bottom">
    {{if session.forced_language =='de': }}
-                                    {{=A(T('More'),_href=URL('catalog','series/mps'))}}
+                                    {{=A(T('More'),_href=URL('catalog','series/vmps'))}}
       {{elif session.forced_language =='en': }}
-                                    {{=A(T('More Information'),_href=URL('catalog','series/mps'))}}
+                                    {{=A(T('More Information'),_href=URL('catalog','series/vmps'))}}
                                       {{pass}}         
                                 </div>
 
