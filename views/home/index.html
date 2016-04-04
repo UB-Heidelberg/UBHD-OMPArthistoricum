@@ -141,9 +141,9 @@
                       </p>
                   <p class="boxText">
         {{if session.forced_language =='de': }}  
-                              Lorem ipsum sic dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.           
+                              Wir freuen uns über unsere neue Kooperation mit dem gemeinnützigen Verein "<a href="{{=URL(myconf.take('web.application'),'partner','dbae.html')}}" title="Informationsseite zum Verein Das Bild als Ereignis">Das Bild als Ereignis e. V.</a>". In Kürze wird hier der zweite Band seiner Schriftenreihe mit dem Titel "Mediale Dimensionen von Reproduktion" als Open-Access-eBook erscheinen. 
                {{elif session.forced_language =='en': }}      
-                              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                              Wir freuen uns über unsere neue Kooperation mit dem gemeinnützigen Verein "<a href="{{=URL(myconf.take('web.application'),'partner','dbae.html')}}" title="Informationsseite zum Verein Das Bild als Ereignis">Das Bild als Ereignis e. V.</a>". In Kürze wird hier der zweite Band seiner Schriftenreihe mit dem Titel "Mediale Dimensionen von Reproduktion" als Open-Access-eBook erscheinen.
                           {{pass}}                                   
                                       </p>
                                     </div>
@@ -165,7 +165,7 @@
 {{if session.forced_language =='de': }}
                   Kennen Sie die Plattform <b><a href="https://www.open-access.net/startseite/" title="Homepage open-access.net">open-access.net</a></b>? Sie bietet umfassende Information über das Thema Open Access und praktische Umsetzungshilfen an. open-access.net macht Konzepte, rechtliche, organisatorische und technische Rahmenbedingungen, konkrete Erfahrungen bei der Umsetzung, Initiativen, Dienste, Dienstleistungsanbieter und Positionspapiere gut aufbereitet zugänglich.
         {{elif session.forced_language =='en': }}
-           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                  Are you aware of the platform <b><a href="https://www.open-access.net/startseite/" title="Homepage open-access.net">open-access.net</a></b>? It offers detailed information on the subject of Open Access and a practical implementation guide. open-access.net provides well-edited, customized concepts, information on legal, organizational and technical framework conditions, shares concrete experiences with the realization, and introduces initiatives, services and position papers.
 {{pass}}            
 <!--<a href="http://open-access.net/community/open_access_tage/ " target="_blank">&nbsp;<i class="fa fa-external-link"></i></a>-->
                       </p>
@@ -227,15 +227,15 @@
                                     <h4>Series</h4>                                    
                                        {{pass}}                                    
 
-                                    {{=IMG(_src=URL(myconf.take('web.application'),'static','monographs/26/simple/cover.jpg'),_width='145px')}}
+                                    {{=IMG(_src=URL(myconf.take('web.application'),'static','images/home/kursaechsische_kartographie.jpg'),_width='145px')}}
 
                                 </div>
 
                                 <div class="box-bottom">
    {{if session.forced_language =='de': }}
-                                    {{=A(T('More'),_href=URL('catalog','series/mps'))}}
+                                    {{=A(T('More'),_href=URL('catalog','series/vmps'))}}
       {{elif session.forced_language =='en': }}
-                                    {{=A(T('More Information'),_href=URL('catalog','series/mps'))}}
+                                    {{=A(T('More Information'),_href=URL('catalog','series/vmps'))}}
                                       {{pass}}         
                                 </div>
 
@@ -282,7 +282,9 @@
 Wir unterstützen Open Access als Publikationsmodell für die Verbreitung von Forschungsergebnissen und veröffentlichen sowohl Erstpublikationen ("goldener Weg") als auch Zweitveröffentlichungen ("grüner Weg"). Das kostenfreie Angebot richtet sich an Kunstwissenschaftlerinnen und Kunstwissenschaftler weltweit.<br />
 Zum Einsatz kommt die Open-Source-Software OMP des Public Knowledge Project (PKP).
 {{elif session.forced_language =='en': }}
-           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                         ist die Open-Access-Publikationsplattform von arthistoricum.net für wissenschaftliche E-Books aus den Fachbereichen Kunstgeschichte, Fotografie und Design.<br />
+Wir unterstützen Open Access als Publikationsmodell für die Verbreitung von Forschungsergebnissen und veröffentlichen sowohl Erstpublikationen ("goldener Weg") als auch Zweitveröffentlichungen ("grüner Weg"). Das kostenfreie Angebot richtet sich an Kunstwissenschaftlerinnen und Kunstwissenschaftler weltweit.<br />
+Zum Einsatz kommt die Open-Source-Software OMP des Public Knowledge Project (PKP).
 {{pass}}
 
                         </p>
