@@ -235,67 +235,16 @@
   </div>
 </div>
 </section>
-
 <script>
-   $('#statistik-button').click(function(){
-     $('#oas').slideToggle()
-   });
-   var script = 'oastats-plus.cgi';
-   var ids=''
-  {{for x in file_ids:}} 
-   ids += "{{=x}}"+',';
-  {{pass}}
-  if (window.location.protocol == "https:") {
-         script = 'oastats.cgi';
-  }
-  //var url="../../static/js/oastats.json";
-  var url = "../../../cgi-bin/"+script+"?repo=omphp&type=json&ids="+ids;
-  
-  var count, chapter_pdf, chapter_xml,full_xml, full_pdf;
-  full_xml = 0;
-  full_pdf = 0;
-  chapter_pdf = 0;
-  chapter_xml = 0;
-  
-  {{ if 'full_xml' in  locals():}}
-    full_xml = {{=full_xml}}
+  var ids={{=XML(file_ids)}};
+  var full_xml, full_pdf;
+   {{ if 'full_xml' in  locals():}}
+    full_xml = "{{=full_xml}}";
   {{pass}}
   {{ if 'full_pdf' in  locals():}}
-    full_pdf= {{=full_pdf}}
+    full_pdf= "{{=full_pdf}}";
   {{pass}}
-  
-  
-  var full_file_ids = [];
-  
-  $.getJSON( url, function( data ) {
-   $.each(data, function(index,value) {
-    count = 0;
-    $.each(value.all_years, function(index2,value2) {
-          count += value2.volltext;
-          if (index.indexOf('xml') > -1 ) {
-               if (index != full_xml) {
-                  chapter_xml+= parseInt(value2.volltext);
-                }
-           }
-           
-          if (index.indexOf('pdf') > -1) {
-              if (index != full_pdf) {
-             chapter_pdf+= parseInt(value2.volltext);
-           }
-          }
-         
-        $('#chapter_pdf').text(parseInt(chapter_pdf));
-        $('#chapter_xml').text(parseInt(chapter_xml));
-      });
-      $('#'+index).text(parseInt(count));
-       
-  });
-  }).fail(function() {
-      $('#statistik-button').hide();
-      console.log("statistik service unavaliable");
-  });
-  
-  
-    
+
 
 </script>
+<script src="{{=URL(myconf.take('web.application'),'static','js/stats.js')}}" data-ids="{{=XML(file_ids)}}" data-full_pdf=full_pdf data-full_xml=full_xml ></script>
