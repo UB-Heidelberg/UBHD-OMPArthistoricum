@@ -63,7 +63,7 @@ def series():
               'title'] = i.setting_value
       author_q = ((db.authors.submission_id == i.submission_id))
       authors_list = db(author_q).select(
-          db.authors.first_name, db.authors.last_name)
+          db.authors.first_name, db.authors.last_name, db.authors.seq, orderby=db.authors.seq)
       for j in authors_list:
           authors += j.first_name + ' ' + j.last_name + ', '
       if authors.endswith(', '):
@@ -100,7 +100,7 @@ def index():
               'title'] = i.setting_value
       author_q = ((db.authors.submission_id == i.submission_id))
       authors_list = db(author_q).select(
-          db.authors.first_name, db.authors.last_name)
+          db.authors.first_name, db.authors.last_name, db.authors.seq, orderby=db.authors.seq)
       for j in authors_list:
           authors += j.first_name + ' ' + j.last_name + ', '
       if authors.endswith(', '):
@@ -131,7 +131,7 @@ def book():
 
     author_q = ((db.authors.submission_id == book_id))
     authors_list = db(author_q).select(
-        db.authors.first_name, db.authors.last_name)
+        db.authors.first_name, db.authors.last_name, db.authors.seq, orderby=db.authors.seq)
 
     for i in authors_list:
         authors += i.first_name + ' ' + i.last_name + ', '
@@ -207,8 +207,8 @@ def book():
         if i.setting_name == 'title':
             cleanTitle = i.setting_value
 
-    cover_image=''
-    path=request.folder+'static/monographs/'+book_id+'/simple/cover.'
+    cover_image = ''
+    path = request.folder+'static/monographs/'+book_id+'/simple/cover.'
     for t in ['jpg','png','gif']:
         if os.path.exists(path+t):
                 cover_image=URL(myconf.take('web.application'), 'static','monographs/' + book_id + '/simple/cover.'+t)
