@@ -213,3 +213,42 @@ class OMPDAL:
 			self.db.publication_dates.date_format
 		)
 
+	def getAllPublicationFormats(self, submission_id, available=True, approved=True):
+                """
+                Get all publication formats for the given submission id.
+                """
+		pf = self.db.publication_formats
+		q = (pf.submission_id == submission_id) & (pf.is_available == available) & (pf.is_approved == approved)
+		return self.db(q).select(pf.ALL)
+
+	def getPhysicalPublicationFormats(self, submission_id, available=True, approved=True):
+		"""
+		Get all publication formats marked as physical format for the given submission id.
+		"""
+                pf = self.db.publication_formats
+                q = (pf.submission_id == submission_id) & (pf.is_available == available) & (pf.is_approved == approved) & (pf.physical_format == True)
+                return self.db(q).select(pf.ALL)
+
+	def getDigitalPublicationFormats(self, submission_id, available=True, approved=True):
+                """
+                Get all publication formats not marked as physical format for the given submission id.
+                """
+                pf = self.db.publication_formats
+                q = (pf.submission_id == submission_id) & (pf.is_available == available) & (pf.is_approved == approved) & (pf.physical_format == False)
+                return self.db(q).select(pf.ALL)
+
+	def getPublicationFormatSettings(self, publication_format_id):
+		pfs = self.db.publication_format_settings
+		q = (pfs.submission_id == submission_id)
+		return self.db(q).select(pfs.ALL)
+
+	def getLocalizedPublicationFormatSettings(self, publication_format_id, locale):
+                pfs = self.db.publication_format_settings
+                q = (pfs.submission_id == submission_id) & (pfs.locale == locale)
+                return self.db(q).select(pfs.ALL)
+
+	def getPublicationFormatByName(self, submission_id, name, available=True, approved=True, locale=None):
+		pf = self.db.publication_formats
+		pfs = self.db.publication_format_settings
+		q = (pf.submission_id == submission_id) & (pf.is_available == available) & (pf.is_approved == approved) & (pfs.submission_id == pf.submission_id) & (pfs.setting_name == "name") & (pfs.setting_value == name)
+		return self.db(q).select(pf.ALL, groupby=pf.submission_id)
