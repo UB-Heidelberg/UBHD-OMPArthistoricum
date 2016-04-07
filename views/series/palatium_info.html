@@ -1,0 +1,70 @@
+{{extend 'layout.html'}}
+
+<div id="main" class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>  {{if session.forced_language =='de': }}
+                Palatium  
+                {{elif session.forced_language =='en': }}
+                Palatium 
+            {{pass}}
+            </h3>
+
+
+                {{if session.forced_language =='de': }}
+<!--
+<div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL(myconf.take('web.application'),'static','images/partner/bild_als_ereignis_logo.png'),_width='230px')}}</p>
+<p><b>Kontakt</b><br>
+                Das Bild als Ereignis e. V.<br>
+                Hagenstraße 30<br>
+                D-64625 Bensheim<br><br>
+
+                Vertreten durch den Vorstand Johann Schulz, Laura Sobez, Dominic E. Delarue, Sabine Koßmann<br><br>
+
+                Tel.: auf Anfrage<br>
+                E-Mail: verein@bildalsereignis.de<br>
+                <div style="width:25%; float:left;">Internet:</div><div style="width:75%; float:left;"><a href="http://www.bildalsereignis.de" title="Homepage">Homepage</a><br></div>
+                <div style="width:25%; float:left;">&nbsp;</div><div style="width:75%; float:left;"><a href="https://www.facebook.com/pages/Das-Bild-als-Ereignis-eV/137134156350819?ref=hl" title="Facebookprofil">Facebookprofil</a></p></div><br>
+                <div style="width:100%; float:left;">Themenportal in arthistoricum.net:</div><div style="width:100%; float:left;"><a href="https://www.arthistoricum.net/themen/portale/bildalsereignis" title="Themportal auf arthistoricum.net">„Das Bild als Ereignis“</a></div>
+</div>-->
+<p>Informationen folgen!</p>
+<div class="widget">
+         <ul class="tags">
+                            <li>
+                              <a href="../catalog/series/palatium">{{=T('Volumes')}}</a>
+                            </li>
+
+         </ul>
+</div>
+
+                     {{elif session.forced_language =='en': }}
+<!--
+<div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL(myconf.take('web.application'),'static','images/partner/bild_als_ereignis_logo.png'),_width='230px')}}</p>
+<p><b>Kontakt</b><br>
+                Das Bild als Ereignis e. V.<br>
+                Hagenstraße 30<br>
+                D-64625 Bensheim<br><br>
+
+                Vertreten durch den Vorstand Johann Schulz, Laura Sobez, Dominic E. Delarue, Sabine Koßmann<br><br>
+
+                Tel.: auf Anfrage<br>
+                E-Mail: verein@bildalsereignis.de<br>
+                <div style="width:25%; float:left;">Internet:</div><div style="width:75%; float:left;"><a href="http://www.bildalsereignis.de" title="Homepage">Homepage</a><br></div>
+                <div style="width:25%; float:left;">&nbsp;</div><div style="width:75%; float:left;"><a href="https://www.facebook.com/pages/Das-Bild-als-Ereignis-eV/137134156350819?ref=hl" title="Facebookprofil">Facebookprofil</a></p></div><br>
+                <div style="width:100%; float:left;">Themenportal in arthistoricum.net:</div><div style="width:100%; float:left;"><a href="https://www.arthistoricum.net/themen/portale/bildalsereignis" title="Themportal auf arthistoricum.net">„Das Bild als Ereignis“</a></div>
+</div>-->
+<p>Further Information coming soon!</p>
+<div class="widget">
+         <ul class="tags">
+                            <li>
+                              <a href="../catalog/series/palatium">{{=T('Volumes')}}</a>
+                            </li>
+
+        </ul>
+</div>
+{{pass}}
+
+        </div>
+    </div>
+</div>
+
