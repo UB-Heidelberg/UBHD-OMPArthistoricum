@@ -109,7 +109,7 @@ class OMPDAL:
 					orderby=[self.db.submission_chapters.chapter_seq, self.db.submission_files.assoc_id], 
 		)
 
-        def getChapters(self, submission_id, locale):
+        def getChapters(self, submission_id):
 		"""
 		Get all chapters associated with the given submission.
 		"""
