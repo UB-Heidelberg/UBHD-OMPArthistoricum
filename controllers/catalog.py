@@ -108,9 +108,9 @@ def index():
           
       subs.setdefault(i.submission_id, {})['authors'] = authors
     if len(subs) == 0:
-      redirect( URL('home', 'index'))  
-    return dict(submissions=submissions, subs=subs, order=order)
+      redirect( URL('home', 'index'))
 
+    return locals()
 
 def book():
     abstract, authors, cleanTitle, publication_format_settings_doi, press_name, subtitle = '', '', '', '', '', ''
@@ -207,7 +207,10 @@ def book():
         if i.setting_name == 'title':
             cleanTitle = i.setting_value
 
-    cover_image = URL(myconf.take('web.application'), 'static',
-                      'monographs/' + book_id + '/simple/cover.jpg')
+    cover_image=''
+    path=request.folder+'static/monographs/'+book_id+'/simple/cover.'
+    for t in ['jpg','png','gif']:
+        if os.path.exists(path+t):
+                cover_image=URL(myconf.take('web.application'), 'static','monographs/' + book_id + '/simple/cover.'+t)
 
     return locals()
