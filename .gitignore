@@ -47,3 +47,9 @@ errors/*
 private/
 errors/*
 *.swp
+
+# Eclipse project folders #
+###########################
+.project
+.pydevproject
+.settings/
