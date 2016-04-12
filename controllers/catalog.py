@@ -76,7 +76,6 @@ def series():
     return dict(submissions=submissions, subs=subs, order=order, series_title=series_title, series_subtitle=series_subtitle)
 
 def index():
-    abstract, author, cleanTitle, subtitle = '', '', '', ''
     locale = 'de_DE'
     if session.forced_language == 'en':
         locale = 'en_US'
@@ -102,6 +101,9 @@ def index():
         if setting_name == 'title':
             subs.setdefault(id, {})['title'] = setting_value
         subs.setdefault(id, {})['authors'] = ompdal.getAuthors(id)
+        for row in ompdal.getPublicationDates(id):
+            if row['date_format'] == '00':
+                subs[id]['publication_date'] = row['date']
         subs[id]['editors'] = ompdal.getEditors(id)
         subs[id]['series_position'] = i.submissions.series_position
         series_id = i.submissions.series_id

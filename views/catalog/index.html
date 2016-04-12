@@ -34,19 +34,20 @@
                                             {{=T("(ed.)")}}
                                         {{pass}}
                         {{else:}}
-                            {{=", ".join([" ".join([e.first_name, e.middle_name, e.last_name]) for e in subs[entry]['authors']])}}
+                            {{=", ".join([" ".join([e.first_name, e.middle_name, e.last_name]) for e in subs[entry]['authors'][:3]])}}{{if len(subs[entry]['authors']) > 3:}}, et. al.{{pass}}
                         {{pass}}
                         </h4>
                         <h4>{{=subs[entry]['title']}}<br />
                             {{=subs[entry]['subtitle']}}</h4>
-                            {{ if subs[entry].has_key('series_id'):
-                                    series_subtitle = series_info[subs[entry]['series_id']]['subtitle']
-                                    series_title = series_info[subs[entry]['series_id']]['title']
-                                }}
-                            <p></p>
-				            <p><i>{{=series_title}}{{ if series_subtitle: }} – {{=series_subtitle}}{{pass}}{{if subs[entry]['series_position']:}},  {{=T('Vol.')}} {{=subs[entry]['series_position']}} {{pass}}</i></p>
-				            {{pass}}
-
+                        <p>
+                        {{if 'publication_date' in subs[entry]:}}{{=subs[entry]['publication_date'][:4]}}<br/>{{pass}}
+                        {{if subs[entry].has_key('series_id'):
+                            series_subtitle = series_info[subs[entry]['series_id']]['subtitle']
+                            series_title = series_info[subs[entry]['series_id']]['title']
+                        }}
+                        <i>{{=series_title}}{{ if series_subtitle: }} – {{=series_subtitle}}{{pass}}{{if subs[entry]['series_position']:}},  {{=T('Vol.')}} {{=subs[entry]['series_position']}} {{pass}}</i>
+                        {{pass}}
+                        </p>
                     </div>
                     <p>
                         <i class="icon-quote-left"></i>
