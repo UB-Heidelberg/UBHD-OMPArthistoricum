@@ -114,22 +114,37 @@ def index():
 
 def book():
     abstract, authors, cleanTitle, publication_format_settings_doi, press_name, subtitle = '', '', '', '', '', ''
-
+    
     locale = ''
     if session.forced_language == 'en':
         locale = 'en_US'
     if session.forced_language == 'de':
         locale = 'de_DE'
-    book_id = request.args[0] if request.args else redirect(
+
+    # Get submission id from request
+    submission_id = request.args[0] if request.args else redirect(
         URL('home', 'index'))
-
-    query = ((db.submission_settings.submission_id == int(book_id))
-             & (db.submission_settings.locale == locale))
-    book = db(query).select(db.submission_settings.ALL)
-
+    
     ompdal = OMPDAL(db, myconf)
+    
+    submission = ompdal.getPublishedSubmission(submission_id, press=myconf.take('omp.press_id'))
+    
+    if not submission:
+        redirect(URL('home', 'index'))
+    
+    settings = ompdal.getLocalizedSubmissionSettings(submission_id, locale)
+    if not settings:
+        settings = ompdal.getSubmissionSettings(submission_id)
 
-    author_q = ((db.authors.submission_id == book_id))
+    for st in settings:
+        if st.setting_name == 'abstract':
+            abstract = st.setting_value
+        if st.setting_name == 'subtitle':
+            subtitle = st.setting_value
+        if st.setting_name == 'title':
+            cleanTitle = st.setting_value
+
+    author_q = ((db.authors.submission_id == submission_id))
     authors_list = db(author_q).select(
         db.authors.first_name, db.authors.last_name, db.authors.seq, orderby=db.authors.seq)
 
@@ -138,15 +153,15 @@ def book():
     if authors.endswith(', '):
         authors = authors[:-2]
 
-    author_bio = db((db.authors.submission_id == book_id) & (db.authors.author_id == db.author_settings.author_id) & (
+    author_bio = db((db.authors.submission_id == submission_id) & (db.authors.author_id == db.author_settings.author_id) & (
         db.author_settings.locale == locale) & (db.author_settings.setting_name == 'biography')).select(db.author_settings.setting_value).first()
 
-    chapters = ompdal.getLocalizedLatestRevisionOfChapters(book_id, locale)
+    chapters = ompdal.getLocalizedLatestRevisionOfChapters(submission_id, locale)
     if not chapters:
-        chapters = ompdal.getLatestRevisionOfChapters(book_id)
+        chapters = ompdal.getLatestRevisionOfChapters(submission_id)
 
 
-    pub_query = (db.publication_formats.submission_id == book_id) & (db.publication_format_settings.publication_format_id == db.publication_formats.publication_format_id) & (
+    pub_query = (db.publication_formats.submission_id == submission_id) & (db.publication_format_settings.publication_format_id == db.publication_formats.publication_format_id) & (
         db.publication_format_settings.locale == locale)
 
     publication_formats = db(pub_query & (db.publication_format_settings.setting_value != myconf.take('omp.ignore_format'))).select(db.publication_format_settings.setting_name, db.publication_format_settings.setting_value,
@@ -155,7 +170,7 @@ def book():
     press_settings = db(db.press_settings.press_id == myconf.take('omp.press_id')).select(
         db.press_settings.setting_name, db.press_settings.setting_value)
 
-    publication_format_settings = db((db.publication_format_settings.setting_name == 'name') & (db.publication_format_settings.locale == locale) & (db.publication_formats.submission_id == book_id) & (
+    publication_format_settings = db((db.publication_format_settings.setting_name == 'name') & (db.publication_format_settings.locale == locale) & (db.publication_formats.submission_id == submission_id) & (
         db.publication_formats.publication_format_id == db.publication_format_settings.publication_format_id)).select(db.publication_format_settings.publication_format_id, db.publication_format_settings.setting_value)
 
     if publication_format_settings:
@@ -164,53 +179,45 @@ def book():
 
     identification_codes = {}
     identification_codes_publication_formats = db(
-        db.publication_formats.submission_id == book_id).select(
+        db.publication_formats.submission_id == submission_id).select(
         db.publication_formats.publication_format_id)
 
-    for i in identification_codes_publication_formats:
+    for st in identification_codes_publication_formats:
         name = db(
             (db.publication_format_settings.locale == locale) & (
-                db.publication_format_settings.publication_format_id == i['publication_format_id']) & (
+                db.publication_format_settings.publication_format_id == st['publication_format_id']) & (
                 db.publication_format_settings.setting_name == 'name') & (
                 db.publication_format_settings.setting_value != myconf.take('omp.xml_category_name'))) .select(
                     db.publication_format_settings.setting_value).first()
         identification_code = db(
-            (db.identification_codes.publication_format_id == i['publication_format_id']) & (
+            (db.identification_codes.publication_format_id == st['publication_format_id']) & (
                 db.identification_codes.code == 15)).select(
             db.identification_codes.value).first()
         if name and identification_code:
             identification_codes[
                 identification_code['value']] = name['setting_value']
 
-    date_pub_query =  (db.publication_formats.submission_id == book_id) & (db.publication_format_settings.publication_format_id == db.publication_formats.publication_format_id)
+    date_pub_query =  (db.publication_formats.submission_id == submission_id) & (db.publication_format_settings.publication_format_id == db.publication_formats.publication_format_id)
     published_date = db(date_pub_query & (db.publication_format_settings.setting_value == myconf.take('omp.doi_format_name')) & (
         db.publication_dates.publication_format_id == db.publication_format_settings.publication_format_id)).select(db.publication_dates.date)
 
     representatives = db(
-        (db.representatives.submission_id == book_id) & (
+        (db.representatives.submission_id == submission_id) & (
             db.representatives.representative_id_type == myconf.take('omp.representative_id_type'))).select(
         db.representatives.name,
         db.representatives.url,
         orderby=db.representatives.representative_id)
 
-    full_files = ompdal.getLatestRevisionsOfFullBook(book_id)
+    full_files = ompdal.getLatestRevisionsOfFullBook(submission_id)
+    pdf = ompdal.getPublicationFormatByName(submission_id, "PDF")
+    xml = ompdal.getPublicationFormatByName(submission_id, "XML")
 
-    for j in press_settings:
-        if j.setting_name == 'name':
-            press_name = j.setting_value
 
-    for i in book:
-        if i.setting_name == 'abstract':
-            abstract = i.setting_value
-        if i.setting_name == 'subtitle':
-            subtitle = i.setting_value
-        if i.setting_name == 'title':
-            cleanTitle = i.setting_value
 
     cover_image = ''
-    path = request.folder+'static/monographs/'+book_id+'/simple/cover.'
+    path = request.folder+'static/monographs/'+submission_id+'/simple/cover.'
     for t in ['jpg','png','gif']:
         if os.path.exists(path+t):
-                cover_image=URL(myconf.take('web.application'), 'static','monographs/' + book_id + '/simple/cover.'+t)
+                cover_image=URL(myconf.take('web.application'), 'static','monographs/' + submission_id + '/simple/cover.'+t)
 
     return locals()

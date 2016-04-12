@@ -56,6 +56,34 @@ class OMPDAL:
 		Get submission table row for a given id.
 		"""
 		return self.db.submissions[submission_id]
+	
+	def getPublishedSubmission(self, submission_id, press=None):
+		"""
+		Get submission table row for a given id, if the submission has been published.
+		"""
+		q = ((self.db.submissions.submission_id == submission_id)
+			& (self.db.submissions.status == "3")
+		)
+		
+		if press:
+			q = ((self.db.submissions.submission_id == submission_id)
+				& (self.db.submissions.status == "3")
+				& (self.db.submissions.context_id == press)
+			)
+		
+		return self.db(q).select(self.db.submissions.ALL)
+	
+	def getSubmissionSettings(self, submission_id):
+		q = (self.db.submission_settings.submission_id == submission_id)
+		
+		return self.db(q).select(self.db.submission_settings.ALL)
+	
+	def getLocalizedSubmissionSettings(self, submission_id, locale):
+		q = ((self.db.submission_settings.submission_id == submission_id)
+        	& (self.db.submission_settings.locale == locale)
+        )
+		
+		return self.db(q).select(self.db.submission_settings.ALL)
 
 	def getSeries(self):
 		"""
