@@ -1,19 +1,9 @@
 {{extend 'layout.html'}}
-{{import json}}
-
 
 <div id="main" class="container">
-  
-
- 
-
 <section id="content">
-  {{=DIV(_class="container")
-  }}
-    
-  {{for row in series_metadata:}}
+  {{for row in series:}}
         <div class="row">
-	
             <div class="col-lg-2">
                 <article>
                     <div class="post-image">
@@ -21,52 +11,34 @@
 		 	<img src="{{=URL(myconf.take('web.application'),'static','series/'+row['image'][4:].split(';')[1].split('"')[1])}}"/>
 			{{pass}}
                   </div>
-
                 </article>
-
             </div>
             <div class="col-lg-10">
                <article>
-                        <div class="post-heading">
-	
-          <h3> {{=row['title']}} </h3>
-                <h4> {{=row['subtitle']}} </h4>
-                        </div>
-                       
-                       <p>
-                        <i class="icon-quote-left"></i>
-                        {{=XML(row['description'])}}
-                       </p> 
-                       
-                       
-
-     
+                 <div class="post-heading">
+                     <h3>{{=row['prefix'] + row['title']}}</h3>
+                     <h4>{{=row['subtitle']}}</h4>
+                 </div>
+                 <p>
+                     <i class="icon-quote-left"></i>
+                     {{if len(row['description']) > 1000:}}
+                     {{=XML(html2text(row['description']))[0:999]+'...'}}
+                     {{else:}}
+                     {{=XML(row['description'])}}
+                     {{pass}}
+                 </p>
                     <div class="widget">
                         <h5 class="widgetheading"></h5>
                         <ul class="tags">
-             
                             <li>
-                              
                               <a href="{{=URL(myconf.take('web.application'),'catalog','series/'+str(row['path']))}}">{{=T('Volumes')}}</a>
-                              <a href="./series/{{=str(row['path'])}}_info.html">{{=T('Information about the series')}}</a>
-
-
+                              <a href="{{=URL(row['path']+"_info.html")}}">{{=T('Information about the series')}}</a>
                             </li>
-
-                       
-
-                            
-
                         </ul>
                     </div>
-
-			
-			
                 </article>
             </div>
-
         </div>
   {{pass}}
-
-</div>
 </section>
+</div>
