@@ -59,9 +59,9 @@
             </i>
               {{=press_name}},
             </p>
-            {{if publication_format_settings_doi:}}
+            {{if doi:}}
             <p>
-              DOI: <a href="http://dx.doi.org/{{=publication_format_settings_doi['setting_value']}}" title="DOI: {{=cleanTitle}}, {{=press_name}}, 2015">{{=publication_format_settings_doi['setting_value']}}</a>
+              DOI: <a href="http://dx.doi.org/{{=doi}}" title="DOI: {{=cleanTitle}}, {{=press_name}}, 2015">{{=doi}}</a>
             </p>
             {{pass}}
 <!--            <h5 style="color: #656565; margin-bottom: 0.3em;">{{=T('Licenses')}}</h5>

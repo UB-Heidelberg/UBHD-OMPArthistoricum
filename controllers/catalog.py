@@ -152,6 +152,13 @@ def book():
     
     bio = {"editors": [ompdal.getLocalizedAuthorSettingValue(e.author_id, 'biography', locale) for e in editors],
            "authors": [ompdal.getLocalizedAuthorSettingValue(a.author_id, 'biography', locale) for a in authors]}
+    
+    # Publiction formats
+    pdf = ompdal.getPublicationFormatByName(submission_id, myconf.take('omp.doi_format_name')).first()
+    if pdf:
+        doi = ompdal.getLocalizedPublicationFormatSettingValue(pdf.publication_format_id, "pub-id::doi", "")    # DOI always has empty locale
+    else:
+        doi = None
 
     pub_query = (db.publication_formats.submission_id == submission_id) & (db.publication_format_settings.publication_format_id == db.publication_formats.publication_format_id) & (
         db.publication_format_settings.locale == locale)
@@ -201,7 +208,6 @@ def book():
         orderby=db.representatives.representative_id)
 
     full_files = ompdal.getLatestRevisionsOfFullBook(submission_id)
-    pdf = ompdal.getPublicationFormatByName(submission_id, "PDF")
     xml = ompdal.getPublicationFormatByName(submission_id, "XML")
 
     cover_image = ''

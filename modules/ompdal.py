@@ -50,7 +50,9 @@ class OMPDAL:
 				& (self.db.author_settings.locale == locale)
 				& (self.db.author_settings.setting_name == setting_name)
 			)
-		return self.db(q).select(self.db.author_settings.setting_value).first()['setting_value']
+		res = self.db(q).select(self.db.author_settings.setting_value).first()
+		if res:
+			return res['setting_value']
 
 	def getSubmission(self, submission_id):
 		"""
@@ -297,10 +299,20 @@ class OMPDAL:
 		pfs = self.db.publication_format_settings
 		q = (pfs.submission_id == publication_format_id)
 		return self.db(q).select(pfs.ALL)
+	
+	def getLocalizedPublicationFormatSettingValue(self, publication_format_id, setting_name, locale):
+		pfs = self.db.publication_format_settings
+		q = ((pfs.publication_format_id == publication_format_id)
+				& (pfs.setting_name == setting_name)
+				& (pfs.locale == locale)
+			)
+		res = self.db(q).select(pfs.setting_value).first()
+		if res:
+			return res['setting_value']
 
 	def getLocalizedPublicationFormatSettings(self, publication_format_id, locale):
 		pfs = self.db.publication_format_settings
-		q = ((pfs.submission_id == publication_format_id) 
+		q = ((pfs.publication_format_id == publication_format_id) 
 			& (pfs.locale == locale)
 		)
 		return self.db(q).select(pfs.ALL)
