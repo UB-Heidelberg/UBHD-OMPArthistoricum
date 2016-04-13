@@ -21,6 +21,7 @@ db.define_table("authors",
                 Field("url", "string"),
                 Field("user_group_id", "integer"),
                 Field("include_in_browse", "integer"),
+                primarykey=['author_id'],
                 migrate=False
                 )
 

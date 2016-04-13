@@ -13,9 +13,7 @@ class OMPDAL:
 		Get all authors associated with the specified submission regardless of exact role.
 		"""
 		return self.db((self.db.authors.submission_id == submission_id)).select(
-			self.db.authors.first_name,
-			self.db.authors.middle_name,
-			self.db.authors.last_name,
+			self.db.authors.ALL,
 			orderby=self.db.authors.seq
 		)
 
@@ -29,9 +27,7 @@ class OMPDAL:
 			return []
 		return self.db((self.db.authors.submission_id == submission_id) 
 			& (self.db.authors.user_group_id == editor_group_id)).select(
-				self.db.authors.first_name,
-				self.db.authors.middle_name,
-				self.db.authors.last_name,
+				self.db.authors.ALL,
 				orderby=self.db.authors.seq
 		)
 
@@ -45,11 +41,16 @@ class OMPDAL:
 			return []
 		return self.db((self.db.authors.submission_id == submission_id) 
 			& (self.db.authors.user_group_id == chapter_author_group_id)).select(
-				self.db.authors.first_name,
-				self.db.authors.middle_name,
-				self.db.authors.last_name,
+				self.db.authors.ALL,
 				orderby=self.db.authors.seq
 		)
+			
+	def getLocalizedAuthorSettingValue(self, author_id, setting_name, locale):
+		q = ((self.db.author_settings.author_id == author_id)
+				& (self.db.author_settings.locale == locale)
+				& (self.db.author_settings.setting_name == setting_name)
+			)
+		return self.db(q).select(self.db.author_settings.setting_value).first()['setting_value']
 
 	def getSubmission(self, submission_id):
 		"""

@@ -16,17 +16,52 @@
           <div class="box-gray alignleft" style="height: auto;">
 
             <h5 style="color: #656565; margin-bottom: 0.5em;">{{=T('How to cite this title')}}</h5>
-            <p>{{=authors}}<br>
-              <i>{{=cleanTitle}}
-                {{if len(subtitle)>0:}}
+            <p>
+			{{if editors:}}
+			  {{contributors=editors}}
+			  {{if len(editors)==1:}}
+			    {{format_string="{}, "+T('ed')+"."}}
+			  {{else:}}
+			    {{format_string="{} "+T('and')+" {}, "+T('eds')+"."}}
+			  {{pass}}
+			{{elif authors:}}
+	                  {{contributors=authors}}
+	                  {{if len(authors) == 1:}}
+	                    {{format_string="{}."}}
+	                  {{else:}}
+	                    {{format_string="{} "+T('and')+" {}."}}
+	                  {{pass}}
+			{{pass}}
+			{{if len(contributors)==1:}}
+			  {{e=contributors[0]}}
+			  {{=format_string.format(e.last_name+", "+" ".join([e.first_name, e.middle_name]).strip())}}
+			{{elif len(contributors) == 2:}}
+	                  {{last=contributors[-1]}}
+	                  {{contributors=contributors[:-1]}}
+	                  {{=format_string.format(T(', ').join([e.last_name+", "+" ".join([e.first_name, e.middle_name]).strip() for e in contributors]), " ".join([last.first_name, last.middle_name]).strip()+" "+last.last_name)}}
+			{{elif len(contributors) > 2:}}
+			  {{first=contributors[0]}}
+			  {{second=contributors[1]}}
+			  {{last=contributors[2]}}
+			  {{if len(contributors) > 3:}}
+			    {{add="et al"}}
+			  {{else:}}
+			    {{add=""}}
+			  {{pass}}
+			  {{=format_string.format(T(', ').join([first.last_name+", "+" ".join([first.first_name, first.middle_name]).strip(), 
+											" ".join([second.first_name, second.middle_name]).strip()+" "+second.last_name]), 
+								" ".join([last.first_name, last.middle_name]).strip()+" "+last.last_name)+add}}
+			{{pass}}
+            <i>{{=cleanTitle}}
+            	{{if len(subtitle)>0:}}
                 : {{=subtitle}}
                 {{pass}}
-              </i>
+            </i>
               {{=press_name}},
             </p>
             {{if publication_format_settings_doi:}}
             <p>
-              DOI: <a href="http://dx.doi.org/{{=publication_format_settings_doi['setting_value']}}" title="DOI: {{=authors}}, {{=cleanTitle}}, {{=press_name}}, 2015">{{=publication_format_settings_doi['setting_value']}}</a>
+              DOI: <a href="http://dx.doi.org/{{=publication_format_settings_doi['setting_value']}}" title="DOI: {{=cleanTitle}}, {{=press_name}}, 2015">{{=publication_format_settings_doi['setting_value']}}</a>
             </p>
             {{pass}}
 <!--            <h5 style="color: #656565; margin-bottom: 0.3em;">{{=T('Licenses')}}</h5>
@@ -61,10 +96,8 @@
                    </ul>
                    <div class="tab-content">
                      <div class="tab-pane active" id="one2">
-                       <table class="table">                
+                       <table class="table">
                          {{file_ids=[]}}
-                                     
-                         
                           {{for fullbook in full_files:}}
                           {{file_id=str(fullbook['submission_id'])+'-'+str(fullbook['file_id'])+'-'+fullbook['original_file_name'].rsplit('.')[1].lower()}}
                           {{if fullbook['original_file_name'].rsplit('.')[1].lower()==myconf.take('omp.xml_category_name').lower():}}     
@@ -82,13 +115,11 @@
                           {{file_ids.append(file_id)}}
                         
                           {{pass}}
-                         
                        </table>
                      </div>
                      <div class="tab-pane " id="two2">
                        <table class="table" style="width: inherit">
                           {{type_dict={} }}
-                          
                           {{=TR()}}
                           {{=TD()}}
                           {{for ix  in publication_formats:}}
@@ -108,15 +139,11 @@
                           {{chapter=str(i.submission_chapter_settings.setting_value)}}
                           {{=TD(chapter,_style="padding:0; font-size:12px")}}
                           {{pass}}
-                          
                            {{
                             chapter_file =str(i.submission_files.submission_id)+'-'+str(i.submission_files.file_id)+'-'+str(type_dict[i.submission_files.assoc_id]).lower() 
                            =TD(DIV("",_id=chapter_file),_style="padding:1; font-size:12px")
                            file_ids.append(chapter_file)
-                         
                            }}
-                         
-                     
                           {{num = num +1 }}
                           {{pass}}
                           <tr>
@@ -177,7 +204,24 @@
             </div>
             <div class="post-heading">
               <br/>
-              <h5><a href="#">{{=authors}}</a></h5>
+              <h5>
+              {{if editors:}}
+		      	{{=", ".join([" ".join([e.first_name, e.middle_name, e.last_name]) for e in editors[:3]])}}
+		      	{{if len(editors) > 1:}}
+					{{if len(editors) > 3:}}
+						{{=" et al. "}}
+					{{pass}}
+					{{=T("(eds)")}}
+		      	{{else:}}
+					{{=T("(ed.)")}}
+		      	{{pass}}
+		   	  {{else:}}
+		      	{{=", ".join([" ".join([e.first_name, e.middle_name, e.last_name]) for e in authors[:3]])}}
+		      	{{if len(authors) > 3:}}
+					{{=" et al. "}}
+				{{pass}}
+		   	  {{pass}}
+              </h5>
             </div>
             <h3>{{=XML(cleanTitle)}}</h3>
             <h4>{{=subtitle}}</h4>
@@ -185,8 +229,34 @@
               <i class="icon-quote-left"></i>
               {{=XML(abstract)}}
             </p>
-	   {{if author_bio:}}
-            <p>{{=XML(author_bio['setting_value'])}}</p>
+	   	  {{if bio["editors"]:}}
+	   	  	{{num_bios = len([b for b in bio["editors"] if b != ""])}}
+            {{if num_bios != 0:}}
+            	<p>
+            		<h5>
+            		{{if num_bios == 1:}}
+            			{{=T('About the editor:')}}
+            		{{else:}}
+            			{{=T('About the editors:')}}
+            		{{pass}}
+            		</h5>
+            		{{=XML("<br>".join(bio["editors"]))}}
+            	</p>
+            {{pass}}
+	   	  {{elif bio["authors"]:}}
+	   	  	{{num_bios = len([b for b in bio["authors"] if b != ""])}}
+            {{if num_bios != 0:}}
+            	<p>
+            		<h5>
+            		{{if num_bios == 1:}}
+            			{{=T('About the author:')}}
+            		{{else:}}
+            			{{=T('About the authors:')}}
+            		{{pass}}
+            		</h5>
+            		{{=XML("<br>".join(bio["authors"]))}}
+            	</p>
+            {{pass}}
           {{pass}}
           </div>
           <div class="widget">
