@@ -1,4 +1,5 @@
 {{extend 'layout.html'}}
+{{from customFormat import formatAuthor, formatAuthorCitationStyle}}
 
 <div id="main" class="container">
 
@@ -12,6 +13,9 @@
             {{=IMG(_src=cover_image)}}
           </div>
         </article>
+        {{cleanTitle = " ".join([submission_settings.getLocalizedValue('prefix', locale), submission_settings.getLocalizedValue('title', locale)])}}
+    	{{subtitle = submission_settings.getLocalizedValue('subtitle', locale)}}
+    	{{abstract = submission_settings.getLocalizedValue('abstract', locale)}}
         <div class="box">
           <div class="box-gray alignleft" style="height: auto;">
 
@@ -34,11 +38,11 @@
 			{{pass}}
 			{{if len(contributors)==1:}}
 			  {{e=contributors[0]}}
-			  {{=format_string.format(e.last_name+", "+" ".join([e.first_name, e.middle_name]).strip())}}
+			  {{=format_string.format(e.attributes.last_name+", "+" ".join([e.attributes.first_name, e.attributes.middle_name]).strip())}}
 			{{elif len(contributors) == 2:}}
 	                  {{last=contributors[-1]}}
 	                  {{contributors=contributors[:-1]}}
-	                  {{=format_string.format(T(', ').join([e.last_name+", "+" ".join([e.first_name, e.middle_name]).strip() for e in contributors]), " ".join([last.first_name, last.middle_name]).strip()+" "+last.last_name)}}
+	                  {{=format_string.format(T(', ').join([formatAuthorCitationStyle(e.attributes) for e in contributors]), formatAuthor(last.attributes))}}
 			{{elif len(contributors) > 2:}}
 			  {{first=contributors[0]}}
 			  {{second=contributors[1]}}
@@ -48,20 +52,20 @@
 			  {{else:}}
 			    {{add=""}}
 			  {{pass}}
-			  {{=format_string.format(T(', ').join([first.last_name+", "+" ".join([first.first_name, first.middle_name]).strip(), 
-											" ".join([second.first_name, second.middle_name]).strip()+" "+second.last_name]), 
-								" ".join([last.first_name, last.middle_name]).strip()+" "+last.last_name)+add}}
+			  {{=format_string.format(T(', ').join([formatAuthorCitationStyle(first.attributes).strip(), 
+											formatAuthor(second.attributes)]), 
+										formatAuthor(last.attributes)+add)}}
 			{{pass}}
             <i>{{=cleanTitle}}
             	{{if len(subtitle)>0:}}
                 : {{=subtitle}}
                 {{pass}}
             </i>
-              {{=press_name}},
+              {{=press_settings.getLocalizedValue('name', locale)}},
             </p>
             {{if doi:}}
             <p>
-              DOI: <a href="http://dx.doi.org/{{=doi}}" title="DOI: {{=cleanTitle}}, {{=press_name}}, 2015">{{=doi}}</a>
+              DOI: <a href="http://dx.doi.org/{{=doi}}" title="DOI: {{=cleanTitle}}, {{=press_settings.getLocalizedValue('name', locale)}}, 2015">{{=doi}}</a>
             </p>
             {{pass}}
 <!--            <h5 style="color: #656565; margin-bottom: 0.3em;">{{=T('Licenses')}}</h5>
@@ -98,63 +102,13 @@
                      <div class="tab-pane active" id="one2">
                        <table class="table">
                          {{file_ids=[]}}
-                          {{for fullbook in full_files:}}
-                          {{file_id=str(fullbook['submission_id'])+'-'+str(fullbook['file_id'])+'-'+fullbook['original_file_name'].rsplit('.')[1].lower()}}
-                          {{if fullbook['original_file_name'].rsplit('.')[1].lower()==myconf.take('omp.xml_category_name').lower():}}     
-                            {{=TR()}}
-                              {{=TD(B(XML('HTML')))}}
-                              
-                              {{=TD(DIV("",_id=file_id))}}
-                              {{full_xml=file_id}}
-                          {{else:}}
-                            {{=TR()}}
-                              {{=TD(B('PDF'))}}
-                              {{=TD(DIV("",_id=file_id))}}
-                              {{full_pdf=file_id}}
-                          {{pass}}
-                          {{file_ids.append(file_id)}}
-                        
-                          {{pass}}
                        </table>
                      </div>
                      <div class="tab-pane " id="two2">
                        <table class="table" style="width: inherit">
-                          {{type_dict={} }}
-                          {{=TR()}}
-                          {{=TD()}}
-                          {{for ix  in publication_formats:}}
-                          {{type_dict[ix.publication_formats.publication_format_id]=ix.publication_format_settings.setting_value}}
-                          {{if ix.publication_format_settings.setting_value == myconf.take('omp.xml_category_name'):}}
-                          {{=TD(XML('HTML'),_style="padding:0")}}
-                          {{else:}}
-                          {{type_dict[ix.publication_formats.publication_format_id]=ix.publication_format_settings.setting_value}}
-                          {{=TD(ix.publication_format_settings.setting_value, _style="padding:0")}}
-                          {{pass}}
-                          {{pass}}
-                          {{num=0}}
-                          {{for i in chapters:}}
-                          
-                           {{if num%len(publication_formats)==0: }}
-                          {{=TR()}}
-                          {{chapter=str(i.submission_chapter_settings.setting_value)}}
-                          {{=TD(chapter,_style="padding:0; font-size:12px")}}
-                          {{pass}}
-                           {{
-                            chapter_file =str(i.submission_files.submission_id)+'-'+str(i.submission_files.file_id)+'-'+str(type_dict[i.submission_files.assoc_id]).lower() 
-                           =TD(DIV("",_id=chapter_file),_style="padding:1; font-size:12px")
-                           file_ids.append(chapter_file)
-                           }}
-                          {{num = num +1 }}
-                          {{pass}}
-                          <tr>
-                            <td>{{=B(T('Total'))}}</td>
-                           {{=TD(DIV("",_id="chapter_pdf"))}}
-                           {{=TD(DIV("",_id="chapter_xml"))}}
-                          </tr>
                         </table>
                      </div>
                     </div>
-             
            </div>
            
            <div id="error"></div>
@@ -206,7 +160,7 @@
               <br/>
               <h5>
               {{if editors:}}
-		      	{{=", ".join([" ".join([e.first_name, e.middle_name, e.last_name]) for e in editors[:3]])}}
+		      	{{=", ".join([formatAuthor(e.attributes) for e in editors[:3]])}}
 		      	{{if len(editors) > 1:}}
 					{{if len(editors) > 3:}}
 						{{=" et al. "}}
@@ -216,7 +170,7 @@
 					{{=T("(ed.)")}}
 		      	{{pass}}
 		   	  {{else:}}
-		      	{{=", ".join([" ".join([e.first_name, e.middle_name, e.last_name]) for e in authors[:3]])}}
+		      	{{=", ".join([formatAuthor(e.attributes) for e in authors[:3]])}}
 		      	{{if len(authors) > 3:}}
 					{{=" et al. "}}
 				{{pass}}
@@ -229,36 +183,29 @@
               <i class="icon-quote-left"></i>
               {{=XML(abstract)}}
             </p>
-	   	  {{if bio["editors"]:}}
-	   	  	{{num_bios = len([b for b in bio["editors"] if b != ""])}}
+    	  {{bios = [e.settings.getLocalizedValue('biography', locale) for e in editors]}}
+    	  {{bios_role = "editor"}}
+    	  {{if bios == []:}}
+    	  	{{bios = [a.settings.getLocalizedValue('biography', locale) for a in authors]}}
+    	  	{{bios_role = "author"}}
+    	  {{pass}}
+	   	  {{if bios:}}
+	   	  	{{num_bios = len([b for b in bios if b != ""])}}
             {{if num_bios != 0:}}
             	<p>
             		<h5>
             		{{if num_bios == 1:}}
-            			{{=T('About the editor:')}}
+            			{{=T('About the {}:'.format(bios_role))}}
             		{{else:}}
-            			{{=T('About the editors:')}}
+            			{{=T('About the {}s:'.format(bios_role))}}
             		{{pass}}
             		</h5>
-            		{{=XML("<br>".join(bio["editors"]))}}
-            	</p>
-            {{pass}}
-	   	  {{elif bio["authors"]:}}
-	   	  	{{num_bios = len([b for b in bio["authors"] if b != ""])}}
-            {{if num_bios != 0:}}
-            	<p>
-            		<h5>
-            		{{if num_bios == 1:}}
-            			{{=T('About the author:')}}
-            		{{else:}}
-            			{{=T('About the authors:')}}
-            		{{pass}}
-            		</h5>
-            		{{=XML("<br>".join(bio["authors"]))}}
+            		{{=XML("<br>".join(bios))}}
             	</p>
             {{pass}}
           {{pass}}
           </div>
+          {{=out}}
           <div class="widget">
             <h5 class="widgetheading"></h5>
             <ul class="tags">
@@ -267,33 +214,38 @@
           <div class="widget">
             <!---a class="btn btn-default" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"-->
 
-            {{if len(chapters)>0:}}
+            {{if len(chapters) > 0:}}
             <h4>{{=T('Contents')}} </h4>
-            <div  id="downloadTable">
+            <div id="downloadTable">
               <table class="table">
-                {{type_dict={} }}
                 {{=TR()}}
                 {{=TD()}}
-                {{for i  in publication_formats:}}
-                {{if i.publication_format_settings.setting_value == myconf.take('omp.xml_category_name'):}}
-                {{=TD('HTML')}}
-                {{else:}}
-                {{=TD(i.publication_format_settings.setting_value)}}
+                {{for pf in digital_publication_formats:}}
+                	{{=TD(pf.settings.getLocalizedValue('name', locale))}}
                 {{pass}}
-                {{type_dict[i.publication_formats.publication_format_id]=i.publication_format_settings.setting_value}}
-                {{pass}}
-                {{num=0}}
-                {{for i in chapters:}}
-                {{if num%len(publication_formats)==0: }}
                 {{=TR()}}
-                {{=TD(str(i.submission_chapter_settings.setting_value))}}
-                {{pass}}
-                {{if str(type_dict[i.submission_files.assoc_id]).lower() ==  myconf.take('omp.xml_category_name').lower(): }}
-                {{=TD(A(I(_class="fa fa-html5"), _href=URL(myconf.take('web.application'), 'reader', 'index/'+str(i.submission_files.submission_id)+'/'+str(i.submission_files.submission_id)+'-'+str(i.submission_files.genre_id)+'-'+str(i.submission_files.file_id)+'-'+str(i.submission_files.revision)+'-'+str(i.submission_files.file_stage)+'-'+str(i.submission_files.date_uploaded.strftime('%Y%m%d'))+'.'+str(type_dict[i.submission_files.assoc_id]).lower())))}}
-                {{else:}}
-                {{=TD(A(I(_class="fa fa-file-text-o"), _href=URL(myconf.take('web.application'), 'reader', 'download/'+str(i.submission_files.submission_id)+'/'+str(i.submission_files.submission_id)+'-'+str(i.submission_files.genre_id)+'-'+str(i.submission_files.file_id)+'-'+str(i.submission_files.revision)+'-'+str(i.submission_files.file_stage)+'-'+str(i.submission_files.date_uploaded.strftime('%Y%m%d'))+'.'+str(type_dict[i.submission_files.assoc_id]).lower())))}}
-                {{pass}}
-                {{num = num +1 }}
+                {{for c in chapters:}}
+                	{{c_title = c.settings.getLocalizedValue('title', locale)}}
+                	{{c_subtitle = c.settings.getLocalizedValue('subtitle', locale)}}
+                	{{c_authors = c.associated_items.get('authors', [])}}
+                	{{c_files = c.associated_items.get('files', [])}}
+                	{{=TD(c_title)}}
+                	{{if c_files:}}
+                		{{for pf in digital_publication_formats:}}
+                			{{=TD(c_files.get(pf.attributes.publication_format_id))}}
+                		{{pass}}
+                	{{pass}}
+                	{{=TR()}}
+                	{{if c_subtitle:}}
+                		{{=TD(c_subtitle)}}
+                		{{=TD()}}
+                		{{=TR()}}
+                	{{pass}}
+                	{{if c_authors:}}
+                		{{=TD(", ".join([formatAuthor(a.attributes) for a in c_authors]))}}
+                		{{=TD()}}
+                		{{=TR()}}
+                	{{pass}}
                 {{pass}}
               </table>
             </div>

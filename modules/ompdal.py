@@ -1,5 +1,26 @@
 # -*- coding: utf-8 -*-
 
+class Settings:
+	def __init__(self, rows=[]):
+		self._settings = dict()
+		for row in rows:
+			self._settings.setdefault(row.setting_name, {})[row.locale] = row.setting_value
+			
+	def getLocalizedValue(self, setting_name, locale):
+		if self._settings.has_key(setting_name):
+			return self._settings[setting_name].get(locale)
+		else:
+			return ""
+		
+	def getValues(self, setting_name):
+		return self._settings.get(setting_name, "")
+	
+class Item:
+	def __init__(self, row, settings=Settings(), associated_items=[]):
+		self.attributes = row
+		self.settings = settings
+		self.associated_items = associated_items
+
 class OMPDAL:
 	"""
 	A rudimentary database abstraction layer for the OMP database.
@@ -7,17 +28,87 @@ class OMPDAL:
 	def __init__(self, db, conf):
 		self.db = db
 		self.conf = conf
+		
+	def getPress(self, press_id):
+		"""
+		Get row for a given press id.
+		"""
+		return self.db.presses[press_id]
+	
+	def getPressSettings(self, press_id):
+		"""
+		Get settings for a given press.
+		"""
+		ps = self.db.press_settings
+		q = (ps.press_id == press_id)
+		
+		return self.db(q).select(ps.ALL)
+	
+	def getSubmission(self, submission_id):
+		"""
+		Get row for a given submission id.
+		"""
+		return self.db.submissions[submission_id]
+	
+	def getPublishedSubmission(self, submission_id, press=None):
+		"""
+		Get submission info for a given submission id, but only return, if the 
+		submission has been published and is associated with a certain press. 
+		"""
+		s = self.db.submissions
+		
+		if press:
+			q = ((s.submission_id == submission_id)
+				& (s.status == "3")
+				& (s.context_id == press)
+			)
+		else:
+			q = ((s.submission_id == submission_id)
+				& (s.submissions.status == "3")
+			)
+		
+		return self.db(q).select(s.ALL).first()
+	
+	def getSubmissionSettings(self, submission_id):
+		"""
+		Get settings for a given submission.
+		"""
+		q = (self.db.submission_settings.submission_id == submission_id)
+		
+		return self.db(q).select(self.db.submission_settings.ALL)
 
-	def getAuthors(self, submission_id):
+	def getAuthorsBySubmission(self, submission_id):
 		"""
-		Get all authors associated with the specified submission regardless of exact role.
+		Get all authors associated with the specified submission regardless of their role.
 		"""
-		return self.db((self.db.authors.submission_id == submission_id)).select(
+		a = self.db.authors
+		q = (a.submission_id == submission_id)
+		
+		return self.db(q).select(
+			a.ALL,
+			orderby=a.seq
+		)
+		
+	def getChapterAuthorsBySubmission(self, submission_id):
+		"""
+		Get all authors associated with the specified submission with chapter author role.
+		"""
+		try:
+			chapter_author_group_id = self.conf.take('omp.author_id')
+		except:
+			return []
+		
+		a = self.db.authors
+		q = ((a.submission_id == submission_id) 
+			& (a.user_group_id == chapter_author_group_id)
+		)
+		
+		return self.db(q).select(
 			self.db.authors.ALL,
 			orderby=self.db.authors.seq
 		)
-
-	def getEditors(self, submission_id):
+			
+	def getEditorsBySubmission(self, submission_id):
 		"""
 		Get all authors associated with the specified submission with editor role.
 		"""
@@ -25,107 +116,151 @@ class OMPDAL:
 			editor_group_id = self.conf.take('omp.editor_id')
 		except:
 			return []
-		return self.db((self.db.authors.submission_id == submission_id) 
-			& (self.db.authors.user_group_id == editor_group_id)).select(
-				self.db.authors.ALL,
-				orderby=self.db.authors.seq
+		
+		a = self.db.authors
+		q = ((a.submission_id == submission_id) 
+			& (a.user_group_id == editor_group_id)
 		)
-
-	def getChapterAuthors(self, submission_id):
-		"""
-		Get all authors associated with the specified submission with chapter author role
-		"""
-		try:
-			chapter_author_group_id = self.conf.take('omp.author_id')
-		except:
-			return []
-		return self.db((self.db.authors.submission_id == submission_id) 
-			& (self.db.authors.user_group_id == chapter_author_group_id)).select(
-				self.db.authors.ALL,
-				orderby=self.db.authors.seq
+		
+		return self.db(q).select(
+			self.db.authors.ALL,
+			orderby=self.db.authors.seq
 		)
-			
-	def getLocalizedAuthorSettingValue(self, author_id, setting_name, locale):
-		q = ((self.db.author_settings.author_id == author_id)
-				& (self.db.author_settings.locale == locale)
-				& (self.db.author_settings.setting_name == setting_name)
-			)
-		res = self.db(q).select(self.db.author_settings.setting_value).first()
-		if res:
-			return res['setting_value']
-
-	def getSubmission(self, submission_id):
+		
+	def getAuthorsByChapter(self, chapter_id):
 		"""
-		Get submission table row for a given id.
+		Get authors associated with a given chapter.
 		"""
-		return self.db.submissions[submission_id]
+		sca = self.db.submission_chapter_authors
+		a = self.db.authors
+		q = ((sca.chapter_id == chapter_id)
+			& (a.author_id == sca.author_id)
+		)
+		
+		return self.db(q).select(a.ALL)
+		
+	def getAuthor(self, author_id):
+		"""
+		Get row for a given author id.
+		"""
+		return self.db.authors[author_id]
+		
+	def getAuthorSettings(self, author_id):
+		"""
+		Get settings for a given author.
+		"""
+		aus = self.db.author_settings
+		q = (aus.author_id == author_id)
+		
+		return self.db(q).select(aus.ALL)
 	
-	def getPublishedSubmission(self, submission_id, press=None):
+	def getSeriesByPress(self, press_id):
 		"""
-		Get submission table row for a given id, if the submission has been published.
+		Get all series published in the given press.
 		"""
-		q = ((self.db.submissions.submission_id == submission_id)
-			& (self.db.submissions.status == "3")
-		)
+		s = self.db.series
+		q = (s.press_id == press_id)
 		
-		if press:
-			q = ((self.db.submissions.submission_id == submission_id)
-				& (self.db.submissions.status == "3")
-				& (self.db.submissions.context_id == press)
-			)
-		
-		return self.db(q).select(self.db.submissions.ALL)
-	
-	def getSubmissionSettings(self, submission_id):
-		q = (self.db.submission_settings.submission_id == submission_id)
-		
-		return self.db(q).select(self.db.submission_settings.ALL)
-	
-	def getLocalizedSubmissionSettings(self, submission_id, locale):
-		q = ((self.db.submission_settings.submission_id == submission_id)
-        	& (self.db.submission_settings.locale == locale)
-        )
-		
-		return self.db(q).select(self.db.submission_settings.ALL)
+		return self.db(q).select(
+			s.ALL
+		)		
 
-	def getSeries(self):
+	def getSeries(self, series_id):
 		"""
-		Get series info.
+		Get row for a given series id.
 		"""
-		return self.db(self.db.series.press_id == self.conf.take("omp.press_id")).select(
-			self.db.series.series_id,
-			self.db.series.path,
-			self.db.series.image
-		)
-
-	def getLocalizedSeriesSettings(self, series_id, locale):
-		"""
-		Get series settings for a given locale.
-		"""
-		ss = self.db.series_settings
-		
-		return self.db((ss.series_id == series_id) 
-			& (ss.locale == locale)).select(
-				ss.series_id,
-				ss.locale,
-				ss.setting_name,
-				ss.setting_value
-		)
+		return self.db.series[series_id]
 
 	def getSeriesSettings(self, series_id):
 		"""
-		Get series settings.
+		Get settings for a given series.
 		"""
 		ss = self.db.series_settings
+		q = (ss.series_id == series_id)
 		
-		return self.db(ss.series_id == series_id).select(
-			ss.series_id,
-			ss.locale,
-			ss.setting_name,
-			ss.setting_value
+		return self.db(q).select(ss.ALL)
+	
+	def getChaptersBySubmission(self, submission_id):
+		"""
+		Get all chapters associated with the given submission.
+		"""
+		sc = self.db.submission_chapters
+		q = (sc.submission_id == submission_id)
+		
+		return self.db(q).select(
+			sc.ALL,
+			orderby=sc.chapter_seq
 		)
+		
+	def getChapter(self, chapter_id):
+		"""
+		Get row for a given chapter id.
+		"""
+		return self.db.submission_chapters[chapter_id]
+		
+	def getChapterSettings(self, chapter_id):
+		"""
+		Get settings for a given chapter id.
+		"""
+		scs = self.db.submission_chapter_settings
+		q = (scs.chapter_id == chapter_id)
+		
+		return self.db(q).select(scs.ALL)
+	
+	def getPublicationFormatsBySubmission(self, submission_id, available=True, approved=True):
+		"""
+		Get all publication formats for the given submission.
+		"""
+		pf = self.db.publication_formats
+		q = ((pf.submission_id == submission_id) 
+			& (pf.is_available == available) 
+			& (pf.is_approved == approved)
+		)
+		
+		return self.db(q).select(pf.ALL)
 
-	def getLocalizedChapters(self, submission_id, locale):
+	def getPhysicalPublicationFormats(self, submission_id, available=True, approved=True):
+		"""
+		Get all publication formats marked as physical format for the given submission.
+		"""
+		pf = self.db.publication_formats
+		q = ((pf.submission_id == submission_id) 
+			& (pf.is_available == available) 
+			& (pf.is_approved == approved) 
+			& (pf.physical_format == True)
+		)
+		
+		return self.db(q).select(pf.ALL)
+
+	def getDigitalPublicationFormats(self, submission_id, available=True, approved=True):
+		"""
+		Get all publication formats not marked as physical format for the given submission.
+		"""
+		pf = self.db.publication_formats
+		q = ((pf.submission_id == submission_id) 
+			& (pf.is_available == available) 
+			& (pf.is_approved == approved) 
+			& (pf.physical_format == False)
+		)
+		
+		return self.db(q).select(pf.ALL)
+	
+	def getPublicationFormat(self, publication_format_id):
+		"""
+		Get row for a given publication format id.
+		"""
+		return self.db.publication_formats[publication_format_id] 
+
+	def getPublicationFormatSettings(self, publication_format_id):
+		"""
+		Get settings for a given publication format id.
+		"""
+		pfs = self.db.publication_format_settings
+		q = (pfs.publication_format_id == publication_format_id)
+		
+		return self.db(q).select(pfs.ALL)
+
+	def getChaptersWithLocalizedSettings(self, submission_id, locale):
 		"""
 		Get all chapters associated with the given submission and a given locale.
 		"""
@@ -147,7 +282,7 @@ class OMPDAL:
 			orderby=[sc.chapter_seq, self.db.submission_files.assoc_id],
 		)
 
-	def getChapters(self, submission_id):
+	def getChaptersWithSettings(self, submission_id):
 		"""
 		Get all chapters associated with the given submission.
 		"""
@@ -228,6 +363,19 @@ class OMPDAL:
 				latest_revision_chapters.append(row)
 
 		return latest_revision_chapters
+	
+	def getLatestRevisionOfChapter(self, chapter_id, publication_format_id):
+		sfs = self.db.submission_file_settings
+		sf = self.db.submission_files
+		
+		q = ( (sfs.setting_name == "chapterID")
+			& (sfs.setting_value == chapter_id)
+			& (sf.file_id == sfs.file_id)
+			& (sf.assoc_id == publication_format_id)
+			& (sf.file_stage == 10)
+		)
+		
+		return self.db(q).select(sf.ALL, orderby=~sf.revision, groupby=sf.revision).first()
 
 	def getLatestRevisionsOfFullBook(self, submission_id):
 		try:
@@ -248,6 +396,20 @@ class OMPDAL:
 			files.append(self.db(q_latest).select(sf.ALL, orderby=sf.file_id, distinct=True).first())
 
 		return files
+	
+	def getLatestRevisionOfFullBook(self, submission_id, publication_format_id):
+		try:
+			monograph_type_id = self.conf.take('omp.monograph_type_id')
+		except:
+			return []
+		sf = self.db.submission_files
+		q = ((sf.submission_id == submission_id)
+			& (sf.genre_id == monograph_type_id)
+			& (sf.file_stage == 10)
+			& (sf.assoc_id == publication_format_id)
+		)
+		
+		return self.db(q).select(sf.ALL, orderby=~sf.revision, groupby=sf.revision).first()
 
 	def getPublicationDates(self, submission_id):
 		q = ((self.db.publication_formats.submission_id == submission_id)
@@ -259,46 +421,6 @@ class OMPDAL:
 			self.db.publication_dates.role,
 			self.db.publication_dates.date_format
 		)
-
-	def getAllPublicationFormats(self, submission_id, available=True, approved=True):
-		"""
-		Get all publication formats for the given submission id.
-		"""
-		pf = self.db.publication_formats
-		q = ((pf.submission_id == submission_id) 
-			& (pf.is_available == available) 
-			& (pf.is_approved == approved)
-		)
-		return self.db(q).select(pf.ALL)
-
-	def getPhysicalPublicationFormats(self, submission_id, available=True, approved=True):
-		"""
-		Get all publication formats marked as physical format for the given submission id.
-		"""
-		pf = self.db.publication_formats
-		q = ((pf.submission_id == submission_id) 
-			& (pf.is_available == available) 
-			& (pf.is_approved == approved) 
-			& (pf.physical_format == True)
-		)
-		return self.db(q).select(pf.ALL)
-
-	def getDigitalPublicationFormats(self, submission_id, available=True, approved=True):
-		"""
-		Get all publication formats not marked as physical format for the given submission id.
-		"""
-		pf = self.db.publication_formats
-		q = ((pf.submission_id == submission_id) 
-			& (pf.is_available == available) 
-			& (pf.is_approved == approved) 
-			& (pf.physical_format == False)
-		)
-		return self.db(q).select(pf.ALL)
-
-	def getPublicationFormatSettings(self, publication_format_id):
-		pfs = self.db.publication_format_settings
-		q = (pfs.submission_id == publication_format_id)
-		return self.db(q).select(pfs.ALL)
 	
 	def getLocalizedPublicationFormatSettingValue(self, publication_format_id, setting_name, locale):
 		pfs = self.db.publication_format_settings

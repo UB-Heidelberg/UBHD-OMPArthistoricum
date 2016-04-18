@@ -32,6 +32,7 @@ db.define_table("author_settings",
                 Field("setting_name", "string"),
                 Field("setting_value", "string"),
                 Field("setting_type", "string"),
+                primarykey=['author_id', 'locale', 'setting_name'],
                 migrate=False
                 )
 
@@ -40,6 +41,7 @@ db.define_table("submission_chapters",
                 Field("chapter_id", "integer"),
                 Field("submission_id", 'integer'),
                 Field("chapter_seq", 'integer'),
+                primarykey=['chapter_id'],
                 migrate=False
                 )
 
@@ -48,8 +50,9 @@ db.define_table("submission_chapter_authors",
                 Field("author_id", "integer"),
                 Field("chapter_id", "integer"),
                 Field("submission_id", 'integer'),
-                Field("primaty_contact", 'integer'),
+                Field("primary_contact", 'integer'),
                 Field("seq", 'integer'),
+                primarykey=['author_id', 'chapter_id'],
                 migrate=False
                 )
 
@@ -59,6 +62,7 @@ db.define_table("submission_chapter_settings",
                 Field("setting_name", "string"),
                 Field("setting_value", "string"),
                 Field("setting_type", "string"),
+                primarykey=['chapter_id', 'locale', 'setting_name'],
                 migrate=False
                 )
 db.define_table("press_settings",
@@ -67,6 +71,7 @@ db.define_table("press_settings",
                 Field("setting_name", "string"),
                 Field("setting_value", "string"),
                 Field("setting_type", "string"),
+                primarykey=['press_id', 'locale', 'setting_name'],
                 migrate=False
                 )
 

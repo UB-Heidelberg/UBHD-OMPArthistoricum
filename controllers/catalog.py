@@ -7,7 +7,7 @@ LICENSE.md
 
 import os
 from operator import itemgetter
-from ompdal import OMPDAL
+from ompdal import OMPDAL, Settings, Item
 
 def series():
     abstract, author, cleanTitle, subtitle = '', '', '', ''
@@ -123,7 +123,7 @@ def index():
     return locals()
 
 def book():
-    abstract, authors, cleanTitle, publication_format_settings_doi, press_name, subtitle = '', '', '', '', '', ''
+    out = ""
     
     locale = ''
     if session.forced_language == 'en':
@@ -137,54 +137,77 @@ def book():
     
     ompdal = OMPDAL(db, myconf)
     
+    # Get press and press settings
+    press = ompdal.getPress(myconf.take('omp.press_id'))
+    if not press:
+        redirect(URL('home', 'index'))        
+    
+    press_settings = Settings(ompdal.getPressSettings(press.press_id))    
+    
+    # Get basic submission info (check, if submission is associated with the actual press and if the submission has been published)
     submission = ompdal.getPublishedSubmission(submission_id, press=myconf.take('omp.press_id'))    
     if not submission:
         redirect(URL('home', 'index'))
-    
-    settings = ompdal.getLocalizedSubmissionSettings(submission_id, locale)
-    if not settings:
-        settings = ompdal.getSubmissionSettings(submission_id)
 
-    for st in settings:
-        if st.setting_name == 'abstract':
-            abstract = st.setting_value
-        if st.setting_name == 'subtitle':
-            subtitle = st.setting_value
-        if st.setting_name == 'title':
-            cleanTitle = st.setting_value
-            
-    chapters = ompdal.getLocalizedLatestRevisionOfChapters(submission_id, locale)
-    if not chapters:
-        chapters = ompdal.getLatestRevisionOfChapters(submission_id)
+    submission_settings = Settings(ompdal.getSubmissionSettings(submission_id))
+    
+    # Get contributors and contributor settings
+    authors = []
+    for author in ompdal.getAuthorsBySubmission(submission_id):
+        authors.append(Item(author,
+                            Settings(ompdal.getAuthorSettings(author.author_id)),
+                        )
+        )
+    
+    editors = []
+    for editor in ompdal.getEditorsBySubmission(submission_id):
+        editors.append(Item(editor,
+                            Settings(ompdal.getAuthorSettings(editor.author_id)),
+                        )
+        )
+    
+    chapters = []
+    for chapter in ompdal.getChaptersBySubmission(submission_id):
+        chapters.append(Item(chapter,
+                             Settings(ompdal.getChapterSettings(chapter.chapter_id)),
+                             {'authors': [Item(a, Settings(ompdal.getAuthorSettings(a.author_id))) for a in ompdal.getAuthorsByChapter(chapter.chapter_id)]}
+                            )
+        )
         
-    authors = ompdal.getAuthors(submission_id)
-    editors = ompdal.getEditors(submission_id)
-    
-    bio = {"editors": [ompdal.getLocalizedAuthorSettingValue(e.author_id, 'biography', locale) for e in editors],
-           "authors": [ompdal.getLocalizedAuthorSettingValue(a.author_id, 'biography', locale) for a in authors]}
-    
-    # Publiction formats
+    # Get DOI from the format marked as DOI carrier
     pdf = ompdal.getPublicationFormatByName(submission_id, myconf.take('omp.doi_format_name')).first()
     if pdf:
         doi = ompdal.getLocalizedPublicationFormatSettingValue(pdf.publication_format_id, "pub-id::doi", "")    # DOI always has empty locale
     else:
         doi = None
 
+    # Get digital publication formats, settings and files
+    digital_publication_formats = []
+    for pf in ompdal.getDigitalPublicationFormats(submission_id, available=True, approved=True):
+        digital_publication_formats.append(Item(pf, 
+            Settings(ompdal.getPublicationFormatSettings(pf.publication_format_id)),
+            ompdal.getLatestRevisionOfFullBook(submission_id, pf.publication_format_id)
+            )
+        )
+        for chapter in chapters:
+            chapter_file = ompdal.getLatestRevisionOfChapter(chapter.attributes.chapter_id, pf.publication_format_id)
+            chapter.associated_items.setdefault('files', {})[pf.publication_format_id] = chapter_file
+            
+    # Get physical publication formats and settings
+    physical_publication_formats = []
+    for pf in ompdal.getPhysicalPublicationFormats(submission_id, available=True, approved=True):
+        physical_publication_formats.append(Item(pf, 
+            Settings(ompdal.getPublicationFormatSettings(pf.publication_format_id))
+            )
+        )
+            
     pub_query = (db.publication_formats.submission_id == submission_id) & (db.publication_format_settings.publication_format_id == db.publication_formats.publication_format_id) & (
         db.publication_format_settings.locale == locale)
-
     publication_formats = db(pub_query & (db.publication_format_settings.setting_value != myconf.take('omp.ignore_format'))).select(db.publication_format_settings.setting_name, db.publication_format_settings.setting_value,
                                                                                                                                     db.publication_formats.publication_format_id, groupby=db.publication_formats.publication_format_id, orderby=db.publication_formats.publication_format_id)
 
-    press_settings = db(db.press_settings.press_id == myconf.take('omp.press_id')).select(
-        db.press_settings.setting_name, db.press_settings.setting_value)
-
     publication_format_settings = db((db.publication_format_settings.setting_name == 'name') & (db.publication_format_settings.locale == locale) & (db.publication_formats.submission_id == submission_id) & (
         db.publication_formats.publication_format_id == db.publication_format_settings.publication_format_id)).select(db.publication_format_settings.publication_format_id, db.publication_format_settings.setting_value)
-
-    if publication_format_settings:
-        publication_format_settings_doi = db((db.publication_format_settings.setting_name == 'pub-id::doi') & (db.publication_format_settings.publication_format_id == publication_format_settings.first(
-        )['publication_format_id']) & (publication_format_settings.first()['setting_value'] == myconf.take('omp.doi_format_name'))).select(db.publication_format_settings.setting_value).first()
 
     identification_codes = {}
     identification_codes_publication_formats = db(
