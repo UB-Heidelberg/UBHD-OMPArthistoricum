@@ -291,6 +291,7 @@
 'Published': 'Veröffentlicht am',
 'Publisher': 'Publisher',
 'Publishing': 'Publizieren',
+'Purchase': 'Buch kaufen',
 'pygraphviz library not found': 'pygraphviz Bibliothek wurde nicht gefunden',
 'Python': 'Python',
 'Quality Control': 'Qualitätssicherung',
