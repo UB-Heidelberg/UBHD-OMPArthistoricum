@@ -176,13 +176,13 @@ def book():
     for pf in ompdal.getDigitalPublicationFormats(submission_id, available=True, approved=True):
         digital_publication_formats.append(Item(pf, 
             Settings(ompdal.getPublicationFormatSettings(pf.publication_format_id)),
-            {'full_file': ompdal.getLatestRevisionOfFullBook(submission_id, pf.publication_format_id),
+            {'full_file': ompdal.getLatestRevisionOfFullBookFileByPublicationFormat(submission_id, pf.publication_format_id),
              'identification_codes': ompdal.getIdentificationCodesByPublicationFormat(pf.publication_format_id)
             }
             )
         )
         for chapter in chapters:
-            chapter_file = ompdal.getLatestRevisionOfChapter(chapter.attributes.chapter_id, pf.publication_format_id)
+            chapter_file = ompdal.getLatestRevisionOfChapterFileByPublicationFormat(chapter.attributes.chapter_id, pf.publication_format_id)
             chapter.associated_items.setdefault('files', {})[pf.publication_format_id] = chapter_file
             
     # Get physical publication formats, settings, and identification codes
@@ -201,7 +201,7 @@ def book():
     # Get DOI from the format marked as DOI carrier
     pdf = ompdal.getPublicationFormatByName(submission_id, myconf.take('omp.doi_format_name')).first()
     if pdf:
-        doi = ompdal.getLocalizedPublicationFormatSettingValue(pdf.publication_format_id, "pub-id::doi", "")    # DOI always has empty locale
+        doi = Settings(ompdal.getPublicationFormatSettings(pf.publication_format_id)).getLocalizedValue("pub-id::doi", "")    # DOI always has empty locale
     else:
         doi = None
     
