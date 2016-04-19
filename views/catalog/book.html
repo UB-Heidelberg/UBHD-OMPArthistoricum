@@ -18,7 +18,6 @@
     	{{abstract = submission_settings.getLocalizedValue('abstract', locale)}}
         <div class="box">
           <div class="box-gray alignleft" style="height: auto;">
-
             <h5 style="color: #656565; margin-bottom: 0.5em;">{{=T('How to cite this title')}}</h5>
             <p>
 			{{if editors:}}
@@ -77,7 +76,6 @@
               {{pass}}
               </p>
             {{pass}}
-            <!--<p><B>Statistik</B></p>-->
             {{if published_date:}}
             <p>{{=T('Published')}} {{=published_date.first()['date'][6:8]}}.{{=published_date.first()['date'][4:6]}}.{{=published_date.first()['date'][0:4]}}</p>
             {{pass}}
@@ -112,29 +110,32 @@
       </div>
       <div class="col-lg-9">
         <article>
-          <div class="">
-            <div class="btn-group" role="group" aria-label="1">
-              {{for fullbook in full_files:}}
-                {{if fullbook['original_file_name'].rsplit('.')[1].lower()==myconf.take('omp.xml_category_name').lower():}}
-              
-                <li type="button" class="btn btn-default"><a href="{{=URL(myconf.take('web.application'), 'reader', 'index/'+str(fullbook['submission_id'])+'/'+str(fullbook['submission_id'])+'-'+str(fullbook['genre_id'])+'-'+str(fullbook['file_id'])+'-'+str(fullbook['revision'])+'-'+str(fullbook['file_stage'])+'-'+str(fullbook["date_uploaded"].strftime('%Y%m%d'))+'.'+str(fullbook['original_file_name']).rsplit('.')[1])}}" target="_blank">{{=T('Read')}}</a></li>
-                {{pass}}
+          	<div class="">
+              {{for pf in digital_publication_formats:}}
+              	{{full_file = pf.associated_items.get('full_file')}}
+              	{{if full_file and "html" in full_file.file_type:}}
+              		<div class="btn-group" role="group" aria-label="1">
+              			<li type="button" class="btn btn-default"><a href={{=downloadLink(myconf.take('web.application'), full_file)}} target="_blank">{{=T('Read')}}</a></li>
+              		</div>
+              	{{pass}}
               {{pass}}
+              {{if [pf.associated_items.get('full_file', None).file_type != "text/html" for pf in digital_publication_formats if pf.associated_items.get('full_file', None)].count(True):}}
+              	<div class="btn-group" role="group" aria-label="2">
+              	  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                	{{=T('Download')}}
+                	<span class="caret"></span>
+              	  </button>
+	              {{for pf in digital_publication_formats:}}
+	              	{{full_file = pf.associated_items.get('full_file')}}
+	              	{{if full_file and not "html" in full_file.file_type:}}
+	             		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+	                		<li role="presentation"><a role="menuitem" tabindex="-1" href={{=downloadLink(myconf.take('web.application'), full_file)}}>PDF</a></li>
+	              		</ul>
+	              	{{pass}}
+	              {{pass}}
+			  {{pass}}
             </div>
-            <div class="btn-group" role="group" aria-label="2">
-              {{for fullbook in full_files:}}
-              {{if fullbook['original_file_name'].rsplit('.')[1].lower()==myconf.take('omp.doi_format_name').lower():}}
-              
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                {{=T('Download')}}
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                <li role="presentation"><a role="menuitem" tabindex="-1"  href="{{=URL(myconf.take('web.application'), 'reader', 'download/'+str(fullbook['submission_id'])+'/'+str(fullbook['submission_id'])+'-'+str(fullbook['genre_id'])+'-'+str(fullbook['file_id'])+'-'+str(fullbook['revision'])+'-'+str(fullbook['file_stage'])+'-'+str(fullbook["date_uploaded"].strftime('%Y%m%d'))+'.'+str(fullbook['original_file_name']).rsplit('.')[1])}}">PDF</a></li>
-              </ul>
-              {{pass}}
-              {{pass}}
-            </div>
+            
             <div class="btn-group" role="group" aria-label="2">
 	        {{if representatives:}}
               <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
@@ -148,6 +149,7 @@
               </ul>
             {{pass}}
             </div>
+            
             <div class="post-heading">
               <br/>
               <h5>
@@ -175,34 +177,35 @@
               <i class="icon-quote-left"></i>
               {{=XML(abstract)}}
             </p>
-    	  {{bios = [e.settings.getLocalizedValue('biography', locale) for e in editors]}}
-    	  {{bios_role = "editor"}}
-    	  {{if bios == []:}}
-    	  	{{bios = [a.settings.getLocalizedValue('biography', locale) for a in authors]}}
-    	  	{{bios_role = "author"}}
-    	  {{pass}}
-	   	  {{if bios:}}
-	   	  	{{num_bios = len([b for b in bios if b != ""])}}
-            {{if num_bios != 0:}}
-            	<p>
-            		<h5>
-            		{{if num_bios == 1:}}
-            			{{=T('About the {}:'.format(bios_role))}}
-            		{{else:}}
-            			{{=T('About the {}s:'.format(bios_role))}}
-            		{{pass}}
-            		</h5>
-            		{{=XML("<br>".join(bios))}}
-            	</p>
-            {{pass}}
-          {{pass}}
+    	  	{{bios = [e.settings.getLocalizedValue('biography', locale) for e in editors]}}
+    	  	{{bios_role = "editor"}}
+    	  	{{if bios == []:}}
+    	  		{{bios = [a.settings.getLocalizedValue('biography', locale) for a in authors]}}
+    	  		{{bios_role = "author"}}
+    	  	{{pass}}
+	   	  	{{if bios:}}
+	   	  		{{num_bios = len([b for b in bios if b != ""])}}
+            	{{if num_bios != 0:}}
+	            	<p>
+	            		<h5>
+	            		{{if num_bios == 1:}}
+	            			{{=T('About the {}:'.format(bios_role))}}
+	            		{{else:}}
+	            			{{=T('About the {}s:'.format(bios_role))}}
+	            		{{pass}}
+	            		</h5>
+	            		{{=XML("<br>".join(bios))}}
+	            	</p>
+            	{{pass}}
+          	{{pass}}
           </div>
-          {{=out}}
+
           <div class="widget">
             <h5 class="widgetheading"></h5>
             <ul class="tags">
             </ul>
           </div>
+          
           <div class="widget">
             {{if len(chapters) > 0:}}
             <div id="downloadTable" style="display:table">
@@ -248,6 +251,7 @@
   </div>
 </div>
 </section>
+
 <script>
   var ids={{=XML(file_ids)}};
   var full_xml, full_pdf;
@@ -257,7 +261,5 @@
   {{ if 'full_pdf' in  locals():}}
     full_pdf= "{{=full_pdf}}";
   {{pass}}
-
-
 </script>
 <script src="{{=URL(myconf.take('web.application'),'static','js/stats.js')}}" data-ids="{{=XML(file_ids)}}" data-full_pdf=full_pdf data-full_xml=full_xml ></script>

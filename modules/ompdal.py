@@ -375,7 +375,9 @@ class OMPDAL:
 			& (sf.file_stage == 10)
 		)
 		
-		return self.db(q).select(sf.ALL, orderby=~sf.revision, groupby=sf.revision).first()
+		res = self.db(q).select(sf.ALL, orderby=~sf.revision, groupby=sf.revision)
+		if res:
+			return res.first()
 
 	def getLatestRevisionsOfFullBook(self, submission_id):
 		try:
@@ -409,7 +411,9 @@ class OMPDAL:
 			& (sf.assoc_id == publication_format_id)
 		)
 		
-		return self.db(q).select(sf.ALL, orderby=~sf.revision, groupby=sf.revision).first()
+		res= self.db(q).select(sf.ALL, orderby=~sf.revision, groupby=sf.revision)
+		if res:
+			return res.first()
 
 	def getPublicationDates(self, submission_id):
 		q = ((self.db.publication_formats.submission_id == submission_id)

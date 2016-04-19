@@ -123,8 +123,6 @@ def index():
     return locals()
 
 def book():
-    out = ""
-    
     locale = ''
     if session.forced_language == 'en':
         locale = 'en_US'
@@ -136,6 +134,7 @@ def book():
     
     ompdal = OMPDAL(db, myconf)
     
+    # Load press info from config
     press = ompdal.getPress(myconf.take('omp.press_id'))
     if not press:
         redirect(URL('home', 'index'))            
@@ -163,6 +162,7 @@ def book():
                         )
         )
     
+    # Get chapters and chapter authors
     chapters = []
     for chapter in ompdal.getChaptersBySubmission(submission_id):
         chapters.append(Item(chapter,
@@ -171,19 +171,12 @@ def book():
                             )
         )
         
-    # Get DOI from the format marked as DOI carrier
-    pdf = ompdal.getPublicationFormatByName(submission_id, myconf.take('omp.doi_format_name')).first()
-    if pdf:
-        doi = ompdal.getLocalizedPublicationFormatSettingValue(pdf.publication_format_id, "pub-id::doi", "")    # DOI always has empty locale
-    else:
-        doi = None
-
     # Get digital publication formats, settings, files, and identification codes
     digital_publication_formats = []
     for pf in ompdal.getDigitalPublicationFormats(submission_id, available=True, approved=True):
         digital_publication_formats.append(Item(pf, 
             Settings(ompdal.getPublicationFormatSettings(pf.publication_format_id)),
-            {'file': ompdal.getLatestRevisionOfFullBook(submission_id, pf.publication_format_id),
+            {'full_file': ompdal.getLatestRevisionOfFullBook(submission_id, pf.publication_format_id),
              'identification_codes': ompdal.getIdentificationCodesByPublicationFormat(pf.publication_format_id)
             }
             )
@@ -204,11 +197,18 @@ def book():
     date_pub_query =  (db.publication_formats.submission_id == submission_id) & (db.publication_format_settings.publication_format_id == db.publication_formats.publication_format_id)
     published_date = db(date_pub_query & (db.publication_format_settings.setting_value == myconf.take('omp.doi_format_name')) & (
         db.publication_dates.publication_format_id == db.publication_format_settings.publication_format_id)).select(db.publication_dates.date)
-        
+    
+    # Get DOI from the format marked as DOI carrier
+    pdf = ompdal.getPublicationFormatByName(submission_id, myconf.take('omp.doi_format_name')).first()
+    if pdf:
+        doi = ompdal.getLocalizedPublicationFormatSettingValue(pdf.publication_format_id, "pub-id::doi", "")    # DOI always has empty locale
+    else:
+        doi = None
+    
+    # Get purchase info
     representatives = ompdal.getRepresentativesBySubmission(submission_id, myconf.take('omp.representative_id_type'))
-
-    full_files = ompdal.getLatestRevisionsOfFullBook(submission_id)
-
+    
+    # Get cover image
     cover_image = ''
     path = request.folder+'static/monographs/'+submission_id+'/simple/cover.'
     for t in ['jpg','png','gif']:
