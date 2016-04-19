@@ -136,17 +136,17 @@
               {{pass}}
             </div>
             <div class="btn-group" role="group" aria-label="2">
-	       {{if representatives:}}
+	        {{if representatives:}}
               <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                        {{=T('Purchase')}}
-                <span class="caret"></span>
+              	{{=T('Purchase')}}
+              	<span class="caret"></span>
               </button>
-		{{pass}}
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                 {{for i in representatives:}}
-                <li role="presentation"><a role="menuitem"  href="{{=i['url']}}" target='_blank'>{{=i['name']}}</a></li>
+                	<li role="presentation"><a role="menuitem"  href="{{=i.url}}" target='_blank'>{{=i.name}}</a></li>
                 {{pass}}
               </ul>
+            {{pass}}
             </div>
             <div class="post-heading">
               <br/>

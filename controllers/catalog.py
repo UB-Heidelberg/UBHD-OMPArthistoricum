@@ -131,17 +131,14 @@ def book():
     if session.forced_language == 'de':
         locale = 'de_DE'
 
-    # Get submission id from request
     submission_id = request.args[0] if request.args else redirect(
         URL('home', 'index'))
     
     ompdal = OMPDAL(db, myconf)
     
-    # Get press and press settings
     press = ompdal.getPress(myconf.take('omp.press_id'))
     if not press:
-        redirect(URL('home', 'index'))        
-    
+        redirect(URL('home', 'index'))            
     press_settings = Settings(ompdal.getPressSettings(press.press_id))    
     
     # Get basic submission info (check, if submission is associated with the actual press and if the submission has been published)
@@ -181,7 +178,7 @@ def book():
     else:
         doi = None
 
-    # Get digital publication formats, settings and files
+    # Get digital publication formats, settings, files, and identification codes
     digital_publication_formats = []
     for pf in ompdal.getDigitalPublicationFormats(submission_id, available=True, approved=True):
         digital_publication_formats.append(Item(pf, 
@@ -195,7 +192,7 @@ def book():
             chapter_file = ompdal.getLatestRevisionOfChapter(chapter.attributes.chapter_id, pf.publication_format_id)
             chapter.associated_items.setdefault('files', {})[pf.publication_format_id] = chapter_file
             
-    # Get physical publication formats and settings
+    # Get physical publication formats, settings, and identification codes
     physical_publication_formats = []
     for pf in ompdal.getPhysicalPublicationFormats(submission_id, available=True, approved=True):
         physical_publication_formats.append(Item(pf, 
@@ -207,16 +204,10 @@ def book():
     date_pub_query =  (db.publication_formats.submission_id == submission_id) & (db.publication_format_settings.publication_format_id == db.publication_formats.publication_format_id)
     published_date = db(date_pub_query & (db.publication_format_settings.setting_value == myconf.take('omp.doi_format_name')) & (
         db.publication_dates.publication_format_id == db.publication_format_settings.publication_format_id)).select(db.publication_dates.date)
-
-    representatives = db(
-        (db.representatives.submission_id == submission_id) & (
-            db.representatives.representative_id_type == myconf.take('omp.representative_id_type'))).select(
-        db.representatives.name,
-        db.representatives.url,
-        orderby=db.representatives.representative_id)
+        
+    representatives = ompdal.getRepresentativesBySubmission(submission_id, myconf.take('omp.representative_id_type'))
 
     full_files = ompdal.getLatestRevisionsOfFullBook(submission_id)
-    xml = ompdal.getPublicationFormatByName(submission_id, "XML")
 
     cover_image = ''
     path = request.folder+'static/monographs/'+submission_id+'/simple/cover.'

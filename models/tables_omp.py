@@ -183,6 +183,7 @@ db.define_table("representatives",
                 Field("email", "string"),
                 Field("url", "string"),
                 Field("is_supplier", "integer"),
+                primarykey=['representative_id'],
                 migrate=False
                 )
 

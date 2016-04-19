@@ -452,7 +452,13 @@ class OMPDAL:
 	
 	def getIdentificationCodesByPublicationFormat(self, publication_format_id):
 		ic = self.db.identification_codes
-		
 		q = (ic.publication_format_id == publication_format_id)
 		
 		return self.db(q).select(ic.ALL)
+	
+	def getRepresentativesBySubmission(self, submission_id, representative_id):
+		r = self.db.representatives
+		q = ((r.submission_id == submission_id)
+			& (r.representative_id_type == representative_id)
+		)		
+		return self.db(q).select(r.ALL)
