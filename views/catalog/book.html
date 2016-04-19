@@ -42,7 +42,7 @@
 			{{elif len(contributors) == 2:}}
 	                  {{last=contributors[-1]}}
 	                  {{contributors=contributors[:-1]}}
-	                  {{=format_string.format(T(', ').join([formatAuthorCitationStyle(e.attributes) for e in contributors]), formatAuthor(last.attributes))}}
+	                  {{=format_string.format(T(', ').join([formatAuthor(e.attributes, reverse=True) for e in contributors]), formatAuthor(last.attributes))}}
 			{{elif len(contributors) > 2:}}
 			  {{first=contributors[0]}}
 			  {{second=contributors[1]}}
@@ -52,7 +52,7 @@
 			  {{else:}}
 			    {{add=""}}
 			  {{pass}}
-			  {{=format_string.format(T(', ').join([formatAuthorCitationStyle(first.attributes).strip(), 
+			  {{=format_string.format(T(', ').join([formatAuthor(first.attributes, reverse=True).strip(), 
 											formatAuthor(second.attributes)]), 
 										formatAuthor(last.attributes)+add)}}
 			{{pass}}
@@ -240,7 +240,10 @@
             		{{for pf in digital_publication_formats:}}
             			<div style="display:table-cell">
             				{{if c_files:}}
-            					{{=A(I(_class="fa fa-file-text-o"), downloadLink(myconf.take('web.application'), c_files.get(pf.attributes.publication_format_id)))}}
+            					{{c_file = c_files.get(pf.attributes.publication_format_id)}}
+            					{{if c_file:}}
+            						{{=A(I(_class="fa fa-file-text-o"), _href=downloadLink(myconf.take('web.application'), c_file))}}
+            					{{pass}}
             				{{pass}}
 						</div>
             		{{pass}}
