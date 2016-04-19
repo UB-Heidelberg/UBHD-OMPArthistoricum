@@ -1,5 +1,5 @@
 {{extend 'layout.html'}}
-{{from customFormat import formatAuthor, formatAuthorCitationStyle}}
+{{from customFormat import formatAuthor, formatAuthorCitationStyle, downloadLink}}
 
 <div id="main" class="container">
 
@@ -215,39 +215,37 @@
             <!---a class="btn btn-default" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"-->
 
             {{if len(chapters) > 0:}}
-            <h4>{{=T('Contents')}} </h4>
-            <div id="downloadTable">
-              <table class="table">
-                {{=TR()}}
-                {{=TD()}}
-                {{for pf in digital_publication_formats:}}
-                	{{=TD(pf.settings.getLocalizedValue('name', locale))}}
-                {{pass}}
-                {{=TR()}}
-                {{for c in chapters:}}
+            <div id="downloadTable" style="display:table">
+            	<div style="display:table-row">
+            		<div style="display:table-cell">{{=T('Contents')}}</div>
+            		{{for pf in digital_publication_formats:}}
+            			<div style="display:table-cell">{{=TD(pf.settings.getLocalizedValue('name', locale))}}</div>
+            		{{pass}}
+            	</div>
+            	{{for c in chapters:}}
                 	{{c_title = c.settings.getLocalizedValue('title', locale)}}
                 	{{c_subtitle = c.settings.getLocalizedValue('subtitle', locale)}}
                 	{{c_authors = c.associated_items.get('authors', [])}}
                 	{{c_files = c.associated_items.get('files', [])}}
-                	{{=TD(c_title)}}
-                	{{if c_files:}}
-                		{{for pf in digital_publication_formats:}}
-                			{{=TD(c_files.get(pf.attributes.publication_format_id))}}
-                		{{pass}}
-                	{{pass}}
-                	{{=TR()}}
-                	{{if c_subtitle:}}
-                		{{=TD(c_subtitle)}}
-                		{{=TD()}}
-                		{{=TR()}}
-                	{{pass}}
-                	{{if c_authors:}}
-                		{{=TD(", ".join([formatAuthor(a.attributes) for a in c_authors]))}}
-                		{{=TD()}}
-                		{{=TR()}}
-                	{{pass}}
-                {{pass}}
-              </table>
+            	<div style="display:table-row">
+            		<div style="display:table-cell">
+            			{{=c_title}}
+            			{{if c_subtitle:}}
+            				<br>{{=c_subtitle}}
+            			{{pass}}
+            			{{if c_authors:}}
+            				<br>{{=", ".join([formatAuthor(a.attributes) for a in c_authors])}}
+            			{{pass}}
+            		</div>
+            		{{for pf in digital_publication_formats:}}
+            			<div style="display:table-cell">
+            				{{if c_files:}}
+            					{{=A(I(_class="fa fa-file-text-o"), downloadLink(myconf.take('web.application'), c_files.get(pf.attributes.publication_format_id)))}}
+            				{{pass}}
+						</div>
+            		{{pass}}
+            	</div>
+            	{{pass}}
             </div>
             {{pass}}
           </div>
