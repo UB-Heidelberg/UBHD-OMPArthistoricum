@@ -256,7 +256,7 @@ db.define_table('submission_files',
                 Field('uploader_user_id', 'integer'),
                 Field('assoc_type', 'integer'),
                 Field('assoc_id', 'integer'),
-		primarykey=['file_id', 'revision'],
+		        primarykey=['file_id', 'revision'],
                 migrate=False
                 )
 
@@ -265,6 +265,7 @@ db.define_table("identification_codes",
                 Field("publication_format_id", "integer"),
                 Field("code", "integer"),
                 Field("value", "string"),
+                primarykey=['identification_code_id'],
                 migrate=False
                 )
 

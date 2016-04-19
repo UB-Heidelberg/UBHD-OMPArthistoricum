@@ -449,3 +449,10 @@ class OMPDAL:
 			& (pfs.setting_name == "name") & (pfs.setting_value == name)
 		)
 		return self.db(q).select(pf.ALL, groupby=pf.submission_id)
+	
+	def getIdentificationCodesByPublicationFormat(self, publication_format_id):
+		ic = self.db.identification_codes
+		
+		q = (ic.publication_format_id == publication_format_id)
+		
+		return self.db(q).select(ic.ALL)

@@ -186,7 +186,9 @@ def book():
     for pf in ompdal.getDigitalPublicationFormats(submission_id, available=True, approved=True):
         digital_publication_formats.append(Item(pf, 
             Settings(ompdal.getPublicationFormatSettings(pf.publication_format_id)),
-            ompdal.getLatestRevisionOfFullBook(submission_id, pf.publication_format_id)
+            {'file': ompdal.getLatestRevisionOfFullBook(submission_id, pf.publication_format_id),
+             'identification_codes': ompdal.getIdentificationCodesByPublicationFormat(pf.publication_format_id)
+            }
             )
         )
         for chapter in chapters:
@@ -197,37 +199,10 @@ def book():
     physical_publication_formats = []
     for pf in ompdal.getPhysicalPublicationFormats(submission_id, available=True, approved=True):
         physical_publication_formats.append(Item(pf, 
-            Settings(ompdal.getPublicationFormatSettings(pf.publication_format_id))
+            Settings(ompdal.getPublicationFormatSettings(pf.publication_format_id)),
+            {'identification_codes': ompdal.getIdentificationCodesByPublicationFormat(pf.publication_format_id)}
             )
         )
-            
-    pub_query = (db.publication_formats.submission_id == submission_id) & (db.publication_format_settings.publication_format_id == db.publication_formats.publication_format_id) & (
-        db.publication_format_settings.locale == locale)
-    publication_formats = db(pub_query & (db.publication_format_settings.setting_value != myconf.take('omp.ignore_format'))).select(db.publication_format_settings.setting_name, db.publication_format_settings.setting_value,
-                                                                                                                                    db.publication_formats.publication_format_id, groupby=db.publication_formats.publication_format_id, orderby=db.publication_formats.publication_format_id)
-
-    publication_format_settings = db((db.publication_format_settings.setting_name == 'name') & (db.publication_format_settings.locale == locale) & (db.publication_formats.submission_id == submission_id) & (
-        db.publication_formats.publication_format_id == db.publication_format_settings.publication_format_id)).select(db.publication_format_settings.publication_format_id, db.publication_format_settings.setting_value)
-
-    identification_codes = {}
-    identification_codes_publication_formats = db(
-        db.publication_formats.submission_id == submission_id).select(
-        db.publication_formats.publication_format_id)
-
-    for i in identification_codes_publication_formats:
-        name = db(
-            (db.publication_format_settings.locale == locale) & (
-                db.publication_format_settings.publication_format_id == i['publication_format_id']) & (
-                db.publication_format_settings.setting_name == 'name') & (
-                db.publication_format_settings.setting_value != myconf.take('omp.xml_category_name'))) .select(
-                    db.publication_format_settings.setting_value).first()
-        identification_code = db(
-            (db.identification_codes.publication_format_id == i['publication_format_id']) & (
-                db.identification_codes.code == 15)).select(
-            db.identification_codes.value).first()
-        if name and identification_code:
-            identification_codes[
-                identification_code['value']] = name['setting_value']
 
     date_pub_query =  (db.publication_formats.submission_id == submission_id) & (db.publication_format_settings.publication_format_id == db.publication_formats.publication_format_id)
     published_date = db(date_pub_query & (db.publication_format_settings.setting_value == myconf.take('omp.doi_format_name')) & (
