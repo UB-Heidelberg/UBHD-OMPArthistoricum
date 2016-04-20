@@ -7,7 +7,7 @@ LICENSE.md
 
 import os
 from operator import itemgetter
-from ompdal import OMPDAL, Settings, Item
+from ompdal import OMPDAL, Settings, OMPItem
 
 def series():
     abstract, author, cleanTitle, subtitle = '', '', '', ''
@@ -138,7 +138,7 @@ def book():
     press = ompdal.getPress(myconf.take('omp.press_id'))
     if not press:
         redirect(URL('home', 'index'))            
-    press_settings = Settings(ompdal.getPressSettings(press.press_id))    
+    press_settings = Settings(ompdal.getPressSettings(press.press_id))
     
     # Get basic submission info (check, if submission is associated with the actual press and if the submission has been published)
     submission = ompdal.getPublishedSubmission(submission_id, press=myconf.take('omp.press_id'))    
@@ -150,37 +150,28 @@ def book():
     # Get contributors and contributor settings
     authors = []
     for author in ompdal.getAuthorsBySubmission(submission_id):
-        authors.append(Item(author,
-                            Settings(ompdal.getAuthorSettings(author.author_id)),
-                        )
-        )
+        authors.append(OMPItem(author, Settings(ompdal.getAuthorSettings(author.author_id))))
     
     editors = []
     for editor in ompdal.getEditorsBySubmission(submission_id):
-        editors.append(Item(editor,
-                            Settings(ompdal.getAuthorSettings(editor.author_id)),
-                        )
-        )
+        editors.append(OMPItem(editor, Settings(ompdal.getAuthorSettings(editor.author_id))))
     
     # Get chapters and chapter authors
     chapters = []
     for chapter in ompdal.getChaptersBySubmission(submission_id):
-        chapters.append(Item(chapter,
+        chapters.append(OMPItem(chapter,
                              Settings(ompdal.getChapterSettings(chapter.chapter_id)),
-                             {'authors': [Item(a, Settings(ompdal.getAuthorSettings(a.author_id))) for a in ompdal.getAuthorsByChapter(chapter.chapter_id)]}
-                            )
+                             {'authors': [OMPItem(a, Settings(ompdal.getAuthorSettings(a.author_id))) for a in ompdal.getAuthorsByChapter(chapter.chapter_id)]})
         )
         
     # Get digital publication formats, settings, files, and identification codes
     digital_publication_formats = []
     for pf in ompdal.getDigitalPublicationFormats(submission_id, available=True, approved=True):
-        digital_publication_formats.append(Item(pf, 
+        digital_publication_formats.append(OMPItem(pf, 
             Settings(ompdal.getPublicationFormatSettings(pf.publication_format_id)),
             {'full_file': ompdal.getLatestRevisionOfFullBookFileByPublicationFormat(submission_id, pf.publication_format_id),
              'identification_codes': ompdal.getIdentificationCodesByPublicationFormat(pf.publication_format_id),
-             'publication_dates': ompdal.getPublicationDatesByPublicationFormat(pf.publication_format_id)
-            }
-            )
+             'publication_dates': ompdal.getPublicationDatesByPublicationFormat(pf.publication_format_id)})
         )
         for chapter in chapters:
             chapter_file = ompdal.getLatestRevisionOfChapterFileByPublicationFormat(chapter.attributes.chapter_id, pf.publication_format_id)
@@ -189,12 +180,10 @@ def book():
     # Get physical publication formats, settings, and identification codes
     physical_publication_formats = []
     for pf in ompdal.getPhysicalPublicationFormats(submission_id, available=True, approved=True):
-        physical_publication_formats.append(Item(pf, 
+        physical_publication_formats.append(OMPItem(pf, 
             Settings(ompdal.getPublicationFormatSettings(pf.publication_format_id)),
             {'identification_codes': ompdal.getIdentificationCodesByPublicationFormat(pf.publication_format_id),
-             'publication_dates': ompdal.getPublicationDatesByPublicationFormat(pf.publication_format_id)
-            }
-            )
+             'publication_dates': ompdal.getPublicationDatesByPublicationFormat(pf.publication_format_id)})
         )
     
     # Get DOI from the format marked as DOI carrier

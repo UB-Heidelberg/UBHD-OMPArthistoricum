@@ -8,14 +8,14 @@ class Settings:
 			
 	def getLocalizedValue(self, setting_name, locale):
 		if self._settings.has_key(setting_name):
-			return self._settings[setting_name].get(locale)
+			return self._settings[setting_name].get(locale, "")
 		else:
 			return ""
 		
 	def getValues(self, setting_name):
 		return self._settings.get(setting_name, "")
 	
-class Item:
+class OMPItem:
 	def __init__(self, row, settings=Settings(), associated_items=[]):
 		self.attributes = row
 		self.settings = settings

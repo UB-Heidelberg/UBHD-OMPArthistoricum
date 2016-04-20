@@ -1,5 +1,5 @@
 {{extend 'layout.html'}}
-{{from customFormat import formatAuthor, formatDate, formatPublicationDate, downloadLink}}
+{{from customFormat import *}}
 
 <div id="main" class="container">
 
@@ -20,52 +20,12 @@
           <div class="box-gray alignleft" style="height: auto;">
             <h5 style="color: #656565; margin-bottom: 0.5em;">{{=T('How to cite this title')}}</h5>
             <p>
-			{{if editors:}}
-			  {{contributors=editors}}
-			  {{if len(editors)==1:}}
-			    {{format_string="{}, "+T('ed')+"."}}
-			  {{else:}}
-			    {{format_string="{} "+T('and')+" {}, "+T('eds')+"."}}
-			  {{pass}}
-			{{elif authors:}}
-	                  {{contributors=authors}}
-	                  {{if len(authors) == 1:}}
-	                    {{format_string="{}."}}
-	                  {{else:}}
-	                    {{format_string="{} "+T('and')+" {}."}}
-	                  {{pass}}
-			{{pass}}
-			{{if len(contributors)==1:}}
-			  {{e=contributors[0]}}
-			  {{=format_string.format(e.attributes.last_name+", "+" ".join([e.attributes.first_name, e.attributes.middle_name]).strip())}}
-			{{elif len(contributors) == 2:}}
-	                  {{last=contributors[-1]}}
-	                  {{contributors=contributors[:-1]}}
-	                  {{=format_string.format(T(', ').join([formatAuthor(e.attributes, reverse=True) for e in contributors]), formatAuthor(last.attributes))}}
-			{{elif len(contributors) > 2:}}
-			  {{first=contributors[0]}}
-			  {{second=contributors[1]}}
-			  {{last=contributors[2]}}
-			  {{if len(contributors) > 3:}}
-			    {{add="et al"}}
-			  {{else:}}
-			    {{add=""}}
-			  {{pass}}
-			  {{=format_string.format(T(', ').join([formatAuthor(first.attributes, reverse=True).strip(), 
-											formatAuthor(second.attributes)]), 
-										formatAuthor(last.attributes)+add)}}
-			{{pass}}
-            <i>{{=cleanTitle}}
-            	{{if len(subtitle)>0:}}
-                : {{=subtitle}}
-                {{pass}}
-            </i>
-              {{=press_settings.getLocalizedValue('name', locale)}},
+            {{=formatCitation(cleanTitle, subtitle, authors, editors, "2000", press_settings.getLocalizedValue('location', locale), press_settings.getLocalizedValue('name', locale), locale, series_name="", series_pos="", max_contrib=3)}}
             </p>
             {{if doi:}}
-            <p>
-              DOI: <a href="http://dx.doi.org/{{=doi}}" title="DOI: {{=cleanTitle}}, {{=press_settings.getLocalizedValue('name', locale)}}, 2015">{{=doi}}</a>
-            </p>
+           	  <p>
+              	DOI: <a href="http://dx.doi.org/{{=doi}}" title="DOI: {{=cleanTitle}}, {{=press_settings.getLocalizedValue('name', locale)}}, 2015">{{=doi}}</a>
+              </p>
             {{pass}}
             {{identification_codes = [i for i in [pf.associated_items.get('identification_codes', []) for pf in digital_publication_formats+physical_publication_formats] if i]}}
             {{if identification_codes:}}
@@ -157,25 +117,19 @@
               </ul>
             {{pass}}
             </div>
-            
+
             <div class="post-heading">
               <br/>
               <h5>
               {{if editors:}}
-		      	{{=", ".join([formatAuthor(e.attributes) for e in editors[:3]])}}
+		      	{{=formatContributors(editors)}}
 		      	{{if len(editors) > 1:}}
-					{{if len(editors) > 3:}}
-						{{=" et al. "}}
-					{{pass}}
 					{{=T("(eds)")}}
 		      	{{else:}}
 					{{=T("(ed.)")}}
 		      	{{pass}}
 		   	  {{else:}}
-		      	{{=", ".join([formatAuthor(e.attributes) for e in authors[:3]])}}
-		      	{{if len(authors) > 3:}}
-					{{=" et al. "}}
-				{{pass}}
+		      	{{=formatContributors(authors)}}
 		   	  {{pass}}
               </h5>
             </div>

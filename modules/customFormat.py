@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from html import URL
+from html import URL, I
 from gluon import current
 from datetime import datetime
 from locale import getlocale, setlocale, getdefaultlocale, LC_TIME
@@ -62,6 +62,52 @@ ONIX_DATE_ROLES = {
     "26": T('Forthcoming reprint date'),    #Date when a product will be reprinted.
     "27": T('Preorder embargo date'),    #Earliest date a retail ‘preorder’ can be placed (where this is distinct from the public announcement date). In the absence of a preorder embargo, advance orders can be placed as soon as metadata is available to the consumer (this would be the public announcement date, or in the absence of a public announcement date, the earliest date metadata is available to the retailer). 
 }
+
+def formatCitation(title, subtitle, authors, editors, year, location, press_name, locale, series_name="", series_pos="", max_contrib=3):
+    cit, et_al, edt = "", "", ""
+    if editors:
+        if len(editors) > max_contrib:
+            et_al = " et al"
+        contrib = editors[:max_contrib]
+        if len(editors) == 1:
+            edt = ", "+T.translate('ed', {})
+        else:
+            edt = ", "+T.translate('eds', {})
+    elif authors:
+        if len(authors) > max_contrib:
+            et_al = " et al"
+        contrib = authors[:max_contrib]
+    
+    num_contrib = len(contrib)
+    if num_contrib == 1:
+        cit = formatAuthor(contrib.pop().attributes)
+    elif num_contrib == 2:
+        cit = "{} and {}".format(formatAuthor(contrib[0].attributes, reverse=True),
+                                 formatAuthor(contrib[1].attributes))
+    elif num_contrib == 3:
+        cit = "{}, {} and {}".format(formatAuthor(contrib[0].attributes, reverse=True),
+                                     formatAuthor(contrib[1].attributes),
+                                     formatAuthor(contrib[2].attributes))
+    else:
+        cit = "{} and {}".format(", ".join([formatAuthor(c.attributes, reverse=True) for c in contrib[:-1]]),
+                                     formatAuthor(contrib[-1].attributes))
+    
+    cit = "".join([cit, et_al, edt])+"."
+    cit += title
+    if subtitle:
+        cit += ": "+subtitle
+
+    cit += location+": "+press_name+", "+year+"."
+    return cit
+
+def formatContributors(contributors=[], max_contributors=3, et_al=True):
+    """
+    Format a list of contributors.
+    """
+    res = ", ".join([formatAuthor(c.attributes) for c in contributors[:max_contributors]])
+    if len(contributors) > max_contributors and et_al == True:
+            res += " et al."
+    return res
 
 def formatAuthor(author_row, reverse=False):
     """
