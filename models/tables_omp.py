@@ -90,6 +90,7 @@ db.define_table("publication_dates",
                 Field("role", "string"),
                 Field("date", "string"),
                 Field("date_format", "string"),
+                primarykey=['publication_date_id'],
                 migrate=False
                 )
 

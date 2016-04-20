@@ -1,6 +1,67 @@
 # -*- coding: utf-8 -*-
 
 from html import URL
+from gluon import current
+from datetime import datetime
+from locale import getlocale, setlocale, getdefaultlocale, LC_TIME
+
+T = current.T
+
+ONIX_INPUT_DATE_MAP = {
+    "00": "%Y%m%d",    #Year month day (default).
+    "01": "%Y%m",    #Year and month.
+    "02": "%Y%m%W",    #Year and week number.
+    "03": "%Y%w",    #Year and quarter (Q = 1, 2, 3, 4). – datetime can't represent the quarter so we pretend it's the weekday (and do not output it)
+    "04": "%Y%w",    #Year and season (S = 1, 2, 3, 4, with 1 = “Spring”). – datetime can't represent the season so we pretend it's the weekday (and do not output it)
+    "05": "%Y",    #Year.
+    "13": "Y%m%d%H%M",    #Exact time. Use ONLY when exact times with hour/minute precision are relevant. By default, time is local. Alternatively, the time may be suffixed with an optional ‘Z’ for UTC times, or with ‘+’ or ‘-’ and an hhmm timezone offset from UTC. Times without a timezone are ‘rolling’ local times, times qualified with a timezone (using Z, + or -) specify a particular instant in time.
+    "14": "Y%m%d%H%M%S",    #Exact time. Use ONLY when exact times with second precision are relevant. By default, time is local. Alternatively, the time may be suffixed with an optional ‘Z’ for UTC times, or with ‘+’ or ‘-’ and an hhmm timezone offset from UTC. Times without a timezone are ‘rolling’ local times, times qualified with a timezone (using Z, + or -) specify a particular instant in time.
+    "20": "%Y%m%d",    #Year month day (Hijri calendar).
+    "21": "%Y%m",    #Year and month (Hijri calendar).
+    "25": "%Y",    # Year (Hijri calendar).
+#    "06": "YYYYMMDDYYYYMMDD",    #Spread of exact dates. – not supported
+#    "07": "YYYYMMYYYYMM",    #Spread of months. – not supported
+#    "08": "YYYYWWYYYYWW",    #Spread of week numbers. – not supported
+#    "09": "YYYYQYYYYQ",    #Spread of quarters. – not supported
+#    "10": "YYYYSYYYYS",    #Spread of seasons. – not supported
+#    "11": "YYYYYYYY",    #Spread of years. – not supported  
+}
+
+ONIX_OUTPUT_DATE_MAP = {
+    "00": "%x",         #Locale’s appropriate date representation.
+    "01": "%B %Y",
+    "02": "%B %Y",
+    "03": "%Y",
+    "04": "%Y",
+    "05": "%Y",
+    "13": "%x", #Locale’s appropriate date representation.
+    "14": "%x", #Locale’s appropriate date representation.
+    "20": "%x AH",  #Locale’s appropriate date representation.
+    "21": "%Y AH",
+    "25": "%Y AH",
+}
+
+HIJRI_DATE_FORMATS = ['20', '21', '25', '32']
+STRING_DATE_FORMATS = ['12', '32']
+
+ONIX_DATE_ROLES = {
+    "01": T('Publication date'),    #Nominal date of publication.
+    "02": T('Embargo date') ,   #If there is an embargo on retail sales in this market before a certain date, the date from which the embargo is lifted and retail sales are permitted.
+    "09": T('Public announcement date'),    #Date when a new product may be announced to the general public.
+    "10": T('Trade announcement date'),    #Date when a new product may be announced for trade only.
+    "11": T('Date of first publication'),    #Date when the work incorporated in a product was first published.
+    "12": T('Last reprint date'),    #Date when a product was last reprinted.
+    "13": T('Out-of-print / deletion date'),    #Date when a product was (or will be) declared out-of-print or deleted.
+    "16": T('Last reissue date'),    #Date when a product was last reissued.
+    "19": T('Publication date of print counterpart'),    #Date of publication of a printed book which is the print counterpart to a digital edition.
+    "20": T('Date of first publication in original language'),    #Year when the original language version of work incorporated in a product was first published (note, use only when different from code 11).
+    "21": T('Forthcoming reissue date'),    #'Date when a product will be reissued.
+    "22": T('Expected availability date after temporary withdrawal'),    #'Date when a product that has been temporary withdrawn from sale or recalled for any reason is expected to become available again, eg after correction of quality or technical issues.
+    "23": T('Review embargo date'),    #Date from which reviews of a product may be published eg in newspapers and magazines or online. Provided to the book trade for information only: newspapers and magazines are not expected to be recipients of ONIX metadata.
+    "25": T('Publisher’s reservation order deadline'),    #Latest date on which an order may be placed with the publisher for guaranteed delivery prior to the publication date. May or may not be linked to a special reservation or pre-publication price.
+    "26": T('Forthcoming reprint date'),    #Date when a product will be reprinted.
+    "27": T('Preorder embargo date'),    #Earliest date a retail ‘preorder’ can be placed (where this is distinct from the public announcement date). In the absence of a preorder embargo, advance orders can be placed as soon as metadata is available to the consumer (this would be the public announcement date, or in the absence of a public announcement date, the earliest date metadata is available to the retailer). 
+}
 
 def formatAuthor(author_row, reverse=False):
     """
@@ -10,6 +71,47 @@ def formatAuthor(author_row, reverse=False):
         return " ".join([author_row.first_name, author_row.middle_name, author_row.last_name])
     else:
         return "{}, {}".format(author_row.last_name, " ".join([author_row.first_name, author_row.middle_name]).strip())
+    
+def formatPublicationDate(date_row, locale, publication_format):
+    date_formatted = formatDate(date_row, locale)
+    if not date_formatted:
+        # Unsupported date format
+        return ""
+    f_inp = ONIX_INPUT_DATE_MAP.get(date_row.date_format, None)
+    f_out = ONIX_OUTPUT_DATE_MAP.get(date_row.date_format, None)
+    if f_inp and f_out:
+        date = datetime.strptime(date_row.date, f_inp)
+        if (date-datetime.now()).days > 0:
+            # publication date in the future
+            formatter = T("%(pf_name)s to be published %(date)s. ## "+f_out)
+        else:
+            # publication date in the past
+            formatter = T("%(pf_name)s published %(date)s. ##  "+f_out)
+    else:
+        formatter = T('Publication date %(pf_name)s %(date)s.')
+        
+    return formatter % dict(pf_name = publication_format.settings.getLocalizedValue('name', locale),
+                            date = date_formatted)
+    
+def formatDate(date_row, locale="de_DE"):
+    date = ""
+    if date_row.date_format in STRING_DATE_FORMATS:
+        date = date_row.date
+    else:
+        f_inp = ONIX_INPUT_DATE_MAP.get(date_row.date_format, None)
+        f_out = ONIX_OUTPUT_DATE_MAP.get(date_row.date_format, None)
+        # save current locale
+        c_locale = getlocale(LC_TIME)
+        try:
+            setlocale(LC_TIME, (locale, 'UTF-8'))
+        except:
+            setlocale(LC_TIME, getdefaultlocale())
+        if f_inp and f_out:
+            date = datetime.strftime(datetime.strptime(date_row.date, f_inp), f_out)
+        # reset locale
+        setlocale(LC_TIME, c_locale)
+
+    return date
 
 def downloadLink(application, file_row):
     """

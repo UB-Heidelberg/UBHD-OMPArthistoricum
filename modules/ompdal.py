@@ -312,16 +312,14 @@ class OMPDAL:
 		if res:
 			return res.first()
 
-	def getPublicationDates(self, submission_id):
-		q = ((self.db.publication_formats.submission_id == submission_id)
-			& (self.db.publication_format_settings.publication_format_id == self.db.publication_formats.publication_format_id)
-			& (self.db.publication_format_settings.setting_value == self.conf.take('omp.doi_format_name'))
-			& (self.db.publication_dates.publication_format_id == self.db.publication_format_settings.publication_format_id)
-		)
-		return self.db(q).select(self.db.publication_dates.date,
-			self.db.publication_dates.role,
-			self.db.publication_dates.date_format
-		)
+	def getPublicationDatesByPublicationFormat(self, publication_format_id):
+		"""
+		Get all publication dates associated with a given publication format.
+		"""
+		pd = self.db.publication_dates
+		q = (pd.publication_format_id == publication_format_id)
+		
+		return self.db(q).select(pd.ALL)
 	
 	def getIdentificationCodesByPublicationFormat(self, publication_format_id):
 		"""
