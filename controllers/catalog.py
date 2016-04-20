@@ -177,7 +177,8 @@ def book():
         digital_publication_formats.append(Item(pf, 
             Settings(ompdal.getPublicationFormatSettings(pf.publication_format_id)),
             {'full_file': ompdal.getLatestRevisionOfFullBookFileByPublicationFormat(submission_id, pf.publication_format_id),
-             'identification_codes': ompdal.getIdentificationCodesByPublicationFormat(pf.publication_format_id)
+             'identification_codes': ompdal.getIdentificationCodesByPublicationFormat(pf.publication_format_id),
+             'publication_dates': ompdal.getPublicationDatesByPublicationFormat(pf.publication_format_id)
             }
             )
         )
@@ -190,18 +191,16 @@ def book():
     for pf in ompdal.getPhysicalPublicationFormats(submission_id, available=True, approved=True):
         physical_publication_formats.append(Item(pf, 
             Settings(ompdal.getPublicationFormatSettings(pf.publication_format_id)),
-            {'identification_codes': ompdal.getIdentificationCodesByPublicationFormat(pf.publication_format_id)}
+            {'identification_codes': ompdal.getIdentificationCodesByPublicationFormat(pf.publication_format_id),
+             'publication_dates': ompdal.getPublicationDatesByPublicationFormat(pf.publication_format_id)
+            }
             )
         )
-
-    date_pub_query =  (db.publication_formats.submission_id == submission_id) & (db.publication_format_settings.publication_format_id == db.publication_formats.publication_format_id)
-    published_date = db(date_pub_query & (db.publication_format_settings.setting_value == myconf.take('omp.doi_format_name')) & (
-        db.publication_dates.publication_format_id == db.publication_format_settings.publication_format_id)).select(db.publication_dates.date)
     
     # Get DOI from the format marked as DOI carrier
-    pdf = ompdal.getPublicationFormatByName(submission_id, myconf.take('omp.doi_format_name')).first()
+    pdf = ompdal.getPublicationFormatByName(submission_id, myconf.take('omp.doi_format_name'))
     if pdf:
-        doi = Settings(ompdal.getPublicationFormatSettings(pf.publication_format_id)).getLocalizedValue("pub-id::doi", "")    # DOI always has empty locale
+        doi = Settings(ompdal.getPublicationFormatSettings(pdf.first().publication_format_id)).getLocalizedValue("pub-id::doi", "")    # DOI always has empty locale
     else:
         doi = None
     
