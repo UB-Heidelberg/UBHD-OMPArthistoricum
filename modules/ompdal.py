@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-class Settings:
+class OMPSettings:
 	def __init__(self, rows=[]):
 		self._settings = dict()
 		for row in rows:
@@ -16,7 +16,7 @@ class Settings:
 		return self._settings.get(setting_name, "")
 	
 class OMPItem:
-	def __init__(self, row, settings=Settings(), associated_items=[]):
+	def __init__(self, row, settings=Settings(), associated_items={}):
 		self.attributes = row
 		self.settings = settings
 		self.associated_items = associated_items
@@ -61,6 +61,18 @@ class OMPDAL:
 		)
 		
 		return self.db(q).select(s.ALL, orderby=~s.date_submitted)
+	
+	def getSubmissionsBySeries(self, series_id, ignored_submission_id=-1, status=3):
+		"""
+		Get all submissions in a series with the given status (default: 3=published).
+		"""
+		s = self.db.submissions
+		q = ((s.series_id == series_id)
+			& (s.submission_id != ignored_submission_id)
+			& (s.status == status)
+		)
+		
+		return self.db(q).select(s.ALL, orderby=s.series_position)
 	
 	def getPublishedSubmission(self, submission_id, press_id=None):
 		"""
@@ -176,6 +188,17 @@ class OMPDAL:
 		return self.db(q).select(
 			s.ALL
 		)
+		
+	def getSeriesByPathAndPress(self, series_path, press_id):
+		"""
+		Get the series with the given pass in the given press (unique).
+		"""
+		s = self.db.series
+		q = ((s.path == series_path) & (s.press_id == press_id))
+
+		res = self.db(q).select(s.ALL)
+		if res:
+			return res.first()
 
 	def getSeries(self, series_id):
 		"""
