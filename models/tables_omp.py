@@ -25,7 +25,6 @@ db.define_table("authors",
                 migrate=False
                 )
 
-
 db.define_table("author_settings",
                 Field("author_id", "integer"),
                 Field("locale", "string"),
@@ -44,7 +43,6 @@ db.define_table("submission_chapters",
                 primarykey=['chapter_id'],
                 migrate=False
                 )
-
 
 db.define_table("submission_chapter_authors",
                 Field("author_id", "integer"),
@@ -65,6 +63,7 @@ db.define_table("submission_chapter_settings",
                 primarykey=['chapter_id', 'locale', 'setting_name'],
                 migrate=False
                 )
+
 db.define_table("press_settings",
                 Field("press_id", "integer"),
                 Field("locale", "string"),
@@ -84,6 +83,7 @@ db.define_table("presses",
                 primarykey=['press_id'],
                 migrate=False
                 )
+
 db.define_table("publication_dates",
                 Field("publication_date_id", "integer"),
                 Field("publication_format_id", "integer"),
@@ -111,7 +111,6 @@ db.define_table("published_submissions",
                 primarykey=['pub_id'],
                 migrate=False
                 )
-
 
 db.define_table("publication_formats",
                 Field("publication_format_id", "integer"),
@@ -184,6 +183,7 @@ db.define_table("series_settings",
                 primarykey=['series_id', 'locale', 'setting_name'],
                 migrate=False
                 )
+
 db.define_table("representatives",
                 Field("representative_id", "integer"),
                 Field("submission_id", "integer"),
@@ -241,6 +241,7 @@ db.define_table("submission_settings",
                 primarykey=['submission_id'],
                 migrate=False
                 )
+
 db.define_table("submission_file_settings",
                 Field("file_id", "integer"),
                 Field("locale", "string"),
@@ -292,46 +293,43 @@ db.define_table("user_group_settings",
                 migrate=False
                 )
 
-"""
-Table: users
-Columns:
-user_id	bigint(20) AI PK
-username	varchar(32)
-password	varchar(40)
-salutation	varchar(40)
-first_name	varchar(40)
-middle_name	varchar(40)
-last_name	varchar(90)
-suffix	varchar(40)
-gender	varchar(1)
-initials	varchar(5)
-email	varchar(90)
-url	varchar(255)
-phone	varchar(24)
-fax	varchar(24)
-mailing_address	varchar(255)
-billing_address	varchar(255)
-country	varchar(90)
-locales	varchar(255)
-date_last_email	datetime
-date_registered	datetime
-date_validated	datetime
-date_last_login	datetime
-must_change_password	tinyint(4)
-auth_id	bigint(20)
-auth_str	varchar(255)
-disabled	tinyint(4)
-disabled_reason	text
-inline_help	tinyint(4)
-
-NW: Only a subset of fields is defined for now
-"""
 db.define_table("users",
                 Field("user_id", "integer"),
                 Field("username", "string"),
+                Field("password", "string"),
+                Field("salutation", "string"),
                 Field("first_name", "string"),
                 Field("middle_name", "string"),
                 Field("last_name", "string"),
+                Field("suffix", "string"),
+                Field("gender", "string"),
+                Field("initials", "string"),
+                Field("email", "string"),
+                Field("url", "string"),
+                Field("phone", "string"),
+                Field("fax", "string"),
+                Field("mailing_address", "string"),
+                Field("billing_address", "string"),
+                Field("country", "string"),
+                Field("locales", "string"),
+                Field("date_last_email",
+                      "datetime",
+                      requires=IS_DATETIME(format="%Y-%m-%d %H:%M:%S")),
+                Field("date_registered",
+                      "datetime",
+                      requires=IS_DATETIME(format="%Y-%m-%d %H:%M:%S")),
+                Field("date_validated",
+                      "datetime",
+                      requires=IS_DATETIME(format="%Y-%m-%d %H:%M:%S")),
+                Field("date_last_login",
+                      "datetime",
+                      requires=IS_DATETIME(format="%Y-%m-%d %H:%M:%S")),
+                Field("must_change_password", "int"),
+                Field("auth_id", "int"),
+                Field("auth_str", "string"),
+                Field("disabled", "int"),
+                Field("disabled_reason", "text"),
+                Field("inline_help", "int"),
                 primarykey=["user_id"],
                 migrate=False
                 )
