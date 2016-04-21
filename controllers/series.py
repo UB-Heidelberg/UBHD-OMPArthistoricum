@@ -4,45 +4,45 @@ Copyright (c) 2015 Heidelberg University Library
 Distributed under the GNU GPL v3. For full terms see the file
 LICENSE.md
 '''
-from ompdal import OMPDAL
 
-locale = 'de_DE'
-if session.forced_language == 'en':
-  locale = 'en_US'
+from ompdal import OMPDAL, OMPSettings, OMPItem
+from os.path import exists
 
-def vmps_info():
-	return dict()
-
-def eva_info():
-        return dict()
-
-def dbae_info():
-        return dict()
-
-def palatium_info():
-        return dict()
-
+def info():
+    if request.args == []:
+        redirect( URL('home', 'index'))
+    series_path = request.args[0]
+    
+    if exists(request.folder+'views/series/'+series_path+"_info.html"):
+        content = "series/"+series_path+"_info.html"
+    else:
+        redirect( URL('home', 'index'))
+        
+    return locals()
 
 def index():
-  ompdal = OMPDAL(db, myconf)
+    if session.forced_language == 'en':
+        locale = 'en_US'
+    elif session.forced_language == 'de':
+        locale = 'de_DE'
+    else:
+        locale = ''
+        
+    ompdal = OMPDAL(db, myconf)
+    
+    # Load press info from config
+    press = ompdal.getPress(myconf.take('omp.press_id'))
+    if not press:
+        redirect(URL('home', 'index'))
 
-  series_rows = ompdal.getSeries()
-  if len(series_rows) == 0:
-    raise HTTP(200, "'invalid': no series in this press")
-
-  setting_types = ['title', 'subtitle', 'description', 'prefix']
-  series = []
-  for s in series_rows:
-    series_info = dict()
-    series_info['path'] = s.path
-    series_info['image'] = s.image
-    settings = ompdal.getLocalizedSeriesSettings(s.series_id, locale)
-    if not settings:
-      settings = ompdal.getSeriesSettings(s.series_id)
-    for st in settings:
-      if st.setting_name in setting_types:
-        series_info[st.setting_name] = st.setting_value
-    series.append(series_info)
-
-  series.sort(key=lambda s: s.get('title', 'z'))
-  return dict(series=series)
+    all_series = []
+    for row in ompdal.getSeriesByPress(press.press_id):
+        settings = OMPSettings(ompdal.getSeriesSettings(row.series_id))
+        series = OMPItem(row, settings)
+        series_editors = ompdal.getSeriesEditors(row.series_id)
+        series.associated_items['editors'] = [OMPItem(e, OMPSettings(ompdal.getUserSettings(e.user_id))) for e in series_editors]
+        all_series.append(series)
+        
+    all_series.sort(key=lambda s: s.settings.getLocalizedValue('title', locale))
+    
+    return locals()
