@@ -165,6 +165,16 @@ db.define_table("series",
                 migrate=False
                 )
 
+db.define_table("series_editors",
+                Field("press_id", "integer"),
+                Field("series_id", "integer"),
+                Field("user_id", "integer"),
+                Field("can_edit", "boolean"),
+                Field("can_review", "boolean"),
+                primarykey=['series_id', 'press_id', 'user_id'],
+                migrate=False
+                )
+
 db.define_table("series_settings",
                 Field("series_id", "integer"),
                 Field("locale", "string"),
@@ -279,6 +289,50 @@ db.define_table("user_group_settings",
                 Field("setting_name", "string"),
                 Field("setting_value", "string"),
                 Field("setting_type", "string"),
+                migrate=False
+                )
+
+"""
+Table: users
+Columns:
+user_id	bigint(20) AI PK
+username	varchar(32)
+password	varchar(40)
+salutation	varchar(40)
+first_name	varchar(40)
+middle_name	varchar(40)
+last_name	varchar(90)
+suffix	varchar(40)
+gender	varchar(1)
+initials	varchar(5)
+email	varchar(90)
+url	varchar(255)
+phone	varchar(24)
+fax	varchar(24)
+mailing_address	varchar(255)
+billing_address	varchar(255)
+country	varchar(90)
+locales	varchar(255)
+date_last_email	datetime
+date_registered	datetime
+date_validated	datetime
+date_last_login	datetime
+must_change_password	tinyint(4)
+auth_id	bigint(20)
+auth_str	varchar(255)
+disabled	tinyint(4)
+disabled_reason	text
+inline_help	tinyint(4)
+
+NW: Only a subset of fields is defined for now
+"""
+db.define_table("users",
+                Field("user_id", "integer"),
+                Field("username", "string"),
+                Field("first_name", "string"),
+                Field("middle_name", "string"),
+                Field("last_name", "string"),
+                primarykey=["user_id"],
                 migrate=False
                 )
 

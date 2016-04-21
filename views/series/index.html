@@ -11,7 +11,7 @@
   {{=DIV(_class="container")
   }}
     
-  {{for row in series_metadata:}}
+  {{for row in series:}}
         <div class="row">
 	
             <div class="col-lg-2">
@@ -27,20 +27,25 @@
             </div>
             <div class="col-lg-10">
                <article>
-                        <div class="post-heading">
-	
-          <h3> {{=row['title']}} </h3>
-                <h4> {{=row['subtitle']}} </h4>
-                        </div>
-                       
-                       <p>
-                        <i class="icon-quote-left"></i>
-                        {{=XML(row['description'])}}
-                       </p> 
-                       
-                       
-
-     
+                 <div class="post-heading">
+                     <h3>{{=row['prefix'] + " " + row['title']}}</h3>
+                     <h4>{{=row['subtitle']}}</h4>
+                     {{if len(row['editors']):}}
+                     <p>{{=T('Editor')}}: {{=", ".join([" ".join([e.first_name, e.middle_name, e.last_name]) for e in row['editors']][:3])}}
+                        {{if len(row['editors']) > 3:}}
+                        {{=" et al. "}}
+                        {{pass}}
+                     </p>
+                     {{pass}}
+                 </div>
+                 <p>
+                     <i class="icon-quote-left"></i>
+                     {{if len(row['description']) > 1000:}}
+                     {{=XML(html2text(row['description']))[0:999]+'...'}}
+                     {{else:}}
+                     {{=XML(row['description'])}}
+                     {{pass}}
+                 </p>
                     <div class="widget">
                         <h5 class="widgetheading"></h5>
                         <ul class="tags">

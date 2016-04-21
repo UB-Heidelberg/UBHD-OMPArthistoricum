@@ -4,12 +4,15 @@ Copyright (c) 2015 Heidelberg University Library
 Distributed under the GNU GPL v3. For full terms see the file
 LICENSE.md
 '''
+
+from ompdal import OMPDAL, OMPSettings, OMPItem
+
 locale = 'de_DE'
 if session.forced_language == 'en':
-  locale = 'en_US'
+    locale = 'en_US'
 
 def vmps_info():
-	return dict()
+    return dict()
 
 def eva_info():
         return dict()
@@ -20,26 +23,30 @@ def dbae_info():
 def palatium_info():
         return dict()
 
-
 def index():
-  series = db((db.series.series_id==db.series_settings.series_id) & (db.series.press_id==myconf.take("omp.press_id")) & (db.series_settings.locale==locale)).select(db.series.path, db.series.image, db.series_settings.series_id, db.series_settings.setting_name, db.series_settings.setting_value, orderby= [db.series_settings.series_id, db.series_settings.setting_name] )
-  series_metadata =[]
-  types = ['title','subtitle','description']
-  prev_series = 0
-  for  row in series:
-    if row['series_settings']['series_id'] != prev_series:
-      metadata = {}
-      prev_series = row['series_settings']['series_id']
-      metadata['path'] = row['series']['path']
-      metadata['image'] = row['series']['image']
-      series_metadata.append(metadata)
-      
-    for t in types:
-      if row['series_settings']['setting_name']== t:
-        metadata[t] =   row['series_settings']['setting_value']
+    ompdal = OMPDAL(db, myconf)
     
-        
-  series_ids = db(db.series.press_id==myconf.take("omp.press_id")).select(db.series.series_id)
-  if len(series_ids) == 0 :
-    raise HTTP(200, "'invalid': no series in this press")
-  return dict(series_ids=series_ids, series_metadata=series_metadata)
+    # Load press info from config
+    press = ompdal.getPress(myconf.take('omp.press_id'))
+    if not press:
+        redirect(URL('home', 'index'))
+
+    series_rows = ompdal.getSeriesByPress(press.press_id)
+    if len(series_rows) == 0:
+        raise HTTP(200, "'invalid': no series in this press")
+
+    setting_types = ['title', 'subtitle', 'description', 'prefix']
+    series = []
+    for s in series_rows:
+        series_info = dict()
+        series_info['path'] = s.path
+        series_info['image'] = s.image
+        settings = ompdal.getSeriesSettings(s.series_id)
+        for st in settings:
+            if st.setting_name in setting_types:
+                series_info[st.setting_name] = st.setting_value
+                series_info['editors'] = ompdal.getSeriesEditors(s.series_id)
+                series.append(series_info)
+
+    series.sort(key=lambda s: s.get('title', 'z'))
+    return dict(series=series)

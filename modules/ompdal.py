@@ -206,6 +206,19 @@ class OMPDAL:
 		"""
 		return self.db.series[series_id]
 
+	def getSeriesEditors(self, series_id):
+		"""
+		Get editors for the given series.
+		"""
+		return self.db(self.db.series_editors.press_id == self.conf.take("omp.press_id")
+					   & (self.db.series_editors.user_id == self.db.users.user_id)).select(self.db.users.ALL)
+
+	def getLocalizedSeriesSettings(self, series_id, locale):
+		"""
+		Get row for a given series id.
+		"""
+		return self.db.series[series_id]
+
 	def getSeriesSettings(self, series_id):
 		"""
 		Get settings for a given series.
