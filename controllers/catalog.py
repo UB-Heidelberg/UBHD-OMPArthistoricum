@@ -162,12 +162,5 @@ def book():
     
     # Get purchase info
     representatives = ompdal.getRepresentativesBySubmission(submission_id, myconf.take('omp.representative_id_type'))
-    
-    # Get cover image
-    cover_image = ''
-    path = request.folder+'static/monographs/'+submission_id+'/simple/cover.'
-    for t in ['jpg','png','gif']:
-        if os.path.exists(path+t):
-                cover_image = URL(myconf.take('web.application'), 'static','monographs/' + submission_id + '/simple/cover.'+t)
 
     return locals()
