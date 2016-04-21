@@ -11,13 +11,13 @@ def vmps_info():
     return dict()
 
 def eva_info():
-        return dict()
+    return dict()
 
 def dbae_info():
-        return dict()
+    return dict()
 
 def palatium_info():
-        return dict()
+    return dict()
 
 def index():
     if session.forced_language == 'en':

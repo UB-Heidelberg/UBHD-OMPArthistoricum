@@ -8,16 +8,13 @@ LICENSE.md
 # required - do no delete
 import os
 
-
 def user(): return dict(form=auth())
 # ef download(): return response.download(request,db)
-
 
 def call():
     session.forget()
     return service()
 # end requires
-
 
 def index():
     from gluon.serializers import json
@@ -46,16 +43,13 @@ def index():
                             book_id, 'submission/', file_id)
         return response.stream(path)
 
-
 def home():
     return dict()
-
 
 def index2():
     from gluon.serializers import json
     json_list = dict(xml_url='')
     return dict(json_list=XML(json(json_list)))
-
 
 def download():
     submission_id = request.args[0]
@@ -68,7 +62,6 @@ def download():
     db.t_usage_statistics.insert()
     db.commit()
     return response.stream(path, chunk_size=4096)
-
 
 def download_image():
     submission_id = request.args[0]
