@@ -21,7 +21,7 @@ class OMPSettings:
 			return ""
 		
 	def getValues(self, setting_name):
-		return self._settings.get(setting_name, "")
+		return self._settings.get(setting_name, {})
 	
 class OMPItem:
 	def __init__(self, row, settings=Settings(), associated_items={}):

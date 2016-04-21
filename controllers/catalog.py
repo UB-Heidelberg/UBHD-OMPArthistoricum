@@ -25,7 +25,6 @@ def series():
     
     ompdal = OMPDAL(db, myconf)
     
-    # Load press info from config
     press = ompdal.getPress(myconf.take('omp.press_id'))
     if not press:
         redirect(URL('home', 'index'))
@@ -64,7 +63,6 @@ def index():
     
     ompdal = OMPDAL(db, myconf)
     
-    # Load press info from config
     press = ompdal.getPress(myconf.take('omp.press_id'))
     if not press:
         redirect(URL('home', 'index'))            
@@ -101,7 +99,6 @@ def book():
     
     ompdal = OMPDAL(db, myconf)
     
-    # Load press info from config
     press = ompdal.getPress(myconf.take('omp.press_id'))
     if not press:
         redirect(URL('home', 'index'))
