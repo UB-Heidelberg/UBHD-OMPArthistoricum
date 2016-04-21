@@ -11,9 +11,12 @@ class OMPSettings:
 		for row in rows:
 			self._settings.setdefault(row.setting_name, {})[row.locale] = row.setting_value
 			
-	def getLocalizedValue(self, setting_name, locale):
+	def getLocalizedValue(self, setting_name, locale, fallback="en_US"):
 		if self._settings.has_key(setting_name):
-			return self._settings[setting_name].get(locale, "")
+			value = self._settings[setting_name].get(locale, "")
+			if not value:
+				value = self._settings[setting_name].get(fallback, "")
+			return value
 		else:
 			return ""
 		
