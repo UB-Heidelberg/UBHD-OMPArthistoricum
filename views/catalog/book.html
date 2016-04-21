@@ -46,33 +46,28 @@
 	            		{{pass}}
 	            	{{pass}}
 	            {{pass}}
-	             <!---a data-toggle="modal" class="btn btn-info" href="../../../cgi-bin/oastats.cgi?repo=omphp" data-target="#myModal">{{=T('')}}</a-->
-	           <div id="oas-widget" class="applied-to-ojs">
-	           <div class="btn btn-default" id="statistik-button">{{=T('Statistics since 07.03.16')}}</div> <br/>
-	           <div style="display:none" class="table" id="oas">
-	             
-	              <ul class="nav nav-tabs">
-	                     <li class="active"><a href="#one2" data-toggle="tab"><i class="icon-briefcase"></i> {{=T('Book')}}</a></li>
-	                     <li class=""><a href="#two2" data-toggle="tab">{{=T('Chapters')}}</a></li>
-	                   </ul>
-	                   <div class="tab-content">
-	                     <div class="tab-pane active" id="one2">
-	                       <table class="table">
-	                         {{file_ids=[]}}
-	                       </table>
-	                     </div>
-	                     <div class="tab-pane " id="two2">
-	                       <table class="table" style="width: inherit">
-	                        </table>
-	                     </div>
-	                    </div>
-	           </div>
-	           
-	           <div id="error"></div>
+	            <!---a data-toggle="modal" class="btn btn-info" href="../../../cgi-bin/oastats.cgi?repo=omphp" data-target="#myModal">{{=T('')}}</a-->
+	            <div id="oas-widget" class="applied-to-ojs">
+		           <div class="btn btn-default" id="statistik-button">{{=T('Statistics since 07.03.16')}}</div> <br/>
+		           <div style="display:none" class="table" id="oas">
+		           		<ul class="nav nav-tabs">
+		           			<li class="active"><a href="#one2" data-toggle="tab"><i class="icon-briefcase"></i> {{=T('Book')}}</a></li>
+		           			<li class=""><a href="#two2" data-toggle="tab">{{=T('Chapters')}}</a></li>
+		           		</ul>
+		           		<div class="tab-content">
+		           			<div class="tab-pane active" id="one2">
+		           				<table class="table">
+		           					{{file_ids=[]}}
+		           				</table>
+		           			</div>
+		           			<div class="tab-pane " id="two2">
+		           				<table class="table" style="width: inherit"></table>
+		           			</div>
+		           		</div>
+		           </div>
+		           <div id="error"></div>
 	            </div>
-	
 	          </div>
-	
 	        </div>
 	      </div>
 	      
