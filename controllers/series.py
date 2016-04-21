@@ -7,10 +7,6 @@ LICENSE.md
 
 from ompdal import OMPDAL, OMPSettings, OMPItem
 
-locale = 'de_DE'
-if session.forced_language == 'en':
-    locale = 'en_US'
-
 def vmps_info():
     return dict()
 
@@ -24,6 +20,13 @@ def palatium_info():
         return dict()
 
 def index():
+    if session.forced_language == 'en':
+        locale = 'en_US'
+    elif session.forced_language == 'de':
+        locale = 'de_DE'
+    else:
+        locale = ''
+        
     ompdal = OMPDAL(db, myconf)
     
     # Load press info from config
@@ -31,22 +34,14 @@ def index():
     if not press:
         redirect(URL('home', 'index'))
 
-    series_rows = ompdal.getSeriesByPress(press.press_id)
-    if len(series_rows) == 0:
-        raise HTTP(200, "'invalid': no series in this press")
-
-    setting_types = ['title', 'subtitle', 'description', 'prefix']
-    series = []
-    for s in series_rows:
-        series_info = dict()
-        series_info['path'] = s.path
-        series_info['image'] = s.image
-        settings = ompdal.getSeriesSettings(s.series_id)
-        for st in settings:
-            if st.setting_name in setting_types:
-                series_info[st.setting_name] = st.setting_value
-                series_info['editors'] = ompdal.getSeriesEditors(s.series_id)
-                series.append(series_info)
-
-    series.sort(key=lambda s: s.get('title', 'z'))
-    return dict(series=series)
+    all_series = []
+    for row in ompdal.getSeriesByPress(press.press_id):
+        settings = OMPSettings(ompdal.getSeriesSettings(row.series_id))
+        series = OMPItem(row, settings)
+        series_editors = ompdal.getSeriesEditors(row.series_id)
+        series.associated_items['editors'] = [OMPItem(e, OMPSettings(ompdal.getUserSettings(e.user_id))) for e in series_editors]
+        all_series.append(series)
+        
+    all_series.sort(key=lambda s: s.settings.getLocalizedValue('title', locale))
+    
+    return locals()

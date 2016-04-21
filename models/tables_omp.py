@@ -336,6 +336,18 @@ db.define_table("users",
                 migrate=False
                 )
 
+db.define_table("user_settings",
+                Field("user_id", "integer"),
+                Field("locale", "string"),
+                Field("setting_name", "string"),
+                Field("assoc_type", "integer"),
+                Field("assoc_id", "integer"),
+                Field("setting_value", "string"),
+                Field("setting_type", "string"),
+                primarykey=["user_id", "locale", "setting_name"],
+                migrate=False
+                )
+
 request_client = ''
 if request.client:
     rcs = request.client.split('.')

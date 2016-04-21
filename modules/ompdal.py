@@ -178,6 +178,12 @@ class OMPDAL:
 		
 		return self.db(q).select(aus.ALL)
 	
+	def getUserSettings(self, user_id):
+		us = self.db.user_settings
+		q = (us.user_id == user_id)
+		
+		return self.db(q).select(us.ALL)
+	
 	def getSeriesByPress(self, press_id):
 		"""
 		Get all series published in the given press.
