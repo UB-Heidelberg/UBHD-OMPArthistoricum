@@ -81,17 +81,17 @@ def formatCitation(title, subtitle, authors, editors, year, location, press_name
     
     num_contrib = len(contrib)
     if num_contrib == 1:
-        cit = formatAuthor(contrib.pop().attributes)
+        cit = formatName(contrib.pop().attributes)
     elif num_contrib == 2:
-        cit = "{} and {}".format(formatAuthor(contrib[0].attributes, reverse=True),
-                                 formatAuthor(contrib[1].attributes))
+        cit = "{} and {}".format(formatName(contrib[0].attributes, reverse=True),
+                                 formatName(contrib[1].attributes))
     elif num_contrib == 3:
-        cit = "{}, {} and {}".format(formatAuthor(contrib[0].attributes, reverse=True),
-                                     formatAuthor(contrib[1].attributes),
-                                     formatAuthor(contrib[2].attributes))
+        cit = "{}, {} and {}".format(formatName(contrib[0].attributes, reverse=True),
+                                     formatName(contrib[1].attributes),
+                                     formatName(contrib[2].attributes))
     else:
-        cit = "{} and {}".format(", ".join([formatAuthor(c.attributes, reverse=True) for c in contrib[:-1]]),
-                                     formatAuthor(contrib[-1].attributes))
+        cit = "{} and {}".format(", ".join([formatName(c.attributes, reverse=True) for c in contrib[:-1]]),
+                                     formatName(contrib[-1].attributes))
     
     cit = "".join([cit, et_al, edt])+"."
     cit += title
@@ -105,12 +105,12 @@ def formatContributors(contributors=[], max_contributors=3, et_al=True):
     """
     Format a list of contributors.
     """
-    res = ", ".join([formatAuthor(c.attributes) for c in contributors[:max_contributors]])
+    res = ", ".join([formatName(c.attributes) for c in contributors[:max_contributors]])
     if len(contributors) > max_contributors and et_al == True:
             res += " et al."
     return res
 
-def formatAuthor(author_row, reverse=False):
+def formatName(author_row, reverse=False):
     """
     Format author names for citations.
     """
