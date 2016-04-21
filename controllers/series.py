@@ -6,18 +6,19 @@ LICENSE.md
 '''
 
 from ompdal import OMPDAL, OMPSettings, OMPItem
+from os.path import exists
 
-def vmps_info():
-    return dict()
-
-def eva_info():
-    return dict()
-
-def dbae_info():
-    return dict()
-
-def palatium_info():
-    return dict()
+def info():
+    if request.args == []:
+        redirect( URL('home', 'index'))
+    series_path = request.args[0]
+    
+    if exists(request.folder+'views/series/'+series_path+"_info.html"):
+        content = "series/"+series_path+"_info.html"
+    else:
+        redirect( URL('home', 'index'))
+        
+    return locals()
 
 def index():
     if session.forced_language == 'en':
