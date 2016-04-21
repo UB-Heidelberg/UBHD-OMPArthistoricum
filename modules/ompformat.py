@@ -47,7 +47,6 @@ ONIX_OUTPUT_DATE_MAP = {
     "25": "%Y AH",
 }
 
-HIJRI_DATE_FORMATS = ['20', '21', '25', '32']
 STRING_DATE_FORMATS = ['12', '32']
 
 ONIX_DATE_ROLES = {
@@ -70,6 +69,9 @@ ONIX_DATE_ROLES = {
 }
 
 def formatCitation(title, subtitle, authors, editors, year, location, press_name, locale, series_name="", series_pos="", max_contrib=3):
+    """
+    Format a citation in CML.
+    """
     cit, et_al, edt = "", "", ""
     if editors:
         if len(editors) > max_contrib:
@@ -125,6 +127,9 @@ def formatName(author_row, reverse=False):
         return "{}, {}".format(author_row.last_name, " ".join([author_row.first_name, author_row.middle_name]).strip())
     
 def formatPublicationDate(date_row, locale, publication_format):
+    """
+    Format different types of ONIX publication date info.
+    """
     date_formatted = formatDate(date_row, locale)
     if not date_formatted:
         # Unsupported date format
@@ -146,6 +151,9 @@ def formatPublicationDate(date_row, locale, publication_format):
                             date = date_formatted)
     
 def formatDate(date_row, locale="de_DE"):
+    """
+    Format publication date.
+    """
     date = ""
     if date_row.date_format in STRING_DATE_FORMATS:
         date = date_row.date
@@ -191,6 +199,9 @@ def downloadLink(application, file_row):
                )
     
 def coverImageLink(request, application, submission_id):
+    """
+    Check, if cover image for a given submission exists, and build link.
+    """
     cover_image=''
     path=request.folder+'static/monographs/'+str(submission_id)+'/simple/cover.'
     for t in ['jpg','png','gif']:
