@@ -161,6 +161,7 @@ db.define_table("series",
                 Field("editor_restricted", "integer"),
                 Field("path","string"),
                 Field("image","text"),
+                primarykey=['series_id'],
                 migrate=False
                 )
 
@@ -170,6 +171,7 @@ db.define_table("series_settings",
                 Field("setting_name", "string"),
                 Field("setting_value", "string"),
                 Field("setting_type", "string"),
+                primarykey=['series_id', 'locale', 'setting_name'],
                 migrate=False
                 )
 db.define_table("representatives",

@@ -76,50 +76,37 @@ def series():
     return dict(submissions=submissions, subs=subs, order=order, series_title=series_title, series_subtitle=series_subtitle)
 
 def index():
-    locale = 'de_DE'
+    locale = ''
     if session.forced_language == 'en':
         locale = 'en_US'
-    ignored_submissions =  myconf.take('omp.ignore_submissions') if myconf.take('omp.ignore_submissions') else -1
-    query = ((db.submissions.context_id == myconf.take('omp.press_id')) & (db.submissions.submission_id!=ignored_submissions) & (db.submissions.status == 3) & (
-        db.submission_settings.submission_id == db.submissions.submission_id) & (db.submission_settings.locale == locale))
-    submissions = db(query).select(db.submission_settings.ALL, db.submissions.series_id, db.submissions.series_position,
-                                   orderby=~db.submissions.date_submitted)
-    subs = {}
-    order = []
-    series_info = {}
+    if session.forced_language == 'de':
+        locale = 'de_DE'
+    
     ompdal = OMPDAL(db, myconf)
-    for i in submissions:
-        id = i.submission_settings.submission_id
-        if id not in order:
-            order.append(id)
-        setting_name = i.submission_settings.setting_name
-        setting_value = i.submission_settings.setting_value
-        if setting_name == 'abstract':
-            subs.setdefault(id, {})['abstract'] = setting_value
-        if setting_name == 'subtitle':
-            subs.setdefault(id, {})['subtitle'] = setting_value
-        if setting_name == 'title':
-            subs.setdefault(id, {})['title'] = setting_value
-        subs.setdefault(id, {})['authors'] = ompdal.getAuthors(id)
-        for row in ompdal.getPublicationDates(id):
-            if row['date_format'] == '00':
-                subs[id]['publication_date'] = row['date']
-        subs[id]['editors'] = ompdal.getEditors(id)
-        subs[id]['series_position'] = i.submissions.series_position
-        series_id = i.submissions.series_id
-        if series_id != 0:
-            subs[id]['series_id'] = series_id
-            if series_id not in series_info:
-                series_settings = ompdal.getLocalizedSeriesSettings(series_id, locale)
-                if not series_settings:
-                    series_settings = ompdal.getSeriesSettings(series_id)
-                series_info[series_id] = {}
-                for s in series_settings:
-                    if s.setting_name == 'title':
-                        series_info[series_id]['title'] = s.setting_value
-                    if s.setting_name == 'subtitle':
-                        series_info[series_id]['subtitle'] = s.setting_value
-
+    
+    # Load press info from config
+    press = ompdal.getPress(myconf.take('omp.press_id'))
+    if not press:
+        redirect(URL('home', 'index'))            
+    press_settings = Settings(ompdal.getPressSettings(press.press_id))
+    
+    ignored_submission_id =  myconf.take('omp.ignore_submissions') if myconf.take('omp.ignore_submissions') else -1
+    
+    order = []
+    submissions = []
+    for submission_row in ompdal.getSubmissionsByPress(press.press_id, ignored_submission_id):
+        authors = [OMPItem(author, Settings(ompdal.getAuthorSettings(author.author_id))) for author in ompdal.getAuthorsBySubmission(submission_row.submission_id)]
+        editors = [OMPItem(editor, Settings(ompdal.getAuthorSettings(editor.author_id))) for editor in ompdal.getAuthorsBySubmission(submission_row.submission_id)]
+        submission = OMPItem(submission_row,
+                             Settings(ompdal.getSubmissionSettings(submission_row.submission_id)),
+                             {'authors': authors, 'editors': editors}
+        )
+        series = ompdal.getSeries(submission_row.series_id)
+        if series:
+            submission.associated_items['series'] = OMPItem(series, Settings(ompdal.getSeriesSettings(series.series_id)))
+            
+        submissions.append(submission)
+    
     return locals()
 
 def book():
@@ -141,7 +128,7 @@ def book():
     press_settings = Settings(ompdal.getPressSettings(press.press_id))
     
     # Get basic submission info (check, if submission is associated with the actual press and if the submission has been published)
-    submission = ompdal.getPublishedSubmission(submission_id, press=myconf.take('omp.press_id'))    
+    submission = ompdal.getPublishedSubmission(submission_id, press_id=myconf.take('omp.press_id'))    
     if not submission:
         redirect(URL('home', 'index'))
 

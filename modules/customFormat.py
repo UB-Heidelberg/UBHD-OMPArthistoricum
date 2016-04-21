@@ -4,6 +4,7 @@ from html import URL, I
 from gluon import current
 from datetime import datetime
 from locale import getlocale, setlocale, getdefaultlocale, LC_TIME
+from os.path import exists
 
 T = current.T
 
@@ -183,3 +184,11 @@ def downloadLink(application, file_row):
                op,
                args=[file_row.submission_id, file_name]
                )
+    
+def coverImageLink(request, application, submission_id):
+    cover_image=''
+    path=request.folder+'static/monographs/'+str(submission_id)+'/simple/cover.'
+    for t in ['jpg','png','gif']:
+        if exists(path+t):
+            cover_image = URL(application, 'static','monographs/' + str(submission_id) + '/simple/cover.'+t)
+    return cover_image

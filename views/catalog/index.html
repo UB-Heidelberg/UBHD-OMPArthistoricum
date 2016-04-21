@@ -1,24 +1,16 @@
 {{extend 'layout.html'}}
 {{import re, os}}
+{{from customFormat import *}}
 <div id="main" class="container">
 <section id="content">
     <div style="height: 20px"></div>
-    {{for entry in order:}}
+    {{for submission in submissions:}}
     <div class="container" height="400px">
         <div class="row">
             <div class="col-lg-3">
                 <article>
                     <div class="post-image">
-			{{
-    				cover_image=''
-    				path=request.folder+'static/monographs/'+str(entry)+'/simple/cover.'
-    				for t in ['jpg','png','gif']:
-        				if os.path.exists(path+str(t)):
-                				cover_image= URL(myconf.take('web.application'), 'static','monographs/' + str(entry) + '/simple/cover.'+str(t))
-					pass
-				pass
-			}}
-                        {{=IMG(_src=cover_image)}}
+                        {{=IMG(_src=coverImageLink(request, myconf.take('web.application'), submission.attributes.submission_id))}}
                     </div>
                 </article>
             </div>
@@ -26,42 +18,43 @@
                 <article>
                     <div class="post-heading">
                         <h4>
-                        {{if subs[entry]['editors']:}}
-                            {{=", ".join([" ".join([e.first_name, e.middle_name, e.last_name]) for e in subs[entry]['editors']])}}
-                                        {{if len(subs[entry]['editors']) > 1:}}
-                                            {{=T("(eds)")}}
-                                        {{else:}}
-                                            {{=T("(ed.)")}}
-                                        {{pass}}
-                        {{else:}}
-                            {{=", ".join([" ".join([e.first_name, e.middle_name, e.last_name]) for e in subs[entry]['authors'][:3]])}}{{if len(subs[entry]['authors']) > 3:}}, et. al.{{pass}}
-                        {{pass}}
+                          {{editors = submission.associated_items.get('editors', [])}}
+                          {{authors = submission.associated_items.get('authors', [])}}
+			              {{if editors:}}
+					      	{{=formatContributors(editors)}}
+					      	{{if len(editors) > 1:}}
+								{{=T("(eds)")}}
+					      	{{else:}}
+								{{=T("(ed.)")}}
+					      	{{pass}}
+					   	  {{else:}}
+					      	{{=formatContributors(authors)}}
+					   	  {{pass}}
                         </h4>
-                        <h4>{{=subs[entry]['title']}}<br />
-                            {{=subs[entry]['subtitle']}}</h4>
-                        <p>
-                        {{if 'publication_date' in subs[entry]:}}{{=subs[entry]['publication_date'][:4]}}<br/>{{pass}}
-                        {{if subs[entry].has_key('series_id'):
-                            series_subtitle = series_info[subs[entry]['series_id']]['subtitle']
-                            series_title = series_info[subs[entry]['series_id']]['title']
-                        }}
-                        <i>{{=series_title}}{{ if series_subtitle: }} – {{=series_subtitle}}{{pass}}{{if subs[entry]['series_position']:}},  {{=T('Vol.')}} {{=subs[entry]['series_position']}} {{pass}}</i>
+                        <h4>{{=submission.settings.getLocalizedValue('title', locale)}}
+                        	{{subtitle = submission.settings.getLocalizedValue('subtitle', locale)}}
+                        	{{if subtitle:}}
+                        		<br/>{{=subtitle}}
+                        	{{pass}}
+						</h4>
+                        {{series = submission.associated_items.get('series', None)}}
+                        {{if series:}}
+                        	{{series_title = series.settings.getLocalizedValue('title', locale)}}
+                        	{{series_subtitle = series.settings.getLocalizedValue('subtitle', locale)}}
+                        	<i>{{=series_title}}{{ if series_subtitle: }} – {{=series_subtitle}}{{pass}}{{if submission.attributes.series_position:}}, {{=T('Vol.')}} {{=submission.attributes.series_position}} {{pass}}</i>
                         {{pass}}
-                        </p>
                     </div>
                     <p>
                         <i class="icon-quote-left"></i>
-                        {{#=re.compile(r'<[^>]+>').sub('',subs[entry]['abstract'])}}
-                        {{=XML(subs[entry]['abstract'])}}
+                        {{abstract = submission.settings.getLocalizedValue('abstract', locale)}}
+                        {{if abstract:}}
+                        	{{=XML(abstract)}}
+                        {{pass}}
                     </p>
                     <div class="widget">
                         <h5 class="widgetheading"></h5>
                         <ul class="tags">
-                            {{if session.forced_language =='de': }}
-                            <li><a href="{{=URL(myconf.take('web.application'),'catalog','book/'+str(entry))}}">{{=T('Mehr' )}}</a></li>
-                            {{elif session.forced_language =='en': }}
-                            <li><a href="{{=URL(myconf.take('web.application'),'catalog','book/'+str(entry))}}">{{=T('More Information' )}}</a></li>
-                            {{pass}}
+                          <li><a href="{{=URL(myconf.take('web.application'),'catalog','book/'+str(submission.attributes.submission_id))}}">{{=T('Mehr' )}}</a></li>
                         </ul>
                     </div>
                 </article>

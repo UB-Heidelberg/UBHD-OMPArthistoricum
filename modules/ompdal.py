@@ -50,21 +50,33 @@ class OMPDAL:
 		"""
 		return self.db.submissions[submission_id]
 	
-	def getPublishedSubmission(self, submission_id, press=None):
+	def getSubmissionsByPress(self, press_id, ignored_submission_id=-1, status=3):
+		"""
+		Get all submissions in press with the given status (default: 3=published).
+		"""
+		s = self.db.submissions
+		q = ((s.context_id == press_id)
+			& (s.submission_id != ignored_submission_id)
+			& (s.status == status)
+		)
+		
+		return self.db(q).select(s.ALL, orderby=~s.date_submitted)
+	
+	def getPublishedSubmission(self, submission_id, press_id=None):
 		"""
 		Get submission info for a given submission id, but only return, if the 
 		submission has been published and is associated with a certain press. 
 		"""
 		s = self.db.submissions
 		
-		if press:
+		if press_id:
 			q = ((s.submission_id == submission_id)
 				& (s.status == "3")
-				& (s.context_id == press)
+				& (s.context_id == press_id)
 			)
 		else:
 			q = ((s.submission_id == submission_id)
-				& (s.submissions.status == "3")
+				& (s.status == "3")
 			)
 		
 		return self.db(q).select(s.ALL).first()
@@ -163,7 +175,7 @@ class OMPDAL:
 		
 		return self.db(q).select(
 			s.ALL
-		)		
+		)
 
 	def getSeries(self, series_id):
 		"""
