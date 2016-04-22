@@ -185,7 +185,7 @@
 	            				<br>{{=c_subtitle}}
 	            			{{pass}}
 	            			{{if c_authors:}}
-	            				<br>{{=", ".join([formatAuthor(a.attributes) for a in c_authors])}}
+	            				<br>{{=", ".join([formatName(a.attributes) for a in c_authors])}}
 	            			{{pass}}
 	            		</div>
 	            		{{for pf in digital_publication_formats:}}
