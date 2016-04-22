@@ -173,6 +173,16 @@ def formatDate(date_row, locale="de_DE"):
 
     return date
 
+def convertDate(date_row):
+    """
+    Convert OMP publication date to datetime object.
+    """
+    f_inp = ONIX_INPUT_DATE_MAP.get(date_row.date_format, None)
+    if f_inp:
+        return datetime.strptime(date_row.date, f_inp)
+    else:
+        return datetime(1, 1, 1)
+
 def downloadLink(application, file_row):
     """
     Generate download link from file info.
