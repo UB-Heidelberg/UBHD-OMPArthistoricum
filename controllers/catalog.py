@@ -41,7 +41,7 @@ def series():
     submissions = []
     for submission_row in submission_rows:
         authors = [OMPItem(author, OMPSettings(ompdal.getAuthorSettings(author.author_id))) for author in ompdal.getAuthorsBySubmission(submission_row.submission_id)]
-        editors = [OMPItem(editor, OMPSettings(ompdal.getAuthorSettings(editor.author_id))) for editor in ompdal.getAuthorsBySubmission(submission_row.submission_id)]
+        editors = [OMPItem(editor, OMPSettings(ompdal.getAuthorSettings(editor.author_id))) for editor in ompdal.getEditorsBySubmission(submission_row.submission_id)]
         submission = OMPItem(submission_row,
                              OMPSettings(ompdal.getSubmissionSettings(submission_row.submission_id)),
                              {'authors': authors, 'editors': editors}
@@ -73,7 +73,7 @@ def index():
     submissions = []
     for submission_row in ompdal.getSubmissionsByPress(press.press_id, ignored_submission_id):
         authors = [OMPItem(author, OMPSettings(ompdal.getAuthorSettings(author.author_id))) for author in ompdal.getAuthorsBySubmission(submission_row.submission_id)]
-        editors = [OMPItem(editor, OMPSettings(ompdal.getAuthorSettings(editor.author_id))) for editor in ompdal.getAuthorsBySubmission(submission_row.submission_id)]
+        editors = [OMPItem(editor, OMPSettings(ompdal.getAuthorSettings(editor.author_id))) for editor in ompdal.getEditorsBySubmission(submission_row.submission_id)]
         submission = OMPItem(submission_row,
                              OMPSettings(ompdal.getSubmissionSettings(submission_row.submission_id)),
                              {'authors': authors, 'editors': editors}
