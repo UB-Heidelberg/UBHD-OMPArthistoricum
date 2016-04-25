@@ -123,7 +123,7 @@
 			      	{{else:}}
 						{{=T("(ed.)")}}
 			      	{{pass}}
-			   	  {{else:}}
+		      {{else:}}
 			      	{{=formatContributors(authors)}}
 			   	  {{pass}}
 	              </h5>
@@ -166,11 +166,11 @@
 	          
 	          <div class="widget">
 	            {{if len(chapters) > 0:}}
-	            <div id="downloadTable" style="display:table">
-	            	<div style="display:table-row">
-	            		<div style="display:table-cell">{{=T('Contents')}}</div>
+	            <div id="downloadTable">
+	            	<div class="chapter_row table_head">
+	            		<div class="chapter_cell">{{=T('Contents')}}</div>
 	            		{{for pf in digital_publication_formats:}}
-	            			<div style="display:table-cell">{{=TD(pf.settings.getLocalizedValue('name', locale))}}</div>
+	            			<div class="chapter_cell">{{=TD(pf.settings.getLocalizedValue('name', locale))}}</div>
 	            		{{pass}}
 	            	</div>
 	            	{{for c in chapters:}}
@@ -178,23 +178,25 @@
 	                	{{c_subtitle = c.settings.getLocalizedValue('subtitle', locale)}}
 	                	{{c_authors = c.associated_items.get('authors', [])}}
 	                	{{c_files = c.associated_items.get('files', [])}}
-	            	<div style="display:table-row">
-	            		<div style="display:table-cell">
-	            			{{=c_title}}
+	            	<div class="chapter_row">
+	            		<div class="chapter_cell">
+                                        {{if c_authors:}}
+                                        <div class="chapter_author">{{=", ".join([formatName(a.attributes) for a in c_authors])}}</div>
+                                        {{pass}}
+	            			<div class="chapter_title">{{=c_title}}</div>
 	            			{{if c_subtitle:}}
-	            				<br>{{=c_subtitle}}
-	            			{{pass}}
-	            			{{if c_authors:}}
-	            				<br>{{=", ".join([formatName(a.attributes) for a in c_authors])}}
+	            			<div class="chapter_subtitle">{{=c_subtitle}}</div>
 	            			{{pass}}
 	            		</div>
 	            		{{for pf in digital_publication_formats:}}
-	            			<div style="display:table-cell">
+	            			<div class="chapter_cell">
 	            				{{if c_files:}}
+                                                 <div class="chapter_file">
 	            					{{c_file = c_files.get(pf.attributes.publication_format_id)}}
 	            					{{if c_file:}}
 	            						{{=A(I(_class="fa fa-file-text-o"), _href=downloadLink(myconf.take('web.application'), c_file))}}
 	            					{{pass}}
+                                                 </div>
 	            				{{pass}}
 							</div>
 	            		{{pass}}
