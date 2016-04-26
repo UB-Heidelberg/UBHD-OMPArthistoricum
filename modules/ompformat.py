@@ -143,7 +143,7 @@ def formatPublicationDate(date_row, locale, publication_format):
             formatter = T("%(pf_name)s to be published %(date)s. ## "+f_out)
         else:
             # publication date in the past
-            formatter = T("%(pf_name)s published %(date)s. ##  "+f_out)
+            formatter = T("%(pf_name)s published %(date)s. ## "+f_out)
     else:
         formatter = T('Publication date %(pf_name)s %(date)s.')
         
