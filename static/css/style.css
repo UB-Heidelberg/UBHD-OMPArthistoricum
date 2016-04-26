@@ -68,6 +68,8 @@ h1,h2, h3, h4, h5, h6 {
 	position:relative;
 }
 
+#content .container {width:100%;}
+
 #wrapper{
 	width:100%;
 	margin:0;	
@@ -1114,7 +1116,6 @@ article .post-heading h3 a:hover {
 	text-decoration:none;
 }
 
-.col-lg-9 {width:70%;}
 
 /* --- post meta --- */
 .post-meta {
