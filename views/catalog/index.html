@@ -1,6 +1,6 @@
 {{extend 'layout.html'}}
 {{import re, os}}
-{{from ompformat import *}}
+{{from ompformat import formatContributors, coverImageLink}}
 
 <div id="main" class="container">
 <section id="content">
@@ -36,7 +36,7 @@
                     <div class="widget">
                         <h5 class="widgetheading"></h5>
                         <ul class="tags">
-                          <li><a href="{{=URL(myconf.take('web.application'),'catalog','book/'+str(submission.attributes.submission_id))}}">{{=T('Mehr' )}}</a></li>
+                          <li><a href="{{=URL(myconf.take('web.application'),'catalog','book/'+str(submission.attributes.submission_id))}}">{{=T('More information' )}}</a></li>
                         </ul>
                     </div>
                 </article>

@@ -11,8 +11,6 @@ from datetime import datetime
 from locale import getlocale, setlocale, getdefaultlocale, LC_TIME
 from os.path import exists
 
-T = current.T
-
 ONIX_INPUT_DATE_MAP = {
     "00": "%Y%m%d",    #Year month day (default).
     "01": "%Y%m",    #Year and month.
@@ -50,22 +48,22 @@ ONIX_OUTPUT_DATE_MAP = {
 STRING_DATE_FORMATS = ['12', '32']
 
 ONIX_DATE_ROLES = {
-    "01": T('Publication date'),    #Nominal date of publication.
-    "02": T('Embargo date') ,   #If there is an embargo on retail sales in this market before a certain date, the date from which the embargo is lifted and retail sales are permitted.
-    "09": T('Public announcement date'),    #Date when a new product may be announced to the general public.
-    "10": T('Trade announcement date'),    #Date when a new product may be announced for trade only.
-    "11": T('Date of first publication'),    #Date when the work incorporated in a product was first published.
-    "12": T('Last reprint date'),    #Date when a product was last reprinted.
-    "13": T('Out-of-print / deletion date'),    #Date when a product was (or will be) declared out-of-print or deleted.
-    "16": T('Last reissue date'),    #Date when a product was last reissued.
-    "19": T('Publication date of print counterpart'),    #Date of publication of a printed book which is the print counterpart to a digital edition.
-    "20": T('Date of first publication in original language'),    #Year when the original language version of work incorporated in a product was first published (note, use only when different from code 11).
-    "21": T('Forthcoming reissue date'),    #'Date when a product will be reissued.
-    "22": T('Expected availability date after temporary withdrawal'),    #'Date when a product that has been temporary withdrawn from sale or recalled for any reason is expected to become available again, eg after correction of quality or technical issues.
-    "23": T('Review embargo date'),    #Date from which reviews of a product may be published eg in newspapers and magazines or online. Provided to the book trade for information only: newspapers and magazines are not expected to be recipients of ONIX metadata.
-    "25": T('Publisher’s reservation order deadline'),    #Latest date on which an order may be placed with the publisher for guaranteed delivery prior to the publication date. May or may not be linked to a special reservation or pre-publication price.
-    "26": T('Forthcoming reprint date'),    #Date when a product will be reprinted.
-    "27": T('Preorder embargo date'),    #Earliest date a retail ‘preorder’ can be placed (where this is distinct from the public announcement date). In the absence of a preorder embargo, advance orders can be placed as soon as metadata is available to the consumer (this would be the public announcement date, or in the absence of a public announcement date, the earliest date metadata is available to the retailer). 
+    "01": current.T('Publication date'),    #Nominal date of publication.
+    "02": current.T('Embargo date') ,   #If there is an embargo on retail sales in this market before a certain date, the date from which the embargo is lifted and retail sales are permitted.
+    "09": current.T('Public announcement date'),    #Date when a new product may be announced to the general public.
+    "10": current.T('Trade announcement date'),    #Date when a new product may be announced for trade only.
+    "11": current.T('Date of first publication'),    #Date when the work incorporated in a product was first published.
+    "12": current.T('Last reprint date'),    #Date when a product was last reprinted.
+    "13": current.T('Out-of-print / deletion date'),    #Date when a product was (or will be) declared out-of-print or deleted.
+    "16": current.T('Last reissue date'),    #Date when a product was last reissued.
+    "19": current.T('Publication date of print counterpart'),    #Date of publication of a printed book which is the print counterpart to a digital edition.
+    "20": current.T('Date of first publication in original language'),    #Year when the original language version of work incorporated in a product was first published (note, use only when different from code 11).
+    "21": current.T('Forthcoming reissue date'),    #'Date when a product will be reissued.
+    "22": current.T('Expected availability date after temporary withdrawal'),    #'Date when a product that has been temporary withdrawn from sale or recalled for any reason is expected to become available again, eg after correction of quality or technical issues.
+    "23": current.T('Review embargo date'),    #Date from which reviews of a product may be published eg in newspapers and magazines or online. Provided to the book trade for information only: newspapers and magazines are not expected to be recipients of ONIX metadata.
+    "25": current.T('Publisher’s reservation order deadline'),    #Latest date on which an order may be placed with the publisher for guaranteed delivery prior to the publication date. May or may not be linked to a special reservation or pre-publication price.
+    "26": current.T('Forthcoming reprint date'),    #Date when a product will be reprinted.
+    "27": current.T('Preorder embargo date'),    #Earliest date a retail ‘preorder’ can be placed (where this is distinct from the public announcement date). In the absence of a preorder embargo, advance orders can be placed as soon as metadata is available to the consumer (this would be the public announcement date, or in the absence of a public announcement date, the earliest date metadata is available to the retailer). 
 }
 
 def formatCitation(title, subtitle, authors, editors, year, location, press_name, locale, series_name="", series_pos="", max_contrib=3):
@@ -78,9 +76,9 @@ def formatCitation(title, subtitle, authors, editors, year, location, press_name
             et_al = " et al"
         contrib = editors[:max_contrib]
         if len(editors) == 1:
-            edt = ", "+T.translate('ed', {})
+            edt = ", "+current.T.translate('ed', {})
         else:
-            edt = ", "+T.translate('eds', {})
+            edt = ", "+current.T.translate('eds', {})
     elif authors:
         if len(authors) > max_contrib:
             et_al = " et al"
@@ -140,12 +138,12 @@ def formatPublicationDate(date_row, locale, publication_format):
         date = datetime.strptime(date_row.date, f_inp)
         if (date-datetime.now()).days > 0:
             # publication date in the future
-            formatter = T("%(pf_name)s to be published %(date)s. ## "+f_out)
+            formatter = current.T("%(pf_name)s to be published %(date)s. ## "+f_out)
         else:
             # publication date in the past
-            formatter = T("%(pf_name)s published %(date)s. ## "+f_out)
+            formatter = current.T("%(pf_name)s published %(date)s. ## "+f_out)
     else:
-        formatter = T('Publication date %(pf_name)s %(date)s.')
+        formatter = current.T('Publication date %(pf_name)s %(date)s.')
         
     return formatter % dict(pf_name = publication_format.settings.getLocalizedValue('name', locale),
                             date = date_formatted)
