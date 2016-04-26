@@ -98,7 +98,7 @@ def formatCitation(title, subtitle, authors, editors, year, location, press_name
         cit = "{} and {}".format(", ".join([formatName(c.attributes, reverse=True) for c in contrib[:-1]]),
                                      formatName(contrib[-1].attributes))
     
-    cit = "".join([cit, et_al, edt])+"."
+    cit = "".join([cit, et_al, edt])+". "
     cit += title
     if subtitle:
         cit += ": "+subtitle
