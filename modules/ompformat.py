@@ -216,3 +216,17 @@ def coverImageLink(request, application, submission_id):
         if exists(path+t):
             cover_image = URL(application, 'static','monographs/' + str(submission_id) + '/simple/cover.'+t)
     return cover_image
+
+def haveMultipleAuthors(chapters):
+    """
+    Check, whether a list of chapters features different authors or whether all
+    chapters were written by the same author (used to decide whether to display
+    all author names or not).
+    """
+    authors = []
+    for c in chapters:
+        authors.append(tuple([a.attributes.author_id for a in c.associated_items.get('authors', [])]))
+    if len(set(authors)) == 1:
+        return False
+    else:
+        return True

@@ -1,5 +1,5 @@
 {{extend 'layout.html'}}
-{{from ompformat import formatCitation, formatContributors, formatName, formatPublicationDate, coverImageLink, downloadLink}}
+{{from ompformat import formatCitation, formatContributors, formatName, formatPublicationDate, coverImageLink, downloadLink, haveMultipleAuthors}}
 
 <div id="main" class="container">
 	<section id="content">
@@ -173,6 +173,7 @@
 	            			<div class="chapter_cell">{{=TD(pf.settings.getLocalizedValue('name', locale))}}</div>
 	            		{{pass}}
 	            	</div>
+	            	{{display_authors=haveMultipleAuthors(chapters)}}
 	            	{{for c in chapters:}}
 	                	{{c_title = c.settings.getLocalizedValue('title', locale)}}
 	                	{{c_subtitle = c.settings.getLocalizedValue('subtitle', locale)}}
@@ -180,7 +181,7 @@
 	                	{{c_files = c.associated_items.get('files', [])}}
 	            	<div class="chapter_row">
 	            		<div class="chapter_cell">
-	            			{{if c_authors:}}
+	            			{{if c_authors and display_authors:}}
 	            				<div class="chapter_author">{{=", ".join([formatName(a.attributes) for a in c_authors])}}</div>
 	            			{{pass}}
 	            			<div class="chapter_title">{{=c_title}}</div>
