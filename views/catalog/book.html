@@ -1,5 +1,5 @@
 {{extend 'layout.html'}}
-{{from ompformat import formatCitation, formatContributors, formatName, formatPublicationDate, coverImageLink, downloadLink, haveMultipleAuthors}}
+{{from ompformat import formatCitation, formatContributors, formatName, formatPublicationDate, coverImageLink, downloadLink, haveMultipleAuthors, convertDate, dateToString}}
 
 <div id="main" class="container">
 	<section id="content">
@@ -19,7 +19,13 @@
 	          <div class="box-gray alignleft" style="height: auto;">
 	            <h5 style="color: #656565; margin-bottom: 0.5em;">{{=T('How to cite this title')}}</h5>
 	            <p>
-	            {{=formatCitation(cleanTitle, subtitle, authors, editors, "2000", press_settings.getLocalizedValue('location', locale), press_settings.getLocalizedValue('name', locale), locale, series_name="", series_pos="", max_contrib=3)}}
+	            {{digital_dates=[convertDate(pd) for pf in digital_publication_formats for pd in pf.associated_items.get('publication_dates')]}}
+	            {{if digital_dates:}}
+	            	{{citation_year=dateToString(min(digital_dates), "%Y")}}
+	            {{else:}}
+	            	{{citation_year=""}}
+	            {{pass}}
+	            {{=formatCitation(cleanTitle, subtitle, authors, editors, citation_year, press_settings.getLocalizedValue('location', locale), press_settings.getLocalizedValue('name', locale), locale, series_name="", series_pos="", max_contrib=3)}}
 	            </p>
 	            {{if doi:}}
 	           	  <p>

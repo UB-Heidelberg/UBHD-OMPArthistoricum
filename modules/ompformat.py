@@ -180,6 +180,9 @@ def convertDate(date_row):
         return datetime.strptime(date_row.date, f_inp)
     else:
         return datetime(1, 1, 1)
+    
+def dateToString(datetime_obj, f_string="%x"):
+    return datetime.strftime(datetime_obj, f_string)
 
 def downloadLink(application, file_row):
     """
