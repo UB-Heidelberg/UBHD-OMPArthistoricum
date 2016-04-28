@@ -147,7 +147,8 @@ def book():
         )
         for chapter in chapters:
             chapter_file = ompdal.getLatestRevisionOfChapterFileByPublicationFormat(chapter.attributes.chapter_id, pf.publication_format_id)
-            chapter.associated_items.setdefault('files', {})[pf.publication_format_id] = chapter_file
+            if chapter_file:
+                chapter.associated_items.setdefault('files', {})[pf.publication_format_id] = chapter_file
             
     # Get physical publication formats, settings, and identification codes
     physical_publication_formats = []

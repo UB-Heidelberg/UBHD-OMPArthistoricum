@@ -180,23 +180,23 @@
 	                	{{c_files = c.associated_items.get('files', [])}}
 	            	<div class="chapter_row">
 	            		<div class="chapter_cell">
-                                        {{if c_authors:}}
-                                        <div class="chapter_author">{{=", ".join([formatName(a.attributes) for a in c_authors])}}</div>
-                                        {{pass}}
+	            			{{if c_authors:}}
+	            				<div class="chapter_author">{{=", ".join([formatName(a.attributes) for a in c_authors])}}</div>
+	            			{{pass}}
 	            			<div class="chapter_title">{{=c_title}}</div>
 	            			{{if c_subtitle:}}
-	            			<div class="chapter_subtitle">{{=c_subtitle}}</div>
+	            				<div class="chapter_subtitle">{{=c_subtitle}}</div>
 	            			{{pass}}
 	            		</div>
 	            		{{for pf in digital_publication_formats:}}
 	            			<div class="chapter_cell">
 	            				{{if c_files:}}
-                                                 <div class="chapter_file">
 	            					{{c_file = c_files.get(pf.attributes.publication_format_id)}}
 	            					{{if c_file:}}
-	            						{{=A(I(_class="fa fa-file-text-o"), _href=downloadLink(myconf.take('web.application'), c_file))}}
+	            						<div class="chapter_file">
+	            							{{=A(I(_class="fa fa-file-text-o"), _href=downloadLink(myconf.take('web.application'), c_file))}}
+	            						</div>
 	            					{{pass}}
-                                                 </div>
 	            				{{pass}}
 							</div>
 	            		{{pass}}
