@@ -1,48 +1,42 @@
 {{extend 'layout.html'}}
-<div id="main" class="container">
 {{import re, os}}
-<section id="content">
+{{from ompformat import formatContributors, coverImageLink}}
 
+<div id="main" class="container">
+<section id="content">
     <div style="height: 20px"></div>
-    {{for entry in order:}}
+    {{for submission in submissions:}}
     <div class="container" height="400px">
         <div class="row">
             <div class="col-lg-3">
                 <article>
                     <div class="post-image">
-			{{
-    				cover_image=''
-    				path=request.folder+'static/monographs/'+str(entry)+'/simple/cover.'
-    				for t in ['jpg','png','gif']:
-        				if os.path.exists(path+str(t)):
-                				cover_image= URL(myconf.take('web.application'), 'static','monographs/' + str(entry) + '/simple/cover.'+str(t))
-					pass
-				pass
-			}}
-                        {{=IMG(_src=cover_image)}}
+                        {{=IMG(_src=coverImageLink(request, myconf.take('web.application'), submission.attributes.submission_id))}}
                     </div>
                 </article>
             </div>
             <div class="col-lg-9">
                 <article>
                     <div class="post-heading">
-                        <h4>{{=subs[entry]['authors']}}</h4>
-                            <h4>{{=subs[entry]['title']}}<br />
-                                {{=subs[entry]['subtitle']}}</h4>
+						{{include 'catalog/snippets/submission.html'}}
+                        {{series = submission.associated_items.get('series', None)}}
+                        {{if series:}}
+                        	{{series_title = series.settings.getLocalizedValue('title', locale)}}
+                        	{{series_subtitle = series.settings.getLocalizedValue('subtitle', locale)}}
+                        	<i>{{=series_title}}{{ if series_subtitle: }} – {{=series_subtitle}}{{pass}}{{if submission.attributes.series_position:}}, {{=T('Vol.')}} {{=submission.attributes.series_position}} {{pass}}</i>
+                        {{pass}}
                     </div>
                     <p>
                         <i class="icon-quote-left"></i>
-                        {{#=re.compile(r'<[^>]+>').sub('',subs[entry]['abstract'])}}
-                        {{=XML(subs[entry]['abstract'])}}
+                        {{abstract = submission.settings.getLocalizedValue('abstract', locale)}}
+                        {{if abstract:}}
+                        	{{=XML(abstract)}}
+                        {{pass}}
                     </p>
                     <div class="widget">
                         <h5 class="widgetheading"></h5>
                         <ul class="tags">
-                            {{if session.forced_language =='de': }}
-                            <li><a href="{{=URL(myconf.take('web.application'),'catalog','book/'+str(entry))}}">{{=T('Mehr' )}}</a></li>
-                            {{elif session.forced_language =='en': }}
-                            <li><a href="{{=URL(myconf.take('web.application'),'catalog','book/'+str(entry))}}">{{=T('More Information' )}}</a></li>
-                            {{pass}}
+                          <li><a href="{{=URL(myconf.take('web.application'),'catalog','book/'+str(submission.attributes.submission_id))}}">{{=T('More information' )}}</a></li>
                         </ul>
                     </div>
                 </article>
@@ -50,7 +44,5 @@
         </div>
     </div>
     {{pass}}
-
-    </div>
-    </div>
 </section>
+</div>

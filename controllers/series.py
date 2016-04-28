@@ -4,42 +4,45 @@ Copyright (c) 2015 Heidelberg University Library
 Distributed under the GNU GPL v3. For full terms see the file
 LICENSE.md
 '''
-locale = 'de_DE'
-if session.forced_language == 'en':
-  locale = 'en_US'
 
-def vmps_info():
-	return dict()
+from ompdal import OMPDAL, OMPSettings, OMPItem
+from os.path import exists
 
-def eva_info():
-        return dict()
-
-def dbae_info():
-        return dict()
-
-def palatium_info():
-        return dict()
-
+def info():
+    if request.args == []:
+        redirect( URL('home', 'index'))
+    series_path = request.args[0]
+    
+    if exists(request.folder+'views/series/'+series_path+"_info.html"):
+        content = "series/"+series_path+"_info.html"
+    else:
+        redirect( URL('home', 'index'))
+        
+    return locals()
 
 def index():
-  series = db((db.series.series_id==db.series_settings.series_id) & (db.series.press_id==myconf.take("omp.press_id")) & (db.series_settings.locale==locale)).select(db.series.path, db.series.image, db.series_settings.series_id, db.series_settings.setting_name, db.series_settings.setting_value, orderby= [db.series_settings.series_id, db.series_settings.setting_name] )
-  series_metadata =[]
-  types = ['title','subtitle','description']
-  prev_series = 0
-  for  row in series:
-    if row['series_settings']['series_id'] != prev_series:
-      metadata = {}
-      prev_series = row['series_settings']['series_id']
-      metadata['path'] = row['series']['path']
-      metadata['image'] = row['series']['image']
-      series_metadata.append(metadata)
-      
-    for t in types:
-      if row['series_settings']['setting_name']== t:
-        metadata[t] =   row['series_settings']['setting_value']
-    
+    if session.forced_language == 'en':
+        locale = 'en_US'
+    elif session.forced_language == 'de':
+        locale = 'de_DE'
+    else:
+        locale = ''
         
-  series_ids = db(db.series.press_id==myconf.take("omp.press_id")).select(db.series.series_id)
-  if len(series_ids) == 0 :
-    raise HTTP(200, "'invalid': no series in this press")
-  return dict(series_ids=series_ids, series_metadata=series_metadata)
+    ompdal = OMPDAL(db, myconf)
+    
+    # Load press info from config
+    press = ompdal.getPress(myconf.take('omp.press_id'))
+    if not press:
+        redirect(URL('home', 'index'))
+
+    all_series = []
+    for row in ompdal.getSeriesByPress(press.press_id):
+        settings = OMPSettings(ompdal.getSeriesSettings(row.series_id))
+        series = OMPItem(row, settings)
+        series_editors = ompdal.getSeriesEditors(row.series_id)
+        series.associated_items['editors'] = [OMPItem(e, OMPSettings(ompdal.getUserSettings(e.user_id))) for e in series_editors]
+        all_series.append(series)
+        
+    all_series.sort(key=lambda s: s.settings.getLocalizedValue('title', locale))
+    
+    return locals()
