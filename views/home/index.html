@@ -94,7 +94,7 @@
 
                <div class="box-bottom">
 
-                  {{=A(T('More'),_href=URL('partner','ap'))}}
+                  {{=A(T('More'),_href=URL('partner','index/ap'))}}
 
                </div>
           {{elif session.forced_language =='en': }}
@@ -104,7 +104,7 @@
 
                <div class="box-bottom">
 
-                  {{=A(T('More Information'),_href=URL('partner','ap'))}}
+                  {{=A(T('More Information'),_href=URL('partner','index/ap'))}}
 
                </div>
           
@@ -260,11 +260,12 @@
                                 </div>
 
                                 <div class="box-bottom">&nbsp;
+<!--
                                 {{if session.forced_language =='de': }}
                                 {{=A(T('More'),_href=URL('series','eva_info'))}}
       {{elif session.forced_language =='en': }}
-                                {{=A(T('More Information'),_href=URL('series','eva_info'))}}
-                                {{pass}}
+                                {{=A(T('More Information'),_href=URL('series','index/eva_info'))}}
+                                {{pass}}-->
                                 </div>
 
                             </div>
