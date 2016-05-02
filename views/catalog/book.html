@@ -25,13 +25,9 @@
 	            {{else:}}
 	            	{{citation_year=""}}
 	            {{pass}}
-	            {{=formatCitation(cleanTitle, subtitle, authors, editors, citation_year, press_settings.getLocalizedValue('location', locale), press_settings.getLocalizedValue('name', locale), locale, series_name="", series_pos="", max_contrib=3)}}
+	            {{=formatCitation(cleanTitle, subtitle, authors, editors, citation_year, press_settings.getLocalizedValue('location', locale), press_settings.getLocalizedValue('name', locale), doi, locale, series_name="", series_pos="", max_contrib=3)}}
+	            {{=A(doi, _href="http://dx.doi.org/"+doi)}}
 	            </p>
-	            {{if doi:}}
-	           	  <p>
-	              	DOI: <a href="http://dx.doi.org/{{=doi}}" title="DOI: {{=cleanTitle}}, {{=press_settings.getLocalizedValue('name', locale)}}, 2015">{{=doi}}</a>
-	              </p>
-	            {{pass}}
 	            {{identification_codes = [i for i in [pf.associated_items.get('identification_codes', []) for pf in digital_publication_formats+physical_publication_formats] if i]}}
 	            {{if identification_codes:}}
 	            	<h5 style="color: #656565; margin-bottom: 0.3em; margin-top: 1.2em;">ISBN</h5>

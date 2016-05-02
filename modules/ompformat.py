@@ -66,7 +66,7 @@ ONIX_DATE_ROLES = {
     "27": current.T('Preorder embargo date'),    #Earliest date a retail ‘preorder’ can be placed (where this is distinct from the public announcement date). In the absence of a preorder embargo, advance orders can be placed as soon as metadata is available to the consumer (this would be the public announcement date, or in the absence of a public announcement date, the earliest date metadata is available to the retailer). 
 }
 
-def formatCitation(title, subtitle, authors, editors, year, location, press_name, locale, series_name="", series_pos="", max_contrib=3):
+def formatCitation(title, subtitle, authors, editors, year, location, press_name, doi, locale, series_name="", series_pos="", max_contrib=3):
     """
     Format a citation in CML.
     """
@@ -104,6 +104,8 @@ def formatCitation(title, subtitle, authors, editors, year, location, press_name
         cit += ": "+subtitle
 
     cit += location+": "+press_name+", "+year+"."
+    if doi:
+        cit += " DOI: "
     return cit
 
 def formatContributors(contributors=[], max_contributors=3, et_al=True):
