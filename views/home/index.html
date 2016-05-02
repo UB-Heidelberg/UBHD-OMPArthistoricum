@@ -23,7 +23,7 @@
 
                         <ul class="slides">                
                             <li>
-                                <img id="hup-logo" src="{{=URL(myconf.take('web.application'),'static','images/press/slideshow/01_ebook_reader.jpg')}}" />
+                                <img id="hup-logo" src="{{=URL('static','images/press/slideshow/01_ebook_reader.jpg')}}" />
                             </li>
                         </ul>
 
@@ -56,7 +56,7 @@
 
                                     <h4>Neuerscheinung</h4>
 
-				   {{=IMG(_src=URL(myconf.take('web.application'),'static','monographs/49/simple/cover.jpg'),_width='145px')}}
+				   {{=IMG(_src=URL('static','monographs/49/simple/cover.jpg'),_width='145px')}}
                                 </div>
 
                                 <div class="box-bottom">
@@ -69,7 +69,7 @@
                         <div class="box-gray aligncenter">
    
    <h4>New Titles</h4>
-				   {{=IMG(_src=URL(myconf.take('web.application'),'static','monographs/49/simple/cover.jpg'),_width='145px')}}
+				   {{=IMG(_src=URL('static','monographs/49/simple/cover.jpg'),_width='145px')}}
                                 </div>
 
              <div class="box-bottom">
@@ -89,7 +89,7 @@
               <div class="box-gray aligncenter">
               {{if session.forced_language =='de': }}  
                   <h4>Demnächst</h4>
-                      {{=IMG(_src=URL(myconf.take('web.application'),'static','images/press/home/cover_chant.png'),_width='145px')}}
+                      {{=IMG(_src=URL('static','images/press/home/cover_chant.png'),_width='145px')}}
                </div>
 
                <div class="box-bottom">
@@ -99,7 +99,7 @@
                </div>
           {{elif session.forced_language =='en': }}
                 <h4>Soon</h4>
-                      {{=IMG(_src=URL(myconf.take('web.application'),'static','images/press/home/cover_chant.png'),_width='145px')}}
+                      {{=IMG(_src=URL('static','images/press/home/cover_chant.png'),_width='145px')}}
                </div>
 
                <div class="box-bottom">
@@ -129,7 +129,7 @@
           
               <div class="media">
                   <div class="media-left pull-left">
-                       <img src="{{=URL(myconf.take('web.application'),'static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                       <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
                   </div>                        
                   <div class="media-body">      
                       <p class="media-heading">
@@ -141,9 +141,9 @@
                       </p>
                   <p class="boxText">
         {{if session.forced_language =='de': }}  
-                              Wir freuen uns über unsere neue Kooperation mit dem gemeinnützigen Verein "<a href="{{=URL(myconf.take('web.application'),'partner','index/dbae')}}" title="Informationsseite zum Verein Das Bild als Ereignis">Das Bild als Ereignis e. V.</a>". In Kürze wird hier der zweite Band seiner Schriftenreihe mit dem Titel "Mediale Dimensionen von Reproduktion" als Open-Access-eBook erscheinen. 
+                              Wir freuen uns über unsere neue Kooperation mit dem gemeinnützigen Verein "<a href="{{=URL('partner','index/dbae')}}" title="Informationsseite zum Verein Das Bild als Ereignis">Das Bild als Ereignis e. V.</a>". In Kürze wird hier der zweite Band seiner Schriftenreihe mit dem Titel "Mediale Dimensionen von Reproduktion" als Open-Access-eBook erscheinen. 
                {{elif session.forced_language =='en': }}      
-                              Wir freuen uns über unsere neue Kooperation mit dem gemeinnützigen Verein "<a href="{{=URL(myconf.take('web.application'),'partner','index/dbae')}}" title="Informationsseite zum Verein Das Bild als Ereignis">Das Bild als Ereignis e. V.</a>". In Kürze wird hier der zweite Band seiner Schriftenreihe mit dem Titel "Mediale Dimensionen von Reproduktion" als Open-Access-eBook erscheinen.
+                              Wir freuen uns über unsere neue Kooperation mit dem gemeinnützigen Verein "<a href="{{=URL('partner','index/dbae')}}" title="Informationsseite zum Verein Das Bild als Ereignis">Das Bild als Ereignis e. V.</a>". In Kürze wird hier der zweite Band seiner Schriftenreihe mit dem Titel "Mediale Dimensionen von Reproduktion" als Open-Access-eBook erscheinen.
                           {{pass}}                                   
                                       </p>
                                     </div>
@@ -151,7 +151,7 @@
           
           <div class="media">
                   <div class="media-left pull-left">
-                       <img src="{{=URL(myconf.take('web.application'),'static','images/home/Open_access_logo.png')}}" style="width: 50px;" />
+                       <img src="{{=URL('static','images/home/Open_access_logo.png')}}" style="width: 50px;" />
                   </div>                        
                   <div class="media-body">      
                       <p class="media-heading">
@@ -182,7 +182,7 @@
                                 <!--<div class="media">
                                     <div class="media-left pull-left">
                                         <a href="#">
-                                            <img src="{{=URL(myconf.take('web.application'),'static','images/press/home/cluster.jpg')}}" width="50px"/>
+                                            <img src="{{=URL('static','images/press/home/cluster.jpg')}}" width="50px"/>
                                         </a>
                                     </div>
                                     <div class="media-body">
@@ -227,7 +227,7 @@
                                     <h4>Series</h4>                                    
                                        {{pass}}                                    
 
-                                    {{=IMG(_src=URL(myconf.take('web.application'),'static','images/home/kursaechsische_kartographie.jpg'),_width='145px')}}
+                                    {{=IMG(_src=URL('static','images/home/kursaechsische_kartographie.jpg'),_width='145px')}}
 
                                 </div>
 
@@ -254,7 +254,7 @@
                                     <h4>Series</h4>
                                    {{pass}}
 
-                                   {{=IMG(_src=URL(myconf.take('web.application'),'static','images/series/serien_cover.png'),_width='145px')}}
+                                   {{=IMG(_src=URL('static','images/series/serien_cover.png'),_width='145px')}}
                                 
 
                                 </div>

@@ -9,7 +9,7 @@
 	      <div class="col-lg-3">
 	        <article>
 	          <div class="post-image">
-	            {{=IMG(_src=coverImageLink(request, myconf.take('web.application'), submission.submission_id))}}
+	            {{=IMG(_src=coverImageLink(request, request.application, submission.submission_id))}}
 	          </div>
 	        </article>
 	        {{cleanTitle = " ".join([submission_settings.getLocalizedValue('prefix', locale), submission_settings.getLocalizedValue('title', locale)])}}
@@ -80,7 +80,7 @@
 	              	{{full_file = pf.associated_items.get('full_file')}}
 	              	{{if full_file and "html" in full_file.file_type:}}
 	              		<div class="btn-group" role="group" aria-label="1">
-	              			<li type="button" class="btn btn-default"><a href={{=downloadLink(myconf.take('web.application'), full_file)}} target="_blank">{{=T('Read')}}</a></li>
+	              			<li type="button" class="btn btn-default"><a href={{=downloadLink(request.application, full_file)}} target="_blank">{{=T('Read')}}</a></li>
 	              		</div>
 	              	{{pass}}
 	              {{pass}}
@@ -94,7 +94,7 @@
 		              	{{full_file = pf.associated_items.get('full_file')}}
 		              	{{if full_file and not "html" in full_file.file_type:}}
 		             		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-		                		<li role="presentation"><a role="menuitem" tabindex="-1" href={{=downloadLink(myconf.take('web.application'), full_file)}}>PDF</a></li>
+		                		<li role="presentation"><a role="menuitem" tabindex="-1" href={{=downloadLink(request.application, full_file)}}>PDF</a></li>
 		              		</ul>
 		              	{{pass}}
 		              {{pass}}
@@ -197,7 +197,7 @@
 	            					{{c_file = c_files.get(pf.attributes.publication_format_id)}}
 	            					{{if c_file:}}
 	            						<div class="chapter_file">
-	            							{{=A(I(_class="fa fa-file-text-o"), _href=downloadLink(myconf.take('web.application'), c_file))}}
+	            							{{=A(I(_class="fa fa-file-text-o"), _href=downloadLink(request.application, c_file))}}
 	            						</div>
 	            					{{pass}}
 	            				{{pass}}
@@ -225,4 +225,4 @@
     full_pdf= "{{=full_pdf}}";
   {{pass}}
 </script>
-<script src="{{=URL(myconf.take('web.application'),'static','js/stats.js')}}" data-ids="{{=XML(file_ids)}}" data-full_pdf=full_pdf data-full_xml=full_xml ></script>--!>
+<script src="{{=URL('static','js/stats.js')}}" data-ids="{{=XML(file_ids)}}" data-full_pdf=full_pdf data-full_xml=full_xml ></script>--!>

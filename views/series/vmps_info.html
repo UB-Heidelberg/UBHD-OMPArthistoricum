@@ -12,7 +12,7 @@
 
 
                 {{if session.forced_language =='de': }}
-<div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL(myconf.take('web.application'),'static','images/partner/skd_logo.png'),_width='230px')}}</p>
+<div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL('static','images/partner/skd_logo.png'),_width='230px')}}</p>
                 <br>
                 <p><b>Kontakt</b><br>
                 Dr. Michael Korey<br>
@@ -38,7 +38,7 @@
 </div>
 
                      {{elif session.forced_language =='en': }}
-<div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL(myconf.take('web.application'),'static','images/partner/skd_logo.png'),_width='230px')}}</p>
+<div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL('static','images/partner/skd_logo.png'),_width='230px')}}</p>
                 <br>
                 <p><b>Kontakt</b><br>
                 Dr. Michael Korey<br>

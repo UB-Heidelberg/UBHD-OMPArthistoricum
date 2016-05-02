@@ -25,23 +25,23 @@
     <link rel="stylesheet" href="{{=URL('static','css/web2py-bootstrap3.css')}}"/-->
 
       <!-- new -->
-      <link rel="stylesheet" href="{{=URL(myconf.take('web.application'),'static','css/bootstrap.min.css')}}"/>
-      <link rel="stylesheet" href="{{=URL(myconf.take('web.application'),'static','css/fancybox/jquery.fancybox.css')}}"/>
-      <link rel="stylesheet" href="{{=URL(myconf.take('web.application'),'static','css/flexslider.css')}}"/>
-      <link rel="stylesheet" href="{{=URL(myconf.take('web.application'),'static','css/style.css')}}"/>
-      <link rel="stylesheet" href="{{=URL(myconf.take('web.application'),'static','css/default.css')}}"/>
-      <link rel="stylesheet" href="{{=URL(myconf.take('web.application'),'static','css/font-awesome.css' )}}"/>
+      <link rel="stylesheet" href="{{=URL('static','css/bootstrap.min.css')}}"/>
+      <link rel="stylesheet" href="{{=URL('static','css/fancybox/jquery.fancybox.css')}}"/>
+      <link rel="stylesheet" href="{{=URL('static','css/flexslider.css')}}"/>
+      <link rel="stylesheet" href="{{=URL('static','css/style.css')}}"/>
+      <link rel="stylesheet" href="{{=URL('static','css/default.css')}}"/>
+      <link rel="stylesheet" href="{{=URL('static','css/font-awesome.css' )}}"/>
       <!-- end -->
 
-    <link rel="shortcut icon" href="{{=URL(myconf.take('web.application'),'static','images/favicon.ico')}}" type="image/x-icon">
-    <link rel="apple-touch-icon" href="{{=URL(myconf.take('web.application'),'static','images/favicon.png')}}">
+    <link rel="shortcut icon" href="{{=URL('static','images/favicon.ico')}}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{=URL('static','images/favicon.png')}}">
 
 
     <!-- All JavaScript at the bottom, except for Modernizr which enables
          HTML5 elements & feature detects -->
-    <script src="{{=URL(myconf.take('web.application'),'static','js/modernizr-2.8.3.min.js')}}"></script>
+    <script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
     <!--[if lt IE 9]>
-        <script src="{{=URL(myconf.take('web.application'),'static','js/respond-1.4.2.min.js')}}"></script>
+        <script src="{{=URL('static','js/respond-1.4.2.min.js')}}"></script>
         <![endif]-->
     <!-- Favicons add  -->
     {{include 'web2py_ajax.html'}} <!-- this includes jquery.js, calendar.js/.css and web2py.js -->
@@ -71,8 +71,8 @@
             <div class="col-lg-12 col-sm-12 col-xs-12">
 
                 <ul class="nav nav-pills pull-right">
-                    <li><a href="{{=URL(myconf.take('web.application'),'contact','index')}}" style="padding-right: 0;">{{=T('Contact')}}</a></li>
-                    <li><a href="{{=URL(myconf.take('web.application'),'contact','imprint')}}" style="padding-right: 0;">{{=T('Legal Notice')}}</a></li>
+                    <li><a href="{{=URL('contact','index')}}" style="padding-right: 0;">{{=T('Contact')}}</a></li>
+                    <li><a href="{{=URL('contact','imprint')}}" style="padding-right: 0;">{{=T('Legal Notice')}}</a></li>
          <!--<li><a href="suche.html">{{=T('Search')}} |</a></li>-->
                     <!--<li><a href="faq.html">FAQ |</a></li>-->
                      {{if session.forced_language=='en':}}
@@ -89,8 +89,8 @@
     </div>
        <div class="container">
        <div id="headerLogo" class="col-lg-12 print-url">
-         <img id="heiup-logo" class="screen" src="{{=URL(myconf.take('web.application'),'static','images/press/schriftzug_header.png')}}" />
-         <img id="heiup-logo-print" class="print" src="{{=URL(myconf.take('web.application'),'static','images/press/schriftzug_header_print.png')}}" />
+         <img id="heiup-logo" class="screen" src="{{=URL('static','images/press/schriftzug_header.png')}}" />
+         <img id="heiup-logo-print" class="print" src="{{=URL('static','images/press/schriftzug_header_print.png')}}" />
        </div> 
        </div>
        
@@ -111,29 +111,29 @@
                         </div>
                         <div class="navbar-collapse collapse pull-left ">
                             <ul class="nav navbar-nav">
-                                <li><a href="{{=URL(myconf.take('web.application'),'home','index')}}">{{=T('Home')}}</a></li>
+                                <li><a href="{{=URL('home','index')}}">{{=T('Home')}}</a></li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                                        data-delay="0" data-close-others="false">{{=T('About us')}}<b class=" icon-angle-down"></b></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{=URL(myconf.take('web.application'),'about_us', 'profile')}}"> {{=T('Profil')}}</a></li>
-                                        <li><a href="{{=URL(myconf.take('web.application'),'about_us','our_service')}}">{{=T('Our Service')}}</a></li>
-                                        <li><a href="{{=URL(myconf.take('web.application'),'about_us','technology')}}"> {{=T('Technology')}}</a></li>
+                                        <li><a href="{{=URL('about_us', 'profile')}}"> {{=T('Profil')}}</a></li>
+                                        <li><a href="{{=URL('about_us','our_service')}}">{{=T('Our Service')}}</a></li>
+                                        <li><a href="{{=URL('about_us','technology')}}"> {{=T('Technology')}}</a></li>
                                         
 
                                     </ul>
                                 </li>
-                                <li><a href="{{=URL(myconf.take('web.application'),'catalog','index')}}">{{=T('Books')}}</a></li>
-                                <li><a href="{{=URL(myconf.take('web.application'),'series','index')}}">{{=T('Series')}}</a></li>
-                                <!--<li><a href="{{=URL(myconf.take('web.application'),'journals','index')}}">{{=T('Journals')}}</a></li>-->
+                                <li><a href="{{=URL('catalog','index')}}">{{=T('Books')}}</a></li>
+                                <li><a href="{{=URL('series','index')}}">{{=T('Series')}}</a></li>
+                                <!--<li><a href="{{=URL('journals','index')}}">{{=T('Journals')}}</a></li>-->
                         	<li class="dropdown">
 
                                     <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown"
                                        data-delay="0" data-close-others="false">{{=T('Partner')}} <b class="icon-angle-down"></b></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{=URL(myconf.take('web.application'),'partner','index',args=['ap'])}}">ad picturam Fachverlag</a></li>
-                                        <li><a href="{{=URL(myconf.take('web.application'),'partner','index',args=['dbae'])}}">Das Bild als Ereignis e.V.</a></li>
-                                        <li><a href="{{=URL(myconf.take('web.application'),'partner','index',args=['skd'])}}">Staatl. Kunstslg. Dresden</a></li>
+                                        <li><a href="{{=URL('partner','index',args=['ap'])}}">ad picturam Fachverlag</a></li>
+                                        <li><a href="{{=URL('partner','index',args=['dbae'])}}">Das Bild als Ereignis e.V.</a></li>
+                                        <li><a href="{{=URL('partner','index',args=['skd'])}}">Staatl. Kunstslg. Dresden</a></li>
                                     </ul>
                                 </li>
 
@@ -144,9 +144,9 @@
                                     <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown"
                                        data-delay="0" data-close-others="false">{{=T('Publishing')}} <b class="icon-angle-down"></b></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{=URL(myconf.take('web.application'),'publishing','for_authors')}}">{{=T('Information for Authors')}} </a></li>
-                                        <!--li><a href="{{=URL(myconf.take('web.application'),'publishing','book_proposal')}}">{{=T('Book Proposal')}}</a></li-->
-                                        <li><a href="{{=URL(myconf.take('web.application'),'publishing','rights_and_licences')}}">{{=T('Rights and Licences')}} </a></li>
+                                        <li><a href="{{=URL('publishing','for_authors')}}">{{=T('Information for Authors')}} </a></li>
+                                        <!--li><a href="{{=URL('publishing','book_proposal')}}">{{=T('Book Proposal')}}</a></li-->
+                                        <li><a href="{{=URL('publishing','rights_and_licences')}}">{{=T('Rights and Licences')}} </a></li>
 
                                     </ul>
                                 </li>
@@ -155,9 +155,9 @@
                                     <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown"
                                        data-delay="0" data-close-others="false">{{=T('Quality Control')}} <b class=" icon-angle-down"></b></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{=URL(myconf.take('web.application'),'quality_control','peer_review')}}"> {{=T('Peer Review')}}</a></li>
-                                        <li><a href="{{=URL(myconf.take('web.application'),'quality_control','plagiarism')}}"> {{=T('Plagiarism')}}</a></li>
-                                        <li><a href="{{=URL(myconf.take('web.application'),'quality_control','data_privacy')}}">{{=T('Data Privacy')}} </a></li>
+                                        <li><a href="{{=URL('quality_control','peer_review')}}"> {{=T('Peer Review')}}</a></li>
+                                        <li><a href="{{=URL('quality_control','plagiarism')}}"> {{=T('Plagiarism')}}</a></li>
+                                        <li><a href="{{=URL('quality_control','data_privacy')}}">{{=T('Data Privacy')}} </a></li>
 
 
                                     </ul>
@@ -174,12 +174,12 @@
 
                                 <li>
                                     <a>
-                                    <img id="nav-social-media" src="{{=URL(myconf.take('web.application'),'static','images/press/social-media-icons.png')}}" height="30px"  alt="Planets" usemap="#socialmap">
+                                    <img id="nav-social-media" src="{{=URL('static','images/press/social-media-icons.png')}}" height="30px"  alt="Planets" usemap="#socialmap">
 
 
                                     <map name="socialmap">
 					{{if request.url=='/': }}
-					{{request.url=request.url+myconf.take('web.application')}}
+					{{request.url=request.url+request.application}}
 					{{pass}}	
                                  <area shape="rect" coords="0,0,30,30" alt="fb" href="https://www.facebook.com/sharer/sharer.php?u={{=myconf.take('web.url')+request.url}}">
                                         <area shape="rect" coords="30,0,60,30" alt="twitter" href="http://twitter.com/home?status={{=myconf.take('web.url')+request.url}}">
@@ -235,7 +235,7 @@
 
                         <ul class="slides">
                             <li>
-                                <img id="hup-logo" src="{{=URL(myconf.take('web.application'),'static','images/press/slideshow/01_ebook_reader.jpg')}}" />
+                                <img id="hup-logo" src="{{=URL('static','images/press/slideshow/01_ebook_reader.jpg')}}" />
                             </li>
                         </ul>
 
@@ -283,19 +283,19 @@
 
                         <div class="col-lg-3">
 
-                          <div id="footer_logo_ub" class="widget"><a href="http://www.ub.uni-heidelberg.de" title="Homepage Universitätsbibliothek Heidelberg"><img alt="Logo - Universitätsbibliothek Heidelberg" src="{{=URL(myconf.take('web.application'),'static','/images/press/footer_logoUBHei.png')}}" /></a></div>
+                          <div id="footer_logo_ub" class="widget"><a href="http://www.ub.uni-heidelberg.de" title="Homepage Universitätsbibliothek Heidelberg"><img alt="Logo - Universitätsbibliothek Heidelberg" src="{{=URL('static','/images/press/footer_logoUBHei.png')}}" /></a></div>
 
                         </div>
 
 
                         <div class="col-lg-3">
-                           <div id="footer_logo_dfg" class="widget"><a href="http://www.dfg.de" title="Deutsche Forschungsgesellschaft"><img alt="Logo - Deutsche Forschungsgesellschaft" src="{{=URL(myconf.take('web.application'),'static','/images/press/footer_logoDFG.png')}}" /></a></div>
+                           <div id="footer_logo_dfg" class="widget"><a href="http://www.dfg.de" title="Deutsche Forschungsgesellschaft"><img alt="Logo - Deutsche Forschungsgesellschaft" src="{{=URL('static','/images/press/footer_logoDFG.png')}}" /></a></div>
 
                         </div>
 
 
                         <div class="col-lg-3">
-                           <div id="footer_logo_ahn" class="widget"><a href="http://www.arthistoricum.net/" title="Homepage Arthistoricum.net"><img alt="Logo - Arthistoricum.net" src="{{=URL(myconf.take('web.application'),'static','/images/press/footer_logoAHN.png')}}" /></a></div>
+                           <div id="footer_logo_ahn" class="widget"><a href="http://www.arthistoricum.net/" title="Homepage Arthistoricum.net"><img alt="Logo - Arthistoricum.net" src="{{=URL('static','/images/press/footer_logoAHN.png')}}" /></a></div>
                         </div>
 
                         <div class="col-lg-3">
@@ -309,8 +309,8 @@
          </footer>
   </div>
     {{end}}
-        <script src="{{=URL(myconf.take('web.application'),'static','js/jquery.flexslider.js')}}"></script>
-    <script src="{{=URL(myconf.take('web.application'),'static','js/bootstrap.min.js')}}"></script>
+        <script src="{{=URL('static','js/jquery.flexslider.js')}}"></script>
+    <script src="{{=URL('static','js/bootstrap.min.js')}}"></script>
   </body>
 </html>
 {{db.t_usage_statistics.insert()}}
