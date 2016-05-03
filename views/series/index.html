@@ -1,6 +1,6 @@
 {{extend 'layout.html'}}
 {{import json}}
-{{from ompformat import formatContributors}}
+{{from ompformat import formatContributors, getSeriesImageLink}}
 
 <div id="main" class="container">
 	<section id="content">
@@ -11,7 +11,7 @@
 		  			<article>
 		  				<div class="post-image">
 		  					{{if len(row['image']) > 7 :}}
-		  						<img src="{{=URL('static','series/'+series.attributes.image[4:].split(';')[1].split('"')[1])}}"/>
+		  						{{=IMG(_src=getSeriesImageLink(request, press.press_id, series.attributes.image))}}
 							{{pass}}
 						</div>
 					</article>
@@ -60,3 +60,5 @@
 		</div>
 	</section>
 </div>
+{{db.t_usage_statistics.insert()}}
+{{db.commit()}}

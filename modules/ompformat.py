@@ -9,7 +9,7 @@ from html import URL, I
 from gluon import current
 from datetime import datetime
 from locale import getlocale, setlocale, getdefaultlocale, LC_TIME
-from os.path import exists
+from os.path import exists, join
 
 ONIX_INPUT_DATE_MAP = {
     "00": "%Y%m%d",    #Year month day (default).
@@ -211,16 +211,19 @@ def downloadLink(application, file_row):
                args=[file_row.submission_id, file_name]
                )
     
-def coverImageLink(request, application, submission_id):
+def coverImageLink(request, press_id, submission_id):
     """
     Check, if cover image for a given submission exists, and build link.
     """
     cover_image=''
-    path=request.folder+'static/monographs/'+str(submission_id)+'/simple/cover.'
+    path=request.folder+join('static', 'files', 'presses', str(press_id), 'monographs', str(submission_id), 'simple', 'cover')+'.'
     for t in ['jpg','png','gif']:
         if exists(path+t):
-            cover_image = URL(application, 'static','monographs/' + str(submission_id) + '/simple/cover.'+t)
+            cover_image = URL(request.application, 'static', join('files', 'presses', str(press_id), 'monographs', str(submission_id), 'simple', 'cover')+'.'+t)
     return cover_image
+
+def getSeriesImageLink(request, press_id, image):
+    return URL(request.application, 'static', join('static/files/presses', str(press_id), 'series', image[4:].split(';')[1].split('"')[1]))
 
 def haveMultipleAuthors(chapters):
     """
