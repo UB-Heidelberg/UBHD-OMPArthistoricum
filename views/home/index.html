@@ -9,33 +9,6 @@
     <!-- end header -->
 
     <section id="featured">
-
-        <!-- start slider -->
-<!--
-        <div class="container">
-
-            <div class="row">
-
-                <div class="col-lg-12">
-
-
-                    <div id="main-slider" class="flexslider">
-
-                        <ul class="slides">                
-                            <li>
-                                <img id="hup-logo" src="{{=URL('static','images/press/slideshow/01_ebook_reader.jpg')}}" />
-                            </li>
-                        </ul>
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-        </div>
--->
     </section>
 
     <section id="content">
@@ -51,98 +24,49 @@
                         <div class="col-lg-3">
 
                             <div class="box">
-                                {{if session.forced_language =='de': }}                
                                 <div class="box-gray aligncenter">
-
-                                    <h4>Neuerscheinung</h4>
-
-				   {{=IMG(_src=URL('static','monographs/49/simple/cover.jpg'),_width='145px')}}
+                                    <h4>{{=T('New Titles')}}</h4>
+				   				{{=IMG(_src=URL('static','files/presses/2/monographs/49/simple/cover.jpg'),_width='145px')}}
                                 </div>
-
                                 <div class="box-bottom">
-
-                                    {{=A(T('More'),_href=URL('catalog','book/49'))}}
-
+                                    {{=A(T('More Information'),_href=URL('catalog','book/49'))}}
                                 </div>
-
-                            {{elif session.forced_language =='en': }}
-                        <div class="box-gray aligncenter">
-   
-   <h4>New Titles</h4>
-				   {{=IMG(_src=URL('static','monographs/49/simple/cover.jpg'),_width='145px')}}
-                                </div>
-
-             <div class="box-bottom">
-
-                  {{=A(T('More Information'),_href=URL('catalog','book/49'))}}
-
-              </div>
-               {{pass}}  
-          </div>                                    
+          					</div>                                    
                      
-      </div>
+      					</div>
 
-      <div class="col-lg-3">
-      
-          <div class="box">
-
-              <div class="box-gray aligncenter">
-              {{if session.forced_language =='de': }}  
-                  <h4>Demnächst</h4>
-                      {{=IMG(_src=URL('static','images/press/home/cover_chant.png'),_width='145px')}}
-               </div>
-
-               <div class="box-bottom">
-
-                  {{=A(T('More'),_href=URL('partner','index/ap'))}}
-
-               </div>
-          {{elif session.forced_language =='en': }}
-                <h4>Soon</h4>
-                      {{=IMG(_src=URL('static','images/press/home/cover_chant.png'),_width='145px')}}
-               </div>
-
-               <div class="box-bottom">
-
-                  {{=A(T('More Information'),_href=URL('partner','index/ap'))}}
-
-               </div>
-          
-                {{pass}}  
-
-
-          </div>
-
-      </div>
+				      <div class="col-lg-3">
+				      
+				          <div class="box">
+				              <div class="box-gray aligncenter">
+				                  <h4>{{=T('Soon')}}</h4>
+				                  {{=IMG(_src=URL('static','images/press/home/cover_chant.png'),_width='145px')}}
+				               </div>
+				               <div class="box-bottom">
+				                  {{=A(T('More Information'),_href=URL('partner','index/ap'))}}
+				               </div>
+				          </div>
+				
+				      </div>
 
       <div id="boxAktuelles" class="col-lg-6">
 
           <div class="box">
         <div class="box-gray aligncenter" style="overflow-y: scroll">
+              <h4>{{=T('News')}}</h4>
 
-          {{if session.forced_language =='de': }}       
-              <h4>Aktuelles</h4>
-          {{elif session.forced_language =='en': }}
-              <h4>News</h4>
-          {{pass}}
-          
-          
               <div class="media">
                   <div class="media-left pull-left">
                        <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
                   </div>                        
                   <div class="media-body">      
                       <p class="media-heading">
-        {{if session.forced_language =='de': }}  
-            <h5>Neu in arthistoricum.net – ART-Books</h5>
-        {{elif session.forced_language =='en': }}
-            <h5>New in arthistoricum.net – ART-Books</h5> 
-        {{pass}}          
+            		<h5>{{=T('New in')}} arthistoricum.net – ART-Books</h5> 
                       </p>
                   <p class="boxText">
-        {{if session.forced_language =='de': }}  
+        		{{if session.forced_language =='de': }}  
                               Wir freuen uns über unsere neue Kooperation mit dem gemeinnützigen Verein "<a href="{{=URL('partner','index/dbae')}}" title="Informationsseite zum Verein Das Bild als Ereignis">Das Bild als Ereignis e. V.</a>". In Kürze wird hier der zweite Band seiner Schriftenreihe mit dem Titel "Mediale Dimensionen von Reproduktion" als Open-Access-eBook erscheinen. 
-               {{elif session.forced_language =='en': }}      
+               	{{elif session.forced_language =='en': }}      
                               Wir freuen uns über unsere neue Kooperation mit dem gemeinnützigen Verein "<a href="{{=URL('partner','index/dbae')}}" title="Informationsseite zum Verein Das Bild als Ereignis">Das Bild als Ereignis e. V.</a>". In Kürze wird hier der zweite Band seiner Schriftenreihe mit dem Titel "Mediale Dimensionen von Reproduktion" als Open-Access-eBook erscheinen.
                           {{pass}}                                   
                                       </p>
@@ -155,11 +79,7 @@
                   </div>                        
                   <div class="media-body">      
                       <p class="media-heading">
-        {{if session.forced_language =='de': }}  
-            <h5>open-access.net</h5>
-        {{elif session.forced_language =='en': }}
-            <h5>open-access.net</h5>        
-        {{pass}}   
+            			<h5>open-access.net</h5>
                       </p>
                   <p class="boxText">
 {{if session.forced_language =='de': }}
@@ -174,30 +94,9 @@
 
 
               </div>
-              
 
-                                
                                 </div>
-                                
-                                <!--<div class="media">
-                                    <div class="media-left pull-left">
-                                        <a href="#">
-                                            <img src="{{=URL('static','images/press/home/cluster.jpg')}}" width="50px"/>
-                                        </a>
-                                    </div>
-                                    <div class="media-body">
-                                        <p class="media-heading"><strong>DFG-Projekt: Entwicklung eines Geschäftsmodells für Open-Access-Bücher</strong> </p>
-                                        <p>Der Exzellenzcluster „Asien und Europa im globalen Kontext“ der Universität Heidelberg und die Universitätsbibliothek Heidelberg planen die Entwicklung eines innovativen Geschäftsmodells für die frei zugängliche Veröffentlichung wissenschaftlicher Bücher im Internet.
-                                            <a href="http://www.asia-europe.uni-heidelberg.de/en/research/publishing/heidelberg-studies-in-transculturality-an-open-access-book-series.html"  target="_blank">&nbsp;<i class="fa fa-external-link"></i></a>
-                                        </p>
-                                    </div>
-                                </div>-->
-                                                                <div class="box-bottom">&nbsp;
-   <!--{{if session.forced_language =='de': }}
-                                    <a href="http://heiup.uni-heidelberg.de/#"><span style="color: #EFEFEF;">Mehr</span>
-      {{elif session.forced_language =='en': }}
-                                    <a href="http://heiup.uni-heidelberg.de/#"><span style="color: #EFEFEF;">More</span>
-                                      {{pass}}-->         
+                                   
                                 </div>
 
                             </div>
@@ -215,64 +114,33 @@
                 <div class="col-lg-12">
 
                     <div class="row">
-
                         <div class="col-lg-3">
-
                             <div class="box">
-
                                 <div class="box-gray aligncenter">
-   {{if session.forced_language =='de': }}
-                                    <h4>Reihe</h4>
-   {{elif session.forced_language =='en': }}
-                                    <h4>Series</h4>                                    
-                                       {{pass}}                                    
-
+									<h4>{{=T('Series ##sg')}}</h4>                                 
                                     {{=IMG(_src=URL('static','images/home/kursaechsische_kartographie.jpg'),_width='145px')}}
-
                                 </div>
 
                                 <div class="box-bottom">
-   {{if session.forced_language =='de': }}
-                                    {{=A(T('More'),_href=URL('catalog','series/vmps'))}}
-      {{elif session.forced_language =='en': }}
                                     {{=A(T('More Information'),_href=URL('catalog','series/vmps'))}}
-                                      {{pass}}         
                                 </div>
-
                             </div>
-
                         </div>
 
                         <div class="col-lg-3">
-
                             <div class="box">
-
                                 <div class="box-gray aligncenter">
-                                   {{if session.forced_language =='de': }}
-                                    <h4>Reihe</h4>
-                                   {{elif session.forced_language =='en': }}
-                                    <h4>Series</h4>
-                                   {{pass}}
-
-                                   {{=IMG(_src=URL('static','images/series/serien_cover.png'),_width='145px')}}
-                                
-
+                                   <h4>{{=T('Series ##sg')}}</h4>
+                                   {{=IMG(_src=URL('static','images/files/presses/2/series/serien_cover.png'),_width='145px')}}
                                 </div>
 
                                 <div class="box-bottom">&nbsp;
-<!--
-                                {{if session.forced_language =='de': }}
-                                {{=A(T('More'),_href=URL('series','eva_info'))}}
-      {{elif session.forced_language =='en': }}
-                                {{=A(T('More Information'),_href=URL('series','index/eva_info'))}}
-                                {{pass}}-->
+<!--{{=A(T('More Information'),_href=URL('series','index/eva_info'))}}-->
                                 </div>
-
                             </div>
-
                         </div>
 
-                        <div class="col-lg-6" id="boxAktuelles">
+                    <div class="col-lg-6" id="boxAktuelles">
 
                         <div class="box">
                         <div class="box-gray aligncenter">
@@ -292,26 +160,14 @@ Zum Einsatz kommt die Open-Source-Software OMP des Public Knowledge Project (PKP
                         </div>
  
               <div class="box-bottom">&nbsp;</div>
-                      </div>
-                        </div>
-
-
-
-
-
-
-
-
-                        </div>
-
+                      	</div>
                     </div>
+
+                   </div>
 
                 </div>
 
-            </div>
-
-        </div>
-
+          </div>
     </section>
-
 </div>
+
