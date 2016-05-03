@@ -42,6 +42,7 @@ databases/*
 sessions/*
 static/monographs
 static/series
+static/files
 private/*
 errors/*
 private/
