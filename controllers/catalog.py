@@ -50,10 +50,9 @@ def series():
         )
         
         submissions.append(submission)
-    
+
+    submissions = sorted(submissions, cmp=seriesPositionCompare, reverse=True)
     series.associated_items['submissions'] = submissions
-    
-    sorted(submissions, key=lambda submission: submission.attributes.series_position, cmp=seriesPositionCompare)
 
     return locals()
 

@@ -240,11 +240,13 @@ def haveMultipleAuthors(chapters):
     else:
         return True
 
-def seriesPositionCompare(p1, p2):
+def seriesPositionCompare(s1, s2):
+    p1 = s1.attributes.series_position
+    p2 = s2.attributes.series_position
     try:
         # Try casting to integer
-        p1 = int(p1)
-        p2 = int(p2)
+        p1 = float(p1)
+        p2 = float(p2)
     except ValueError:
         try:
             # Try finding an integer substring
@@ -254,5 +256,10 @@ def seriesPositionCompare(p1, p2):
             # No integer value found – keep position values as is for comparison
             pass
             
-    return p1 > p2
-        
+    if p1 > p2:
+	return 1
+    elif p2 > p1:
+        return -1
+    else:
+	return 0
+
