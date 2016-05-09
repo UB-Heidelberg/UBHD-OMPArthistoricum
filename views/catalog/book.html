@@ -25,7 +25,7 @@
 	            {{else:}}
 	            	{{citation_year=""}}
 	            {{pass}}
-	            {{=formatCitation(cleanTitle, subtitle, authors, editors, citation_year, press_settings.getLocalizedValue('location', locale), press_settings.getLocalizedValue('name', locale), doi, locale, series_name="", series_pos="", max_contrib=3)}}
+	            {{=formatCitation(cleanTitle, subtitle, authors, editors, citation_year, press_settings.getLocalizedValue('location', ''), press_settings.getLocalizedValue('publisher', ''), doi, locale, series_name="", series_pos="", max_contrib=3)}}
 	            {{=A(doi, _href="http://dx.doi.org/"+doi)}}
 	            </p>
 	            {{identification_codes = [i for i in [pf.associated_items.get('identification_codes', []) for pf in digital_publication_formats+physical_publication_formats] if i]}}

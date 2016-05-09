@@ -74,12 +74,12 @@ def formatCitation(title, subtitle, authors, editors, year, location, press_name
     cit, et_al, edt = "", "", ""
     if editors:
         if len(editors) > max_contrib:
-            et_al = " et al"
+            et_al = " et al."
         contrib = editors[:max_contrib]
         if len(editors) == 1:
-            edt = ", "+current.T.translate('ed', {})
+            edt = ", "+current.T.translate('(ed.)', {})
         else:
-            edt = ", "+current.T.translate('eds', {})
+            edt = ", "+current.T.translate('(eds)', {})
     elif authors:
         if len(authors) > max_contrib:
             et_al = " et al"
@@ -99,12 +99,12 @@ def formatCitation(title, subtitle, authors, editors, year, location, press_name
         cit = "{} and {}".format(", ".join([formatName(c.attributes, reverse=True) for c in contrib[:-1]]),
                                      formatName(contrib[-1].attributes))
     
-    cit = "".join([cit, et_al, edt])+". "
+    cit = "".join([cit, et_al, edt])+": "
     cit += title
     if subtitle:
         cit += ": "+subtitle
 
-    cit += location+": "+press_name+", "+year+"."
+    cit += ", "+location+": "+press_name+", "+year+"."
     if doi:
         cit += " DOI: "
     return cit
