@@ -80,7 +80,7 @@ class OMPDAL:
 			& (s.status == status)
 		)
 		
-		return self.db(q).select(s.ALL, orderby=s.series_position)
+		return self.db(q).select(s.ALL, orderby=~s.series_position)
 	
 	def getPublishedSubmission(self, submission_id, press_id=None):
 		"""
