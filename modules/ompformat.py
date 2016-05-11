@@ -93,7 +93,7 @@ def formatCitation(title, subtitle, authors, editors, year, location, press_name
         cit = f_str.format(formatName(contrib[0].attributes, reverse=True),
                                  formatName(contrib[1].attributes))
     elif num_contrib == 3:
-        f_str = "{} "+current.T.translate('and', {})+" {}"
+        f_str = "{}, {} "+current.T.translate('and', {})+" {}"
         cit = f_str.format(formatName(contrib[0].attributes, reverse=True),
                                      formatName(contrib[1].attributes),
                                      formatName(contrib[2].attributes))
