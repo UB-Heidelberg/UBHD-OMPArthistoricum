@@ -18,7 +18,7 @@
 	    	{{if series:}}
 	    		{{series_title = " ".join([series.settings.getLocalizedValue('prefix', locale), series.settings.getLocalizedValue('title', locale)])}}
 				{{series_subtitle = series.settings.getLocalizedValue('subtitle', locale)}}
-				{{series_name = " – ".join([t for t in [series_title, series_subtitle] if t])}}
+				{{series_name = " – ".join([t for t in [series_title.strip(), series_subtitle] if t])}}
 			{{else:}}
 				{{series_name = ""}}
 	    	{{pass}}
