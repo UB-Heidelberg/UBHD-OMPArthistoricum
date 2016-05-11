@@ -53,7 +53,7 @@
 'Advisory Board': 'Beirat',
 'Ajax Recipes': 'Ajax Rezepte',
 'Altersempfehlung': 'Altersempfehlung',
-'and': 'and',
+'and': 'und',
 'Ansichtsexemplar': 'Ansichtsexemplar',
 'Anz. der Medien': 'Anz. der Medien',
 'Anz. Rillungen': 'Anz. Rillungen',

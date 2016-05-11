@@ -89,14 +89,17 @@ def formatCitation(title, subtitle, authors, editors, year, location, press_name
     if num_contrib == 1:
         cit = formatName(contrib.pop().attributes)
     elif num_contrib == 2:
-        cit = "{} and {}".format(formatName(contrib[0].attributes, reverse=True),
+        f_str = "{} "+current.T.translate('and', {})+" {}"
+        cit = f_str.format(formatName(contrib[0].attributes, reverse=True),
                                  formatName(contrib[1].attributes))
     elif num_contrib == 3:
-        cit = "{}, {} and {}".format(formatName(contrib[0].attributes, reverse=True),
+        f_str = "{} "+current.T.translate('and', {})+" {}"
+        cit = f_str.format(formatName(contrib[0].attributes, reverse=True),
                                      formatName(contrib[1].attributes),
                                      formatName(contrib[2].attributes))
     else:
-        cit = "{} and {}".format(", ".join([formatName(c.attributes, reverse=True) for c in contrib[:-1]]),
+        f_str = "{} "+current.T.translate('and', {})+" {}"
+        cit = f_str.format(", ".join([formatName(c.attributes, reverse=True) for c in contrib[:-1]]),
                                      formatName(contrib[-1].attributes))
     
     cit = "".join([cit, et_al, edt])+": "
