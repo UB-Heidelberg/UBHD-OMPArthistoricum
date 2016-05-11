@@ -166,6 +166,10 @@ def book():
         doi = OMPSettings(ompdal.getPublicationFormatSettings(pdf.first().publication_format_id)).getLocalizedValue("pub-id::doi", "")    # DOI always has empty locale
     else:
         doi = None
+        
+    series = ompdal.getSeriesBySubmissionId(submission_id)
+    if series:
+        series = OMPItem(series, OMPSettings(ompdal.getSeriesSettings(series.series_id)))
     
     # Get purchase info
     representatives = ompdal.getRepresentativesBySubmission(submission_id, myconf.take('omp.representative_id_type'))

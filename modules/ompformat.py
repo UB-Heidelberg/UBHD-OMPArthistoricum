@@ -107,7 +107,11 @@ def formatCitation(title, subtitle, authors, editors, year, location, press_name
     if subtitle:
         cit += ": "+subtitle
 
-    cit += ", "+location+": "+press_name+", "+year+"."
+    cit += ", "+location+": "+press_name+", "+year
+    if series_name and series_pos:
+        f_str = " ({}, "+current.T.translate('Vol.', {})+" {})"
+        cit += f_str.format(series_name, series_pos)
+    cit += "."
     if doi:
         cit += " DOI: "
     return cit

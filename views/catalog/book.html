@@ -15,6 +15,13 @@
 	        {{cleanTitle = " ".join([submission_settings.getLocalizedValue('prefix', locale), submission_settings.getLocalizedValue('title', locale)])}}
 	    	{{subtitle = submission_settings.getLocalizedValue('subtitle', locale)}}
 	    	{{abstract = submission_settings.getLocalizedValue('abstract', locale)}}
+	    	{{if series:}}
+	    		{{series_title = " ".join([series.settings.getLocalizedValue('prefix', locale), series.settings.getLocalizedValue('title', locale)])}}
+				{{series_subtitle = series.settings.getLocalizedValue('subtitle', locale)}}
+				{{series_name = " – ".join([t for t in [series_title, series_subtitle] if t])}}
+			{{else:}}
+				{{series_name = ""}}
+	    	{{pass}}
 	        <div class="box">
 	          <div class="box-gray alignleft" style="height: auto;">
 	            <h5 style="color: #656565; margin-bottom: 0.5em;">{{=T('How to cite this title')}}</h5>
@@ -25,7 +32,7 @@
 	            {{else:}}
 	            	{{citation_year=""}}
 	            {{pass}}
-	            {{=formatCitation(cleanTitle, subtitle, authors, editors, citation_year, press_settings.getLocalizedValue('location', ''), press_settings.getLocalizedValue('publisher', ''), doi, locale, series_name="", series_pos="", max_contrib=3)}}
+	            {{=formatCitation(cleanTitle, subtitle, authors, editors, citation_year, press_settings.getLocalizedValue('location', ''), press_settings.getLocalizedValue('publisher', ''), doi, locale, series_name=series_name, series_pos=submission.series_position, max_contrib=3)}}
 	            {{=A(doi, _href="http://dx.doi.org/"+doi)}}
 	            </p>
 	            {{identification_codes = [i for i in [pf.associated_items.get('identification_codes', []) for pf in digital_publication_formats+physical_publication_formats] if i]}}

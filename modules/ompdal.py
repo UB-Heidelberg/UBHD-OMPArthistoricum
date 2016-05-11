@@ -213,6 +213,19 @@ class OMPDAL:
 		res = self.db(q).select(s.ALL)
 		if res:
 			return res.first()
+		
+	def getSeriesBySubmissionId(self, submission_id):
+		"""
+		Get the series the given submission is assigned to.
+		"""
+		sub = self.db.submissions
+		ser = self.db.series
+		
+		q = ((sub.submission_id == submission_id) & (ser.series_id == sub.series_id))
+		
+		res = self.db(q).select(ser.ALL)
+		if res:
+			return res.first()		
 
 	def getSeries(self, series_id):
 		"""
