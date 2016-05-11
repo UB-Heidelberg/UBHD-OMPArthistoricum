@@ -147,16 +147,8 @@
 		   	  		{{if bios_role != "author" or num_bios < 4:}}
 		            	{{if num_bios != 0:}}
 			            	<p>
-			            		<i>
-			            		{{if num_bios == 1:}}
-			            			{{=T('About the {}:'.format(bios_role))}}
-			            		{{else:}}
-			            			{{=T('About the {}s:'.format(bios_role))}}
-			            		{{pass}}
-			            		</i>
 			            		{{for contributor, bio in bios:}}
 			            			{{if bio:}}
-			            				<h5>{{=(contributor)}}</h5>
 			            				{{=XML(bio)}}
 			            			{{pass}}
 			            		{{pass}}
