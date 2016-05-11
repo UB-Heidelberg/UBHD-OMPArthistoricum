@@ -12,7 +12,7 @@
 		{{=formatContributors(authors)}}
 	{{pass}}
 </h4>
-<h4>{{=submission.settings.getLocalizedValue('title', locale)}}
+<h4>{{=" ".join([submission.settings.getLocalizedValue('prefix', locale), submission.settings.getLocalizedValue('title', locale)])}}
 	{{subtitle = submission.settings.getLocalizedValue('subtitle', locale)}}
 	{{if subtitle:}}
 		<br/>{{=subtitle}}
