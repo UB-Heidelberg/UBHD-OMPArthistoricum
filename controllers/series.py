@@ -34,14 +34,12 @@ def index():
     press = ompdal.getPress(myconf.take('omp.press_id'))
     if not press:
         redirect(URL('home', 'index'))
-
+    
     all_series = []
     for row in ompdal.getSeriesByPress(press.press_id):
-        settings = OMPSettings(ompdal.getSeriesSettings(row.series_id))
-        series = OMPItem(row, settings)
-        series_editors = ompdal.getSeriesEditors(row.series_id)
-        series.associated_items['editors'] = [OMPItem(e, OMPSettings(ompdal.getUserSettings(e.user_id))) for e in series_editors]
-        all_series.append(series)
+        all_series.append(OMPItem(row, OMPSettings(ompdal.getSeriesSettings(row.series_id)), 
+            {'series_editors': [OMPItem(u, OMPSettings(ompdal.getUserSettings(u.user_id))) 
+                                for u in ompdal.getSeriesEditors(press.press_id, row.series_id)]}))
         
     all_series.sort(key=lambda s: s.settings.getLocalizedValue('title', locale))
     

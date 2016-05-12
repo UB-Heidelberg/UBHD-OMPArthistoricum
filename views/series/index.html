@@ -23,16 +23,16 @@
 							{{series_subtitle = series.settings.getLocalizedValue('subtitle', locale)}}
 							<h3>{{=series_title}}</h3>
 							<h4>{{=series_subtitle}}</h4>
-							{{editors = series.associated_items.get('editors')}}
-							{{if editors:}}
-								{{num_editors = len(editors)}}
+							{{series_editors = series.associated_items.get('series_editors')}}
+							{{if series_editors:}}
+								{{num_editors = len(series_editors)}}
 								<p>
 									{{if num_editors > 1:}}
 										{{=T('Editors')}}:
 									{{else:}}
 										{{=T('Editor')}}:
 									{{pass}}
-									{{=formatContributors(editors, max_contributors=3, et_al=True)}}
+									{{=formatContributors(series_editors, max_contributors=3, et_al=True)}}
 								</p>
 							{{pass}}
 						</div>
