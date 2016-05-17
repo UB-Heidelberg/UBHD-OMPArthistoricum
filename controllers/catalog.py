@@ -8,7 +8,7 @@ LICENSE.md
 import os
 from operator import itemgetter
 from ompdal import OMPDAL, OMPSettings, OMPItem
-from ompformat import convertDate, seriesPositionCompare
+from ompformat import dateFromRow, seriesPositionCompare
 from datetime import datetime
 
 def series():
@@ -77,7 +77,7 @@ def index():
     for submission_row in ompdal.getSubmissionsByPress(press.press_id, ignored_submission_id):
         authors = [OMPItem(author, OMPSettings(ompdal.getAuthorSettings(author.author_id))) for author in ompdal.getAuthorsBySubmission(submission_row.submission_id)]
         editors = [OMPItem(editor, OMPSettings(ompdal.getAuthorSettings(editor.author_id))) for editor in ompdal.getEditorsBySubmission(submission_row.submission_id)]
-        publication_dates = [convertDate(pd) for pf in ompdal.getAllPublicationFormatsBySubmission(submission_row.submission_id, available=True, approved=True) 
+        publication_dates = [dateFromRow(pd) for pf in ompdal.getAllPublicationFormatsBySubmission(submission_row.submission_id, available=True, approved=True) 
                                 for pd in ompdal.getPublicationDatesByPublicationFormat(pf.publication_format_id)]
         submission = OMPItem(submission_row,
                              OMPSettings(ompdal.getSubmissionSettings(submission_row.submission_id)),
@@ -161,11 +161,21 @@ def book():
         )
     
     # Get DOI from the format marked as DOI carrier
-    pdf = ompdal.getPublicationFormatByName(submission_id, myconf.take('omp.doi_format_name'))
+    pdf = ompdal.getPublicationFormatByName(submission_id, myconf.take('omp.doi_format_name')).first()
+    #pdf_dates = [pd for pd in ompdal.getPublicationDatesByPublicationFormat(pdf.publication_format_id)]
+    #pdf_date = pdf_dates[0] if pdf_dates else None
     if pdf:
-        doi = OMPSettings(ompdal.getPublicationFormatSettings(pdf.first().publication_format_id)).getLocalizedValue("pub-id::doi", "")    # DOI always has empty locale
+        doi = OMPSettings(ompdal.getPublicationFormatSettings(pdf.publication_format_id)).getLocalizedValue("pub-id::doi", "")    # DOI always has empty locale
     else:
         doi = None
+        
+    def get_first(l):
+        if l:
+            return l[0]
+        else:
+            return (None, None)
+    
+    publisher_of_first_publication, date_of_first_publication = get_first([(pf.attributes.imprint, pd) for pf in digital_publication_formats+physical_publication_formats for pd in pf.associated_items.get('publication_dates') if pd.role == "11"])
         
     series = ompdal.getSeriesBySubmissionId(submission_id)
     if series:

@@ -1,5 +1,5 @@
 {{extend 'layout.html'}}
-{{from ompformat import formatCitation, formatContributors, formatName, formatPublicationDate, coverImageLink, downloadLink, haveMultipleAuthors, convertDate, dateToString}}
+{{from ompformat import formatCitation, formatContributors, formatName, dateFromRow, dateToStr, formatONIXDate, formatONIXDateWithText, coverImageLink, downloadLink, haveMultipleAuthors}}
 
 <div id="main" class="container">
 	<section id="content">
@@ -26,9 +26,9 @@
 	          <div class="box-gray alignleft" style="height: auto;">
 	            <h5 style="color: #656565; margin-bottom: 0.5em;">{{=T('How to cite this title')}}</h5>
 	            <p>
-	            {{digital_dates=[convertDate(pd) for pf in digital_publication_formats for pd in pf.associated_items.get('publication_dates')]}}
+	            {{digital_dates=[dateFromRow(pd) for pf in digital_publication_formats for pd in pf.associated_items.get('publication_dates')]}}
 	            {{if digital_dates:}}
-	            	{{citation_year=dateToString(min(digital_dates), "%Y")}}
+	            	{{citation_year=dateToStr(min(digital_dates), locale, "%Y")}}
 	            {{else:}}
 	            	{{citation_year=""}}
 	            {{pass}}
@@ -37,23 +37,27 @@
 	            </p>
 	            {{identification_codes = [i for i in [pf.associated_items.get('identification_codes', []) for pf in digital_publication_formats+physical_publication_formats] if i]}}
 	            {{if identification_codes:}}
-	            	<h5 style="color: #656565; margin-bottom: 0.3em; margin-top: 1.2em;">ISBN</h5>
+	            	<h5 style="color: #656565; margin-bottom: 0.5em; margin-top: 1.2em;">ISBN</h5>
 	            {{pass}}
 	            {{for pf in digital_publication_formats+physical_publication_formats:}}
-	           	  <p>
+	           	  <p style="margin:0px">
 	              {{for identification_code in pf.associated_items.get('identification_codes', []):}}
 	                {{=identification_code.value}} ({{=pf.settings.getLocalizedValue('name', locale)}})
-	              	<br>
+	                <br>
 	              {{pass}}
 	              </p>
 	            {{pass}}
-	            {{for pf in digital_publication_formats+physical_publication_formats:}}
-	            	{{publication_dates = pf.associated_items.get('publication_dates')}}
-	            	{{for pd in publication_dates:}}
-	            		{{if pd.role == "01":}}
-	            			<p>{{=formatPublicationDate(pd, locale, pf)}}</p>
-	            		{{pass}}
+	            <p style="margin-top: 1.2em">{{=T('Published')}} {{=dateToStr(submission.date_status_modified, locale, "%x")}}.</p>
+	            {{pass}}
+	            {{publication_dates = [(pf, pd) for pf in digital_publication_formats+physical_publication_formats for pd in pf.associated_items.get('publication_dates') if pd.role == "01"]}}
+	            {{if publication_dates:}}
+	            	<b>{{=T('Published as')}}:</b>
+	            	{{for pf, pd in publication_dates:}}
+	            		<p style="margin:0px">{{=pf.settings.getLocalizedValue('name', locale)}} {{=formatONIXDate(pd, locale, "%Y")}}</p>
 	            	{{pass}}
+	            {{pass}}
+	            {{if date_of_first_publication:}}
+	            	<p style="margin-top: 1.2em">{{=T('Originally published')}} {{=formatONIXDate(date_of_first_publication, locale, "%Y")}}{{if publisher_of_first_publication:}} {{=T('by')}} {{=publisher_of_first_publication}}{{pass}}.</p>
 	            {{pass}}
 	            <!---a data-toggle="modal" class="btn btn-info" href="../../../cgi-bin/oastats.cgi?repo=omphp" data-target="#myModal">{{=T('')}}</a-->
 	            <!---<div id="oas-widget" class="applied-to-ojs">
@@ -153,6 +157,8 @@
 		   	  		{{num_bios = len([b for b in bios if b[1] != ""])}}
 		   	  		{{if bios_role != "author" or num_bios < 4:}}
 		            	{{if num_bios != 0:}}
+                                        <div class="separator"></div>
+                                        <div class="autor_biografie">
 			            	<p>
 			            		{{for contributor, bio in bios:}}
 			            			{{if bio:}}
@@ -160,6 +166,7 @@
 			            			{{pass}}
 			            		{{pass}}
 			            	</p>
+                                        </div>
 		            	{{pass}}	
 		   	  		{{pass}}
 	          	{{pass}}
