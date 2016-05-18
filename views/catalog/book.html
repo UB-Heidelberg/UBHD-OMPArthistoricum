@@ -44,8 +44,8 @@
 	            {{pass}}
 	            <p style="margin-top: 1.2em">{{=T('Published')}} {{=dateToStr(submission.date_status_modified, locale, "%x")}}.</p>
 	            {{pass}}
-	            {{if date_of_first_publication:}}
-	            	<p style="margin-top: 1.2em">{{=T('Originally published')}} {{=formatONIXDate(date_of_first_publication, locale, "%Y")}}{{if publisher_of_first_publication:}} {{=T('by')}} {{=publisher_of_first_publication}}{{pass}}.</p>
+	            {{if submission_settings.getLocalizedValue('source', locale):}}
+	            	{{=XML(submission_settings.getLocalizedValue('source', locale))}}	
 	            {{pass}}
 	            <!---a data-toggle="modal" class="btn btn-info" href="../../../cgi-bin/oastats.cgi?repo=omphp" data-target="#myModal">{{=T('')}}</a-->
 	            <!---<div id="oas-widget" class="applied-to-ojs">
