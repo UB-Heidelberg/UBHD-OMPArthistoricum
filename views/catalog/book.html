@@ -49,13 +49,6 @@
 	            {{pass}}
 	            <p style="margin-top: 1.2em">{{=T('Published')}} {{=dateToStr(submission.date_status_modified, locale, "%x")}}.</p>
 	            {{pass}}
-	            {{publication_dates = [(pf, pd) for pf in digital_publication_formats+physical_publication_formats for pd in pf.associated_items.get('publication_dates') if pd.role == "01"]}}
-	            {{if publication_dates:}}
-	            	<b>{{=T('Published as')}}:</b>
-	            	{{for pf, pd in publication_dates:}}
-	            		<p style="margin:0px">{{=pf.settings.getLocalizedValue('name', locale)}} {{=formatONIXDate(pd, locale, "%Y")}}</p>
-	            	{{pass}}
-	            {{pass}}
 	            {{if date_of_first_publication:}}
 	            	<p style="margin-top: 1.2em">{{=T('Originally published')}} {{=formatONIXDate(date_of_first_publication, locale, "%Y")}}{{if publisher_of_first_publication:}} {{=T('by')}} {{=publisher_of_first_publication}}{{pass}}.</p>
 	            {{pass}}
