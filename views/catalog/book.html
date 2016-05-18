@@ -26,12 +26,7 @@
 	          <div class="box-gray alignleft" style="height: auto;">
 	            <h5 style="color: #656565; margin-bottom: 0.5em;">{{=T('How to cite this title')}}</h5>
 	            <p>
-	            {{digital_dates=[dateFromRow(pd) for pf in digital_publication_formats for pd in pf.associated_items.get('publication_dates')]}}
-	            {{if digital_dates:}}
-	            	{{citation_year=dateToStr(min(digital_dates), locale, "%Y")}}
-	            {{else:}}
-	            	{{citation_year=""}}
-	            {{pass}}
+	            {{citation_year=dateToStr(submission.date_status_modified, locale, "%Y")}}
 	            {{=formatCitation(cleanTitle, subtitle, authors, editors, citation_year, press_settings.getLocalizedValue('location', ''), press_settings.getLocalizedValue('publisher', ''), doi, locale, series_name=series_name, series_pos=submission.series_position, max_contrib=3)}}
 	            {{=A(doi, _href="http://dx.doi.org/"+doi)}}
 	            </p>
