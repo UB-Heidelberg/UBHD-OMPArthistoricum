@@ -26,7 +26,7 @@
 	          <div class="box-gray alignleft" style="height: auto;">
 	            <h5 style="color: #656565; margin-bottom: 0.5em;">{{=T('How to cite this title')}}</h5>
 	            <p>
-	            {{citation_year=dateToStr(submission.date_status_modified, locale, "%Y")}}
+	            {{citation_year=dateToStr(date_published, locale, "%Y")}}
 	            {{=formatCitation(cleanTitle, subtitle, authors, editors, citation_year, press_settings.getLocalizedValue('location', ''), press_settings.getLocalizedValue('publisher', ''), doi, locale, series_name=series_name, series_pos=submission.series_position, max_contrib=3)}}
 	            {{=A(doi, _href="http://dx.doi.org/"+doi)}}
 	            </p>
@@ -42,10 +42,10 @@
 	              {{pass}}
 	              </p>
 	            {{pass}}
-	            <p style="margin-top: 1.2em">{{=T('Published')}} {{=dateToStr(submission.date_status_modified, locale, "%x")}}.</p>
+	            <p style="margin-top: 1.2em">{{=T('Published')}} {{=dateToStr(date_published, locale, "%x")}}.</p>
 	            {{pass}}
 	            {{if submission_settings.getLocalizedValue('source', locale):}}
-	            	{{=XML(submission_settings.getLocalizedValue('source', locale))}}	
+	            	{{=XML(submission_settings.getLocalizedValue('source', locale))}}
 	            {{pass}}
 	            <!---a data-toggle="modal" class="btn btn-info" href="../../../cgi-bin/oastats.cgi?repo=omphp" data-target="#myModal">{{=T('')}}</a-->
 	            <!---<div id="oas-widget" class="applied-to-ojs">

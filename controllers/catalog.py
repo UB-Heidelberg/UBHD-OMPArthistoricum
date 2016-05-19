@@ -160,10 +160,8 @@ def book():
              'publication_dates': ompdal.getPublicationDatesByPublicationFormat(pf.publication_format_id)})
         )
     
-    # Get DOI from the format marked as DOI carrier
     pdf = ompdal.getPublicationFormatByName(submission_id, myconf.take('omp.doi_format_name')).first()
-    #pdf_dates = [pd for pd in ompdal.getPublicationDatesByPublicationFormat(pdf.publication_format_id)]
-    #pdf_date = pdf_dates[0] if pdf_dates else None
+    # Get DOI from the format marked as DOI carrier
     if pdf:
         doi = OMPSettings(ompdal.getPublicationFormatSettings(pdf.publication_format_id)).getLocalizedValue("pub-id::doi", "")    # DOI always has empty locale
     else:
@@ -173,9 +171,19 @@ def book():
         if l:
             return l[0]
         else:
-            return (None, None)
+            return None
     
-    publisher_of_first_publication, date_of_first_publication = get_first([(pf.attributes.imprint, pd) for pf in digital_publication_formats+physical_publication_formats for pd in pf.associated_items.get('publication_dates') if pd.role == "11"])
+    date_published = None
+    # Get the OMP publication date (column publication_date contains latest catalog entry edit date.) Try:
+    # 1. Custom publication date entered for a publication format calles "PDF"
+    if pdf:
+        date_published = get_first([dateFromRow(pd) for pd in ompdal.getPublicationDatesByPublicationFormat(pdf.publication_format_id) if pd.role=="01"])
+    # 2. Date on which the catalog entry was first published
+    if not date_published:
+        date_published = get_first([pd.date_logged for pd in ompdal.getMetaDataPublishedDates(submission_id)])
+    # 3. Date on which the submission status was last modified (always set)
+    if not date_published:
+        date_published = submission.date_status_modified
         
     series = ompdal.getSeriesBySubmissionId(submission_id)
     if series:
