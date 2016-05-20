@@ -64,15 +64,15 @@
 	            	<p style="margin-top: 1.2em">{{=T('Originally published')}} {{=formatONIXDate(date_of_first_publication, locale, "%Y")}}{{if publisher_of_first_publication:}} {{=T('by')}} {{=publisher_of_first_publication}}{{pass}}.</p>
 	            {{pass}}
               
-                
-                {{if stats.checkOASService():}}
-                 {{file_types= ['xml','pdf']}}
+               {{if stats.checkOASService():}}
+                {{file_types= ['pdf','xml']}}
+                {{chapter_html = stats.getChapterHTMLTable(submission_id, file_types)}}
                 <div id="oas-widget" class="applied-to-ojs">
                   <div class="btn btn-default" id="statistik-button">{{=T('Statistik since 07.03.16')}}</div> <br/>
                   <div style="display:none" class="table" id="oas">
                     <ul class="nav nav-tabs">
                       <li class="active"><a href="#full" data-toggle="tab"><i class="icon-briefcase"></i> {{=T('Book')}}</a></li>
-                      <li class=""><a href="#chapters" data-toggle="tab">{{=T('Chapters')}}</a></li>
+                      {{if len(chapter_html)> 1:}} <li class=""><a href="#chapters" data-toggle="tab">{{=T('Chapters')}}</a></li> {{pass}}
                     </ul>
                     <div class="tab-content">
                       <div class="tab-pane active" id="full">
@@ -80,9 +80,11 @@
                           {{=stats.getFullHTMLTable(submission_id,file_types)}}
                         </table>
                       </div>
+                      {{if len(chapter_html)> 1:}}
                       <div class="tab-pane" id="chapters">
-                        <table class="table">  {{=stats.getChapterHTMLTable(submission_id, file_types) }}</table>
+                        <table class="table">  {{=chapter_html }}</table>
                       </div>
+                      {{pass}}
                     </div>
                   </div>
                 </div>
@@ -92,6 +94,7 @@
                 });
                 </script>
                 {{pass}}
+
 	          </div>
 	        </div>
 	      </div>
