@@ -63,7 +63,7 @@
 	            {{if date_of_first_publication:}}
 	            	<p style="margin-top: 1.2em">{{=T('Originally published')}} {{=formatONIXDate(date_of_first_publication, locale, "%Y")}}{{if publisher_of_first_publication:}} {{=T('by')}} {{=publisher_of_first_publication}}{{pass}}.</p>
 	            {{pass}}
-              
+              <!--stats block  begin-->
               {{if stats.checkOASService():}}
                 {{file_types= ['pdf','xml']}}
                 {{chapter_html = stats.getChapterHTMLTable(submission_id, file_types,"width: inherit; padding:0; font-size:11px")}}
@@ -95,6 +95,7 @@
                 </script>
                 
                 {{pass}}
+                <!--stats block  end-->
                 
 	          </div>
 	        </div>
