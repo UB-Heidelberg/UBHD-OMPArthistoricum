@@ -1,9 +1,6 @@
 {{extend 'layout.html'}}
 {{from ompformat import formatCitation, formatContributors, formatName, dateFromRow, dateToStr, formatONIXDate, formatONIXDateWithText, coverImageLink, downloadLink, haveMultipleAuthors}}
 {{from ompdal import OMPDAL}}
-{{from ompstats import OMPStats}}
-{{stats = OMPStats(myconf,db, locale)}}
-
 
 <div id="main" class="container">
 	<section id="content">
@@ -51,45 +48,43 @@
 	            {{if submission_settings.getLocalizedValue('source', locale):}}
 	            	{{=XML(submission_settings.getLocalizedValue('source', locale))}}
 	            {{pass}}
-              <!--stats block  begin-->
-              {{if stats.checkOASService():}}
-                {{file_types= ['pdf','xml']}}
-                {{chapter_html = stats.getChapterHTMLTable(submission_id, file_types,"width: inherit; padding:0; font-size:11px")}}
-                <div id="oas-widget" class="applied-to-ojs">
-                  <div class="btn btn-default" id="statistik-button">{{=T('Statistik since 07.03.16')}}</div> <br/>
-                  <div style="display:none" class="table" id="oas">
-                    <ul class="nav nav-tabs">
-                      <li class="active"><a href="#full" data-toggle="tab"><i class="icon-briefcase"></i> {{=T('Book')}}</a></li>
-                      {{if len(chapter_html)> 1:}} <li class=""><a href="#chapters" data-toggle="tab">{{=T('Chapters')}}</a></li> {{pass}}
-                    </ul>
-                    <div class="tab-content">
-                      <div class="tab-pane active" id="full">
-                        <table class="table">
-                          {{=stats.getFullHTMLTable(submission_id,file_types, "width: inherit; padding:0; font-size:15px")}}
-                        </table>
-                      </div>
-                      {{if len(chapter_html)> 1:}}
-                      <div class="tab-pane" id="chapters">
-                        <table class="table">  {{=chapter_html }}</table>
-                      </div>
-                      {{pass}}
-                    </div>
-                  </div>
-                </div>
-                <script type="text/javascript">
-                $('#statistik-button').click(function(){
-                $('#oas').slideToggle()
-                });
-                </script>
-                
-                {{pass}}
-                <!--stats block  end-->
-                
+				<!--stats block begin-->
+				{{if stats.checkOASService():}}
+					{{file_types= ['pdf','xml']}}
+					{{chapter_html = stats.getChapterHTMLTable(submission_id, file_types,"width: inherit; padding:0; font-size:11px")}}
+					<div id="oas-widget" class="applied-to-ojs" style="margin-top: 1.2em">
+						<div class="btn btn-default" id="statistik-button">{{=T('Statistik since 07.03.16')}}</div> <br/>
+						<div style="display:none" class="table" id="oas">
+							<ul class="nav nav-tabs">
+								<li class="active"><a href="#full" data-toggle="tab"><i class="icon-briefcase"></i> {{=T('Book')}}</a></li>
+								{{if len(chapter_html) > 1:}} <li class=""><a href="#chapters" data-toggle="tab">{{=T('Chapters')}}</a></li> {{pass}}
+							</ul>
+							<div class="tab-content">
+								<div class="tab-pane active" id="full">
+									<table class="table">
+									{{=stats.getFullHTMLTable(submission_id,file_types, "width: inherit; padding:0; font-size:15px")}}
+									</table>
+								</div>
+								{{if len(chapter_html)> 1:}}
+									<div class="tab-pane" id="chapters">
+										<table class="table">  {{=chapter_html }}</table>
+									</div>
+								{{pass}}
+							</div>
+						</div>
+					</div>
+					<script type="text/javascript">
+					$('#statistik-button').click(function(){
+					$('#oas').slideToggle()
+					});
+					</script>
+				{{pass}}
+				<!--stats block  end-->                
 	          </div>
 	        </div>
 	      </div>
-                
-                	      <div class="col-lg-9">
+
+		<div class="col-lg-9">
 	        <article>
 	          	<div class="">
 	              {{for pf in digital_publication_formats:}}
@@ -221,12 +216,7 @@
 	          </div>
 	        </article>
 	      </div>
-
-	      
-	      
 	    </div>
 	  </div>
 	</section>
 </div>
-
-                 
