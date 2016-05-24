@@ -43,10 +43,11 @@
 	              {{pass}}
 	              </p>
 	            {{pass}}
-	            <p style="margin-top: 1.2em">{{=T('Published')}} {{=dateToStr(date_published, locale, "%x")}}.</p>
+	            <p style="margin-top: 1.2em;">{{=T('Published')}} {{=dateToStr(date_published, locale, "%x")}}.</p>
 	            {{pass}}
 	            {{if submission_settings.getLocalizedValue('source', locale):}}
-	            	{{=XML(submission_settings.getLocalizedValue('source', locale))}}
+	            	<div class="separator" style="margin-top: 1.2em"></div>
+	            	<p style="margin-top: 1.2em">{{=XML(submission_settings.getLocalizedValue('source', locale))}}</p>
 	            {{pass}}
 				<!--stats block begin-->
 				{{if stats.checkOASService():}}
