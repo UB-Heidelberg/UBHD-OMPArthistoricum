@@ -1,5 +1,6 @@
 {{extend 'layout.html'}}
-{{from ompformat import formatCitation, formatContributors, formatName, formatPublicationDate, coverImageLink, downloadLink, haveMultipleAuthors, convertDate, dateToString}}
+{{from ompformat import formatCitation, formatContributors, formatName, dateFromRow, dateToStr, formatONIXDate, formatONIXDateWithText, coverImageLink, downloadLink, haveMultipleAuthors}}
+{{from ompdal import OMPDAL}}
 
 <div id="main" class="container">
 	<section id="content">
@@ -26,61 +27,65 @@
 	          <div class="box-gray alignleft" style="height: auto;">
 	            <h5 style="color: #656565; margin-bottom: 0.5em;">{{=T('How to cite this title')}}</h5>
 	            <p>
-	            {{digital_dates=[convertDate(pd) for pf in digital_publication_formats for pd in pf.associated_items.get('publication_dates')]}}
-	            {{if digital_dates:}}
-	            	{{citation_year=dateToString(min(digital_dates), "%Y")}}
-	            {{else:}}
-	            	{{citation_year=""}}
-	            {{pass}}
+	            {{citation_year=dateToStr(date_published, locale, "%Y")}}
 	            {{=formatCitation(cleanTitle, subtitle, authors, editors, citation_year, press_settings.getLocalizedValue('location', ''), press_settings.getLocalizedValue('publisher', ''), doi, locale, series_name=series_name, series_pos=submission.series_position, max_contrib=3)}}
 	            {{=A(doi, _href="http://dx.doi.org/"+doi)}}
 	            </p>
 	            {{identification_codes = [i for i in [pf.associated_items.get('identification_codes', []) for pf in digital_publication_formats+physical_publication_formats] if i]}}
 	            {{if identification_codes:}}
-	            	<h5 style="color: #656565; margin-bottom: 0.3em; margin-top: 1.2em;">ISBN</h5>
+	            	<h5 style="color: #656565; margin-bottom: 0.5em; margin-top: 1.2em;">ISBN</h5>
 	            {{pass}}
 	            {{for pf in digital_publication_formats+physical_publication_formats:}}
-	           	  <p>
+	           	  <p style="margin:0px">
 	              {{for identification_code in pf.associated_items.get('identification_codes', []):}}
 	                {{=identification_code.value}} ({{=pf.settings.getLocalizedValue('name', locale)}})
-	              	<br>
+	                <br>
 	              {{pass}}
 	              </p>
 	            {{pass}}
-	            {{for pf in digital_publication_formats+physical_publication_formats:}}
-	            	{{publication_dates = pf.associated_items.get('publication_dates')}}
-	            	{{for pd in publication_dates:}}
-	            		{{if pd.role == "01":}}
-	            			<p>{{=formatPublicationDate(pd, locale, pf)}}</p>
-	            		{{pass}}
-	            	{{pass}}
+	            <p style="margin-top: 1.2em;">{{=T('Published')}} {{=dateToStr(date_published, locale, "%x")}}.</p>
 	            {{pass}}
-	            <!---a data-toggle="modal" class="btn btn-info" href="../../../cgi-bin/oastats.cgi?repo=omphp" data-target="#myModal">{{=T('')}}</a-->
-	            <!---<div id="oas-widget" class="applied-to-ojs">
-		           <div class="btn btn-default" id="statistik-button">{{=T('Statistics since 07.03.16')}}</div> <br/>
-		           <div style="display:none" class="table" id="oas">
-		           		<ul class="nav nav-tabs">
-		           			<li class="active"><a href="#one2" data-toggle="tab"><i class="icon-briefcase"></i> {{=T('Book')}}</a></li>
-		           			<li class=""><a href="#two2" data-toggle="tab">{{=T('Chapters')}}</a></li>
-		           		</ul>
-		           		<div class="tab-content">
-		           			<div class="tab-pane active" id="one2">
-		           				<table class="table">
-		           					{{file_ids=[]}}
-		           				</table>
-		           			</div>
-		           			<div class="tab-pane " id="two2">
-		           				<table class="table" style="width: inherit"></table>
-		           			</div>
-		           		</div>
-		           </div>
-		           <div id="error"></div>
-	            </div>---!>
+	            {{if submission_settings.getLocalizedValue('source', locale):}}
+	            	<div class="separator" style="margin-top: 1.2em"></div>
+	            	<p style="margin-top: 1.2em">{{=XML(submission_settings.getLocalizedValue('source', locale))}}</p>
+	            {{pass}}
+				<!--stats block begin-->
+				{{if stats.checkOASService():}}
+					{{file_types= ['pdf','xml']}}
+					{{chapter_html = stats.getChapterHTMLTable(submission_id, file_types,"width: inherit; padding:0; font-size:11px")}}
+					<div id="oas-widget" class="applied-to-ojs" style="margin-top: 1.2em">
+						<div class="btn btn-default" id="statistik-button">{{=T('Statistics since 07.03.16')}}</div> <br/>
+						<div style="display:none" class="table" id="oas">
+							<ul class="nav nav-tabs">
+								<li class="active"><a href="#full" data-toggle="tab"><i class="icon-briefcase"></i> {{=T('Book')}}</a></li>
+								{{if len(chapter_html) > 1:}} <li class=""><a href="#chapters" data-toggle="tab">{{=T('Chapters')}}</a></li> {{pass}}
+							</ul>
+							<div class="tab-content">
+								<div class="tab-pane active" id="full">
+									<table class="table">
+									{{=stats.getFullHTMLTable(submission_id,file_types, "width: inherit; padding:0; font-size:15px")}}
+									</table>
+								</div>
+								{{if len(chapter_html)> 1:}}
+									<div class="tab-pane" id="chapters">
+										<table class="table">  {{=chapter_html }}</table>
+									</div>
+								{{pass}}
+							</div>
+						</div>
+					</div>
+					<script type="text/javascript">
+					$('#statistik-button').click(function(){
+					$('#oas').slideToggle()
+					});
+					</script>
+				{{pass}}
+				<!--stats block  end-->                
 	          </div>
 	        </div>
 	      </div>
-	      
-	      <div class="col-lg-9">
+
+		<div class="col-lg-9">
 	        <article>
 	          	<div class="">
 	              {{for pf in digital_publication_formats:}}
@@ -153,6 +158,8 @@
 		   	  		{{num_bios = len([b for b in bios if b[1] != ""])}}
 		   	  		{{if bios_role != "author" or num_bios < 4:}}
 		            	{{if num_bios != 0:}}
+                                        <div class="separator"></div>
+                                        <div class="autor_biografie">
 			            	<p>
 			            		{{for contributor, bio in bios:}}
 			            			{{if bio:}}
@@ -160,6 +167,7 @@
 			            			{{pass}}
 			            		{{pass}}
 			            	</p>
+                                        </div>
 		            	{{pass}}	
 		   	  		{{pass}}
 	          	{{pass}}
@@ -213,15 +221,3 @@
 	  </div>
 	</section>
 </div>
-
-<!--<script>
-  var ids={{=XML(file_ids)}};
-  var full_xml, full_pdf;
-   {{ if 'full_xml' in  locals():}}
-    full_xml = "{{=full_xml}}";
-  {{pass}}
-  {{ if 'full_pdf' in  locals():}}
-    full_pdf= "{{=full_pdf}}";
-  {{pass}}
-</script>
-<script src="{{=URL('static','js/stats.js')}}" data-ids="{{=XML(file_ids)}}" data-full_pdf=full_pdf data-full_xml=full_xml ></script>--!>

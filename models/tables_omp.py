@@ -35,6 +35,29 @@ db.define_table("author_settings",
                 migrate=False
                 )
 
+db.define_table("event_log",
+                Field("log_id", "integer"), 
+                Field("assoc_type", "integer"), 
+                Field("assoc_id", "integer"), 
+                Field("user_id", "integer"), 
+                Field("date_logged", "datetime"), 
+                Field("ip_address", "string"), 
+                Field("event_type", "integer"), 
+                Field("message", "string"), 
+                Field("is_translated", "integer"),
+                primarykey=['log_id'],
+                migrate=False
+                )
+
+db.define_table("event_log_settings",
+                Field("log_id", "integer"), 
+                Field("setting_name", "string"), 
+                Field("setting_value", "string"), 
+                Field("setting_type", "string"),
+                primarykey=['log_id', 'setting_name'],
+                migrate=False
+                )
+
 
 db.define_table("submission_chapters",
                 Field("chapter_id", "integer"),

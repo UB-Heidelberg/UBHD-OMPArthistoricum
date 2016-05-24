@@ -8,7 +8,8 @@ LICENSE.md
 import os
 from operator import itemgetter
 from ompdal import OMPDAL, OMPSettings, OMPItem
-from ompformat import convertDate, seriesPositionCompare
+from ompformat import dateFromRow, seriesPositionCompare
+from ompstats import OMPStats
 from datetime import datetime
 
 def series():
@@ -77,7 +78,7 @@ def index():
     for submission_row in ompdal.getSubmissionsByPress(press.press_id, ignored_submission_id):
         authors = [OMPItem(author, OMPSettings(ompdal.getAuthorSettings(author.author_id))) for author in ompdal.getAuthorsBySubmission(submission_row.submission_id)]
         editors = [OMPItem(editor, OMPSettings(ompdal.getAuthorSettings(editor.author_id))) for editor in ompdal.getEditorsBySubmission(submission_row.submission_id)]
-        publication_dates = [convertDate(pd) for pf in ompdal.getAllPublicationFormatsBySubmission(submission_row.submission_id, available=True, approved=True) 
+        publication_dates = [dateFromRow(pd) for pf in ompdal.getAllPublicationFormatsBySubmission(submission_row.submission_id, available=True, approved=True) 
                                 for pd in ompdal.getPublicationDatesByPublicationFormat(pf.publication_format_id)]
         submission = OMPItem(submission_row,
                              OMPSettings(ompdal.getSubmissionSettings(submission_row.submission_id)),
@@ -160,12 +161,30 @@ def book():
              'publication_dates': ompdal.getPublicationDatesByPublicationFormat(pf.publication_format_id)})
         )
     
+    pdf = ompdal.getPublicationFormatByName(submission_id, myconf.take('omp.doi_format_name')).first()
     # Get DOI from the format marked as DOI carrier
-    pdf = ompdal.getPublicationFormatByName(submission_id, myconf.take('omp.doi_format_name'))
     if pdf:
-        doi = OMPSettings(ompdal.getPublicationFormatSettings(pdf.first().publication_format_id)).getLocalizedValue("pub-id::doi", "")    # DOI always has empty locale
+        doi = OMPSettings(ompdal.getPublicationFormatSettings(pdf.publication_format_id)).getLocalizedValue("pub-id::doi", "")    # DOI always has empty locale
     else:
         doi = None
+        
+    def get_first(l):
+        if l:
+            return l[0]
+        else:
+            return None
+    
+    date_published = None
+    # Get the OMP publication date (column publication_date contains latest catalog entry edit date.) Try:
+    # 1. Custom publication date entered for a publication format calles "PDF"
+    if pdf:
+        date_published = get_first([dateFromRow(pd) for pd in ompdal.getPublicationDatesByPublicationFormat(pdf.publication_format_id) if pd.role=="01"])
+    # 2. Date on which the catalog entry was first published
+    if not date_published:
+        date_published = get_first([pd.date_logged for pd in ompdal.getMetaDataPublishedDates(submission_id)])
+    # 3. Date on which the submission status was last modified (always set)
+    if not date_published:
+        date_published = submission.date_status_modified
         
     series = ompdal.getSeriesBySubmissionId(submission_id)
     if series:
@@ -173,5 +192,7 @@ def book():
     
     # Get purchase info
     representatives = ompdal.getRepresentativesBySubmission(submission_id, myconf.take('omp.representative_id_type'))
+    
+    stats = OMPStats(myconf, db, locale)
 
     return locals()
