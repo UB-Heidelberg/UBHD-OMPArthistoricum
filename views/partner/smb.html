@@ -1,0 +1,53 @@
+{{extend 'layout.html'}}
+
+<div id="main" class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>  {{if session.forced_language =='de': }}
+                Staatliche Museen zu Berlin  
+                {{elif session.forced_language =='en': }}
+                Staatliche Museen zu Berlin  
+            {{pass}}
+            </h3>
+
+            <p>
+                {{if session.forced_language =='de': }}
+
+                <div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL('static','images/partner/smb_logo.png'),_width='230px')}}</p>
+                <br>
+                <p><b>Kontakt</b><br>
+                Staatliche Museen zu Berlin – Preußischer Kulturbesitz<br>
+                Generaldirektion<br>
+                Stauffenbergstraße 41<br>
+                D-10785 Berlin<br>
+                
+                Tel.: +49 30 266 424242 (Mo - Fr, 9-16 Uhr)
+                Internet: <a href="http://www.smb.museum" title="Homepage">http://www.smb.museum</a>
+                </div>
+                <p>Mit fünfzehn Museumssammlungen, drei Forschungseinrichtungen und der Gipsformerei sind die <a href="http://www.smb.museum" title="Homepage">Staatlichen Museen zu Berlin – Preußischer Kulturbesitz</a> eines der bedeutendsten Universalmuseen der Welt. In neunzehn Museen beherbergen sie mehr als fünf Millionen Objekte, die mehr als 700.000 Jahre Kulturgeschichte repräsentieren.</p>
+                 <p>Die Objekte und ihre Geschichten werden in zahlreichen Publikationen erforscht und dokumentiert. Über <b>arthistoricum.net - ART-Books</b> werden aktuelle Forschungsergebnisse nun auch online zur Verfügung gestellt: Veröffentlichungen der Staatlichen Museen zu Berlin (in Kürze)</p> 
+{{elif session.forced_language =='en': }}
+
+                <div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL('static','images/partner/smb_logo.png'),_width='230px')}}</p>
+                <br>
+                <p><b>Kontakt</b><br>
+                Staatliche Museen zu Berlin – Preußischer Kulturbesitz<br>
+                Generaldirektion<br>
+                Stauffenbergstraße 41<br>
+                D-10785 Berlin<br>
+
+                Tel.: +49 30 266 424242 (Mo - Fr, 9-16 Uhr)
+                Internet: <a href="http://www.smb.museum/en/" title="Homepage">http://www.smb.museum/en/</a>
+                </div>
+                <p>Mit fünfzehn Museumssammlungen, drei Forschungseinrichtungen und der Gipsformerei sind die <a href="http://www.smb.museum/en/" title="Homepage">Staatlichen Museen zu Berlin – Preußischer Kulturbesitz</a> eines der bedeutendsten Universalmuseen der Welt. In neunzehn Museen beherbergen sie mehr als fünf Millionen Objekte, die mehr als 700.000 Jahre Kulturgeschichte repräsentieren.</p>
+                 <p>Die Objekte und ihre Geschichten werden in zahlreichen Publikationen erforscht und dokumentiert. Über <b>arthistoricum.net - ART-Books</b> werden aktuelle Forschungsergebnisse nun auch online zur Verfügung gestellt: Veröffentlichungen der Staatlichen Museen zu Berlin (in Kürze)</p>
+
+                {{pass}}
+
+
+            </p>
+
+        </div>
+    </div>
+  </div>
+

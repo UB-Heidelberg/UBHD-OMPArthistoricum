@@ -98,11 +98,11 @@
 
         <header>
             <div class="col-lg-12 ">
-                <div class="navbar navbar-default navbar-static-top" style="width: 100%">
+                <div class="navbar navbar-default navbar-static-top" style="width: 100%;">
                     <div class="container">
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">4
-                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span><!-- Kann man das span löschen? voe -->
 
                             </button>
                             <a class="navbar-brand" href="index.html">
@@ -114,7 +114,7 @@
                                 <li><a href="{{=URL('home','index')}}">{{=T('Home')}}</a></li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
-                                       data-delay="0" data-close-others="false">{{=T('About us')}}<b class=" icon-angle-down"></b></a>
+                                       data-delay="0" data-close-others="false">{{=T('About us')}}<b class="icon-angle-down"></b><!-- Löschen? 30.05. voe--></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="{{=URL('about_us', 'profile')}}"> {{=T('Profil')}}</a></li>
                                         <li><a href="{{=URL('about_us','our_service')}}">{{=T('Our Service')}}</a></li>
@@ -134,6 +134,7 @@
                                         <li><a href="{{=URL('partner','index',args=['ap'])}}">ad picturam Fachverlag</a></li>
                                         <li><a href="{{=URL('partner','index',args=['dbae'])}}">Das Bild als Ereignis e.V.</a></li>
                                         <li><a href="{{=URL('partner','index',args=['skd'])}}">Staatl. Kunstslg. Dresden</a></li>
+                                        <li><a href="{{=URL('partner','index',args=['smb'])}}">Staatl. Museen zu Berlin</a></li>
                                     </ul>
                                 </li>
 
@@ -173,8 +174,8 @@
 
 
                                 <li>
-                                    <a>
-                                    <img id="nav-social-media" src="{{=URL('static','images/press/social-media-icons.png')}}" height="30px"  alt="Planets" usemap="#socialmap">
+                                    <a><!-- Wozu dient der Anker? 30.05.16 voe -->
+                                    <img id="nav-social-media" src="{{=URL('static','images/press/social-media-icons.png')}}" style="height:30px;"  alt="Planets" usemap="#socialmap">
 
 
                                     <map name="socialmap">
@@ -247,7 +248,7 @@
         <div class="col-md-3 left-sidebar">
             {{block left_sidebar}}
             <h3>Left Sidebar</h3>
-            <p></p>
+            <p></p><!-- Löschen? 30.05. voe-->
             {{end}}
         </div>
       {{pass}}
@@ -274,10 +275,10 @@
       <div class="container">
          <footer>
 
-     <div id="sub-footer"  class="screen">
+     <div id="sub-footer" class="screen">
          <div class="container">
 
- <div class="col-lg-12">
+            <div class="col-lg-12">
 
                     <div class="row">
 
@@ -303,11 +304,13 @@
                           <a href="https://pkp.sfu.ca/" title="Homepage PKP - Public Knowledge Project"><img class="" alt="Public Knowledge Project" src="http://books.ub.uni-heidelberg.de/lib/pkp/templates/images/pkp_brand.png"></a>
                           </div>
                         </div>
+                     </div>
+                 </div>
              </div>
-         </div>
-     </div>
-         </footer>
-  </div>
+          </div><!--./sub-footer-->
+        </footer>
+  </div>       
+
     {{end}}
         <script src="{{=URL('static','js/jquery.flexslider.js')}}"></script>
     <script src="{{=URL('static','js/bootstrap.min.js')}}"></script>
