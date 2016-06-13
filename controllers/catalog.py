@@ -166,7 +166,7 @@ def book():
     if pdf:
         doi = OMPSettings(ompdal.getPublicationFormatSettings(pdf.publication_format_id)).getLocalizedValue("pub-id::doi", "")    # DOI always has empty locale
     else:
-        doi = None
+        doi = ""
         
     def get_first(l):
         if l:
