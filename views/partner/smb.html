@@ -1,0 +1,37 @@
+{{extend 'layout.html'}}
+
+<div id="main" class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>  {{if session.forced_language =='de': }}
+                Staatliche Museen zu Berlin  
+                {{elif session.forced_language =='en': }}
+                Staatliche Museen zu Berlin  
+            {{pass}}
+            </h3>
+
+            <p>
+                {{if session.forced_language =='de': }}
+
+                <div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL('static','images/partner/smb_logo.png'),_width='230px')}}</p>
+                <br>
+                <p><b>Kontakt</b><br>
+                Staatliche Museen zu Berlin<br>
+                </div>
+                <p>Beschreibung folgt!</p> 
+{{elif session.forced_language =='en': }}
+
+                <div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL('static','images/partner/skd_logo.png'),_width='230px')}}</p>
+                <br>
+                <p><b>Kontakt</b><br>
+                </div>
+                <p>Beschreibung folgt!</p>
+                {{pass}}
+
+
+            </p>
+
+        </div>
+    </div>
+  </div>
+
