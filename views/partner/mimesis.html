@@ -1,0 +1,80 @@
+{{extend 'layout.html'}}
+
+<div id="main" class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>  {{if session.forced_language =='de': }}
+                DFG-Forschergruppe Medien und Mimesis (FOR 1867)  
+                {{elif session.forced_language =='en': }}
+                DFG-Forschergruppe Medien und Mimesis (FOR 1867)
+            {{pass}}
+            </h3>
+
+            <p>
+                {{if session.forced_language =='de': }}
+
+                <div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL('static','images/partner/mim_logo.png'),_width='230px')}}</p>
+                <br>
+                <p><b>Kontakt</b><br>
+                Teilprojektleiter:<br>
+                Prof. Dr. Hans-Rudolf Meier (Bauhaus-Universität Weimar)<br>
+                Prof. Dr. Carsten Ruhl (Goethe-Universität Frankfurt am Main)<br><br>
+                
+                Mitarbeiterinnen:<br>
+                Dr. Eva von Engelberg-Dočkal, (Bauhaus-Universität Weimar)<br>
+                Frederike Lausch (Goethe-Universität Frankfurt am Main)<br><br>
+                Internet: <a href="http://www.fg-mimesis.de/info/" title="Homepage">www.fg-mimesis.de/info/</a>
+                </div>
+                <p>Die Forschergruppe untersucht die Kulturtechnik der Mimesis vor dem Hintergrund der aktuellen Entwicklungen in der Medienforschung. Dabei geht das Vorhaben über die in den Kultur- und Literaturwissenschaften ebenso wie in der Philosophie bislang dominierende ästhetische und epistemische Betrachtung der Mimesis hinaus und stellt das geschichtsphilosophische Selbstverständnis der Moderne als eine grundlegend amimetische kulturelle und soziale Formation infrage. Mimesis und imitatio werden nicht länger in die Perspektive einer zu überwindenden Vorgeschichte der Idee des schöpferischen Menschen und seiner Werkherrschaft gestellt. Anstatt die Mimesis in einen Gegensatz zur modernen Technik und der auf ihr beruhenden Zivilisation zu manövrieren und sie als mit dem konstruktivistischen Selbstverständnis der Neuzeit grundsätzlich unvereinbar anzusehen, verfolgt das Projekt auf unterschiedlichen Ebenen die kultur- und sozialitätskonstitutive Funktion mimetischer Praktiken. Das von der Deutschen Forschungsgemeinschaft (DFG) und dem Schweizerischen Nationalfonds (SNF) geförderte Kooperationsprojekt hat zum 1. April 2014 an den Universitäten Weimar, Bochum, Frankfurt am Main, Basel und Zürich sowie an der Akademie der Bildenden Künste München seine Arbeit aufgenommen</p>
+                <h4>Teilprojekt: Praktiken der Ähnlichkeitserzeugung in der neueren europäischen Architektur</h4>
+                <p>Mimetische Praktiken und Techniken sind in der Architektur und ihren Diskursen allgegenwärtig. Bereits Vitruv erklärte die Entstehung der Architektur weitgehend mimetisch. In der Folge bot der Vitruvianismus des 15. bis 18. Jahrhunderts mimetischen Konzepten breite Entfaltungsmöglichkeiten, wobei die Nachahmung der Natur in der Regel über die Aneignung antiker Vorbilder erfolgte. Zur Topik der Selbsterklärung von Architekten gehört bis heute, ihren Entwurfsprozess mit dem Rekurs auf etwas vorzugsweise in der Natur Vorgefundenes zu erklären. Praktiken des Zitierens, Kopierens, der Montage, des Remakes und der Mimikry sind gängige Verfahren im architektonischen Alltag. Dennoch ist das Paradigma der Originalität bis heute beherrschend und verstellt oft den Blick auf mimetische Phänomene, und dies, obwohl im Zeichen von Re-Semantisierung und Identitätskonstruktionen Phänomene wie Rekonstruktionen, Kopien oder Neubauten in historisierenden Formen allgegenwärtig sind. Darüber hinaus blieb bisher weitgehend unberücksichtigt, dass sich seit dem 18. und 19. Jahrhundert das Verständnis architektonischer imitatio naturae vom Motivischen zum Prozessualen gewandelt hat. Für die neuere westliche Architektur ist es vor diesem Hintergrund symptomatisch, dass das Spektrum der klassischen Analogiebildungen um Begriffe wie Naturgeschichte, morphing, folding und Autopoiesis erweitert wurde. Die damit skizzierten Konzepte architektonischer Mimesis ließen sich unter folgenden Stichworten in einem größeren Horizont zusammenfassen: Anthropometrie und Vitruvianismus, Kritik der Mimesis und Krise der Repräsentation, Architekturgeschichte als Naturgeschichte, Nachahmung der Technik und Techniken des Nachahmens. Das Projekt widmet sich auf der Grundlage dieser sich historisch überlagernden Paradigmen der Untersuchung von Nachahmungsstrategien in der Architekturtheorie und Architektur seit der Postmoderne. Das Spektrum reicht von Rekonstruktionen oder Konstruktionen historischer Fassaden bis zur Mimikry natürlicher Veränderungsprozesse oder der Interpretation des architektonischen Körpers als kybernetischen Organismus.</p>
+ <hr>
+                <div class="row">
+                <div class="col-lg-1">
+                {{=IMG(_src=URL('static','images/partner/cover_mimesis.jpg'),_width='80px')}}
+                </div>
+                <div class="col-lg-11">
+                <p>Die <b>Publikation der Tagung</b> der Teilprojekte „Praktiken der Ähnlichkeitserzeugung in der neueren Architektur“ und „Subalterne Mimesis“ unter dem Titel "Mimetische Praktiken in der neueren Architektur. Prozesse und Formen der Ähnlichkeitserzeugung" in der Stiftung Bibliothek Werner Oechslin, Einsiedeln 17.-19.3.2016, erfolgt online über <b>arthistoricum.net - ART-Books</b> (in Kürze).</p>
+                </div>
+                </div>
+                
+
+
+
+{{elif session.forced_language =='en': }}
+
+                <div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL('static','images/partner/mim_logo.png'),_width='230px')}}</p>
+                <br>
+                <p><b>Kontakt</b><br>
+                Teilprojektleiter:<br>
+                Prof. Dr. Hans-Rudolf Meier (Bauhaus-Universität Weimar)<br>
+                Prof. Dr. Carsten Ruhl (Goethe-Universität Frankfurt am Main)<br><br>
+
+                Mitarbeiterinnen:<br>
+                Dr. Eva von Engelberg-Dočkal, (Bauhaus-Universität Weimar)<br>
+                Frederike Lausch (Goethe-Universität Frankfurt am Main)<br><br>
+                Internet: <a href="http://www.fg-mimesis.de/info/" title="Homepage">www.fg-mimesis.de/info/</a>
+                </div>
+                <p>Die Forschergruppe untersucht die Kulturtechnik der Mimesis vor dem Hintergrund der aktuellen Entwicklungen in der Medienforschung. Dabei geht das Vorhaben über die in den Kultur- und Literaturwissenschaften ebenso wie in der Philosophie bislang dominierende ästhetische und epistemische Betrachtung der Mimesis hinaus und stellt das geschichtsphilosophische Selbstverständnis der Moderne als eine grundlegend amimetische kulturelle und soziale Formation infrage. Mimesis und imitatio werden nicht länger in die Perspektive einer zu überwindenden Vorgeschichte der Idee des schöpferischen Menschen und seiner Werkherrschaft gestellt. Anstatt die Mimesis in einen Gegensatz zur modernen Technik und der auf ihr beruhenden Zivilisation zu manövrieren und sie als mit dem konstruktivistischen Selbstverständnis der Neuzeit grundsätzlich unvereinbar anzusehen, verfolgt das Projekt auf unterschiedlichen Ebenen die kultur- und sozialitätskonstitutive Funktion mimetischer Praktiken. Das von der Deutschen Forschungsgemeinschaft (DFG) und dem Schweizerischen Nationalfonds (SNF) geförderte Kooperationsprojekt hat zum 1. April 2014 an den Universitäten Weimar, Bochum, Frankfurt am Main, Basel und Zürich sowie an der Akademie der Bildenden Künste München seine Arbeit aufgenommen</p>
+                <h4>Teilprojekt: Praktiken der Ähnlichkeitserzeugung in der neueren europäischen Architektur</h4>
+                <p>Mimetische Praktiken und Techniken sind in der Architektur und ihren Diskursen allgegenwärtig. Bereits Vitruv erklärte die Entstehung der Architektur weitgehend mimetisch. In der Folge bot der Vitruvianismus des 15. bis 18. Jahrhunderts mimetischen Konzepten breite Entfaltungsmöglichkeiten, wobei die Nachahmung der Natur in der Regel über die Aneignung antiker Vorbilder erfolgte. Zur Topik der Selbsterklärung von Architekten gehört bis heute, ihren Entwurfsprozess mit dem Rekurs auf etwas vorzugsweise in der Natur Vorgefundenes zu erklären. Praktiken des Zitierens, Kopierens, der Montage, des Remakes und der Mimikry sind gängige Verfahren im architektonischen Alltag. Dennoch ist das Paradigma der Originalität bis heute beherrschend und verstellt oft den Blick auf mimetische Phänomene, und dies, obwohl im Zeichen von Re-Semantisierung und Identitätskonstruktionen Phänomene wie Rekonstruktionen, Kopien oder Neubauten in historisierenden Formen allgegenwärtig sind. Darüber hinaus blieb bisher weitgehend unberücksichtigt, dass sich seit dem 18. und 19. Jahrhundert das Verständnis architektonischer imitatio naturae vom Motivischen zum Prozessualen gewandelt hat. Für die neuere westliche Architektur ist es vor diesem Hintergrund symptomatisch, dass das Spektrum der klassischen Analogiebildungen um Begriffe wie Naturgeschichte, morphing, folding und Autopoiesis erweitert wurde. Die damit skizzierten Konzepte architektonischer Mimesis ließen sich unter folgenden Stichworten in einem größeren Horizont zusammenfassen: Anthropometrie und Vitruvianismus, Kritik der Mimesis und Krise der Repräsentation, Architekturgeschichte als Naturgeschichte, Nachahmung der Technik und Techniken des Nachahmens. Das Projekt widmet sich auf der Grundlage dieser sich historisch überlagernden Paradigmen der Untersuchung von Nachahmungsstrategien in der Architekturtheorie und Architektur seit der Postmoderne. Das Spektrum reicht von Rekonstruktionen oder Konstruktionen historischer Fassaden bis zur Mimikry natürlicher Veränderungsprozesse oder der Interpretation des architektonischen Körpers als kybernetischen Organismus.</p>
+ <hr>
+                <div class="row">
+                <div class="col-lg-1">
+                {{=IMG(_src=URL('static','images/partner/cover_mimesis.jpg'),_width='80px')}}
+                </div>
+                <div class="col-lg-11">
+                <p>Die <b>Publikation der Tagung</b> der Teilprojekte „Praktiken der Ähnlichkeitserzeugung in der neueren Architektur“ und „Subalterne Mimesis“ unter dem Titel "Mimetische Praktiken in der neueren Architektur. Prozesse und Formen der Ähnlichkeitserzeugung" in der Stiftung Bibliothek Werner Oechslin, Einsiedeln 17.-19.3.2016, erfolgt online über <b>arthistoricum.net - ART-Books</b> (in Kürze).</p>
+                </div>
+                </div>
+
+
+                {{pass}}
+
+
+            </p>
+
+        </div>
+    </div>
+  </div>
+
