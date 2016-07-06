@@ -1,0 +1,52 @@
+{{extend 'layout.html'}}
+
+<div id="main" class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>  {{if session.forced_language =='de': }}
+                Staatliche Museen zu Berlin  
+                {{elif session.forced_language =='en': }}
+                Staatliche Museen zu Berlin  
+            {{pass}}
+            </h3>
+
+            <p>
+                {{if session.forced_language =='de': }}
+
+                <div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL('static','images/partner/smb_logo.png'),_width='230px')}}</p>
+                <br>
+                <p><b>Kontakt</b><br>
+                Staatliche Museen zu Berlin – Preußischer Kulturbesitz<br>
+                Generaldirektion<br>
+                Stauffenbergstraße 41<br>
+                D-10785 Berlin<br><br>
+                
+                Tel.: +49 30 266 424242<br>
+                (Mo - Fr, 9-16 Uhr)<br>
+                Internet: <a href="http://www.smb.museum" title="Homepage">www.smb.museum</a>
+                </div>
+                <iframe style="border: 1px solid #777;" src="https://indd.adobe.com/embed/e76bab28-9275-4bf8-888e-97e7ba0a15c9?startpage=1&allowFullscreen=true" width="500px" height="354px" frameborder="0" allowfullscreen=""></iframe>
+{{elif session.forced_language =='en': }}
+
+                <div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL('static','images/partner/smb_logo.png'),_width='230px')}}</p>
+                <br>
+                <p><b>Kontakt</b><br>
+                Staatliche Museen zu Berlin – Preußischer Kulturbesitz<br>
+                Generaldirektion<br>
+                Stauffenbergstraße 41<br>
+                D-10785 Berlin<br><br>
+
+                Tel.: +49 30 266 424242<br>
+                (Mo - Fr, 9-16 Uhr)<br>
+                Internet: <a href="http://www.smb.museum/en/" title="Homepage">www.smb.museum/en/</a>
+                </div>
+                <iframe style="border: 1px solid #777;" src="https://indd.adobe.com/embed/e76bab28-9275-4bf8-888e-97e7ba0a15c9?startpage=1&allowFullscreen=true" width="500px" height="354px" frameborder="0" allowfullscreen=""></iframe>
+                {{pass}}
+
+
+            </p>
+
+        </div>
+    </div>
+  </div>
+
