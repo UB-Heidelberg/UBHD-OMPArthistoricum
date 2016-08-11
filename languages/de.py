@@ -255,6 +255,7 @@
 'Mwst.': 'Mwst.',
 'My Sites': 'Meine Seiten',
 'Name': 'Name',
+'New': 'Neu',
 'New in': 'Neu in',
 'New Record': 'Neuer Eintrag',
 'new record inserted': 'neuer Eintrag hinzugefügt',
