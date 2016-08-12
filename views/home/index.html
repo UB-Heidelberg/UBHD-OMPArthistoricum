@@ -5,179 +5,118 @@
     });
 </script>
 <div class="container">
-
-    <!-- end header -->
-
-    <section id="featured">
-    </section>
-
-    <section id="content">
-
-        <div class="container">
-           <div class="row" style="height:40px;"></div>
-            <div class="row">
-
-                <div class="col-lg-12">
-
-                    <div class="row">
-
-                        <div class="col-lg-3">
-
-                            <div class="box">
-                                <div class="box-gray aligncenter">
-                                    <h4>{{=T('New Titles')}}</h4>
-				   				{{=IMG(_src=URL('static','files/presses/2/monographs/83/simple/cover.png'),_width='145px')}}
-                                </div>
-                                <div class="box-bottom">
-                                    {{=A(T('More Information'),_href=URL('catalog','book/83'))}}
-                                </div>
-          					</div>                                    
-                     
-      					</div>
-
-				      <div class="col-lg-3">
-				      
-				          <div class="box">
-				              <div class="box-gray aligncenter">
-				                  <h4>{{=T('Soon')}}</h4>
-				                  {{=IMG(_src=URL('static','images/press/home/cover_chant.png'),_width='145px')}}
-				               </div>
-				               <div class="box-bottom">
-				                  {{=A(T('More Information'),_href=URL('partner','index/ap'))}}
-				               </div>
-				          </div>
-				
-				      </div>
-
-      <div id="boxAktuelles" class="col-lg-6">
-
-        <div class="box">
-          <div class="box-gray aligncenter" style="overflow-y: scroll">
-              <h4>{{=T('News')}}</h4>
-
-			  <div class="media">
-                  <div class="media-left pull-left"><img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" /></div>                        
-                  <div class="media-body">      
-                      <p class="media-heading">11.08.2016<br>
-            		     <h5>{{=T('New')}} : EVA Berlin - Elektronische Medien & Kunst, Kultur, Historie</h5> 
-                      </p>
-                      <p class="boxText">
-        		      {{if session.forced_language =='de': }}  
-                              Die bislang fünfzehn gedruckt erschienenen <a href="{{=URL('series','info/eva')}}" title="EVA-Berlin-Konferenzbände">EVA-Berlin-Konferenzbände</a> werden sukzessive online im OPEN ACCESS bereit gestellt. Die EVA-Konferenzen sind ein internationales Forum für Anwender, Entwickler und Vermittler elektronischer Dokumentations- und Kommunikationstechniken im Kulturbereich.  
-               	      {{elif session.forced_language =='en': }}      
-                              Die bislang fünfzehn gedruckt erschienenen <a href="{{=URL('series','info/eva')}}" title="EVA-Berlin-Konferenzbände">EVA-Berlin-Konferenzbände</a> werden sukzessive online im OPEN ACCESS bereit gestellt. Die EVA-Konferenzen sind ein internationales Forum für Anwender, Entwickler und Vermittler elektronischer Dokumentations- und Kommunikationstechniken im Kulturbereich. 
-                      {{pass}}                                   
-                       </p>
-                  </div>
-              </div>    
-			  
-              <div class="media">
-                  <div class="media-left pull-left"><img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" /></div>                        
-                  <div class="media-body">      
-                      <p class="media-heading">
-            		      <h5>{{=T('New in')}} arthistoricum.net – ART-Books</h5> 
-                      </p>
-                      <p class="boxText">
-        		      {{if session.forced_language =='de': }}  
-                              Wir freuen uns über unsere neue Kooperation mit dem gemeinnützigen Verein "<a href="{{=URL('partner','index/dbae')}}" title="Informationsseite zum Verein Das Bild als Ereignis">Das Bild als Ereignis e. V.</a>". In Kürze wird hier der zweite Band seiner Schriftenreihe mit dem Titel "Mediale Dimensionen von Reproduktion" als Open-Access-eBook erscheinen. 
-               	      {{elif session.forced_language =='en': }}      
-                              Wir freuen uns über unsere neue Kooperation mit dem gemeinnützigen Verein "<a href="{{=URL('partner','index/dbae')}}" title="Informationsseite zum Verein Das Bild als Ereignis">Das Bild als Ereignis e. V.</a>". In Kürze wird hier der zweite Band seiner Schriftenreihe mit dem Titel "Mediale Dimensionen von Reproduktion" als Open-Access-eBook erscheinen.
-                      {{pass}}                                   
-                      </p>
-                  </div>
-              </div>          
-          
-              <div class="media">
-                  <div class="media-left pull-left"><img src="{{=URL('static','images/home/Open_access_logo.png')}}" style="width: 50px;" /></div>                        
-                  <div class="media-body">      
-                      <p class="media-heading">
-            			<h5>open-access.net</h5>
-                      </p>
-                  <p class="boxText">
-                 {{if session.forced_language =='de': }}
-                       Kennen Sie die Plattform <b><a href="https://www.open-access.net/startseite/" title="Homepage open-access.net">open-access.net</a></b>? Sie bietet umfassende Information über das Thema Open Access und praktische Umsetzungshilfen an. open-access.net macht Konzepte, rechtliche, organisatorische und technische Rahmenbedingungen, konkrete Erfahrungen bei der Umsetzung, Initiativen, Dienste, Dienstleistungsanbieter und Positionspapiere gut aufbereitet zugänglich.
-                 {{elif session.forced_language =='en': }}
-                       Are you aware of the platform <b><a href="https://www.open-access.net/startseite/" title="Homepage open-access.net">open-access.net</a></b>? It offers detailed information on the subject of Open Access and a practical implementation guide. open-access.net provides well-edited, customized concepts, information on legal, organizational and technical framework conditions, shares concrete experiences with the realization, and introduces initiatives, services and position papers.
-                 {{pass}}            
-<!--<a href="http://open-access.net/community/open_access_tage/ " target="_blank">&nbsp;<i class="fa fa-external-link"></i></a>-->
-                      </p>
-                  </div>
+  <!-- end header -->
+  <section id="featured">
+  </section>
+  <section id="content">
+    <div class="container">
+      <div class="row" style="height:40px;">
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-3">
+              <div class="box">
+                <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4> {{=IMG(_src=URL('static','files/presses/2/monographs/95/simple/cover.jpg'),_width='145px')}}
+                </div>
+                <div class="box-bottom"> {{=A(T('More Information'),_href=URL('catalog','book/95'))}}
+                </div>
               </div>
-              
-		</div>
-		<div class="box-bottom">&nbsp; </div>
-                                   
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
             </div>
-
-            <div class="row">
-
-                <div class="col-lg-12">
-
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <div class="box">
-                                <div class="box-gray aligncenter">
-									<h4>{{=T('Soon')}}</h4>                                 
-                                    {{=IMG(_src=URL('static','images/partner/cover_mimesis.jpg'),_width='145px')}}
-                                </div>
-
-                                <div class="box-bottom">
-                                    {{=A(T('More Information'),_href=URL('partner','index/mimesis'))}}
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3">
-                            <div class="box">
-                                <div class="box-gray aligncenter">
-                                   <h4>{{=T('Series ##sg')}}</h4>
-                                   {{=IMG(_src=URL('static','images/series/serien_cover.png'),_width='145px')}}
-                                </div>
-
-                                <div class="box-bottom">
-                                  {{=A(T('More Information'),_href=URL('series','info/eva'))}}
-                                </div>
-                            </div>
-                        </div>
-
-                    <div class="col-lg-6" id="boxAktuelles">
-
-                        <div class="box">
-                        <div class="box-gray aligncenter">
-                        <h4>arthistoricum.net – ART-Books </h4>
-                        <p class="boxText">
-{{if session.forced_language =='de': }}
-                         ist die Open-Access-Publikationsplattform von <a href="http://www.arthistoricum.net/" title="arthistoricum.net - Fachinformationsdienst Kunst, Fotografie, Design">arthistoricum.net</a> für wissenschaftliche E-Books aus den Fachbereichen Kunstgeschichte, Fotografie und Design.<br />
-Wir unterstützen Open Access als Publikationsmodell für die Verbreitung von Forschungsergebnissen und veröffentlichen sowohl Erstpublikationen ("goldener Weg") als auch Zweitveröffentlichungen ("grüner Weg"). Das kostenfreie Angebot richtet sich an Kunstwissenschaftlerinnen und Kunstwissenschaftler weltweit.<br />
-Zum Einsatz kommt die Open-Source-Software OMP des Public Knowledge Project (PKP).
-{{elif session.forced_language =='en': }}
-                         ist die Open-Access-Publikationsplattform von <a href="http://www.arthistoricum.net/" title="arthistoricum.net - Fachinformationsdienst Kunst, Fotografie, Design">arthistoricum.net</a> für wissenschaftliche E-Books aus den Fachbereichen Kunstgeschichte, Fotografie und Design.<br />
-Wir unterstützen Open Access als Publikationsmodell für die Verbreitung von Forschungsergebnissen und veröffentlichen sowohl Erstpublikationen ("goldener Weg") als auch Zweitveröffentlichungen ("grüner Weg"). Das kostenfreie Angebot richtet sich an Kunstwissenschaftlerinnen und Kunstwissenschaftler weltweit.<br />
-Zum Einsatz kommt die Open-Source-Software OMP des Public Knowledge Project (PKP).
-{{pass}}
-
-                        </p>
-                        </div>
- 
-              <div class="box-bottom">&nbsp;</div>
-                      	</div>
-                    </div>
-
-                   </div>
-
+            <div class="col-lg-3">
+              <div class="box">
+                <div class="box-gray aligncenter"><h4>{{=T('Soon')}}</h4> {{=IMG(_src=URL('static','images/press/home/cover_chant.png'),_width='145px')}}
                 </div>
-
+                <div class="box-bottom"> {{=A(T('More Information'),_href=URL('partner','index/ap'))}}
+                </div>
+              </div>
+            </div>
+            <div id="boxAktuelles" class="col-lg-6">
+              <div class="box">
+                <div class="box-gray aligncenter" style="overflow-y: scroll"><h4>{{=T('News')}}</h4>
+                  <div class="media">
+                    <div class="media-left pull-left">
+                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                    </div>
+                    <div class="media-body">
+                      <p class="media-heading">11.08.2016
+                        <br><h5>{{=T('New')}} : EVA Berlin - Elektronische Medien & Kunst, Kultur, Historie</h5>
+                      </p>
+                      <p class="boxText"> {{if session.forced_language =='de': }} Die bislang fünfzehn gedruckt erschienenen 
+                        <a href="{{=URL('series','info/eva')}}" title="EVA-Berlin-Konferenzbände">EVA-Berlin-Konferenzbände</a> werden sukzessive online im OPEN ACCESS bereit gestellt. Die EVA-Konferenzen sind ein internationales Forum für Anwender, Entwickler und Vermittler elektronischer Dokumentations- und Kommunikationstechniken im Kulturbereich. {{elif session.forced_language =='en': }} Die bislang fünfzehn gedruckt erschienenen 
+                        <a href="{{=URL('series','info/eva')}}" title="EVA-Berlin-Konferenzbände">EVA-Berlin-Konferenzbände</a> werden sukzessive online im OPEN ACCESS bereit gestellt. Die EVA-Konferenzen sind ein internationales Forum für Anwender, Entwickler und Vermittler elektronischer Dokumentations- und Kommunikationstechniken im Kulturbereich. {{pass}}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="media">
+                    <div class="media-left pull-left">
+                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                    </div>
+                    <div class="media-body">
+                      <p class="media-heading"><h5>{{=T('New in')}} arthistoricum.net – ART-Books</h5>
+                      </p>
+                      <p class="boxText"> {{if session.forced_language =='de': }} Wir freuen uns über unsere neue Kooperation mit dem gemeinnützigen Verein "
+                        <a href="{{=URL('partner','index/dbae')}}" title="Informationsseite zum Verein Das Bild als Ereignis">Das Bild als Ereignis e. V.</a>". In Kürze wird hier der zweite Band seiner Schriftenreihe mit dem Titel "Mediale Dimensionen von Reproduktion" als Open-Access-eBook erscheinen. {{elif session.forced_language =='en': }} Wir freuen uns über unsere neue Kooperation mit dem gemeinnützigen Verein "
+                        <a href="{{=URL('partner','index/dbae')}}" title="Informationsseite zum Verein Das Bild als Ereignis">Das Bild als Ereignis e. V.</a>". In Kürze wird hier der zweite Band seiner Schriftenreihe mit dem Titel "Mediale Dimensionen von Reproduktion" als Open-Access-eBook erscheinen. {{pass}}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="media">
+                    <div class="media-left pull-left">
+                      <img src="{{=URL('static','images/home/Open_access_logo.png')}}" style="width: 50px;" />
+                    </div>
+                    <div class="media-body">
+                      <p class="media-heading"><h5>open-access.net</h5>
+                      </p>
+                      <p class="boxText">{{if session.forced_language =='de': }} Kennen Sie die Plattform <b>
+                          <a href="https://www.open-access.net/startseite/" title="Homepage open-access.net">open-access.net</a></b>? Sie bietet umfassende Information über das Thema Open Access und praktische Umsetzungshilfen an. open-access.net macht Konzepte, rechtliche, organisatorische und technische Rahmenbedingungen, konkrete Erfahrungen bei der Umsetzung, Initiativen, Dienste, Dienstleistungsanbieter und Positionspapiere gut aufbereitet zugänglich. {{elif session.forced_language =='en': }} Are you aware of the platform <b>
+                          <a href="https://www.open-access.net/startseite/" title="Homepage open-access.net">open-access.net</a></b>? It offers detailed information on the subject of Open Access and a practical implementation guide. open-access.net provides well-edited, customized concepts, information on legal, organizational and technical framework conditions, shares concrete experiences with the realization, and introduces initiatives, services and position papers. {{pass}} 
+                        <!--<a href="http://open-access.net/community/open_access_tage/ " target="_blank">&nbsp;<i class="fa fa-external-link"></i></a>-->
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="box-bottom">&nbsp; 
+                </div>
+              </div>
+            </div>
           </div>
-    </section>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="box">
+              <div class="box-gray aligncenter"><h4>{{=T('Soon')}}</h4> {{=IMG(_src=URL('static','images/partner/cover_mimesis.jpg'),_width='145px')}}
+              </div>
+              <div class="box-bottom"> {{=A(T('More Information'),_href=URL('partner','index/mimesis'))}}
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="box">
+              <div class="box-gray aligncenter"><h4>{{=T('Series ##sg')}}</h4> {{=IMG(_src=URL('static','images/series/serien_cover.png'),_width='145px')}}
+              </div>
+              <div class="box-bottom"> {{=A(T('More Information'),_href=URL('series','info/eva'))}}
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6" id="boxAktuelles">
+            <div class="box">
+              <div class="box-gray aligncenter"><h4>arthistoricum.net – ART-Books </h4>
+                <p class="boxText">{{if session.forced_language =='de': }} ist die Open-Access-Publikationsplattform von 
+                  <a href="http://www.arthistoricum.net/" title="arthistoricum.net - Fachinformationsdienst Kunst, Fotografie, Design">arthistoricum.net</a> für wissenschaftliche E-Books aus den Fachbereichen Kunstgeschichte, Fotografie und Design.<br /> Wir unterstützen Open Access als Publikationsmodell für die Verbreitung von Forschungsergebnissen und veröffentlichen sowohl Erstpublikationen ("goldener Weg") als auch Zweitveröffentlichungen ("grüner Weg"). Das kostenfreie Angebot richtet sich an Kunstwissenschaftlerinnen und Kunstwissenschaftler weltweit.<br /> Zum Einsatz kommt die Open-Source-Software OMP des Public Knowledge Project (PKP). {{elif session.forced_language =='en': }} ist die Open-Access-Publikationsplattform von 
+                  <a href="http://www.arthistoricum.net/" title="arthistoricum.net - Fachinformationsdienst Kunst, Fotografie, Design">arthistoricum.net</a> für wissenschaftliche E-Books aus den Fachbereichen Kunstgeschichte, Fotografie und Design.<br /> Wir unterstützen Open Access als Publikationsmodell für die Verbreitung von Forschungsergebnissen und veröffentlichen sowohl Erstpublikationen ("goldener Weg") als auch Zweitveröffentlichungen ("grüner Weg"). Das kostenfreie Angebot richtet sich an Kunstwissenschaftlerinnen und Kunstwissenschaftler weltweit.<br /> Zum Einsatz kommt die Open-Source-Software OMP des Public Knowledge Project (PKP). {{pass}}
+                </p>
+              </div>
+              <div class="box-bottom">&nbsp;
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
-
