@@ -2077,6 +2077,8 @@ article img.pull-right, article .align-right{
 
 /*Anpassungen WWW Heidelberg*/
 
+.box-gray img, .post-image img {border:1px solid #cdcbcc} 
+
 @media (min-width:769px) and (max-width: 979px)
        {
        .navbar-default .navbar-nav > .open > a {
