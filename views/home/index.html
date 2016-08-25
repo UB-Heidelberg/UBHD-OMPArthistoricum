@@ -39,8 +39,27 @@
                       <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
                     </div>
                     <div class="media-body">
+                      <p class="media-heading">12.08.2016
+                        <br>
+                        {{if session.forced_language =='de': }} 
+                        <h5>{{=T('New')}}: Casting. Ein analoger Weg ins Zeitalter der Digitalisierung?</h5>
+                        {{elif session.forced_language =='en': }} 
+                        <h5>{{=T('New')}}: Casting. A way to embrace the digital age in analogue fashion?</h5>
+                        {{pass}}
+                      </p>
+                      <p class="boxText"> {{if session.forced_language =='de': }} Die Gipsformerei der Staatlichen Museen zu Berlin feiert 2019 ihr zweihundertjähriges Bestehen. Das ist ein Anlass, um u. a. zu diskutieren, wie sich eine Institution, deren Fokus auf der traditionellen handwerklichen Fertigung liegt, gegenüber technischen Innovationen behaupten kann. Die <a href="http://books.ub.uni-heidelberg.de/arthistoricum/catalog/book/95" title="Informationen zu 'Casting. Ein analoger Weg ins Zeitalter der Digitalisierung?">Publikation</a> widmet sich dieser Frage und bietet darüber hinaus einen interessanten Querschnitt zur aktuellen Forschungsdebatte.
+                      {{elif session.forced_language =='en': }} In 2019 the Gipsformerei will be celebrating its 200th anniversary which is a welcome opportunity for us to address the following question: How can an institution whose core activity lies in traditional handcrafted production hold its own in the face of technical innovation? The <a href="http://books.ub.uni-heidelberg.de/arthistoricum/catalog/book/95?lang=en" title="Information on Casting. A way to embrace the digital age in analogue fashion?">publication</a> addresses that question and adds an interesting cross-section on the current research debate.
+                        {{pass}}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="media">
+                    <div class="media-left pull-left">
+                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                    </div>
+                    <div class="media-body">
                       <p class="media-heading">11.08.2016
-                        <br><h5>{{=T('New')}} : EVA Berlin - Elektronische Medien & Kunst, Kultur, Historie</h5>
+                        <br><h5>{{=T('New')}}: EVA Berlin - Elektronische Medien & Kunst, Kultur, Historie</h5>
                       </p>
                       <p class="boxText"> {{if session.forced_language =='de': }} Die bislang fünfzehn gedruckt erschienenen 
                         <a href="{{=URL('series','info/eva')}}" title="EVA-Berlin-Konferenzbände">EVA-Berlin-Konferenzbände</a> werden sukzessive online im OPEN ACCESS bereit gestellt. Die EVA-Konferenzen sind ein internationales Forum für Anwender, Entwickler und Vermittler elektronischer Dokumentations- und Kommunikationstechniken im Kulturbereich. {{elif session.forced_language =='en': }} Fifteen volumes of 
