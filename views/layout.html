@@ -76,9 +76,9 @@
          <!--<li><a href="suche.html">{{=T('Search')}} |</a></li>-->
                     <!--<li><a href="faq.html">FAQ |</a></li>-->
                      {{if session.forced_language=='en':}}
-                    <li><a href="{{=request.url}}?lang=de" style="padding-left: 5px;">DE</a></li>
+                    <li><a href="{{=request.url}}?lang=de" style="padding-left: 15px;">DE</a></li>
                     {{elif session.forced_language=='de':}}
-                    <li><a href="{{=request.url}}?lang=en" style="padding-left: 5px;">EN</a></li>
+                    <li><a href="{{=request.url}}?lang=en" style="padding-left: 15px;">EN</a></li>
                     {{pass}}
                 </ul>
 
