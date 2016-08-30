@@ -9,48 +9,73 @@
                 Staatliche Kunstsammlungen Dresden (SKD)  
             {{pass}}
             </h3>
+        </div>            
+  {{if session.forced_language =='de': }}
 
-            <p>
-                {{if session.forced_language =='de': }}
-
-                <div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL('static','images/partner/skd_logo.png'),_width='230px')}}</p>
-                <br>
-                <p><b>Kontakt</b><br>
-                Staatliche Kunstsammlungen Dresden<br>
-                Residenzschloss<br>
-                Taschenberg 2<br>
-                D-01067 Dresden<br><br>
-                Tel.: +49 351 4914 2000<br>
-                E-Mail: besucherservice@skd.museum<br>
-                Internet: <a href="www.skd.museum" title="Homepage">www.skd.museum</a></p>
-                </div>
-                <p>Die <b><a href="http://www.skd.museum/" title="Homepage der Staatlichen Kunstsammlungen Dresden">Staatlichen Kunstsammlungen Dresden (SKD)</a></b> bestehen aus insgesamt 14 Museen, die eine große thematische Vielfalt bieten. Ursprung der Museen ist die Sammlung der sächsischen Kurfürsten und polnischen Könige. Historische Quellen belegen die Gründung der fürstlichen Kunstkammer durch Kurfürst August (1526-1586) im Jahre 1560. Durch das Mäzenatentum Augusts des Starken (1670-1733) und seines Sohnes König August III. (1696-1763) entwickelte sich Dresden zu einer führenden Kulturmetropole mit systematisch angelegten Kunstkabinetten, die den Kern der SKD bilden.</p>
-                <p>Ein Teil Sammlung ist der unter August dem Starken 1728 gegründete <a href="http://www.skd.museum/de/museen-institutionen/zwinger-mit-semperbau/mathematisch-physikalischer-salon/index.html?tx_eventcal_pi1[diff]=7" title="Mathematisch-Physikalischer Salon">Mathematisch-Physikalische Salon</a>, ein Museum historischer wissenschaftlicher Instrumente.</p>
-                <p>Über <b>arthistoricum.net - ART-Books</b> werden die Publikationen des Salons nun erstmals online zur Verfügung gestellt. Dies sind die {{=A(T('"Veröffentlichungen des Staatlichen Mathematisch-Physikalischen Salons"'),_href=URL('series','info/vmps'))}} sowie <a href="{{=URL('catalog','index')}}" title="Staatl. Kunstsammlungen Dresden: Kataloge des Mathematisch-Physikalischen Salons">„Staatl. Kunstsammlungen Dresden: Kataloge des Mathematisch-Physikalischen Salons“</a>.
+<div class="col-lg-9">
+<p>Die <b><a href="http://www.skd.museum/" title="Homepage der Staatlichen Kunstsammlungen Dresden">Staatlichen Kunstsammlungen Dresden (SKD)</a></b> bestehen aus insgesamt 14 Museen, die eine große thematische Vielfalt bieten. Ursprung der Museen ist die Sammlung der sächsischen Kurfürsten und polnischen Könige. Historische Quellen belegen die Gründung der fürstlichen Kunstkammer durch Kurfürst August (1526-1586) im Jahre 1560. Durch das Mäzenatentum Augusts des Starken (1670-1733) und seines Sohnes König August III. (1696-1763) entwickelte sich Dresden zu einer führenden Kulturmetropole mit systematisch angelegten Kunstkabinetten, die den Kern der SKD bilden.
+</p>
+<p>Ein Teil Sammlung ist der unter August dem Starken 1728 gegründete 
+  <a href="http://www.skd.museum/de/museen-institutionen/zwinger-mit-semperbau/mathematisch-physikalischer-salon/index.html?tx_eventcal_pi1[diff]=7" title="Mathematisch-Physikalischer Salon">Mathematisch-Physikalische Salon</a>, ein Museum historischer wissenschaftlicher Instrumente.
+</p>
+<p>Über <b>arthistoricum.net - ART-Books</b> werden die Publikationen des Salons nun erstmals online zur Verfügung gestellt. Dies sind die {{=A(T('"Veröffentlichungen des Staatlichen Mathematisch-Physikalischen Salons"'),_href=URL('series','info/vmps'))}} sowie 
+  <a href="{{=URL('catalog','index')}}" title="Staatl. Kunstsammlungen Dresden: Kataloge des Mathematisch-Physikalischen Salons">„Staatl. Kunstsammlungen Dresden: Kataloge des Mathematisch-Physikalischen Salons“</a>.</p>
+</div>  
+   
+  <div class="col-lg-3">
+    <div id="infoBoxRechts">
+      <p>{{=IMG(_src=URL('static','images/partner/skd_logo.png'),_width='230px')}}
+      </p>
+      <br>
+      <p><b>Kontakt</b>
+        <br>Staatliche Kunstsammlungen Dresden
+        <br>Residenzschloss
+        <br>Taschenberg 2
+        <br>D-01067 Dresden
+        <br>
+        <br>Tel.: +49 351 4914 2000
+        <br>E-Mail: besucherservice@skd.museum
+        <br>Internet: 
+        <a href="www.skd.museum" title="Homepage">www.skd.museum</a>
+      </p>
+    </div>
+  </div>
          
 {{elif session.forced_language =='en': }}
 
-<div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL('static','images/partner/skd_logo.png'),_width='230px')}}</p>
-                <br>
-                <p><b>Kontakt</b><br>
-                Staatliche Kunstsammlungen Dresden<br>
-                Residenzschloss<br>
-                Taschenberg 2<br>
-                D-01067 Dresden<br><br>
-                Tel.: +49 351 4914 2000<br>
-                E-Mail: besucherservice@skd.museum<br>
-                Internet: <a href="www.skd.museum" title="Homepage">www.skd.museum</a></p>
-                </div>
-<p>Die <b><a href="http://www.skd.museum/" title="Homepage der Staatlichen Kunstsammlungen Dresden">Staatlichen Kunstsammlungen Dresden (SKD)</a></b> bestehen aus insgesamt 14 Museen, die eine große thematische Vielfalt bieten. Ursprung der Museen ist die Sammlung der sächsischen Kurfürsten und polnischen Könige. Historische Quellen belegen die Gründung der fürstlichen Kunstkammer durch Kurfürst August (1526-1586) im Jahre 1560. Durch das Mäzenatentum Augusts des Starken (1670-1733) und seines Sohnes König August III. (1696-1763) entwickelte sich Dresden zu einer führenden Kulturmetropole mit systematisch angelegten Kunstkabinetten, die den Kern der SKD bilden.</p>
-                <p>Ein Teil Sammlung ist der unter August dem Starken 1728 gegründete <a href="http://www.skd.museum/de/museen-institutionen/zwinger-mit-semperbau/mathematisch-physikalischer-salon/index.html?tx_eventcal_pi1[diff]=7" title="Mathematisch-Physikalischer Salon">Mathematisch-Physikalische Salon</a>, ein Museum historischer wissenschaftlicher Instrumente.</p>
-                <p>Über <b>arthistoricum.net - ART-Books</b> werden die Publikationen des Salons nun erstmals online zur Verfügung gestellt. Dies sind die {{=A(T('"Veröffentlichungen des Staatlichen Mathematisch-Physikalischen Salons"'),_href=URL('series','info/vmps'))}} sowie <a href="{{=URL('catalog','index')}}" title="Staatl. Kunstsammlungen Dresden: Kataloge des Mathematisch-Physikalischen Salons">„Staatl. Kunstsammlungen Dresden: Kataloge des Mathematisch-Physikalischen Salons“</a>.
+<div class="col-lg-9">
+<p>Die <b><a href="http://www.skd.museum/" title="Homepage der Staatlichen Kunstsammlungen Dresden">Staatlichen Kunstsammlungen Dresden (SKD)</a></b> bestehen aus insgesamt 14 Museen, die eine große thematische Vielfalt bieten. Ursprung der Museen ist die Sammlung der sächsischen Kurfürsten und polnischen Könige. Historische Quellen belegen die Gründung der fürstlichen Kunstkammer durch Kurfürst August (1526-1586) im Jahre 1560. Durch das Mäzenatentum Augusts des Starken (1670-1733) und seines Sohnes König August III. (1696-1763) entwickelte sich Dresden zu einer führenden Kulturmetropole mit systematisch angelegten Kunstkabinetten, die den Kern der SKD bilden.
+</p>
+<p>Ein Teil Sammlung ist der unter August dem Starken 1728 gegründete 
+  <a href="http://www.skd.museum/de/museen-institutionen/zwinger-mit-semperbau/mathematisch-physikalischer-salon/index.html?tx_eventcal_pi1[diff]=7" title="Mathematisch-Physikalischer Salon">Mathematisch-Physikalische Salon</a>, ein Museum historischer wissenschaftlicher Instrumente.
+</p>
+<p>Über <b>arthistoricum.net - ART-Books</b> werden die Publikationen des Salons nun erstmals online zur Verfügung gestellt. Dies sind die {{=A(T('"Veröffentlichungen des Staatlichen Mathematisch-Physikalischen Salons"'),_href=URL('series','info/vmps'))}} sowie 
+  <a href="{{=URL('catalog','index')}}" title="Staatl. Kunstsammlungen Dresden: Kataloge des Mathematisch-Physikalischen Salons">„Staatl. Kunstsammlungen Dresden: Kataloge des Mathematisch-Physikalischen Salons“</a>.</p>
+</div>  
+   
+  <div class="col-lg-3">
+    <div id="infoBoxRechts">
+      <p>{{=IMG(_src=URL('static','images/partner/skd_logo.png'),_width='230px')}}
+      </p>
+      <br>
+      <p><b>Kontakt</b>
+        <br>Staatliche Kunstsammlungen Dresden
+        <br>Residenzschloss
+        <br>Taschenberg 2
+        <br>D-01067 Dresden
+        <br>
+        <br>Tel.: +49 351 4914 2000
+        <br>E-Mail: besucherservice@skd.museum
+        <br>Internet: 
+        <a href="www.skd.museum" title="Homepage">www.skd.museum</a>
+      </p>
+    </div>
+  </div>
 
                 {{pass}}
 
 
-            </p>
 
-        </div>
     </div>
   </div>
 

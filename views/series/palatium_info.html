@@ -1,51 +1,46 @@
 {{extend 'layout.html'}}
 
 <div id="main" class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <h3>  {{if session.forced_language =='de': }}
-                PALATIUM e-Publications  
-                {{elif session.forced_language =='en': }}
-                PALATIUM e-Publications
-            {{pass}}
-            </h3>
-
-
-                {{if session.forced_language =='de': }}
-
-<div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL('static','images/series/palatium_logo.png'),_width='230px')}}</p>
-<p><b>Herausgeber</b><br>
-                Krista De Jonge und Pieter Martens<br>
-</div>
-<p>Informationen folgen!</p>
-<div class="widget">
-         <ul class="tags">
-                            <li>
-                              {{=A(T('Volumes'),_href=URL('catalog','series/palatium'))}}
-                            </li>
-
-         </ul>
-</div>
-
-
-                     {{elif session.forced_language =='en': }}
-<div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL('static','images/series/palatium_logo.png'),_width='230px')}}</p>
-<p><b>Herausgeber</b><br>
-                Krista De Jonge und Pieter Martens<br>
-</div>
-
-<p>Further Information coming soon!</p>
-<div class="widget">
-         <ul class="tags">
-                            <li>
-                               {{=A(T('Volumes'),_href=URL('catalog','series/palatium'))}}
-                            </li>
-
+  <div class="row">
+    <div class="col-lg-12"><h3> {{if session.forced_language =='de': }} PALATIUM e-Publications {{elif session.forced_language =='en': }} PALATIUM e-Publications {{pass}} </h3>
+    </div>{{if session.forced_language =='de': }} 
+    <div class="col-lg-9">
+      <p>Informationen folgen!
+      </p>
+      <div class="widget">
+        <ul class="tags">
+          <li>{{=A(T('Volumes'),_href=URL('catalog','series/palatium'))}} 
+          </li>
         </ul>
-</div>
-{{pass}}
-
-        </div>
+      </div>
     </div>
+    <div class="col-lg-3">
+      <div id="infoBoxRechts">
+        <p>{{=IMG(_src=URL('static','images/series/palatium_logo.png'),_width='230px')}}
+        </p>
+        <p><b>Herausgeber</b>
+          <br>Krista De Jonge und Pieter Martens
+        </p>
+      </div>
+    </div>{{elif session.forced_language =='en': }} 
+    <div class="col-lg-9">
+      <p>Further Information coming soon!
+      </p>
+      <div class="widget">
+        <ul class="tags">
+          <li>{{=A(T('Volumes'),_href=URL('catalog','series/palatium'))}} 
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div id="infoBoxRechts">
+        <p>{{=IMG(_src=URL('static','images/series/palatium_logo.png'),_width='230px')}}
+        </p>
+        <p><b>Herausgeber</b>
+          <br>Krista De Jonge und Pieter Martens
+        </p>
+      </div>
+    </div>{{pass}} 
+  </div>
 </div>
-

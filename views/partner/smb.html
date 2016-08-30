@@ -9,89 +9,103 @@
                 Staatliche Museen zu Berlin  
             {{pass}}
             </h3>
+        </div>    
 
-            <p>
                 {{if session.forced_language =='de': }}
-
-                <div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL('static','images/partner/smb_logo.png'),_width='230px')}}</p>
-                <br>
-                <p><b>Kontakt</b><br>
-                Staatliche Museen zu Berlin – Preußischer Kulturbesitz<br>
-                Generaldirektion<br>
-                Stauffenbergstraße 41<br>
-                D-10785 Berlin<br><br>
-                
-                Tel.: +49 30 266 424242<br>
-                (Mo - Fr, 9-16 Uhr)<br>
-                Internet: <a href="http://www.smb.museum" title="Homepage">www.smb.museum</a>
-                </div>
-                <p>Mit fünfzehn Museumssammlungen, drei Forschungseinrichtungen und der Gipsformerei sind die <a href="http://www.smb.museum" title="Homepage">Staatlichen Museen zu Berlin – Preußischer Kulturbesitz</a> eines der bedeutendsten Universalmuseen der Welt. In neunzehn Museen beherbergen sie mehr als fünf Millionen Objekte, die mehr als 700.000 Jahre Kulturgeschichte repräsentieren.</p>
-                 <p>Die Objekte und ihre Geschichten werden in zahlreichen Publikationen erforscht und dokumentiert. Über <b>arthistoricum.net - ART-Books</b> werden aktuelle Forschungsergebnisse nun auch online zur Verfügung gestellt: Veröffentlichungen der Staatlichen Museen zu Berlin</p> 
-				 <hr>
-                <div class="row">
-                <div class="col-lg-1">
-                {{=IMG(_src=URL('static','files/presses/2/monographs/95/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}
-                </div>
-                <div class="col-lg-7">
-                <b>Christina Haak, Miguel Helfrich (Hrsg.)</b><br>
-                 
-                {{=A('Casting. Ein analoger Weg ins Zeitalter der Digitalisierung?',_href=URL('catalog','book/95'))}} Ein Symposium zur Gipsformerei der Staatlichen Museen zu Berlin, 2016
-                </div>
-				</div>
-				
-				<div class="row">
-                <div class="col-lg-1">
-                {{=IMG(_src=URL('static','images/series/serien_cover.png'),_width='80px', _class='bildrahmen')}}
-                </div>
-                <div class="col-lg-7">
-                 
-                {{=A('EVA Berlin - Elektronische Medien & Kunst, Kultur, Historie',_href=URL('series','info/eva'))}}<br>Die bislang fünfzehn gedruckt erschienenen Konferenzbände werden sukzessive online im OPEN ACCESS bereit gestellt.
-                </div>
-				</div>
+<div class="col-lg-9">
+<p>Mit fünfzehn Museumssammlungen, drei Forschungseinrichtungen und der Gipsformerei sind die 
+  <a href="http://www.smb.museum" title="Homepage">Staatlichen Museen zu Berlin – Preußischer Kulturbesitz</a> eines der bedeutendsten Universalmuseen der Welt. In neunzehn Museen beherbergen sie mehr als fünf Millionen Objekte, die mehr als 700.000 Jahre Kulturgeschichte repräsentieren.
+</p>
+<p>Die Objekte und ihre Geschichten werden in zahlreichen Publikationen erforscht und dokumentiert. Über <b>arthistoricum.net &ndash; ART-Books</b> werden aktuelle Forschungsergebnisse nun auch online zur Verfügung gestellt: Veröffentlichungen der Staatlichen Museen zu Berlin
+</p>
+<hr>
+<div class="row">
+<div class="col-lg-2">
+{{=IMG(_src=URL('static','files/presses/2/monographs/95/simple/cover.jpg'),_width='80px', _class='bildrahmen')}} 
+  </div>
+<div class="col-lg-9">
+<b>Christina Haak, Miguel Helfrich (Hrsg.)</b>
+    <br>{{=A('Casting. Ein analoger Weg ins Zeitalter der Digitalisierung?',_href=URL('catalog','book/95'))}} Ein Symposium zur Gipsformerei der Staatlichen Museen zu Berlin, 2016 
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-2">{{=IMG(_src=URL('static','images/series/serien_cover.png'),_width='80px', _class='bildrahmen')}} 
+  </div>  
+  <div class="col-lg-9">{{=A('EVA Berlin - Elektronische Medien & Kunst, Kultur, Historie',_href=URL('series','info/eva'))}}
+    <br>Die bislang fünfzehn gedruckt erschienenen Konferenzbände werden sukzessive online im OPEN ACCESS bereit gestellt. 
+  </div>
+</div>
+</div>        
+        
+<div class="col-lg-3">
+  <div id="infoBoxRechts">
+  <p>{{=IMG(_src=URL('static','images/partner/smb_logo.png'),_width='230px')}}
+  </p>
+    <br>
+    <p><b>Kontakt</b>
+      <br>Staatliche Museen zu Berlin – Preußischer Kulturbesitz
+      <br>Generaldirektion
+      <br>Stauffenbergstraße 41
+      <br>D-10785 Berlin
+      <br>
+      <br>Tel.: +49 30 266 424242
+      <br>(Mo&ndash;Fr, 9&ndash;16 Uhr)
+      <br>Internet: 
+      <a href="http://www.smb.museum" title="Homepage">www.smb.museum</a>
+  </div>
+</div>
+        
 {{elif session.forced_language =='en': }}
 
-                <div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL('static','images/partner/smb_logo.png'),_width='230px')}}</p>
-                <br>
-                <p><b>Kontakt</b><br>
-                Staatliche Museen zu Berlin – Preußischer Kulturbesitz<br>
-                Generaldirektion<br>
-                Stauffenbergstraße 41<br>
-                D-10785 Berlin<br><br>
+<div class="col-lg-9">
+<p>Mit fünfzehn Museumssammlungen, drei Forschungseinrichtungen und der Gipsformerei sind die 
+  <a href="http://www.smb.museum" title="Homepage">Staatlichen Museen zu Berlin – Preußischer Kulturbesitz</a> eines der bedeutendsten Universalmuseen der Welt. In neunzehn Museen beherbergen sie mehr als fünf Millionen Objekte, die mehr als 700.000 Jahre Kulturgeschichte repräsentieren.
+</p>
+<p>Die Objekte und ihre Geschichten werden in zahlreichen Publikationen erforscht und dokumentiert. Über <b>arthistoricum.net &ndash; ART-Books</b> werden aktuelle Forschungsergebnisse nun auch online zur Verfügung gestellt: Veröffentlichungen der Staatlichen Museen zu Berlin
+</p>
+<hr>
+<div class="row">
+<div class="col-lg-2">
+{{=IMG(_src=URL('static','files/presses/2/monographs/95/simple/cover.jpg'),_width='80px', _class='bildrahmen')}} 
+  </div>
+<div class="col-lg-9">
+<b>Christina Haak, Miguel Helfrich (Hrsg.)</b>
+    <br>{{=A('Casting. Ein analoger Weg ins Zeitalter der Digitalisierung?',_href=URL('catalog','book/95'))}} Ein Symposium zur Gipsformerei der Staatlichen Museen zu Berlin, 2016 
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-2">{{=IMG(_src=URL('static','images/series/serien_cover.png'),_width='80px', _class='bildrahmen')}} 
+  </div>  
+  <div class="col-lg-9">{{=A('EVA Berlin - Elektronische Medien & Kunst, Kultur, Historie',_href=URL('series','info/eva'))}}
+    <br>Die bislang fünfzehn gedruckt erschienenen Konferenzbände werden sukzessive online im OPEN ACCESS bereit gestellt. 
+  </div>
+</div>
+</div>        
+        
+<div class="col-lg-3">
+  <div id="infoBoxRechts">
+  <p>{{=IMG(_src=URL('static','images/partner/smb_logo.png'),_width='230px')}}
+  </p>
+    <br>
+    <p><b>Kontakt</b>
+      <br>Staatliche Museen zu Berlin – Preußischer Kulturbesitz
+      <br>Generaldirektion
+      <br>Stauffenbergstraße 41
+      <br>D-10785 Berlin
+      <br>
+      <br>Tel.: +49 30 266 424242
+      <br>(Mo&ndash;Fr, 9&ndash;16 Uhr)
+      <br>Internet: 
+      <a href="http://www.smb.museum" title="Homepage">www.smb.museum</a>
+  </div>
+</div>
 
-                Tel.: +49 30 266 424242<br>
-                (Mo - Fr, 9-16 Uhr)<br>
-                Internet: <a href="http://www.smb.museum/en/" title="Homepage">www.smb.museum/en/</a>
-                </div>
-                <p>Mit fünfzehn Museumssammlungen, drei Forschungseinrichtungen und der Gipsformerei sind die <a href="http://www.smb.museum/en/" title="Homepage">Staatlichen Museen zu Berlin – Preußischer Kulturbesitz</a> eines der bedeutendsten Universalmuseen der Welt. In neunzehn Museen beherbergen sie mehr als fünf Millionen Objekte, die mehr als 700.000 Jahre Kulturgeschichte repräsentieren.</p>
-                 <p>Die Objekte und ihre Geschichten werden in zahlreichen Publikationen erforscht und dokumentiert. Über <b>arthistoricum.net - ART-Books</b> werden aktuelle Forschungsergebnisse nun auch online zur Verfügung gestellt: Veröffentlichungen der Staatlichen Museen zu Berlin</p>
 
-				 <hr>
-                <div class="row">
-                <div class="col-lg-1">
-                {{=IMG(_src=URL('static','files/presses/2/monographs/95/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}
-                </div>
-                <div class="col-lg-7">
-                <b>Christina Haak, Miguel Helfrich (Hrsg.)</b><br>
-                 
-                {{=A('Casting. Ein analoger Weg ins Zeitalter der Digitalisierung?',_href=URL('catalog','book/95'))}} Ein Symposium zur Gipsformerei der Staatlichen Museen zu Berlin, 2016
-				</div>
-				</div>
-				
-				<div class="row">
-                <div class="col-lg-1">
-                {{=IMG(_src=URL('static','images/series/serien_cover.png'),_width='80px', _class='bildrahmen')}}
-                </div>
-                <div class="col-lg-7">
-                 
-                {{=A('EVA Berlin - Elektronische Medien & Kunst, Kultur, Historie',_href=URL('series','info/eva'))}}<br>Die bislang fünfzehn gedruckt erschienenen Konferenzbände werden sukzessive online im OPEN ACCESS bereit gestellt.
-                </div>
-				</div>
-                {{pass}}
+{{pass}}
 
 
             
 
-        </div>
     </div>
   </div>
 

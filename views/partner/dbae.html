@@ -4,73 +4,107 @@
     <div class="row">
         <div class="col-lg-12">
             <h3>  {{if session.forced_language =='de': }}
-                „Das Bild als Ereignis e.V.“ <span style="font-weight:500">- Verein für kunstwissenschaftlichen Austausch und Dialog</span>    
+                „Das Bild als Ereignis e.V.“ <span style="font-weight:500"> &ndash; Verein für kunstwissenschaftlichen Austausch und Dialog</span>    
                 {{elif session.forced_language =='en': }}
-                „Das Bild als Ereignis e.V.“ <span style="font-weight:500">- Verein für kunstwissenschaftlichen Austausch und Dialog</span> 
+                „Das Bild als Ereignis e.V.“ <span style="font-weight:500"> &ndash; Verein für kunstwissenschaftlichen Austausch und Dialog</span> 
             {{pass}}
             </h3>
+        </div>    
 
-            <p>
+
                 {{if session.forced_language =='de': }}
 
-                <div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL('static','images/partner/bild_als_ereignis_logo.png'),_width='230px')}}</p>
-         
-                <p><b>Kontakt</b><br>
-                Das Bild als Ereignis e. V.<br>
-                Hagenstraße 30<br>
-                D-64625 Bensheim<br><br>
- 
-                Vertreten durch den Vorstand Johann Schulz, Laura Sobez, Dominic E. Delarue, Sabine Koßmann<br><br>
- 
-                Tel.: auf Anfrage<br>
-                E-Mail: verein@bildalsereignis.de<br>
-                <div style="width:25%; float:left;">Internet:</div><div style="width:75%; float:left;"><a href="http://www.bildalsereignis.de" title="Homepage">Homepage</a><br></div>
-                <div style="width:25%; float:left;">&nbsp;</div><div style="width:75%; float:left;"><a href="https://www.facebook.com/pages/Das-Bild-als-Ereignis-eV/137134156350819?ref=hl" title="Facebookprofil">Facebookprofil</a></p></div><br>
-                <div style="width:100%; float:left;">Themenportal in arthistoricum.net:</div><div style="width:100%; float:left;"><a href="https://www.arthistoricum.net/themen/portale/bildalsereignis" title="Themportal auf arthistoricum.net">„Das Bild als Ereignis“</a></div>
-                </div>
-<!--
-
-                <p><i>Wenn uns ein Werk erreicht, dann ist da nichts mehr von einem Objekt, das uns gegenüber ist, das wir übersehen
-und auf eine begriffliche Sinnintention hin durchsehen. Es ist umgekehrt: Das Werk ist ein Ereignis. Es erteilt uns einen Stoß, es stößt uns um, indem es eine eigene Welt aufstellt, in die wir gleichsam hineingezogen werden. (Interview mit Hans-Georg Gadamer 1993)</i></p>
-                <p><b>„Das Bild als Ereignis“</b> ist als 2010 gegründeter Verein ein interdisziplinäres Netzwerk für Kunstwissenschaft, Kunst und Gesellschaft. Die Idee für diese Initiative entstand im Kontext der namensgebenden Tagung „Das Bild als Ereignis“ in Heidelberg und hat sich seither stets weiterentwickelt.</p>
-                <p>„DER SINN VON KUNST GESCHIEHT….“ (frei nach Hans-Georg Gadamer)</p>
-                <p>In diesem Sinne verstanden möchten wir eine Plattform für den freien Austausch „rund ums Bild“ sein. Der gemeinnützige Verein wurde daher mit dem Ziel gegründet, den lebendigen Austausch zwischen Kunstgeschichte, ihren akademischen Nachbardisziplinen und der kunstinteressierten Öffentlichkeit zu unterstützen und zu fördern. Er versteht sich als überregionaler Arbeitskreis, Kommunikationsplattform und Förderorgan Dabei spielt die Kommunikation zwischen etablierten und jungen Forschern ebenso eine wesentliche Rolle wie das anregende Gespräch zwischen Kunstinteressierten, Künstlern und Wissenschaftlern. Mit der Organisation von Tagungen, Kolloquien und Symposien, gemeinsamen Aktivitäten rund um Kunst, Architektur, Kunsttheorie und Philosophie, seit 2016 nun auch der Herausgabe einer Zeitschrift und Buchreihe sowie der Unterstützung und Konzeption von Publikationen im Allgemeinen will der Verein die reflektierte Auseinandersetzung mit Kunst anregen und bereichern.</p>
-                <p>Wenn Sie mehr über uns und unseren methodischen Ansatz erfahren möchten, finden Sie weitere Informationen dazu im Themenportal <a href="https://www.arthistoricum.net/themen/portale/bildalsereignis" title="Themportal auf arthistoricum.net">„Das Bild als Ereignis“</a> unter arthistoricum.net. Alles rund um unseren Verein befindet sich unter <a href="http://www.bildalsereignis.de/" class="extern">www.bildalsereignis.de</a></p>
--->
-
+<div class="col-lg-9">
                <p>„Das Bild als Ereignis e.V.“ wurde 2010 als ein interdisziplinäres Netzwerk mit dem Ziel gegründet, den Austausch zwischen Kunstgeschichte bzw. Kunstwissenschaft, ihren akademischen Nachbardisziplinen, den Künsten und der kunstinteressierten Öffentlichkeit zu fördern. Die Initiative entstand im Kontext der namensgebenden Tagung „Das Bild als Ereignis. Zur Lesbarkeit spätmittelalterlicher Kunst mit Hans-Georg Gadamer“ in Heidelberg. Im Anschluss an Gadamers hermeneutische Überzeugung, dass Kunstwerke auch über die historische Distanz hinweg den Betrachter anzusprechen und in ein dynamisches Sinngeschehen zu verwickeln vermögen, möchte der Verein zu einer engagierten und reflektierten Auseinandersetzung mit den Künsten aller Epochen und Gattungen beitragen. Dabei spielt die Kommunikation zwischen etablierten und jungen Forschern ebenso eine wesentliche Rolle wie das anregende Gespräch zwischen Kunstinteressierten, Künstlern und Wissenschaftlern. 
 Diese Ziele realisieren wir mit der Organisation von Tagungen, Arbeitstreffen, Ausstellungen oder anderen gemeinsamen Aktivitäten zu Kunst, Architektur, Kunsttheorie und Philosophie. Die Ergebnisse unserer Arbeit werden in Publikationen gesichert. Seit 2016 geschieht dies in der Verbindung mit  der Herausgabe von „Specta! Zeitschrift für Bildkultur“ (in Vorbereitung) und der Schriftenreihe  "{{=A(T('Das Bild als Ereignis'),_href=URL('catalog','series/dbae'))}}".</p>
-               <p>Weiterführende Informationen zum Verein finden Sie auf unserer Homepage <a href="http://www.bildalsereignis.de/" class="extern">www.bildalsereignis.de</a></p>    
+               <p>Weiterführende Informationen zum Verein finden Sie auf unserer Homepage <a href="http://www.bildalsereignis.de/" class="extern">www.bildalsereignis.de</a></p>  
+</div>
+
+<div class="col-lg-3">
+  <div id="infoBoxRechts">
+    <p>{{=IMG(_src=URL('static','images/partner/bild_als_ereignis_logo.png'),_width='230px')}}
+    </p>
+    <p><b>Kontakt</b>
+      <br>Das Bild als Ereignis e. V.
+      <br>Hagenstraße 30
+      <br>D-64625 Bensheim
+      <br>
+      <br>Vertreten durch den Vorstand Johann Schulz, Laura Sobez, Dominic E. Delarue, Sabine Koßmann
+      <br>
+      <br>Tel.: auf Anfrage
+      <br>E-Mail: verein@bildalsereignis.de
+      <br>
+      <div style="width:25%; float:left;">Internet:
+      </div>
+      <div style="width:75%; float:left;">
+        <a href="http://www.bildalsereignis.de" title="Homepage">&nbsp;Homepage</a>
+        <br>
+      </div>
+      <div style="width:25%; float:left;">&nbsp;
+      </div>
+      <div style="width:75%; float:left;">
+      <a href="https://www.facebook.com/pages/Das-Bild-als-Ereignis-eV/137134156350819?ref=hl" title="Facebookprofil">&nbsp;Facebookprofil</a>
+    </p>
+  </div>
+  <br>
+  <div style="width:100%; float:left;">Themenportal in arthistoricum.net:
+  </div>
+  <div style="width:100%; float:left;">
+    <a href="https://www.arthistoricum.net/themen/portale/bildalsereignis" title="Themportal auf arthistoricum.net">„Das Bild als Ereignis“</a>
+  </div>
+</div>
+</div>                 
 
             
 {{elif session.forced_language =='en': }}
 
- <div id="infoBoxRechts" class="col-lg-3"><p>{{=IMG(_src=URL('static','images/partner/bild_als_ereignis_logo.png'),_width='230px')}}</p>
+<div class="col-lg-9">
+               <p>„Das Bild als Ereignis e.V.“ wurde 2010 als ein interdisziplinäres Netzwerk mit dem Ziel gegründet, den Austausch zwischen Kunstgeschichte bzw. Kunstwissenschaft, ihren akademischen Nachbardisziplinen, den Künsten und der kunstinteressierten Öffentlichkeit zu fördern. Die Initiative entstand im Kontext der namensgebenden Tagung „Das Bild als Ereignis. Zur Lesbarkeit spätmittelalterlicher Kunst mit Hans-Georg Gadamer“ in Heidelberg. Im Anschluss an Gadamers hermeneutische Überzeugung, dass Kunstwerke auch über die historische Distanz hinweg den Betrachter anzusprechen und in ein dynamisches Sinngeschehen zu verwickeln vermögen, möchte der Verein zu einer engagierten und reflektierten Auseinandersetzung mit den Künsten aller Epochen und Gattungen beitragen. Dabei spielt die Kommunikation zwischen etablierten und jungen Forschern ebenso eine wesentliche Rolle wie das anregende Gespräch zwischen Kunstinteressierten, Künstlern und Wissenschaftlern. 
+Diese Ziele realisieren wir mit der Organisation von Tagungen, Arbeitstreffen, Ausstellungen oder anderen gemeinsamen Aktivitäten zu Kunst, Architektur, Kunsttheorie und Philosophie. Die Ergebnisse unserer Arbeit werden in Publikationen gesichert. Seit 2016 geschieht dies in der Verbindung mit  der Herausgabe von „Specta! Zeitschrift für Bildkultur“ (in Vorbereitung) und der Schriftenreihe  "{{=A(T('Das Bild als Ereignis'),_href=URL('catalog','series/dbae'))}}".</p>
+               <p>Weiterführende Informationen zum Verein finden Sie auf unserer Homepage <a href="http://www.bildalsereignis.de/" class="extern">www.bildalsereignis.de</a></p>  
+</div>
 
-                <p><b>Kontakt</b><br>
-                Das Bild als Ereignis e. V.<br>
-                Hagenstraße 30<br>
-                D-64625 Bensheim<br><br>
-
-                Represented by committee Johann Schulz, Laura Sobez, Dominic E. Delarue, Sabine Koßmann<br><br>
-
-                Tel.: on request<br>
-                E-Mail: verein@bildalsereignis.de<br>
-                <div style="width:25%; float:left;">Internet:</div><div style="width:75%; float:left;"><a href="http://www.bildalsereignis.de" title="Homepage">Homepage</a><br></div>
-                <div style="width:25%; float:left;">&nbsp;</div><div style="width:75%; float:left;"><a href="https://www.facebook.com/pages/Das-Bild-als-Ereignis-eV/137134156350819?ref=hl" title="Facebookprofil">Facebookprofil</a></p></div>
-                <div style="width:100%; float:left;">Themenportal in arthistoricum.net:</div><div style="width:100%; float:left;"><a href="https://www.arthistoricum.net/themen/portale/bildalsereignis" title="Themportal auf arthistoricum.net">„Das Bild als Ereignis“</a></div>
-                </div>
-
-                <p>„Das Bild als Ereignis e.V.“ wurde 2010 als ein interdisziplinäres Netzwerk mit dem Ziel gegründet, den Austausch zwischen Kunstgeschichte bzw. Kunstwissenschaft, ihren akademischen Nachbardisziplinen, den Künsten und der kunstinteressierten Öffentlichkeit zu fördern. Die Initiative entstand im Kontext der namensgebenden Tagung „Das Bild als Ereignis. Zur Lesbarkeit spätmittelalterlicher Kunst mit Hans-Georg Gadamer“ in Heidelberg. Im Anschluss an Gadamers hermeneutische Überzeugung, dass Kunstwerke auch über die historische Distanz hinweg den Betrachter anzusprechen und in ein dynamisches Sinngeschehen zu verwickeln vermögen, möchte der Verein zu einer engagierten und reflektierten Auseinandersetzung mit den Künsten aller Epochen und Gattungen beitragen. Dabei spielt die Kommunikation zwischen etablierten und jungen Forschern ebenso eine wesentliche Rolle wie das anregende Gespräch zwischen Kunstinteressierten, Künstlern und Wissenschaftlern.
-Diese Ziele realisieren wir mit der Organisation von Tagungen, Arbeitstreffen, Ausstellungen oder anderen gemeinsamen Aktivitäten zu Kunst, Architektur, Kunsttheorie und Philosophie. Die Ergebnisse unserer Arbeit werden in Publikationen gesichert. Seit 2016 geschieht dies in der Verbindung mit  der Herausgabe von „Specta! Zeitschrift für Bildkultur“ (in Vorbereitung) und der Schriftenreihe  "{{=A(T('Das Bild als Ereignis'),_href=URL('catalog','series/dbae'))}}".</p>   
-               <p>Weiterführende Informationen zum Verein finden Sie auf unserer Homepage <a href="http://www.bildalsereignis.de/" class="extern">www.bildalsereignis.de</a></p> 
+<div class="col-lg-3">
+  <div id="infoBoxRechts">
+    <p>{{=IMG(_src=URL('static','images/partner/bild_als_ereignis_logo.png'),_width='230px')}}
+    </p>
+    <p><b>Kontakt</b>
+      <br>Das Bild als Ereignis e. V.
+      <br>Hagenstraße 30
+      <br>D-64625 Bensheim
+      <br>
+      <br>Vertreten durch den Vorstand Johann Schulz, Laura Sobez, Dominic E. Delarue, Sabine Koßmann
+      <br>
+      <br>Tel.: auf Anfrage
+      <br>E-Mail: verein@bildalsereignis.de
+      <br>
+      <div style="width:25%; float:left;">Internet:
+      </div>
+      <div style="width:75%; float:left;">
+        <a href="http://www.bildalsereignis.de" title="Homepage">&nbsp;Homepage</a>
+        <br>
+      </div>
+      <div style="width:25%; float:left;">&nbsp;
+      </div>
+      <div style="width:75%; float:left;">
+      <a href="https://www.facebook.com/pages/Das-Bild-als-Ereignis-eV/137134156350819?ref=hl" title="Facebookprofil">&nbsp;Facebookprofil</a>
+    </p>
+  </div>
+  <br>
+  <div style="width:100%; float:left;">Themenportal in arthistoricum.net:
+  </div>
+  <div style="width:100%; float:left;">
+    <a href="https://www.arthistoricum.net/themen/portale/bildalsereignis" title="Themportal auf arthistoricum.net">„Das Bild als Ereignis“</a>
+  </div>
+</div>
+</div>                 
 
                 {{pass}}
 
 
-            </p>
 
-        </div>
+
+
     </div>
   </div>
 
