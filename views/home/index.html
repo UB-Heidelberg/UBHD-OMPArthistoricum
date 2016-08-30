@@ -25,15 +25,35 @@
             </div>
             <div class="col-lg-3">
               <div class="box">
-                <div class="box-gray aligncenter"><h4>{{=T('Soon')}}</h4> {{=IMG(_src=URL('static','images/press/home/cover_chant.png'),_width='145px', _class='bildrahmen')}}
+                <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4> {{=IMG(_src=URL('static','images/press/home/cover_chant.png'),_width='145px', _class='bildrahmen')}}
                 </div>
-                <div class="box-bottom"> {{=A(T('More Information'),_href=URL('partner','index/ap'))}}
+                <div class="box-bottom"> {{=A(T('More Information'),_href=URL('catalog','book/149'))}}
                 </div>
               </div>
             </div>
             <div id="boxAktuelles" class="col-lg-6">
               <div class="box">
                 <div class="box-gray aligncenter" style="overflow-y: scroll"><h4>{{=T('News')}}</h4>
+                  <div class="media">
+                    <div class="media-left pull-left">
+                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                    </div>
+                    <div class="media-body">
+                      <p class="media-heading">30.08.2016
+                        <br>
+                        {{if session.forced_language =='de': }} 
+                        <h5>{{=T('New')}}: Le Chant du cygne. Die Gazette des Beaux-Arts und die französische Reproduktionsgraphik in der zweiten Hälfte des 19. Jahrhunderts</h5>
+                        {{elif session.forced_language =='en': }} 
+                        <h5>{{=T('New')}}: Le Chant du cygne. Die Gazette des Beaux-Arts und die französische Reproduktionsgraphik in der zweiten Hälfte des 19. Jahrhunderts</h5>
+                        {{pass}}
+                      </p>
+                      <p class="boxText"> {{if session.forced_language =='de': }} 
+Die vorliegende <a href="{{=URL('catalog','book/149')}}" title="Informationen über 'Le Chant du cygne'">Untersuchung der französischen Reproduktionsgraphik</a> basiert auf der 1859 gegründeten Gazette des Beaux-Arts, einer der wichtigsten Kunstzeitschriften des 19. Jahrhunderts. Bis 1927 wurden dort Reproduktionsgraphiken und bis 1933 Originalgraphiken publiziert, die auch Gegenstand zahlreicher Artikel waren. In diesen geht es vor allem um die Erwartungen, die an druckgraphische Reproduktionen gestellt wurden. 
+                      {{elif session.forced_language =='en': }} This <a href="{{=URL('catalog','book/149')}}" title="Information on 'Le Chant du cygne'">study of French reproduction</a> prints is based on the Gazette des Beaux-Arts, an art magazine founded in 1859 and one of the most important of its kind in the nineteenth century. Reproduction prints were published in it until 1927, and original works of printmaking until 1933; printmaking was also the subject of numerous articles.
+                        {{pass}}
+                      </p>
+                    </div>
+                  </div>
                   <div class="media">
                     <div class="media-left pull-left">
                       <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
@@ -47,8 +67,8 @@
                         <h5>{{=T('New')}}: Casting. A way to embrace the digital age in analogue fashion?</h5>
                         {{pass}}
                       </p>
-                      <p class="boxText"> {{if session.forced_language =='de': }} Die Gipsformerei der Staatlichen Museen zu Berlin feiert 2019 ihr zweihundertjähriges Bestehen. Das ist ein Anlass, um u. a. zu diskutieren, wie sich eine Institution, deren Fokus auf der traditionellen handwerklichen Fertigung liegt, gegenüber technischen Innovationen behaupten kann. Die <a href="http://books.ub.uni-heidelberg.de/arthistoricum/catalog/book/95" title="Informationen zu 'Casting. Ein analoger Weg ins Zeitalter der Digitalisierung?">Publikation</a> widmet sich dieser Frage und bietet darüber hinaus einen interessanten Querschnitt zur aktuellen Forschungsdebatte.
-                      {{elif session.forced_language =='en': }} In 2019 the Gipsformerei will be celebrating its 200th anniversary which is a welcome opportunity for us to address the following question: How can an institution whose core activity lies in traditional handcrafted production hold its own in the face of technical innovation? The <a href="http://books.ub.uni-heidelberg.de/arthistoricum/catalog/book/95?lang=en" title="Information on Casting. A way to embrace the digital age in analogue fashion?">publication</a> addresses that question and adds an interesting cross-section on the current research debate.
+                      <p class="boxText"> {{if session.forced_language =='de': }} Die Gipsformerei der Staatlichen Museen zu Berlin feiert 2019 ihr zweihundertjähriges Bestehen. Das ist ein Anlass, um u. a. zu diskutieren, wie sich eine Institution, deren Fokus auf der traditionellen handwerklichen Fertigung liegt, gegenüber technischen Innovationen behaupten kann. Die <a href="{{=URL('catalog','book/95')}}" title="Informationen zu 'Casting. Ein analoger Weg ins Zeitalter der Digitalisierung?">Publikation</a> widmet sich dieser Frage und bietet darüber hinaus einen interessanten Querschnitt zur aktuellen Forschungsdebatte.
+                      {{elif session.forced_language =='en': }} In 2019 the Gipsformerei will be celebrating its 200th anniversary which is a welcome opportunity for us to address the following question: How can an institution whose core activity lies in traditional handcrafted production hold its own in the face of technical innovation? The <a href="{{=URL('catalog','book/95')}}" title="Information on Casting. A way to embrace the digital age in analogue fashion?">publication</a> addresses that question and adds an interesting cross-section on the current research debate.
                         {{pass}}
                       </p>
                     </div>
