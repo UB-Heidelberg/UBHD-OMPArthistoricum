@@ -2274,11 +2274,11 @@ li.active {
 
 /**Aktuelles-Box**/
 
-#boxAktuelles {
-  width: 45%;
-}
 
-.media-heading {text-align:left;} 
+
+.media-heading {
+  text-align:left;
+} 
 
 #boxAktuelles .box .media {
   font-size: 0.9em;
