@@ -176,6 +176,7 @@
 'Hello World': 'Hallo Welt',
 'Hello World  ## Kommentar': 'Hallo Welt  ',
 'Hello World## Kommentar': 'Hallo Welt',
+'Hinweise zur Stastikauswertung': 'Hinweise zur Stastikauswertung',
 'Home': 'Home',
 'How did you get here?': 'Wie sind Sie hier her gelangt?',
 'How to cite this title': 'Empfohlene Zitierweise',
