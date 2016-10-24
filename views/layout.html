@@ -271,49 +271,35 @@
 
     </div>
 
-    {{block footer}} <!-- this is default footer -->
-
-      <div class="container">
-         <footer>
-
-     <div id="sub-footer" class="screen">
-         <div class="container">
-
+{{block footer}} <!-- this is default footer -->
+    <div class="container">
+      <footer>
+        <div id="sub-footer" class="screen">
+          <div class="container">
             <div class="col-lg-12">
-
-                    <div class="row">
-
-                        <div class="col-lg-3">
-
-                          <div id="footer_logo_ub" class="widget"><a href="http://www.ub.uni-heidelberg.de" title="Homepage Universitätsbibliothek Heidelberg"><img alt="Logo - Universitätsbibliothek Heidelberg" src="{{=URL('static','/images/press/footer_logoUBHei.png')}}" /></a></div>
-
-                        </div>
-
-
-                        <div class="col-lg-3">
-                           <div id="footer_logo_dfg" class="widget"><a href="http://www.dfg.de" title="Deutsche Forschungsgesellschaft"><img alt="Logo - Deutsche Forschungsgesellschaft" src="{{=URL('static','/images/press/footer_logoDFG.png')}}" /></a></div>
-
-                        </div>
-
-
-                        <div class="col-lg-3">
-                           <div id="footer_logo_ahn" class="widget"><a href="http://www.arthistoricum.net/" title="Homepage Arthistoricum.net"><img alt="Logo - Arthistoricum.net" src="{{=URL('static','/images/press/footer_logoAHN.png')}}" /></a></div>
-                        </div>
-
-                        <div class="col-lg-3">
-                          <div id="footer_logo_pkp" class="widget">
-                          <a href="https://pkp.sfu.ca/" title="Homepage PKP - Public Knowledge Project"><img class="" alt="Public Knowledge Project" src="http://books.ub.uni-heidelberg.de/lib/pkp/templates/images/pkp_brand.png"></a>
-                          </div>
-                        </div>
-                     </div>
-                 </div>
-             </div>
-          </div><!--./sub-footer-->
-        </footer>
-  </div>       
-
-    {{end}}
-        <script src="{{=URL('static','js/jquery.flexslider.js')}}"></script>
+              <div class="row">
+                <div class="col-lg-3">
+                  <div id="footer_logo_ub" class="widget"><a href="http://www.ub.uni-heidelberg.de" title="Homepage Universitätsbibliothek Heidelberg"><img alt="Logo - Universitätsbibliothek Heidelberg" src="{{=URL('static','/images/press/footer_logoUBHei.png')}}" /></a></div>
+                </div>
+                <div class="col-lg-3">
+                  <div id="footer_logo_dfg" class="widget"><a href="http://www.dfg.de" title="Deutsche Forschungsgesellschaft"><img alt="Logo - Deutsche Forschungsgesellschaft" src="{{=URL('static','/images/press/footer_logoDFG.png')}}" /></a></div>
+                </div>
+                <div class="col-lg-3">
+                  <div id="footer_logo_ahn" class="widget"><a href="http://www.arthistoricum.net/" title="Homepage Arthistoricum.net"><img alt="Logo - Arthistoricum.net" src="{{=URL('static','/images/press/footer_logoAHN.png')}}" /></a></div>
+                </div>
+                <div class="col-lg-3">
+                  <div id="footer_logo_pkp" class="widget">
+                    <a href="https://pkp.sfu.ca/" title="Homepage PKP - Public Knowledge Project"><img class="" alt="Public Knowledge Project" src="http://books.ub.uni-heidelberg.de/lib/pkp/templates/images/pkp_brand.png"></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!--./sub-footer-->
+      </footer>
+    </div>
+{{end}}
+    <script src="{{=URL('static','js/jquery.flexslider.js')}}"></script>
     <script src="{{=URL('static','js/bootstrap.min.js')}}"></script>
   </body>
 </html>
