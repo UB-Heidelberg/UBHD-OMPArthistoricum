@@ -79,7 +79,7 @@ def index():
     for submission_row in ompdal.getSubmissionsByPress(press.press_id, ignored_submission_id):
         authors = [OMPItem(author, OMPSettings(ompdal.getAuthorSettings(author.author_id))) for author in ompdal.getAuthorsBySubmission(submission_row.submission_id)]
         editors = [OMPItem(editor, OMPSettings(ompdal.getAuthorSettings(editor.author_id))) for editor in ompdal.getEditorsBySubmission(submission_row.submission_id)]
-        publication_dates = [dateFromRow(pd) for pf in ompdal.getAllPublicationFormatsBySubmission(submission_row.submission_id, available=True, approved=True) 
+        publication_dates = [dateFromRow(pd) for pf in ompdal.getAllPublicationFormatsBySubmission(submission_row.submission_id, available=True, approved=True)
                                 for pd in ompdal.getPublicationDatesByPublicationFormat(pf.publication_format_id)]
         submission = OMPItem(submission_row,
                              OMPSettings(ompdal.getSubmissionSettings(submission_row.submission_id)),
@@ -108,68 +108,67 @@ def book():
     submission_id = request.args[0] if request.args else redirect(
         URL('home', 'index'))
     
-    ompdal = OMPDAL(db, myconf)
+    dal = OMPDAL(db, myconf)
     
-    press = ompdal.getPress(myconf.take('omp.press_id'))
+    press = dal.getPress(myconf.take('omp.press_id'))
     if not press:
         redirect(URL('home', 'index'))
-    press_settings = OMPSettings(ompdal.getPressSettings(press.press_id))
+    press_settings = OMPSettings(dal.getPressSettings(press.press_id))
     
     # Get basic submission info (check, if submission is associated with the actual press and if the submission has been published)
-    submission = ompdal.getPublishedSubmission(submission_id, press_id=myconf.take('omp.press_id'))    
+    submission = dal.getPublishedSubmission(submission_id, press_id=myconf.take('omp.press_id'))
     if not submission:
         redirect(URL('home', 'index'))
 
-    submission_settings = OMPSettings(ompdal.getSubmissionSettings(submission_id))
+    submission_settings = OMPSettings(dal.getSubmissionSettings(submission_id))
     
     # Get contributors and contributor settings
-    authors = []
-    for author in ompdal.getAuthorsBySubmission(submission_id):
-        authors.append(OMPItem(author, OMPSettings(ompdal.getAuthorSettings(author.author_id))))
-    
-    editors = []
-    for editor in ompdal.getEditorsBySubmission(submission_id):
-        editors.append(OMPItem(editor, OMPSettings(ompdal.getAuthorSettings(editor.author_id))))
-    
+    editor_rows = dal.getEditorsBySubmission(submission_id)
+    editors = [OMPItem(e, OMPSettings(dal.getAuthorSettings(e.author_id))) for e in editor_rows]
+
+    # Do not load authors if the submission has editors
+    authors = [] if editors else [OMPItem(a, OMPSettings(dal.getAuthorSettings(a.author_id))) for a in
+                                  dal.getActualAuthorsBySubmission(submission_id, filter_browse=True)]
+
     # Get chapters and chapter authors
     chapters = []
-    for chapter in ompdal.getChaptersBySubmission(submission_id):
+    for chapter in dal.getChaptersBySubmission(submission_id):
         chapters.append(OMPItem(chapter,
-                             OMPSettings(ompdal.getChapterSettings(chapter.chapter_id)),
-                             {'authors': [OMPItem(a, OMPSettings(ompdal.getAuthorSettings(a.author_id))) for a in ompdal.getAuthorsByChapter(chapter.chapter_id)]})
+                             OMPSettings(dal.getChapterSettings(chapter.chapter_id)),
+                             {'authors': [OMPItem(a, OMPSettings(dal.getAuthorSettings(a.author_id))) for a in dal.getAuthorsByChapter(chapter.chapter_id)]})
         )
         
     # Get digital publication formats, settings, files, and identification codes
     digital_publication_formats = []
-    for pf in ompdal.getDigitalPublicationFormats(submission_id, available=True, approved=True):
+    for pf in dal.getDigitalPublicationFormats(submission_id, available=True, approved=True):
         publication_format = OMPItem(pf, 
-            OMPSettings(ompdal.getPublicationFormatSettings(pf.publication_format_id)),
-            {'identification_codes': ompdal.getIdentificationCodesByPublicationFormat(pf.publication_format_id),
-             'publication_dates': ompdal.getPublicationDatesByPublicationFormat(pf.publication_format_id)}
+            OMPSettings(dal.getPublicationFormatSettings(pf.publication_format_id)),
+            {'identification_codes': dal.getIdentificationCodesByPublicationFormat(pf.publication_format_id),
+             'publication_dates': dal.getPublicationDatesByPublicationFormat(pf.publication_format_id)}
         )
-        full_file = ompdal.getLatestRevisionOfFullBookFileByPublicationFormat(submission_id, pf.publication_format_id)
+        full_file = dal.getLatestRevisionOfFullBookFileByPublicationFormat(submission_id, pf.publication_format_id)
         if full_file:
-            publication_format.associated_items['full_file'] = OMPItem(full_file, OMPSettings(ompdal.getSubmissionFileSettings(full_file.file_id)))
+            publication_format.associated_items['full_file'] = OMPItem(full_file, OMPSettings(dal.getSubmissionFileSettings(full_file.file_id)))
         digital_publication_formats.append(publication_format)
         
         for chapter in chapters:
-            chapter_file = ompdal.getLatestRevisionOfChapterFileByPublicationFormat(chapter.attributes.chapter_id, pf.publication_format_id)
+            chapter_file = dal.getLatestRevisionOfChapterFileByPublicationFormat(chapter.attributes.chapter_id, pf.publication_format_id)
             if chapter_file:
-                chapter.associated_items.setdefault('files', {})[pf.publication_format_id] = OMPItem(chapter_file, OMPSettings(ompdal.getSubmissionFileSettings(chapter_file.file_id)))
+                chapter.associated_items.setdefault('files', {})[pf.publication_format_id] = OMPItem(chapter_file, OMPSettings(dal.getSubmissionFileSettings(chapter_file.file_id)))
             
     # Get physical publication formats, settings, and identification codes
     physical_publication_formats = []
-    for pf in ompdal.getPhysicalPublicationFormats(submission_id, available=True, approved=True):
+    for pf in dal.getPhysicalPublicationFormats(submission_id, available=True, approved=True):
         physical_publication_formats.append(OMPItem(pf, 
-            OMPSettings(ompdal.getPublicationFormatSettings(pf.publication_format_id)),
-            {'identification_codes': ompdal.getIdentificationCodesByPublicationFormat(pf.publication_format_id),
-             'publication_dates': ompdal.getPublicationDatesByPublicationFormat(pf.publication_format_id)})
+            OMPSettings(dal.getPublicationFormatSettings(pf.publication_format_id)),
+            {'identification_codes': dal.getIdentificationCodesByPublicationFormat(pf.publication_format_id),
+             'publication_dates': dal.getPublicationDatesByPublicationFormat(pf.publication_format_id)})
         )
     
-    pdf = ompdal.getPublicationFormatByName(submission_id, myconf.take('omp.doi_format_name')).first()
+    pdf = dal.getPublicationFormatByName(submission_id, myconf.take('omp.doi_format_name')).first()
     # Get DOI from the format marked as DOI carrier
     if pdf:
-        doi = OMPSettings(ompdal.getPublicationFormatSettings(pdf.publication_format_id)).getLocalizedValue("pub-id::doi", "")    # DOI always has empty locale
+        doi = OMPSettings(dal.getPublicationFormatSettings(pdf.publication_format_id)).getLocalizedValue("pub-id::doi", "")    # DOI always has empty locale
     else:
         doi = ""
         
@@ -183,20 +182,20 @@ def book():
     # Get the OMP publication date (column publication_date contains latest catalog entry edit date.) Try:
     # 1. Custom publication date entered for a publication format calles "PDF"
     if pdf:
-        date_published = get_first([dateFromRow(pd) for pd in ompdal.getPublicationDatesByPublicationFormat(pdf.publication_format_id) if pd.role=="01"])
+        date_published = get_first([dateFromRow(pd) for pd in dal.getPublicationDatesByPublicationFormat(pdf.publication_format_id) if pd.role=="01"])
     # 2. Date on which the catalog entry was first published
     if not date_published:
-        date_published = get_first([pd.date_logged for pd in ompdal.getMetaDataPublishedDates(submission_id)])
+        date_published = get_first([pd.date_logged for pd in dal.getMetaDataPublishedDates(submission_id)])
     # 3. Date on which the submission status was last modified (always set)
     if not date_published:
         date_published = submission.date_status_modified
         
-    series = ompdal.getSeriesBySubmissionId(submission_id)
+    series = dal.getSeriesBySubmissionId(submission_id)
     if series:
-        series = OMPItem(series, OMPSettings(ompdal.getSeriesSettings(series.series_id)))
+        series = OMPItem(series, OMPSettings(dal.getSeriesSettings(series.series_id)))
     
     # Get purchase info
-    representatives = ompdal.getRepresentativesBySubmission(submission_id, myconf.take('omp.representative_id_type'))
+    representatives = dal.getRepresentativesBySubmission(submission_id, myconf.take('omp.representative_id_type'))
     
     #stats = OMPStats(myconf, db, locale)
 
