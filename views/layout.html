@@ -56,11 +56,12 @@
     middle_column = {0: mc0, 1: mc1, 2: mc2}[
     (left_sidebar_enabled and 1 or 0)+(right_sidebar_enabled and 1 or 0)]
     }}
-
+    {{
+      try:
       piwik = myconf.take('statistik.piwik_plugin')
       if int(piwik) == 1:
      }}
-
+    <!-- Piwik -->
 <script type="text/javascript">
   var _paq = _paq || [];
   _paq.push(["setDomains", ["*.books.ub.uni-heidelberg.de/arthistoricum","*.books.ub.uni-heidelberg.de/arthistoricum"]]);
@@ -75,11 +76,12 @@
   })();
 </script>
 <noscript><p><img src="//www.ub.uni-heidelberg.de/piwik/piwik.php?idsite=6" style="border:0;" alt="" /></p></noscript>
-
+<!-- End Piwik Code -->
 
       {{
       pass
-
+    except BaseException:
+      raise HTTP(404,"statistik plugin not defined : add piwik_plugin=1  or 0 in appconfig.ini")
 
     }}
 
