@@ -27,7 +27,12 @@
               <div class="box">
                 <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4>{{=IMG(_src=URL('static','files/presses/2/monographs/164/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}
                 </div>
-                <div class="box-bottom"> {{=A(T('More Information'),_href=URL('catalog','book/164'))}}
+                <div class="box-bottom">
+                {{if session.forced_language =='de': }}
+                  {{=A(T('More Information'),_href=URL('catalog','book/164'))}}
+                {{elif session.forced_language =='en': }}
+                  {{=A(T('More Information'),_href=URL('catalog','book/165'))}}
+                {{pass}}                                
                 </div>
               </div>
             </div>
@@ -35,6 +40,28 @@
             <div id="boxAktuelles" class="col-lg-6">
               <div class="box">
                 <div class="box-gray aligncenter" style="overflow-y: scroll"><h4>{{=T('News')}}</h4>
+                
+                  <div class="media">
+                    <div class="media-left pull-left">
+                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                    </div>
+                    <div class="media-body">
+                      <p class="media-heading">12.01.2017
+                        <br>
+                        {{if session.forced_language =='de': }} 
+                        <h5>{{=T('New')}}: Einsichten in flüchtige Leben</h5>
+                        {{elif session.forced_language =='en': }} 
+                        <h5>{{=T('New')}}: Glances into Fugitive Lives</h5>
+                        {{pass}}
+                      </p>
+                      <p class="boxText"> {{if session.forced_language =='de': }} 
+Ausgangspunkt der <a href="{{=URL('catalog','book/164')}}" title="Informationen über 'Einsichten in flüchtige Leben'">Publikation</a> ist die Präsentation daHEIM: Einsichten in flüchtige Leben, die das Museum Europäischer Kulturen 2016/17 in Zusammenarbeit mit der Künstlerin barbara caveng und der Initiative KUNSTASYL in Berlin realisiert hat. Vor dem Hintergrund der Situation von ZuwanderInnen durch Flucht in Europa seit 2015 stellt sie Erfahrungen und Träume der ProtagonistInnen aus einem Wohnheim in Berlin-Spandau dar. Zwölf internationale AutorInnen beschreiben individuelle Migrationserfahrungen von 2016 rückblickend bis ins 19. Jahrhundert.  
+                      {{elif session.forced_language =='en': }} The starting point of this <a href="{{=URL('catalog','book/165')}}" title="Information on 'Glances into Fugitive Lives'">publication</a> is the presentation daHEIM: Glances into Fugitive Lives realized in Berlin by the Museum Europäischer Kulturen with the artist barbara caveng and the initiative KUNSTASYL in 2016/17. Against the background of the situation of immigrants fleeing to Europe since 2015, it highlights the experiences and dreams of its protagonists from a residential hostel in the Berlin district of Spandau. Twelve authors from Europe, North and South America describe individual migration experiences, looking back as far as the 19th century from 2016. 
+                        {{pass}}
+                      </p>
+                    </div>
+                  </div>
+                                  
                   <div class="media">
                     <div class="media-left pull-left">
                       <img alt="" src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
