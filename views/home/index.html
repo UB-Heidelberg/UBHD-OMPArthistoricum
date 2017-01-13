@@ -25,7 +25,12 @@
             </div>
             <div class="col-lg-3">
               <div class="box">
-                <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4>{{=IMG(_src=URL('static','files/presses/2/monographs/164/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}
+                <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4>
+               {{if session.forced_language =='de': }}
+                 {{=IMG(_src=URL('static','files/presses/2/monographs/164/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}
+               {{elif session.forced_language =='en': }}
+                 {{=IMG(_src=URL('static','files/presses/2/monographs/165/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}
+               {{pass}}               
                 </div>
                 <div class="box-bottom">
                 {{if session.forced_language =='de': }}
