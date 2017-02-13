@@ -1265,6 +1265,7 @@ ul.meta-post li a{
 	margin-bottom:10px;
 }
 
+.tab-content > .tab-pane {padding:0 !important;}
 
 /*-------DownloadTable-----------------------*/
 
@@ -1281,7 +1282,7 @@ ul.meta-post li a{
 #statsTableChapters { border-collapse: collapse; width:100%;display:table}
 .stats_chapter_row {display:table-row;}
 .stats_chapter_cell {display:table-cell;font-size: small;padding:0.1em}
-.stats_chapter_title {font-size: small }
+.stats_chapter_title , .stats_chapter_cell .chapter_file, #total-chapter-pdf {font-size: 8pt; }
 .stats_chapter_row {border-top:1px solid #ddd;}
 .stats_table_head {border-top:1px solid #ddd;}
 
@@ -2509,16 +2510,16 @@ footer {
 
 
 #heiup-logo-print {
-  border: 1px solid #B5152B;
+  border: 0
   margin: 0 auto;
-  padding: 20px;
+  padding: 0;
 }
 
 
 
 .print-url::after {
   color: #656565 !important;
-  content: "http://heiup.uni-heidelberg.de";
+  content: "http://books.ub.uni-heidelberg.de/arthistoricum";
   float: right;
   font-size: 9pt;
 }
