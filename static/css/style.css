@@ -1265,6 +1265,7 @@ ul.meta-post li a{
 	margin-bottom:10px;
 }
 
+.tab-content > .tab-pane {padding:0 !important;}
 
 /*-------DownloadTable-----------------------*/
 
