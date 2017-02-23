@@ -1,0 +1,109 @@
+{{extend 'layout.html'}}
+
+<div id="main" class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>  {{if session.forced_language =='de': }}
+                Deutsches Forum für Kunstgeschichte Paris (DFK Paris)  
+                {{elif session.forced_language =='en': }}
+                Deutsches Forum für Kunstgeschichte Paris (DFK Paris)  
+            {{pass}}
+            </h3>
+        </div>    
+
+                {{if session.forced_language =='de': }}
+<div class="col-lg-9">
+<p>Das <a href="https://dfk-paris.org/de" title="Link zur Homepage">Deutsche Forum für Kunstgeschichte Paris</a> (DFK Paris) ist ein unabhängiges kunsthistorisches Forschungsinstitut der Max Weber Stiftung – Deutsche Geisteswissenschaftliche Institute im Ausland. Es versteht sich als Ort des fachlichen Austausches,  an dem die Wissenschaftstraditionen Frankreichs und des deutschsprachigen Raums in einen fruchtbaren Dialog mit internationalen Positionen treten und zum Ausgangspunkt interdisziplinärer Forschungen zur Kunst der beiden Länder in ihrem globalen Kontext werden.</p>
+<p>Das DFK Paris fühlt sich der Möglichkeit des Open Access verpflichtet, um die Ergebnisse dieser Forschung schneller und leichter einer internationalen Öffentlichkeit zugänglich machen zu können.</p>
+<p>Die bereits existierenden Reihen der "Passagen" und "Passerelles" ergänzt nun die Reihe der "Passages online", die insbesondere Ergebnisse wissenschaftlicher Kolloquien und Jahresthemen digital zur Verfügung stellt. Zugänglich sind diese Publikationen sowohl als Online-Ressource auf <b>arthistoricum.net &ndash; ART-Books</b>, über die Plattform der Max Weber Stiftung perspectivia.net sowie auch auf der Internetseite des DFK Paris und dem kubikat-Verbundkatalog.<br />
+Darüber hinaus besteht bei einzelnen Bänden die Möglichkeit, diese in einer gedruckten Ausgabe zu erwerben.</p>
+<hr>
+				<div class="row">
+					<div class="col-lg-2">
+					{{=IMG(_src=URL('static','images/partner/cover_versailles.jpg'),_width='80px', _class='bildrahmen')}}
+					</div>
+					<div class="col-lg-9">
+					<p><b>Thomas W. Gaethgens, Markus A. Castor, Frédéric Bussmann (Hrsg.)</b><br>        
+                    Versailles et l’Europe. L’appartement monarchique et princier, architecture, décor, cérémonial<br />
+					Paris & Heidelberg 2017<br />
+					(Passages online 1)</p>					
+					<p>Diskutiert werden mit 31 Beiträgen zunächst Bedeutung und Funktion der Königsappartements von Ludwig XIV. in Frankreich, anschließend deren Rezeption an den Höfen des Heiligen Römischen Reichs, weiterführend ergänzt durch Beiträge zu Residenzen in den Niederlanden, England, Schweden, Polen und Spanien im Verlaufe des 17. und 18. Jahrhunderts.</p>
+					<p>In französischer Sprache</p>
+					</div>
+                </div>
+
+</div>        
+        
+<div class="col-lg-3">
+  <div id="infoBoxRechts">
+  <p>{{=IMG(_src=URL('static','images/partner/dfk_logo.png'),_width='194px')}}
+  </p>
+    <br>
+    <p><b>Kontakt</b>
+      <br>Deutsches Forum für Kunstgeschichte
+	  <br>Centre allemand d’histoire de l‘art
+	  <br>45, rue des Petits Champs
+      <br>F-75001 Paris
+      <br>
+      <br>Elektronische Publikationen (Passages online)
+      <br>Dr. Markus A. Castor
+      <br>Katharina Thurmair, M.A.
+	  <br>
+	  <br>Internet: <a href="https://dfk-paris.org/" title="Link zur Homepage">www.dfk-paris.org</a>
+	</p>
+  </div>
+</div>
+        
+{{elif session.forced_language =='en': }}
+
+<div class="col-lg-9">
+<p>Das <a href="https://dfk-paris.org/de" title="Link zur Homepage">Deutsche Forum für Kunstgeschichte Paris</a> (DFK Paris) ist ein unabhängiges kunsthistorisches Forschungsinstitut der Max Weber Stiftung – Deutsche Geisteswissenschaftliche Institute im Ausland. Es versteht sich als Ort des fachlichen Austausches,  an dem die Wissenschaftstraditionen Frankreichs und des deutschsprachigen Raums in einen fruchtbaren Dialog mit internationalen Positionen treten und zum Ausgangspunkt interdisziplinärer Forschungen zur Kunst der beiden Länder in ihrem globalen Kontext werden.</p>
+<p>Das DFK Paris fühlt sich der Möglichkeit des Open Access verpflichtet, um die Ergebnisse dieser Forschung schneller und leichter einer internationalen Öffentlichkeit zugänglich machen zu können.</p>
+<p>Die bereits existierenden Reihen der "Passagen" und "Passerelles" ergänzt nun die Reihe der "Passages online", die insbesondere Ergebnisse wissenschaftlicher Kolloquien und Jahresthemen digital zur Verfügung stellt. Zugänglich sind diese Publikationen sowohl als Online-Ressource auf <b>arthistoricum.net &ndash; ART-Books</b>, über die Plattform der Max Weber Stiftung perspectivia.net sowie auch auf der Internetseite des DFK Paris und dem kubikat-Verbundkatalog.<br />
+Darüber hinaus besteht bei einzelnen Bänden die Möglichkeit, diese in einer gedruckten Ausgabe zu erwerben.</p>
+<hr>
+				<div class="row">
+					<div class="col-lg-2">
+					{{=IMG(_src=URL('static','images/partner/cover_versailles.jpg'),_width='80px', _class='bildrahmen')}}
+					</div>
+					<div class="col-lg-9">
+					<p><b>Thomas W. Gaethgens, Markus A. Castor, Frédéric Bussmann (Hrsg.)</b><br>        
+                    Versailles et l’Europe. L’appartement monarchique et princier, architecture, décor, cérémonial<br />
+					Paris & Heidelberg 2017<br />
+					(Passages online 1)</p>					
+					<p>Diskutiert werden mit 31 Beiträgen zunächst Bedeutung und Funktion der Königsappartements von Ludwig XIV. in Frankreich, anschließend deren Rezeption an den Höfen des Heiligen Römischen Reichs, weiterführend ergänzt durch Beiträge zu Residenzen in den Niederlanden, England, Schweden, Polen und Spanien im Verlaufe des 17. und 18. Jahrhunderts.</p>
+					<p>In französischer Sprache</p>
+					</div>
+                </div>
+
+</div>        
+        
+<div class="col-lg-3">
+  <div id="infoBoxRechts">
+  <p>{{=IMG(_src=URL('static','images/partner/dfk_logo.png'),_width='194px')}}
+  </p>
+    <br>
+    <p><b>Kontakt</b>
+      <br>Deutsches Forum für Kunstgeschichte
+	  <br>Centre allemand d’histoire de l‘art
+	  <br>45, rue des Petits Champs
+      <br>F-75001 Paris
+      <br>
+      <br>Elektronische Publikationen (Passages online)
+      <br>Dr. Markus A. Castor
+      <br>Katharina Thurmair, M.A.
+	  <br>
+	  <br>Internet: <a href="https://dfk-paris.org/" title="Link zur Homepage">www.dfk-paris.org</a>
+	</p>
+  </div>
+</div>
+
+
+{{pass}}
+
+
+            
+
+    </div>
+  </div>
+
