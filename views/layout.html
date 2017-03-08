@@ -107,11 +107,8 @@
                     <li><a href="{{=URL('contact','imprint')}}" style="padding-right: 0;">{{=T('Legal Notice')}}</a></li>
          <!--<li><a href="suche.html">{{=T('Search')}} |</a></li>-->
                     <!--<li><a href="faq.html">FAQ |</a></li>-->
-                     {{if session.forced_language=='en':}}
-                    <li><a href="{{=request.url}}?lang=de" style="padding-left: 15px;">DE</a></li>
-                    {{elif session.forced_language=='de':}}
-                    <li><a href="{{=request.url}}?lang=en" style="padding-left: 15px;">EN</a></li>
-                    {{pass}}
+                    <li><a href="{{=request.url}}?lang=de" class="nav_flags_de"></a></li>
+                    <li><a href="{{=request.url}}?lang=en" class="nav_flags_en"></a></li>
                 </ul>
 
             </div>
