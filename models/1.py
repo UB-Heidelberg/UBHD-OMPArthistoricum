@@ -12,3 +12,10 @@ if session.forced_language:
 else:
     session.forced_language = 'de'
     T.force(session.forced_language)
+
+if session.forced_language == 'en':
+    locale = 'en_US'
+elif session.forced_language == 'de':
+    locale = 'de_DE'
+else:
+    locale = ''
