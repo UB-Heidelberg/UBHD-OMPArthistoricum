@@ -1,0 +1,127 @@
+{{extend 'layout.html'}}
+
+<div id="main" class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>  {{if session.forced_language =='de': }}
+                Germanisches Nationalmuseum  
+                {{elif session.forced_language =='en': }}
+                Germanisches Nationalmuseum  
+            {{pass}}
+            </h3>
+        </div>    
+
+                {{if session.forced_language =='de': }}
+<div class="col-lg-9">
+<p>Das <a href="http://www.gnm.de/" title="Homepage">Germanische Nationalmuseum</a> ist das größte kulturhistorische Museum des deutschen Sprachraums. Rund 1,35 Millionen Objekte sind auf 23 Sammlungsbereiche verteilt. Sie geben Zeugnis von 200.000 Jahren deutscher Kulturgeschichte. Das Museum zeichnet sich in besonderem Maße durch gattungsübergreifende Objektforschung aus.  Ein weiteres Hauptaugenmerk des Museums liegt auf der Untersuchung der kulturellen Zusammenhänge, in denen die Werke stehen.
+</p>
+<p>Als Teil der Leibniz-Gemeinschaft hat sich das Germanische Nationalmuseum zu Open Access verpflichtet. Über <b>arthistoricum.net &ndash; ART-Books</b> werden  insbesondere im Rahmen von Tagungen erzielte Forschungsergebnisse der Wissenschaft vollumfänglich und kostenlos zur Verfügung gestellt.
+</p>
+<hr>
+       <div class="row">
+        <div class="col-lg-2"><a href="{{=URL('static','images/partner/cover_gnm_musikinstrumente.jpg')}}">{{=IMG(_src=URL('static','images/partner/cover_gnm_musikinstrumente.jpg'),_width='80px', _class='bildrahmen')}}</a>
+					
+				</div>
+        <div class="col-lg-9">
+<p>Publikationen des Germanischen Nationalmuseums Nürnberg:</p>
+<b>Erscheint Ende 2017:</b>
+<p>Die Publikation der Tagung <a class="extern" href="http://www.gnm.de/forschung/tagungen-und-konferenzen/tagungen-und-konferenzen-2017/" title="Link zur Homepage der Tagung">'Private Passion – Public Challenge. Musikinstrumente Sammeln in Geschichte und Gegenwart'</a>, Dominik von Roth und Linda Escherich (Hrsg.), erfolgt online über <b>arthistoricum.net</b> (2017)</p>
+<p>Während Musikinstrumente auch heute von Privatpersonen begeistert gesammelt werden, so wird die Sammelleidenschaft öffentlicher Museen zumeist von vollen Depots und knappen Kassen gebremst. Ideen, die diesen Querstand für alle Beteiligten befriedigend auflösen, um Forschung und Museumsarbeit für die Zukunft zu rüsten, sind bislang Mangelware.</p>
+<p>Beim Verkauf der Sammlung Rück an das Germanische Nationalmuseum Anfang der 1960er Jahre ging in Deutschland letztmals eine Musikinstrumentensammlung dieser Größe aus Privatbesitz in die öffentliche Hand über. Wie wertvoll und reichhaltig allein dieser Sammlungsbestand ist, zeigt ein DFG-Projekt, in dem die Erwerbskorrespondenz Rücks für ein öffentliches Online-Portal systematisch aufbereitet wird. Mit einem Umfang von über 17.000 Dokumenten zu Ankauf, Handel und Restaurierung historischer Musikinstrumente wird die Grundlage für unzählige Fragestellungen aus unterschiedlichsten Disziplinen wie der Kunstgeschichte, der Kulturwissenschaft, aber auch dem Instrumentenbau geboten, die weit über herkömmliche Ansätze der Provenienzforschung hinausgehen.
+Dem Beispiel Rück entsprechend ist das private Sammeln von Musikinstrumenten in Geschichte und Gegenwart zentraler Angelpunkt der Konferenz. Beiträge zu historischen und zeitgenössischen Sammlungen (aus Deutschland, Finnland, Frankreich, Italien, Österreich und der Schweiz), sowie Fragen an die Musikwissenschaft bzw. deren Zukunft und damit verknüpfte Aufgaben attraktiver und angemessener musealer Präsentationen von Sammlungsbeständen werden durch Erfahrungsberichte privater Sammler ergänzt. Positionen aus den Bereichen Literaturwissenschaft, Kulturmanagement, Transcultural Music Studies und Kunstgeschichte bieten transdisziplinäre Korrektive und runden den Tagungsband ab.</p>
+<p>Projektleitung:</p>
+<p>Roth, Dominik von, <a href="mailto:d.v.roth@gnm.de">(Email)</a><br />Escherich, Linda, <a href="mailto:l.escherich@gnm.de">(Email)</a></p>
+<p>Ansprechpartner GNM-Verlag:</p>
+<p>Kupper, Christiane, <a href="mailto:c.kupper@gnm.de">(Email)</a></p>
+     </div>
+     </div>
+<hr>
+
+<p>Die weiteren Open-Access-Publikationen des Germanischen Nationalmuseums auf arthistoricum.net umfassen Aufsätze (über <a href="http://archiv.ub.uni-heidelberg.de/artdok/view/collections/c-5.html" title="Link zu ART-DOK">ART-Dok</a>) sowie folgende E-Journals:<br />
+<a href="http://journals.ub.uni-heidelberg.de/index.php/kulturgut/" title="Link zur Zeitschrift">KulturGut</a><br />
+<a href="http://journals.ub.uni-heidelberg.de/index.php/ma/index" title="Link zur Zeitschrift">MonatsAnzeiger</a><br />
+<a href="http://journals.ub.uni-heidelberg.de/index.php/azvzgnm/index" title="Link zur Zeitschrift">Anzeiger für Kunde der deutschen Vorzeit: Organ d. Germanischen Museums</a><br />
+<a href="http://journals.ub.uni-heidelberg.de/index.php/mittgnm/index" title="Link zur Zeitschrift">Mitteilungen aus dem Germanischen Nationalmuseum</a>
+</p>
+
+</div>        
+        
+<div class="col-lg-3">
+  <div id="infoBoxRechts">
+  <p>{{=IMG(_src=URL('static','images/partner/gnm_logo.gif'),_width='194px')}}
+  </p>
+    <br>
+    <p><b>Kontakt</b>
+      <br>Germanisches Nationalmuseum Nürnberg
+      <br>Verlag
+      <br>Kornmarkt 1
+      <br>D-90403 Nürnberg
+      <br>
+      <br>Tel.: +49  911 1331165
+      <br>(Mo&ndash;Fr, 11.00&ndash;16.00 Uhr)
+      <br>Internet: 
+      <a href="http://www.gnm.de/" title="Homepage">www.gnm.de</a>
+  </div>
+</div>
+        
+{{elif session.forced_language =='en': }}
+
+<div class="col-lg-9">
+<p>The <a href="http://www.gnm.de/" title="Homepage">Germanisches Nationalmuseum</a> is the largest museum of cultural history in the German-speaking countries. Around 1.35 million objects, divided into 23 collection areas, show evidence and artefacts from 200,000 years of German cultural history. The Museum’s principle research aim is concerned with objects across genres, another focus lies on the investigation of the cultural context of the works.
+</p>
+<p>As part of the Leibniz Association, Germanisches Nationalmuseum is committed to Open Access. Via <b>arthistoricum.net &ndash; ART-Books</b> research results presented during conferences are made available in full and free of charge.
+</p>
+<hr>
+       <div class="row">
+        <div class="col-lg-2"><a href="{{=URL('static','images/partner/cover_gnm_musikinstrumente.jpg')}}">{{=IMG(_src=URL('static','images/partner/cover_gnm_musikinstrumente.jpg'),_width='80px', _class='bildrahmen')}}</a>
+				</div>
+        <div class="col-lg-9">
+<p>Publications by Germanisches Nationalmuseum Nürnberg:</p>
+<b>Published later this year:</b>
+<p>Proceedings of the conference <a class="extern" href="http://www.gnm.de/forschung/tagungen-und-konferenzen/tagungen-und-konferenzen-2017/" title="Link zur Homepage der Tagung">'Private Passion – Public Challenge. Collecting Musical Instruments Then and Now'</a>, Dominik von Roth und Linda Escherich (Eds.), will be published online via <b>arthistoricum.net</b> (2017)</p>
+<p>Whereas the enthusiasm of private individuals for collecting musical instruments remains undiminished, public museums are too often restricted in their desire to augment their collections by lack of storage space and money. Ideas which might resolve these issues for all concerned and support future research and museum work are few and far between.</p>
+<p>When the Rück Collection was sold to the Germanisches Nationalmuseum at the beginning of the 1960s, it was the last sizeable collection of musical instruments within Germany to pass from private to public ownership. The worth and wealth of just this one collection is clearly demonstrated in a DFG project, which is systematically editing Rück’s acquisition correspondence for an online research platform. Comprising more than 17,000 documents on the acquisition, trade, and restoration of historical musical instruments, this platform will offer a knowledge base, which provides answers to questions on multidisciplinary issues concerning art history, cultural studies, as well as instrument making, which go far beyond the usual approaches on provenance research.
+In keeping with Rück’s example, private collecting of musical instruments then and now forms the central theme of the conference, with contributions on historical and contemporary collections (in Austria, Finland, France, Germany, Italy, and Switzerland). In addition such topics as the future of musicology and related themes, such as the suitable display and function of public collections are being addressed and complemented by the experiences of private collectors. Positions from the fields of literary studies, cultural management, transcultural music studies, and art history provide cross-disciplinary correctives and complete the conference proceedings.</p>
+<p>Projektleitung:</p>
+<p>Roth, Dominik von, <a href="mailto:d.v.roth@gnm.de">(Email)</a><br />
+Escherich, Linda, <a href="mailto:l.escherich@gnm.de">(Email)</a></p>
+<p>Ansprechpartner GNM-Verlag:</p>
+<p>Kupper, Christiane, <a href="mailto:c.kupper@gnm.de">(Email)</a></p>
+    </div>
+    </div>  
+<hr>
+<p>Further Open Access publications by the Germanisches Nationalmuseum on arthistoricum.net include essays (via <a href="http://archiv.ub.uni-heidelberg.de/artdok/view/collections/c-5.html" title="Link to ART-DOK">ART-Dok</a>) and the following e-journals:<br />
+<a href="http://journals.ub.uni-heidelberg.de/index.php/kulturgut/" title="Link zur Zeitschrift">KulturGut</a><br />
+<a href="http://journals.ub.uni-heidelberg.de/index.php/ma/index" title="Link zur Zeitschrift">MonatsAnzeiger</a><br />
+<a href="http://journals.ub.uni-heidelberg.de/index.php/azvzgnm/index" title="Link zur Zeitschrift">Anzeiger für Kunde der deutschen Vorzeit: Organ d. Germanischen Museums</a><br />
+<a href="http://journals.ub.uni-heidelberg.de/index.php/mittgnm/index" title="Link zur Zeitschrift">Mitteilungen aus dem Germanischen Nationalmuseum</a>
+</div>        
+      
+        
+<div class="col-lg-3">
+  <div id="infoBoxRechts">
+  <p>{{=IMG(_src=URL('static','images/partner/gnm_logo.gif'),_width='194px')}}
+  </p>
+    <br>
+    <p><b>Contact</b>
+      <br>Germanisches Nationalmuseum Nürnberg
+      <br>Verlag
+      <br>Kornmarkt 1
+      <br>D-90403 Nürnberg
+      <br>
+      <br>Tel.: +49  911 1331165
+      <br>(Mon&ndash;Fri, 11.00&ndash;16.00)
+      <br>Internet: 
+      <a href="http://www.gnm.de/" title="Homepage">www.gnm.de</a>
+  </div>
+</div>
+
+
+{{pass}}
+
+
+            
+
+    </div>
+  </div>
+

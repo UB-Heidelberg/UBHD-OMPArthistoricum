@@ -1,5 +1,5 @@
 /* ==== Google font ==== */
-@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700,700italic&subset=latin,latin-ext);
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700,700italic&subset=latin,latin-ext);
 /*@import url('http://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700');*/
 /**Originalfont des Templates: font-family: 'Open Sans', Arial, sans-serif; */
 
@@ -55,6 +55,34 @@ h1,h2, h3, h4, h5, h6 {
                background-color:#fff;
                }
 
+.nav_flags_de {
+	display:block;
+	width:18px !important;
+	height:12px !important;
+	border:solid 1px #777;
+	box-shadow: inset 0px 3px 5px 0px rgba(255,255,255,1);
+	background-image: url(../images/de.png);
+	background-repeat:no-repeat;
+	background-size: 100% 100%;
+	border-radius:1px !important;
+	margin:1.1em 0 0.8em 1em;
+	padding:0 !important;
+}		
+
+.nav_flags_en {
+	display:block;
+	width:18px !important;
+	height:12px !important;
+	border:solid 1px #777;
+	box-shadow: inset 0px 3px 5px 0px rgba(255,255,255,1);
+	background-image: url(../images/gb.png);
+	background-repeat:no-repeat;
+	background-size: 100% 100%;
+	border-radius:1px !important;
+	margin:1.1em 0.8em 0.8em 0.5em;
+	padding:0 !important;
+}	   
+			   
 #main {background-color:#fff;
        padding:1.9em;
 }
