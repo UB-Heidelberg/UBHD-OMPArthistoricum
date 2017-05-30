@@ -57,6 +57,24 @@
                       <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
                     </div>
                     <div class="media-body">
+                      <p class="media-heading">30.05.2017
+                        <br>
+                        <h5>{{=T('New')}}: Das Phänomen Skatesticker. Bildrezeptionen und Kunstadaptionen in der Skateboardszene</h5>
+                      </p>
+                      <p class="boxText"> {{if session.forced_language =='de': }} 
+<a href="{{=URL('catalog','book/244')}}" title="Informationen über 'Das Phänomen Skatesticker'">Das Phänomen Skatsticker</a> beschäftigt sich mit grafisch gestalteten Aufklebern, die von Skatelabels – den Herstellern von Skateboards und Zubehör – distribuiert werden. Ursprünglich zu reinen Werbezwecken produziert, haben sich Skatesticker als Symbole der Szene etabliert.Die vorliegende Arbeit verfolgt einen bildwissenschaftlich orientierten Forschungsansatz, der es ermöglicht, die komplexen – oftmals bildende Kunst adaptierenden – Bildmotive dieser Grafikdesignobjekte und ihre zunehmend autonomisierten Funktionen als visuelle Medien einer Szene zu analysieren und anzuerkennen.
+                      {{elif session.forced_language =='en': }} 
+<a href="{{=URL('catalog','book/244')}}" title="Information on 'Das Phänomen Skatesticker'">Das Phänomen Skatesticker</a> focuses on graphically designed stickers distributed by skate labels (manufacturers of skateboards and accessories). Originally, they were produced for advertising purposes only, but have now become icons for the scene. Our visual research approach allows us to analyse and recognise the complex image motifs, which often adapt the visual arts, in these graphic design items and their increasingly autonomous function as visual media for a scene. 
+                        {{pass}}
+                      </p>
+                    </div>
+                  </div>
+
+				  <div class="media">
+                    <div class="media-left pull-left">
+                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                    </div>
+                    <div class="media-body">
                       <p class="media-heading">26.05.2017
                         <br>
                         <h5>{{=T('New')}}: Kunstrecht. Normen, Gesetze und Vorschriften zum Kunstrecht</h5>
@@ -218,10 +236,20 @@ Die vorliegende <a href="{{=URL('catalog','book/149')}}" title="Informationen ü
         <div class="row">
           <div class="col-lg-3">
             <div class="box">
-              <div class="box-gray aligncenter"><h4>{{=T('Soon')}}</h4> {{=IMG(_src=URL('static','images/home/Cover_Pachl.jpg'),_width='145px', _class='bildrahmen')}}
-              </div>
-               <div class="box-bottom">&nbsp; <!-- {{=A(T('More Information'),_href=URL('partner','index/mimesis'))}}-->
-              </div>
+                <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4> 
+				{{if session.forced_language =='de': }}
+                 {{=IMG(_src=URL('static','files/presses/2/monographs/244/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}
+               {{elif session.forced_language =='en': }}
+                 {{=IMG(_src=URL('static','files/presses/2/monographs/244/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}
+               {{pass}} 
+                </div>
+                <div class="box-bottom"> 
+				{{if session.forced_language =='de': }}
+                  {{=A(T('More Information'),_href=URL('catalog','book/244'))}}
+                {{elif session.forced_language =='en': }}
+                  {{=A(T('More Information'),_href=URL('catalog','book/244'))}}
+                {{pass}}     
+                </div>
             </div>
           </div>
           <div class="col-lg-3">
