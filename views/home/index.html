@@ -52,6 +52,31 @@
               <div class="box">
                 <div class="box-gray aligncenter" style="overflow-y: scroll"><h4>{{=T('News')}}</h4>
 
+<div class="media">
+                    <div class="media-left pull-left">
+                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                    </div>
+                    <div class="media-body">
+                      <p class="media-heading">13.06.2017
+                        <br>
+                        <h5>{{=T('New')}}: 
+                        {{if session.forced_language =='de': }} 
+                        Alle Konferenz-Bände EVA Berlin online!
+                        {{elif session.forced_language =='en': }} 
+                        All volumes of the Eva-Conferences online  
+                        {{pass}}  
+                        </h5>
+                      </p>
+                      <p class="boxText"> {{if session.forced_language =='de': }} 
+Alle bisher erschienenen Bände der <a href="{{=URL('series','info/eva')}}" title="Informationen über die EVA-Konferenz-Bände'">EVA-Konferenzen</a> sind in ART-Books verfügbar. Die EVA-Konferenzen sind ein internationales Forum für Anwender, Entwickler und Vermittler elektronischer Dokumentations- und Kommunikationstechniken im Kulturbereich. Der Schwerpunkt der Berliner EVA-Konferenzen liegt auf aktuellen, praxisnahen und technologisch avancierten Projekten. Konferenz, Workshop und begleitende Ausstellung präsentieren erfolgreiche Umsetzungen und innovative Ansätze. Neue technische Potentiale des netzbasierten Informationsaustauschs, der elektronischen Dokumentation und der digitalen Reproduktion werden ebenso thematisiert wie die methodische Orientierung oder Lizensierungsfragen. 
+                      {{elif session.forced_language =='en': }} 
+All volumes of the <a href="{{=URL('series','info/eva')}}" title="Information on EVA-Conference volumes'">Eva-Conferences</a> are on ART-Books.
+The EVA-Conferences are an international forum for users, developers and other stakeholders in electronic documentation and communication technologies for the cultural sector. With venues in Berlin, Florence, London, Saint Petersburg and Jerusalem, the conferences present ambitious digitization projects dealing with cultural heritage, network-based research and mediation collaborations as well as information technology services for museums, libraries and archives. 
+                        {{pass}}
+                      </p>
+                    </div>
+                  </div>
+
 				  <div class="media">
                     <div class="media-left pull-left">
                       <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
@@ -77,12 +102,12 @@
                     <div class="media-body">
                       <p class="media-heading">26.05.2017
                         <br>
-                        <h5>{{=T('New')}}: Kunstrecht. Normen, Gesetze und Vorschriften zum Kunstrecht</h5>
+                        <h5>{{=T('New')}}: Kunstrecht. Normen, Gesetze und Vorschriften</h5>
                       </p>
                       <p class="boxText"> {{if session.forced_language =='de': }} 
-Im ständig wachsenden Kunstmarkt hat sich das Kunstrecht zu einer eigenständigen Disziplin entwickelt und nimmt heute einen wichtigen Platz in der Praxis ein. Das neue Kulturgüterschutzgesetz zeigt dies exemplarisch auf. <a href="{{=URL('catalog','book/181')}}" title="Informationen über 'Kunstrecht. Normen, Gesetze und Vorschriften zum Kunstrecht'">Kunstrecht. Normen, Gesetze und Vorschriften zum Kunstrecht</a> von N. Kemle vereint in einem Band die anwendbaren deutschen Gesetze, europäischen Richtlinien und Verordnungen, internationale Übereinkommen, angefangen von den Washington Principles bis zu UNIDROIT, sowie die ethischen Grundsätze der einzelnen Kunsthandelsverbände. 
+Im ständig wachsenden Kunstmarkt hat sich das Kunstrecht zu einer eigenständigen Disziplin entwickelt und nimmt heute einen wichtigen Platz in der Praxis ein. Das neue Kulturgüterschutzgesetz zeigt dies exemplarisch auf. <a href="{{=URL('catalog','book/181')}}" title="Informationen über 'Kunstrecht: Normen, Gesetze und Vorschriften'">Kunstrecht. Normen, Gesetze und Vorschriften</a> von N. Kemle vereint in einem Band die anwendbaren deutschen Gesetze, europäischen Richtlinien und Verordnungen, internationale Übereinkommen, angefangen von den Washington Principles bis zu UNIDROIT, sowie die ethischen Grundsätze der einzelnen Kunsthandelsverbände. 
                       {{elif session.forced_language =='en': }} Art law has evolved into being an independent and important discipline within the constantly growing art market. The new German Kulturgutschutzgesetz (Act to Protect German Cultural Property) exemplarily shows this growing importance.
-<a href="{{=URL('catalog','book/181')}}" title="Information on 'Kunstrecht. Normen, Gesetze und Vorschriften zum Kunstrecht'">Kunstrecht. Normen, Gesetze und Vorschriften zum Kunstrecht</a> by N. Kemle combines both applicable German legislation, european guidelines and regulations, international conventions (e.g. the Washington Principles, UNIDROIT) and ethical principles of different art trade associations in one volume. 
+<a href="{{=URL('catalog','book/181')}}" title="Information on 'Kunstrecht: Normen, Gesetze und Vorschriften'">Kunstrecht. Normen, Gesetze und Vorschriften </a> by N. Kemle combines both applicable German legislation, european guidelines and regulations, international conventions (e.g. the Washington Principles, UNIDROIT) and ethical principles of different art trade associations in one volume. 
                         {{pass}}
                       </p>
                     </div>
