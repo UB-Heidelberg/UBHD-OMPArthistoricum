@@ -40,7 +40,7 @@ function typesort(a, b){
 
 
 var script = 'oastats-json.cgi';
-var url = "../../../cgi-bin/" + script + "?repo=omphp&type=json&ids=" + ids+"&uid="+guid();
+var url = "../../../cgi-bin/" + script + "?repo=omp&type=json&ids=" + ids+"&uid="+guid();
 $.getJSON( url, function( data ) {
   var totals = {};
   $.each(data, function (key, value) {
