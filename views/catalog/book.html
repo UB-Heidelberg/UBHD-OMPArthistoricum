@@ -1,12 +1,13 @@
 {{extend 'layout.html'}}
 {{from ompformat import formatCitation, formatContributors, formatName, dateFromRow, dateToStr, formatONIXDate, formatONIXDateWithText, coverImageLink, downloadLink, haveMultipleAuthors}}
 {{from ompdal import OMPDAL}}
-{{file_ids=[]}}
 {{from datetime import datetime}}
 
 
+{{file_ids=[]}}
+
 <div id="main" class="container">
-  <section id="content">
+  	<section id="content">
     <div style="height: 20px"></div>
     <div class="container">
       <div class="row">
@@ -34,8 +35,14 @@ pass
               <h5 style="color: #656565; margin-bottom: 0.5em;">{{=T('How to cite this title')}}</h5>
               {{include '../static/omp-resources/views/catalog/citation.html' }}
               <!-- citations end-->
-              <h5 style="color: #656565; margin-bottom: 0.3em;">{{=T('Licenses')}}</h5>
-              {{=XML(submission_settings.getLocalizedValue('rights', locale))}}
+
+
+              {{license=submission_settings.getLocalizedValue('rights', locale)}}
+							{{if license!='':}}
+							<h5 style="color: #656565; margin-bottom: 0.3em;">{{=T('Licenses')}}</h5>
+							{{=XML(license)}}
+              {{pass}}
+
               {{identification_codes = [i for i in [pf.associated_items.get('identification_codes', []) for pf in digital_publication_formats+physical_publication_formats] if i]}}
               {{if identification_codes:}}
               <h5 style="color: #656565; margin-bottom: 0.5em; margin-top: 1.2em;">ISBN</h5>
@@ -72,9 +79,9 @@ pass
             </div>
           </div>
 
-        </div>
+</div>
       
-        <div class="col-lg-9">
+<div class="col-lg-9">
           <article>
             <div class="">
               {{for pf in digital_publication_formats:}}
@@ -91,15 +98,24 @@ pass
                   {{=T('Download')}}
                   <span class="caret"></span>
                 </button>
-                {{for pf in digital_publication_formats:}}
-                {{full_file = pf.associated_items.get('full_file')}}
-                {{if full_file and not "html" in full_file.attributes.file_type and not "xml" in full_file.attributes.file_type:}}
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="{{=downloadLink(request, full_file.attributes, myconf.take('web.url'), full_file.settings.getLocalizedValue("vgWortPublic", ""))}}">{{=pf.settings.getLocalizedValue('name', locale)}}</a></li>
-                </ul>
+								{{for pf in  sorted(digital_publication_formats, key=lambda s:  s.settings.getLocalizedValue('name', locale), reverse=True):}}
+									{{format_name=pf.settings.getLocalizedValue('name', locale)}}
+								{{full_epub_file  = pf.associated_items.get('full_epub_file')}}
+									{{if full_epub_file:}}
+                  <li role="presentation"><a role="menuitem" tabindex="0" href="{{=downloadLink(request, full_epub_file.attributes, myconf.take('web.url'), full_epub_file.settings.getLocalizedValue("vgWortPublic", ""))}}">{{=format_name}}</a></li>
+									{{pass}}
+								{{full_file = pf.associated_items.get('full_file')}}
+								{{if full_file and not "html" in full_file.attributes.file_type and not "xml" in full_file.attributes.file_type:}}
+
+									<li role="presentation"><a role="menuitem" tabindex="-1" href="{{=downloadLink(request, full_file.attributes, myconf.take('web.url'), full_file.settings.getLocalizedValue("vgWortPublic", ""))}}">
+										{{=format_name}}</a></li>
+                
+
                 {{pass}}
                 {{pass}}
-              </div>
+              </ul>
+							</div>
               {{pass}}
 
               <div class="btn-group" role="group" aria-label="2">
@@ -152,7 +168,7 @@ pass
                 <i class="icon-quote-left"></i>
                 {{=XML(abstract)}}
               </p>
-              	<!-- reviews begin -->
+              															<!-- reviews begin -->
                 {{include '../static/omp-resources/views/catalog/reviews.html' }}
               <!-- reviews end -->
               {{bios = [(formatName(e.attributes), e.settings.getLocalizedValue('biography', locale)) for e in editors]}}
@@ -165,7 +181,7 @@ pass
               {{num_bios = len([b for b in bios if b[1] != ""])}}
               {{if bios_role != "author" or num_bios < 4:}}
               {{if num_bios != 0:}}
-              <div class="separator"></div>
+              		                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        												<div class="separator"></div>
               <div class="autor_biografie">
                 <p>
                   {{for contributor, bio in bios:}}
@@ -178,7 +194,9 @@ pass
               {{pass}}	
               {{pass}}
               {{pass}}
-            </div>
+            							
+							
+												</div>
 
             <div class="widget">
               {{if len(chapters) > 0:}}
@@ -186,8 +204,11 @@ pass
                 <div class="chapter_row table_head">
                   <div class="chapter_cell">{{=T('Contents')}}</div>
                   {{for pf in digital_publication_formats:}}
-                  <div class="chapter_cell">{{=TD(pf.settings.getLocalizedValue('name', locale))}}</div>
+									{{format_name=pf.settings.getLocalizedValue('name', locale)}}
+									{{if format_name != 'EPUB':}}
+                  <div class="chapter_cell">{{=TD(format_name)}}</div>
                   {{pass}}
+									{{pass}}
                 </div>
                 {{display_authors=haveMultipleAuthors(chapters)}}
                 {{for c in chapters:}}
@@ -206,6 +227,8 @@ pass
                     {{pass}}
                   </div>
                   {{for pf in digital_publication_formats:}}
+									{{format_name=pf.settings.getLocalizedValue('name', locale)}}
+									{{if format_name != 'EPUB':}}
                   <div class="chapter_cell">
                     {{if c_files:}}
                     {{c_file = c_files.get(pf.attributes.publication_format_id)}}
@@ -222,6 +245,7 @@ pass
                     {{pass}}
                   </div>
                   {{pass}}
+									{{pass}}
                 </div>
                 {{pass}}
               </div>
