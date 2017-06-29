@@ -1,0 +1,98 @@
+{{extend 'layout.html'}}
+
+<div id="main" class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>  {{if session.forced_language =='de': }}
+                Passagen online 
+                {{elif session.forced_language =='en': }}
+                Passages online  
+            {{pass}}
+            </h3>
+        </div>
+
+         {{if session.forced_language =='de': }}
+        
+<div class="col-lg-9">
+                <p>Die Reihe <b>Passagen online</b> wurde vom Direktor des Deutschen Forums für Kunstgeschichte Paris, Prof. Dr. Thomas Kirchner, 2017 begründet. Mit der Absicht, die am DFK erarbeiteten Forschungsergebnisse zeitnah und dauerhaft frei zur Verfügung zu stellen, präsentiert die Reihe die am DFK Paris entstandenen Sammelbände sowie kunsthistorische Dokumentationen und Kongressakten,  insbesondere die Ergebnisse der Jahrestagungen.</p>
+
+<p>Die Reihe ergänzt damit die bereits existierenden Publikationsreihen der Passagen beim Deutschen Kunstverlag und der Passages im Verlag der Maison des Sciences de l’Homme MSH.</p>
+
+<p>Die Passagen online sind grundsätzlich mehrsprachig und konzentrieren sich insbesondere auf folgende Formate:</p>
+<ul>
+<li>Jahresbände mit den Ergebnissen der zum Jahresthema durchgeführten Konferenzen</li>
+<li>Kongressakten zu den am DFK Paris oder in Kooperationen veranstalteten Kolloquien</li>
+<li>Kunsthistorische Dokumentationen wie die Publikation von Inventaren oder Beständen in Katalogform</li>
+<li>Monographien mit umfangreichen Dokumentationen</li>
+</ul>
+
+<p>Mit dem Band &bdquo;Versailles et l’Europe&rdquo; ist 2017 der erste Band der Reihe erscheinen, gefolgt von den Kolloquiumsakten zum Jahresthema <i>Paris d’après la guerre – das befreite Paris und die Künste</i>. </p>
+
+<div class="widget">
+         <ul class="tags">
+             <li>
+                {{=A(T('Volumes'),_href=URL('catalog','series/pas'))}}
+            </li>
+         </ul>
+</div>
+</div>
+
+ <div class="col-lg-3">
+         <div id="infoBoxRechts"> 
+         <p>{{=IMG(_src=URL('static','images/partner/dfk_logo.png'),_width='230px')}}</p><br>
+         <p><b>Herausgeber</b><br>
+         Thomas Kirchner, Paris
+         </p>
+         <p><b>Kontakt</b><br>
+         Markus A. Castor<br>
+         Deutsches Forum für Kunstgeschichte Paris<br>
+         E-Mail:  mcastor@dfk-paris.org<br>
+         <a href="https://dfk-paris.org" title="Homepage Deutsches Forum für Kunstgeschichte Paris">https://dfk-paris.org</a>
+         </div>
+ </div>
+
+                     {{elif session.forced_language =='en': }}
+ 
+<div class="col-lg-9">
+<p>La collection <b>Passages online</b> a été créée en 2017 par Thomas Kirchner, directeur du Centre allemand d’histoire de l’art Paris. Avec l’objectif de mettre à disposition rapidement et durablement les résultats des recherches menées au DFK Paris, la collection présente les ouvrages collectifs parus au DFK Paris, sommes de documentation en histoire de l’art et actes de colloque, en particulier ceux du congrès annuel.</p>
+<p>Cette collection complète ainsi celles déjà existantes des Passagen, édités par le Deutscher Kunstverlag, et des Passages, qui paraissent auprès de la Fondation Maison des sciences de l’homme (FMSH).</p>
+<p>Les Passages online sont en principe en plusieurs langues et s’articulent en particulier autour des formats suivants :</p>
+<ul>
+<li>Publication annuelle présentant les apports des conférences données dans le cadre du sujet annuel</li>
+<li>Actes des colloques organisés au DFK Paris et/ou avec des partenaires</li>
+<li>Compilations de documents relatifs à l’histoire de l’art, par exemple publication d’inventaires ou de catalogues présentant des collections ou fonds.</li>
+<li>Monographies comportant une importante documentation.</li>
+</ul>
+<p>2017 a vu la parution du premier volume <i>Versailles et l’Europe</i>,bientôt suivie des actes du congrès sur le sujet annuel <i>Les arts à Paris après la Libération</i>.</p>
+
+  
+  
+  <div class="widget">
+           <ul class="tags">
+                              <li>
+                                  {{=A(T('Volumes'),_href=URL('catalog','series/pas'))}}
+                              </li>
+  
+          </ul>
+  </div> 
+</div>
+<div class="col-lg-3">
+  <div id="infoBoxRechts">
+  <p>{{=IMG(_src=URL('static','images/partner/dfk_logo.png'),_width='230px')}}</p><br>
+  <p><b>Directeur de la collection</b><br>
+  Thomas Kirchner</p>
+  <p><b>Contact</b><br>
+  Markus A. Castor<br>
+  Centre allemand d’histoire de l’art Paris,<br>
+  E-Mail:  mcastor@dfk-paris.org<br>
+  <a href="https://dfk-paris.org" title="Homepage Deutsches Forum für Kunstgeschichte Paris">https://dfk-paris.org</a>
+  </div>
+</div> 
+
+
+{{pass}}
+
+
+</div>
+</div>
+
