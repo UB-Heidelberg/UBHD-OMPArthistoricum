@@ -1376,6 +1376,12 @@ ul.meta-post li a{
 }
 
 
+/**Pagination Katalog**/
+
+ul.pagination {margin:0 5px 0 0;}
+
+ul.pagination > li > a, ul.pagination > li > span {padding: 5px 12px;}
+
 /* ===============================
 15. Aside, sidebar
 ================================ */
@@ -2423,6 +2429,13 @@ img.beiratPortrait {
 .beiratBeschreibung {
   margin: 0 20px 0 0;
 }
+
+
+/**Katalogseite**/
+.btn .caret {
+    margin-left: 5px;
+}
+
 
 
 /** Info für Autoren **/
