@@ -31,11 +31,7 @@
                 {{=IMG(_src=URL('static','files/presses/2/monographs/234/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}          
                 </div>
                 <div class="box-bottom">
-				{{if session.forced_language =='de': }}
                   {{=A(T('More Information'),_href=URL('catalog','book/234'))}}
-                {{elif session.forced_language =='en': }}
-                  {{=A(T('More Information'),_href=URL('catalog','book/234'))}}
-                {{pass}} 
                </div>
               </div>
             </div>
@@ -279,36 +275,20 @@ Die vorliegende <a href="{{=URL('catalog','book/149')}}" title="Informationen ü
           <div class="col-lg-3">
             <div class="box">
                 <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4> 
-				{{if session.forced_language =='de': }}
                  {{=IMG(_src=URL('static','files/presses/2/monographs/181/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}
-               {{elif session.forced_language =='en': }}
-                 {{=IMG(_src=URL('static','files/presses/2/monographs/181/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}
-               {{pass}} 
                 </div>
                 <div class="box-bottom"> 
-				{{if session.forced_language =='de': }}
                   {{=A(T('More Information'),_href=URL('catalog','book/181'))}}
-                {{elif session.forced_language =='en': }}
-                  {{=A(T('More Information'),_href=URL('catalog','book/181'))}}
-                {{pass}}     
                 </div>
             </div>
           </div>
           <div class="col-lg-3">
             <div class="box">
                 <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4> 
-				{{if session.forced_language =='de': }}
                  {{=IMG(_src=URL('static','files/presses/2/monographs/221/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}
-               {{elif session.forced_language =='en': }}
-                 {{=IMG(_src=URL('static','files/presses/2/monographs/221/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}
-               {{pass}} 
                 </div>
                 <div class="box-bottom"> 
-				{{if session.forced_language =='de': }}
                   {{=A(T('More Information'),_href=URL('catalog','book/221'))}}
-                {{elif session.forced_language =='en': }}
-                  {{=A(T('More Information'),_href=URL('catalog','book/221'))}}
-                {{pass}}     
                 </div>
             </div>
           </div>
