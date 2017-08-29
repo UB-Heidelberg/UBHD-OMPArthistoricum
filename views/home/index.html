@@ -17,11 +17,11 @@
           <div class="row">
             <div class="col-lg-3">
               <div class="box">
-                <div class="box-gray aligncenter"><h4>{{=T('Soon')}}</h4> 
-                 {{=IMG(_src=URL('static','/images/partner/cover_rba.jpg'),_width='145px', _class='bildrahmen')}}
+                <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4> 
+                 {{=IMG(_src=URL('static','files/presses/2/monographs/293/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}
                 </div>
                 <div class="box-bottom"> 
-                  
+                {{=A(T('More Information'),_href=URL('catalog','book/293'))}}  
                 </div>
               </div>
             </div>
@@ -45,7 +45,32 @@
                       <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
                     </div>
                     <div class="media-body">
-                      <p class="media-heading">29.06.2017
+                      <p class="media-heading">29.08.2017
+                        <br>
+                        <h5>{{=T('New')}}: 
+                        {{if session.forced_language =='de': }} 
+                        <a href="http://books.ub.uni-heidelberg.de/arthistoricum/catalog/book/293">Renaissance · Barock · Aufklärung. Kunst und Kultur vom 16. bis zum 18. Jahrhundert</a>, hrsg. von Daniel Hess und Dagmar Hirschfelder
+                        {{elif session.forced_language =='en': }} 
+                        <a href="http://books.ub.uni-heidelberg.de/arthistoricum/catalog/book/293">Renaissance · Barock · Aufklärung. Kunst und Kultur vom 16. bis zum 18. Jahrhundert</a>, hrsg. von Daniel Hess und Dagmar Hirschfelder 
+                        {{pass}}  
+                        </h5>
+                      </p>
+                      <p class="boxText"> {{if session.forced_language =='de': }} 
+Der Band begleitet die im Germanischen Nationalmuseum 2010 neu eröffnete Dauerausstellung zur Kunst und Kulturgeschichte des 16. bis 18. Jh. im deutschen Sprachraum. Die Schausammlung erschließt mit rund 1.000 Exponaten in 33 Räumen zentrale Themen der Frühen Neuzeit, wie Sammeln und Repräsentieren, Antikenrezeption und Naturstudium, die Wechselwirkung von Kunst und Religion oder das sich wandelnde Bild vom Menschen. Zu diesen Leitthemen bietet die Publikation vertiefende Beiträge und einen wissenschaftlichen Katalog aller ausgestellten Objekte.Beharrlichkeit der lokalen Traditionen dennoch nicht unterschätzt werden. 
+                      {{elif session.forced_language =='en': }} 
+This title accompanies the permanent exhibition at the Germanisches Nationalmuseum on art and cultural history of the German-speaking world during the 16th to 18th centuries. The exhibition has been on display since 2010. It features about 1,000 exhibits in 33 rooms and addresses central themes of the early modern period such as collecting and presenting, the reception of antiquity and nature studies, the correlation between art and religion and the changing image of humanity. The complementing publication includes papers that deal with these key themes in a detailed manner. It also comprises a scientific catalogue of all exhibits.  
+                        {{pass}}
+                      </p>
+                    </div>
+                  </div>
+
+
+                <div class="media">
+                    <div class="media-left pull-left">
+                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                    </div>
+                    <div class="media-body">
+                      <p class="media-heading">29.08.2017
                         <br>
                         <h5>{{=T('New')}}: 
                         {{if session.forced_language =='de': }} 
