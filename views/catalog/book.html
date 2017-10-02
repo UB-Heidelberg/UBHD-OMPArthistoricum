@@ -282,11 +282,11 @@ pass
 <script src="{{= cdn }}/anno-frontend/dev/anno-frontend.js"></script>
 
 <script>
- $(function() {
+$(function() {
    // XXX TODO need adapt this
    const collection = 'arthistoricum'
-   // document.styleSheets[0].insertRule(`.annoeditor-viewer .media-body > div:first-child > * { height: 20px !important }`, 0)
-   // document.styleSheets[0].insertRule(`.panel-title a:hover { color: white !important }`, 0)
+   document.styleSheets[0].insertRule(`#anno-block .dropdown-menu .active a { color: white !important; }`, 0)
+   const base = 'http://serv42.ub.uni-heidelberg.de/anno'
 
    // XXX keep as-is
    $("#anno-btn").click(() => $("#anno-block").is(':hidden') ? showAnnoBlock() : hideAnnoBlock())
@@ -305,8 +305,11 @@ pass
      targetSource: document.location.href.replace(/[#\?].*$/, ''),
      container: document.getElementById('anno-block'),
      language: "{{=T.accepted_language or 'de'}}",
-     loginEndpoint: 'https://anno.ub.uni-heidelberg.de/anno/auth/login?from=' + encodeURIComponent(window.location.href),
-     tokenEndpoint: 'https://anno.ub.uni-heidelberg.de/anno/auth/token/' + collection,
+     annoEndpoint:     base + '/anno',
+     loginEndpoint:    base + '/auth/login?from=' + encodeURIComponent(window.location.href),
+     tokenEndpoint:    base + '/auth/token/' + collection,
+     registerEndpoint: base + '/auth/register',
+     requestEndpoint:  base + '/auth/request',
      purlId: document.location.hash.substr(1),
      enableLogoutButton: true,
      events: {
