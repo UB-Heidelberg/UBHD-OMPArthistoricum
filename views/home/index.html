@@ -49,9 +49,9 @@
                         <br>
                         <h5>{{=T('New')}}: 
                         {{if session.forced_language =='de': }} 
-                        <a href="http://books.ub.uni-heidelberg.de/arthistoricum/catalog/book/298">Michael Falser, Wilfried Lipp (Hrsg.), Eine Zukunft für unsere Vergangenheit. Zum 40. Jubiläum des Europäischen Denkmalschutzjahres (1975–2015)</a>
+                        {{=A(T('Michael Falser, Wilfried Lipp (Hrsg.), Eine Zukunft für unsere Vergangenheit. Zum 40. Jubiläum des Europäischen Denkmalschutzjahres (1975–2015)'),_href=URL('catalog','book/198'))}}
                         {{elif session.forced_language =='en': }} 
-                        <a href="http://books.ub.uni-heidelberg.de/arthistoricum/catalog/book/298">Michael Falser, Wilfried Lipp (Eds.), A Future for Our Past. The 40th anniversary of European Architectural Heritage Year (1975–2015)</a>
+                        {{=A(T('Michael Falser, Wilfried Lipp (Eds.), A Future for Our Past. The 40th anniversary of European Architectural Heritage Year (1975–2015)'),_href=URL('catalog','book/198'))}}
                         {{pass}}  
                         </h5>
                       </p>
@@ -75,9 +75,9 @@ Under the motto <i>A Future for Our Past</i>, the European Architectural Heritag
                         <br>
                         <h5>{{=T('New')}}: 
                         {{if session.forced_language =='de': }} 
-                        <a href="http://books.ub.uni-heidelberg.de/arthistoricum/catalog/book/263">Birgit Franz, Gerhard Vinken (Hrsg.), Das Digitale und die Denkmalpflege. Bestandserfassung – Denkmalvermittlung – Datenarchivierung – Rekonstruktion verlorener Objekte</a>
+                        {{=A(T('Birgit Franz, Gerhard Vinken (Hrsg.), Das Digitale und die Denkmalpflege. Bestandserfassung – Denkmalvermittlung – Datenarchivierung – Rekonstruktion verlorener Objekte'),_href=URL('catalog','book/263'))}}
                         {{elif session.forced_language =='en': }} 
-                        <a href="http://books.ub.uni-heidelberg.de/arthistoricum/catalog/book/263">Birgit Franz, Gerhard Vinken (Hrsg.), Das Digitale und die Denkmalpflege. Bestandserfassung – Denkmalvermittlung – Datenarchivierung – Rekonstruktion verlorener Objekte </a>
+                        {{=A(T('Birgit Franz, Gerhard Vinken (Eds.), Das Digitale und die Denkmalpflege. Bestandserfassung – Denkmalvermittlung – Datenarchivierung – Rekonstruktion verlorener Objekte'),_href=URL('catalog','book/263'))}}
                         {{pass}}  
                         </h5>
                       </p>
