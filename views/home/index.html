@@ -18,20 +18,20 @@
             <div class="col-lg-3">
               <div class="box">
                 <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4> 
-                 {{=IMG(_src=URL('static','files/presses/2/monographs/263/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}
+                 {{=IMG(_src=URL('static','files/presses/2/monographs/298/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}
                 </div>
                 <div class="box-bottom"> 
-                {{=A(T('More Information'),_href=URL('catalog','book/263'))}}  
+                {{=A(T('More Information'),_href=URL('catalog','book/298'))}}  
                 </div>
               </div>
             </div>
             <div class="col-lg-3">
               <div class="box">
                 <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4>
-                {{=IMG(_src=URL('static','files/presses/2/monographs/198/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}          
+                {{=IMG(_src=URL('static','files/presses/2/monographs/263/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}          
                 </div>
                 <div class="box-bottom">
-                  {{=A(T('More Information'),_href=URL('catalog','book/198'))}}
+                  {{=A(T('More Information'),_href=URL('catalog','book/263'))}}
                </div>
               </div>
             </div>
@@ -39,6 +39,59 @@
             <div id="boxAktuelles" class="col-lg-6">
               <div class="box">
                 <div class="box-gray aligncenter" style="overflow-y: scroll"><h4>{{=T('News')}}</h4>
+
+                <div class="media">
+                    <div class="media-left pull-left">
+                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                    </div>
+                    <div class="media-body">
+                      <p class="media-heading">19.10.2017
+                        <br>
+                        <h5>{{=T('New')}}: 
+                        {{if session.forced_language =='de': }} 
+                        <a href="http://books.ub.uni-heidelberg.de/arthistoricum/catalog/book/298">Michael Falser, Wilfried Lipp (Hrsg.), Eine Zukunft für unsere Vergangenheit. Zum 40. Jubiläum des Europäischen Denkmalschutzjahres (1975–2015)</a>
+                        {{elif session.forced_language =='en': }} 
+                        <a href="http://books.ub.uni-heidelberg.de/arthistoricum/catalog/book/298">Michael Falser, Wilfried Lipp (Eds.), A Future for Our Past. The 40th anniversary of European Architectural Heritage Year (1975–2015)</a>
+                        {{pass}}  
+                        </h5>
+                      </p>
+                      <p class="boxText"> {{if session.forced_language =='de': }} 
+Unter dem Motto <i>Eine Zukunft für unsere Vergangenheit</i> war das Europäische Denkmalschutzjahr von 1975 die bisher bedeutendste und erfolgreichste Kampagne zur Bewahrung und Emporwertung des architektonischen Erbes in Europa. Die Programmatik und Ideen von 1975 sind nach wie vor virulent und fordern eine Neuinterpretation unter den Bedingungen der Gegenwart heraus. Zum 40. Jubiläum 2015 stellt diese Publikation mit über 40 internationalen Beiträgen über Europa hinaus die erste umfassende Würdigung der europäischen Kampagne von 1975 dar.  
+ 
+                      {{elif session.forced_language =='en': }} 
+Under the motto <i>A Future for Our Past</i>, the European Architectural Heritage Year of 1975 was the most important and successful campaign of its time for the preservation and valorisation of architectural heritage in Europe. Its programmatic approaches and conceptual ideas are of high importance for the present, and motivate new interpretations for the future. With more than 40 contributions this publication is the ﬁrst comprehensive appraisal of 1975 European Architectural Heritage Year for its 40th anniversary in 2015. 
+                        {{pass}}
+                      </p>
+                    </div>
+                  </div>
+
+
+                <div class="media">
+                    <div class="media-left pull-left">
+                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                    </div>
+                    <div class="media-body">
+                      <p class="media-heading">19.10.2017
+                        <br>
+                        <h5>{{=T('New')}}: 
+                        {{if session.forced_language =='de': }} 
+                        <a href="http://books.ub.uni-heidelberg.de/arthistoricum/catalog/book/263">Birgit Franz, Gerhard Vinken (Hrsg.), Das Digitale und die Denkmalpflege. Bestandserfassung – Denkmalvermittlung – Datenarchivierung – Rekonstruktion verlorener Objekte</a>
+                        {{elif session.forced_language =='en': }} 
+                        <a href="http://books.ub.uni-heidelberg.de/arthistoricum/catalog/book/263">Birgit Franz, Gerhard Vinken (Hrsg.), Das Digitale und die Denkmalpflege. Bestandserfassung – Denkmalvermittlung – Datenarchivierung – Rekonstruktion verlorener Objekte </a>
+                        {{pass}}  
+                        </h5>
+                      </p>
+                      <p class="boxText"> {{if session.forced_language =='de': }} 
+Die &bdquo;digitale Revolution&rdquo; ist längst in vollem Gange. Für die Denkmalpflege haben digitale Anwendungen neue Perspektiven geöffnet, etwa in der interaktiven Visualisierung verlorener Zustände, im Monitoring bedrohter Stätten und Artefakte oder in der komplexen Vernetzung heterogener Wissensbestände. Deutlicher werden inzwischen auch Grenzen und ungelöste Probleme im Einsatz digitaler Technologien, etwa was die Nachhaltigkeit der rapide wachsenden Datenmengen betrifft. 
+ 
+                      {{elif session.forced_language =='en': }} 
+The &ldquo;digitial revolution&rdquo; has already been in full progress now. Digital applications have opened new perspectives for historic preservation such as the interactive visualisation of bygone conditions, the monitoring of endangered sites and artefacts or the complex networking of heterogeneous bodies of knowledge. At the same time, limitations and unsolved problems of applying digital technologies become evident; for instance the sustainability of rapidly growing amounts of data has been recognized as a critical issue. 
+                        {{pass}}
+                      </p>
+                    </div>
+                  </div>
+
+
 
                 <div class="media">
                     <div class="media-left pull-left">
@@ -351,20 +404,20 @@ Die vorliegende <a href="{{=URL('catalog','book/149')}}" title="Informationen ü
           <div class="col-lg-3">
             <div class="box">
                 <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4> 
-                 {{=IMG(_src=URL('static','files/presses/2/monographs/293/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}
+                 {{=IMG(_src=URL('static','files/presses/2/monographs/198/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}
                 </div>
                 <div class="box-bottom"> 
-                  {{=A(T('More Information'),_href=URL('catalog','book/293'))}}
+                  {{=A(T('More Information'),_href=URL('catalog','book/198'))}}
                 </div>
             </div>
           </div>
           <div class="col-lg-3">
             <div class="box">
                 <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4> 
-                 {{=IMG(_src=URL('static','files/presses/2/monographs/212/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}
+                 {{=IMG(_src=URL('static','files/presses/2/monographs/293/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}
                 </div>
                 <div class="box-bottom"> 
-                  {{=A(T('More Information'),_href=URL('catalog','book/212'))}}
+                  {{=A(T('More Information'),_href=URL('catalog','book/293'))}}
                 </div>
             </div>
           </div>
