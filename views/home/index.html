@@ -18,20 +18,20 @@
             <div class="col-lg-3">
               <div class="box">
                 <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4> 
-                 {{=IMG(_src=URL('static','files/presses/2/monographs/298/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}
+                 {{=IMG(_src=URL('static','files/presses/2/monographs/299/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}
                 </div>
                 <div class="box-bottom"> 
-                {{=A(T('More Information'),_href=URL('catalog','book/298'))}}  
+                {{=A(T('More Information'),_href=URL('catalog','book/299'))}}  
                 </div>
               </div>
             </div>
             <div class="col-lg-3">
               <div class="box">
                 <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4>
-                {{=IMG(_src=URL('static','files/presses/2/monographs/263/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}          
+                {{=IMG(_src=URL('static','files/presses/2/monographs/298/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}          
                 </div>
                 <div class="box-bottom">
-                  {{=A(T('More Information'),_href=URL('catalog','book/263'))}}
+                  {{=A(T('More Information'),_href=URL('catalog','book/298'))}}
                </div>
               </div>
             </div>
@@ -40,6 +40,34 @@
               <div class="box">
                 <div class="box-gray aligncenter" style="overflow-y: scroll"><h4>{{=T('News')}}</h4>
 
+                
+                <div class="media">
+                    <div class="media-left pull-left">
+                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                    </div>
+                    <div class="media-body">
+                      <p class="media-heading">25.10.2017
+                        <br>
+                        <h5>{{=T('New')}}: 
+                        {{if session.forced_language =='de': }} 
+                        {{=A(T('Henry Keazor (Hrsg.), Film Plakat Kunst. Dietrich Lehmann und der Heidelberger Filmclub der 50er Jahre'),_href=URL('catalog','book/299'))}}
+                        {{elif session.forced_language =='en': }} 
+                        {{=A(T('Henry Keazor (Hrsg.), Film Plakat Kunst. Dietrich Lehmann und der Heidelberger Filmclub der 50er Jahre'),_href=URL('catalog','book/299'))}}
+                        {{pass}}  
+                        </h5>
+                      </p>
+                      <p class="boxText"> {{if session.forced_language =='de': }} 
+In den 50er Jahren schuf Dietrich Lehmann (1929-2014) handgemalte Filmplakate für den studentischen Filmclub Heidelberg, dessen Wirken über Heidelberg hinaus eine beachtliche Strahlkraft in das bundesrepublikanische Nachkriegsdeutschland hatte. Der die gleichnamige Ausstellung des Universitätsmuseums Heidelberg begleitende Katalog ordnet die Plakatschöpfungen Lehmanns innerhalb der Entwicklungsgeschichte des Filmplakats ein und setzt sich in Beiträgen mit der Geschichte des Heidelberger Filmclubs wie der Filmclubs in Deutschland generell auseinander. Darüber hinaus werden Hintergründe zur Kinogeschichte beleuchtet und die Persönlichkeit Dietrich Lehmanns vorgestellt.
+ 
+ 
+                      {{elif session.forced_language =='en': }} 
+In the 1950s the Dietrich Lehmann (1929-2014) did create a series of hand-painted film posters for the student film club at the university of Heidelberg. Hereby, the impressive effect this film club had did reach out way beyond Heidelberg into post-war Federal Germany. The catalogue, which accompanies the eponymous exhibition at the University Museum in Heidelberg, contextualises Lehmann’s posters within the history and the development of the genre of the film poster and discusses in articles as well as in the individual entries the history of the Heidelberg film club as well as that of the German film clubs in general. Moreover, the history of film and the personality of Dietrich Lehmann are examined.
+ 
+                        {{pass}}
+                      </p>
+                    </div>
+                  </div>
+                
                 <div class="media">
                     <div class="media-left pull-left">
                       <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
@@ -404,20 +432,20 @@ Die vorliegende <a href="{{=URL('catalog','book/149')}}" title="Informationen ü
           <div class="col-lg-3">
             <div class="box">
                 <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4> 
-                 {{=IMG(_src=URL('static','files/presses/2/monographs/198/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}
+                 {{=IMG(_src=URL('static','files/presses/2/monographs/263/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}
                 </div>
                 <div class="box-bottom"> 
-                  {{=A(T('More Information'),_href=URL('catalog','book/198'))}}
+                  {{=A(T('More Information'),_href=URL('catalog','book/263'))}}
                 </div>
             </div>
           </div>
           <div class="col-lg-3">
             <div class="box">
                 <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4> 
-                 {{=IMG(_src=URL('static','files/presses/2/monographs/293/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}
+                 {{=IMG(_src=URL('static','files/presses/2/monographs/198/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}
                 </div>
                 <div class="box-bottom"> 
-                  {{=A(T('More Information'),_href=URL('catalog','book/293'))}}
+                  {{=A(T('More Information'),_href=URL('catalog','book/198'))}}
                 </div>
             </div>
           </div>

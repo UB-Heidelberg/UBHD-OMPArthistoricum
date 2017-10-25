@@ -189,6 +189,7 @@
 'Hello World': 'Hallo Welt',
 'Hello World  ## Kommentar': 'Hallo Welt  ',
 'Hello World## Kommentar': 'Hallo Welt',
+'Henry Keazor (Hrsg.), Film Plakat Kunst. Dietrich Lehmann und der Heidelberger Filmclub der 50er Jahre': 'Henry Keazor (Hrsg.), Film Plakat Kunst. Dietrich Lehmann und der Heidelberger Filmclub der 50er Jahre',
 'Hinweise zur Stastikauswertung': 'Hinweise zur Stastikauswertung',
 'Home': 'Home',
 'How did you get here?': 'Wie sind Sie hier her gelangt?',
