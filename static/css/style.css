@@ -79,7 +79,7 @@ h1,h2, h3, h4, h5, h6 {
 	background-repeat:no-repeat;
 	background-size: 100% 100%;
 	border-radius:1px !important;
-	margin:1.1em 0.8em 0.8em 0.5em;
+	margin:1.1em 15px 0.8em 0.5em;
 	padding:0 !important;
 }	   
 			   
@@ -2276,7 +2276,8 @@ header .navbar-nav > li {
 }
 
 #nav-social-media {
-  margin-right: 22px;
+  margin-right: 15px;
+  height: 30px;
 }
 
 

@@ -18,7 +18,7 @@
             <div class="col-lg-3">
               <div class="box">
                 <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4> 
-                 {{=IMG(_src=URL('static','files/presses/2/monographs/299/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}
+                 {{=IMG(_src=URL('static','files/presses/2/monographs/299/simple/cover.jpg'),_width='145px', _class='bildrahmen', _alt='')}}
                 </div>
                 <div class="box-bottom"> 
                 {{=A(T('More Information'),_href=URL('catalog','book/299'))}}  
@@ -28,7 +28,7 @@
             <div class="col-lg-3">
               <div class="box">
                 <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4>
-                {{=IMG(_src=URL('static','files/presses/2/monographs/298/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}          
+                {{=IMG(_src=URL('static','files/presses/2/monographs/298/simple/cover.jpg'),_width='145px', _class='bildrahmen', _alt='')}}          
                 </div>
                 <div class="box-bottom">
                   {{=A(T('More Information'),_href=URL('catalog','book/298'))}}
@@ -43,7 +43,7 @@
                 
                 <div class="media">
                     <div class="media-left pull-left">
-                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                      <img alt="" src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
                     </div>
                     <div class="media-body">
                       <p class="media-heading">25.10.2017
@@ -70,7 +70,7 @@ In the 1950s the Dietrich Lehmann (1929-2014) did create a series of hand-painte
                 
                 <div class="media">
                     <div class="media-left pull-left">
-                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                      <img alt="" src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
                     </div>
                     <div class="media-body">
                       <p class="media-heading">19.10.2017
@@ -96,7 +96,7 @@ Under the motto <i>A Future for Our Past</i>, the European Architectural Heritag
 
                 <div class="media">
                     <div class="media-left pull-left">
-                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                      <img alt="" src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
                     </div>
                     <div class="media-body">
                       <p class="media-heading">19.10.2017
@@ -123,11 +123,10 @@ The &ldquo;digitial revolution&rdquo; has already been in full progress now. Dig
 
                 <div class="media">
                     <div class="media-left pull-left">
-                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                      <img alt="" src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
                     </div>
                     <div class="media-body">
-                      <p class="media-heading">31.08.2017
-                        <br>
+                      <p class="media-heading">31.08.2017</p>
                         <h5>{{=T('New')}}: 
                         {{if session.forced_language =='de': }} 
                         <a href="http://books.ub.uni-heidelberg.de/arthistoricum/catalog/book/198">Marius Lausch, Sprechende Bilder. Architektur, Glasmalerei und Ikonographie der Kathedrale Saint-Étienne in Auxerre</a>
@@ -135,7 +134,7 @@ The &ldquo;digitial revolution&rdquo; has already been in full progress now. Dig
                         <a href="http://books.ub.uni-heidelberg.de/arthistoricum/catalog/book/198">Marius Lausch, Sprechende Bilder. Architektur, Glasmalerei und Ikonographie der Kathedrale Saint-Étienne in Auxerre</a>
                         {{pass}}  
                         </h5>
-                      </p>
+
                       <p class="boxText"> {{if session.forced_language =='de': }} 
 Es brauchte mehrere Generationen, um die Kathedrale Saint-Étienne von Auxerre zu vollenden, und dennoch weist der Bau eine bemerkenswerte Einheitlichkeit auf. Neben der Architektur verdienen vor allem die zahlreichen Bilderzyklen der Glasmalerei und die Skulpturen Beachtung. Diese „sprechenden Bilder“ sind nicht nur dekorative Elemente, sondern integrale Bestandteile der Bischofskirche. Nur im Zusammenspiel aller einzelnen Werke vermittelt die Kathedrale Saint-Étienne einen realistischen Eindruck von der Komplexität mittelalterlicher Sakralbauten und der Religiosität einer urbanen Gesellschaft des 13. Jahrhunderts.
  
@@ -149,19 +148,19 @@ It took generations for the Cathedral of Auxerre to be completed and yet the bui
 
                 <div class="media">
                     <div class="media-left pull-left">
-                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                      <img alt="" src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
                     </div>
                     <div class="media-body">
                       <p class="media-heading">29.08.2017
-                        <br>
-                        <h5>{{=T('New')}}: 
+                      </p>
+                      <h5>{{=T('New')}}: 
                         {{if session.forced_language =='de': }} 
                         <a href="http://books.ub.uni-heidelberg.de/arthistoricum/catalog/book/293">Renaissance · Barock · Aufklärung. Kunst und Kultur vom 16. bis zum 18. Jahrhundert</a>, hrsg. von Daniel Hess und Dagmar Hirschfelder
                         {{elif session.forced_language =='en': }} 
                         <a href="http://books.ub.uni-heidelberg.de/arthistoricum/catalog/book/293">Renaissance · Barock · Aufklärung. Kunst und Kultur vom 16. bis zum 18. Jahrhundert</a>, hrsg. von Daniel Hess und Dagmar Hirschfelder 
                         {{pass}}  
                         </h5>
-                      </p>
+
                       <p class="boxText"> {{if session.forced_language =='de': }} 
 Der Band begleitet die im Germanischen Nationalmuseum 2010 neu eröffnete Dauerausstellung zur Kunst und Kulturgeschichte des 16. bis 18. Jh. im deutschen Sprachraum. Die Schausammlung erschließt mit rund 1.000 Exponaten in 33 Räumen zentrale Themen der Frühen Neuzeit, wie Sammeln und Repräsentieren, Antikenrezeption und Naturstudium, die Wechselwirkung von Kunst und Religion oder das sich wandelnde Bild vom Menschen. Zu diesen Leitthemen bietet die Publikation vertiefende Beiträge und einen wissenschaftlichen Katalog aller ausgestellten Objekte.Beharrlichkeit der lokalen Traditionen dennoch nicht unterschätzt werden. 
                       {{elif session.forced_language =='en': }} 
@@ -174,11 +173,10 @@ This title accompanies the permanent exhibition at the Germanisches Nationalmuse
 
                 <div class="media">
                     <div class="media-left pull-left">
-                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                      <img alt="" src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
                     </div>
                     <div class="media-body">
-                      <p class="media-heading">29.08.2017
-                        <br>
+                      <p class="media-heading">29.08.2017</p>
                         <h5>{{=T('New')}}: 
                         {{if session.forced_language =='de': }} 
                         <a href="http://books.ub.uni-heidelberg.de/arthistoricum/catalog/book/212">Vom Streit zum Bild. Bildpolemik und andere Waffen der Künstler</a>, hrsg. von Doris H. Lehmann
@@ -186,7 +184,7 @@ This title accompanies the permanent exhibition at the Germanisches Nationalmuse
                         <a href="http://books.ub.uni-heidelberg.de/arthistoricum/catalog/book/212">Vom Streit zum Bild. Bildpolemik und andere Waffen der Künstler</a>, hrsg. von Doris H. Lehmann 
                         {{pass}}  
                         </h5>
-                      </p>
+
                       <p class="boxText"> {{if session.forced_language =='de': }} 
 Wie stritten bildende Künstler und wie setzten sie dabei ihre Werke als Waffen ein? Ausgehend von dieser Frage zeigt der Sammelband des DFG-Projekts „Streitstrategien bildender Künstler in der Neuzeit“ exemplarisch, wie Maler, Graphiker und Bildhauer ihre Bilderfindungen im Kontext ihrer Auseinandersetzungen mit anderen Künstlern, Kritikern und Auftraggebern als eigenständiges Medium der Kommunikation, der Selbstpositionierung und -inszenierung einsetzten. Die Beiträge basieren auf den Vorträgen und Diskussionen der vom 4. bis 5. Dezember 2015 an der Universität Bonn veranstalteten internationalen Tagung „Vom Streit zum Bild – Bildpolemik und andere Waffen der Künstler“.
                       {{elif session.forced_language =='en': }} 
@@ -199,11 +197,10 @@ How do visual artists argue with one another and how do they use their works as 
 
                 <div class="media">
                     <div class="media-left pull-left">
-                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                      <img alt="" src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
                     </div>
                     <div class="media-body">
-                      <p class="media-heading">29.06.2017
-                        <br>
+                      <p class="media-heading">29.06.2017</p>
                         <h5>{{=T('New')}}: 
                         {{if session.forced_language =='de': }} 
                         Versailles, hrsg. von Th. W. Gaehtgens, Markus A. Castor,  F. Bussmann und  Christophe Henry
@@ -211,7 +208,6 @@ How do visual artists argue with one another and how do they use their works as 
                         Versailles, edited by Th. W. Gaehtgens, Markus A. Castor,  F. Bussmann and Christophe Henry 
                         {{pass}}  
                         </h5>
-                      </p>
                       <p class="boxText"> {{if session.forced_language =='de': }} 
 Den Auftakt der neuen Reihe &bdquo;Passages online&rdquo;, herausgegeben vom Deutschen Forum für Kunstgeschichte in Paris, bildet der Sammelband <a href="{{=URL('catalog','book/234')}}" title="Informationen über 'Versailles'">Versailles</a>. Er untersucht den Einfluss eines der brillantesten Repräsentationsleistungen der Frühen Neuzeit auf die europäischen Höfe des 17. und 18. Jahrhunderts. Das Versailler Schloss, ein &bdquo;Showroom&rdquo;, der die französischen Luxusgüter über die Grenzen hinaus bekannt und zum begehrten Gut machte, zog die Blicke aller Regenten der Zeit auf sich. Doch wenngleich von Künstlern und Kunsthandwerkern, die sich an den europäischen Höfen niederließen, zahlreiche Formen und Ideen übernommen wurden, darf die Beharrlichkeit der lokalen Traditionen dennoch nicht unterschätzt werden.
                       {{elif session.forced_language =='en': }} 
@@ -224,11 +220,10 @@ The new series &ldquo;Passages online&rdquo; starts with the collected volume <a
 
                 <div class="media">
                     <div class="media-left pull-left">
-                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                      <img alt="" src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
                     </div>
                     <div class="media-body">
-                      <p class="media-heading">13.06.2017
-                        <br>
+                      <p class="media-heading">13.06.2017</p>
                         <h5>{{=T('New')}}: 
                         {{if session.forced_language =='de': }} 
                         Alle Konferenz-Bände EVA Berlin online!
@@ -236,7 +231,6 @@ The new series &ldquo;Passages online&rdquo; starts with the collected volume <a
                         All volumes of the Eva-Conferences online  
                         {{pass}}  
                         </h5>
-                      </p>
                       <p class="boxText"> {{if session.forced_language =='de': }} 
 Alle bisher erschienenen Bände der <a href="{{=URL('series','info/eva')}}" title="Informationen über die EVA-Konferenz-Bände'">EVA-Konferenzen</a> sind in ART-Books verfügbar. Die EVA-Konferenzen sind ein internationales Forum für Anwender, Entwickler und Vermittler elektronischer Dokumentations- und Kommunikationstechniken im Kulturbereich. Der Schwerpunkt der Berliner EVA-Konferenzen liegt auf aktuellen, praxisnahen und technologisch avancierten Projekten. Konferenz, Workshop und begleitende Ausstellung präsentieren erfolgreiche Umsetzungen und innovative Ansätze. Neue technische Potentiale des netzbasierten Informationsaustauschs, der elektronischen Dokumentation und der digitalen Reproduktion werden ebenso thematisiert wie die methodische Orientierung oder Lizensierungsfragen. 
                       {{elif session.forced_language =='en': }} 
@@ -249,13 +243,12 @@ The EVA-Conferences are an international forum for users, developers and other s
 
 				  <div class="media">
                     <div class="media-left pull-left">
-                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                      <img alt="" src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
                     </div>
                     <div class="media-body">
-                      <p class="media-heading">30.05.2017
-                        <br>
+                      <p class="media-heading">30.05.2017</p>
                         <h5>{{=T('New')}}: Das Phänomen Skatesticker. Bildrezeptionen und Kunstadaptionen in der Skateboardszene</h5>
-                      </p>
+                      
                       <p class="boxText"> {{if session.forced_language =='de': }} 
 <a href="{{=URL('catalog','book/244')}}" title="Informationen über 'Das Phänomen Skatesticker'">Das Phänomen Skatsticker</a> beschäftigt sich mit grafisch gestalteten Aufklebern, die von Skatelabels – den Herstellern von Skateboards und Zubehör – distribuiert werden. Ursprünglich zu reinen Werbezwecken produziert, haben sich Skatesticker als Symbole der Szene etabliert.Die vorliegende Arbeit verfolgt einen bildwissenschaftlich orientierten Forschungsansatz, der es ermöglicht, die komplexen – oftmals bildende Kunst adaptierenden – Bildmotive dieser Grafikdesignobjekte und ihre zunehmend autonomisierten Funktionen als visuelle Medien einer Szene zu analysieren und anzuerkennen.
                       {{elif session.forced_language =='en': }} 
@@ -267,13 +260,12 @@ The EVA-Conferences are an international forum for users, developers and other s
 
 				  <div class="media">
                     <div class="media-left pull-left">
-                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                      <img alt="" src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
                     </div>
                     <div class="media-body">
-                      <p class="media-heading">26.05.2017
-                        <br>
+                      <p class="media-heading">26.05.2017</p>
                         <h5>{{=T('New')}}: Kunstrecht. Normen, Gesetze und Vorschriften</h5>
-                      </p>
+                
                       <p class="boxText"> {{if session.forced_language =='de': }} 
 Im ständig wachsenden Kunstmarkt hat sich das Kunstrecht zu einer eigenständigen Disziplin entwickelt und nimmt heute einen wichtigen Platz in der Praxis ein. Das neue Kulturgüterschutzgesetz zeigt dies exemplarisch auf. <a href="{{=URL('catalog','book/181')}}" title="Informationen über 'Kunstrecht: Normen, Gesetze und Vorschriften'">Kunstrecht. Normen, Gesetze und Vorschriften</a> von N. Kemle vereint in einem Band die anwendbaren deutschen Gesetze, europäischen Richtlinien und Verordnungen, internationale Übereinkommen, angefangen von den Washington Principles bis zu UNIDROIT, sowie die ethischen Grundsätze der einzelnen Kunsthandelsverbände. 
                       {{elif session.forced_language =='en': }} Art law has evolved into being an independent and important discipline within the constantly growing art market. The new German Kulturgutschutzgesetz (Act to Protect German Cultural Property) exemplarily shows this growing importance.
@@ -285,13 +277,12 @@ Im ständig wachsenden Kunstmarkt hat sich das Kunstrecht zu einer eigenständig
 				
 				  <div class="media">
                     <div class="media-left pull-left">
-                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                      <img alt="" src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
                     </div>
                     <div class="media-body">
-                      <p class="media-heading">05.05.2017
-                        <br>
+                      <p class="media-heading">05.05.2017</p>
                         <h5>{{=T('New')}}: Mimetische Praktiken in der neueren Architektur</h5>
-                      </p>
+
                       <p class="boxText"> {{if session.forced_language =='de': }} 
 Der  <a href="{{=URL('catalog','book/221')}}" title="Informationen über 'Mimetische Praktiken in der neueren Architektur'">Tagungsband</a> versammelt die im Jahr 2016 auf der Konferenz „Ähnlichkeit: Prozesse und Formen“ gehaltenen Vorträge, die durch zwei Artikel der Herausgeberinnen ergänzt werden. Der Fokus der Tagung lag auf aktuellen Forschungen zu Praktiken der Ähnlichkeitserzeugung in der neueren Architektur und wurde von Teilprojekten der DFG-SNF-Forschergruppe „Medien und Mimesis“ organisiert. 
                       {{elif session.forced_language =='en': }} In 2016, the convention "Resemblance: Processes and Forms" was held at the library of the Werner Oechslin foundation in Einsiedeln. This <a href="{{=URL('catalog','book/221')}}" title="Information on 'Mimetische Praktiken in der neueren Architektur'">volume</a> is a collection of papers contributed to the convention and two additional articles by the editors. The focus was set on researching the methods of generating similarity in recent architecture and was organised by the projects encompassed by the DFG-SNF-research group "Media and Mimesis."
@@ -302,17 +293,16 @@ Der  <a href="{{=URL('catalog','book/221')}}" title="Informationen über 'Mimeti
                 
                   <div class="media">
                     <div class="media-left pull-left">
-                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                      <img alt="" src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
                     </div>
                     <div class="media-body">
-                      <p class="media-heading">12.01.2017
-                        <br>
+                      <p class="media-heading">12.01.2017</p>
                         {{if session.forced_language =='de': }} 
                         <h5>{{=T('New')}}: Einsichten in flüchtige Leben</h5>
                         {{elif session.forced_language =='en': }} 
                         <h5>{{=T('New')}}: Glances into Fugitive Lives</h5>
                         {{pass}}
-                      </p>
+                      
                       <p class="boxText"> {{if session.forced_language =='de': }} 
 Ausgangspunkt der <a href="{{=URL('catalog','book/164')}}" title="Informationen über 'Einsichten in flüchtige Leben'">Publikation</a> ist die Präsentation daHEIM: Einsichten in flüchtige Leben, die das Museum Europäischer Kulturen 2016/17 in Zusammenarbeit mit der Künstlerin barbara caveng und der Initiative KUNSTASYL in Berlin realisiert hat. Vor dem Hintergrund der Situation von ZuwanderInnen durch Flucht in Europa seit 2015 stellt sie Erfahrungen und Träume der ProtagonistInnen aus einem Wohnheim in Berlin-Spandau dar. Zwölf internationale AutorInnen beschreiben individuelle Migrationserfahrungen von 2016 rückblickend bis ins 19. Jahrhundert.  
                       {{elif session.forced_language =='en': }} The starting point of this <a href="{{=URL('catalog','book/165')}}" title="Information on 'Glances into Fugitive Lives'">publication</a> is the presentation daHEIM: Glances into Fugitive Lives realized in Berlin by the Museum Europäischer Kulturen with the artist barbara caveng and the initiative KUNSTASYL in 2016/17. Against the background of the situation of immigrants fleeing to Europe since 2015, it highlights the experiences and dreams of its protagonists from a residential hostel in the Berlin district of Spandau. Twelve authors from Europe, North and South America describe individual migration experiences, looking back as far as the 19th century from 2016. 
@@ -326,8 +316,12 @@ Ausgangspunkt der <a href="{{=URL('catalog','book/164')}}" title="Informationen 
                       <img alt="" src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
                     </div>
 					<div class="media-body">
-                      <p class="media-heading">21.10.2016<br>
-                      {{if session.forced_language =='de': }} <h5>Veranstaltungsreihe Open Access am Mittag: Publizieren an der Universität Heidelberg</h5>{{elif session.forced_language =='en': }} <h5>Series of events Open Access at noon: Publishing with the Heidelberg University</h5>{{pass}}</p> 
+                      <p class="media-heading">21.10.2016</p>
+                      {{if session.forced_language =='de': }}
+                      <h5>Veranstaltungsreihe Open Access am Mittag: Publizieren an der Universität Heidelberg</h5>
+                      {{elif session.forced_language =='en': }} 
+                      <h5>Series of events Open Access at noon: Publishing with the Heidelberg University</h5>
+                      {{pass}} 
 
                       <p class="boxText">{{if session.forced_language =='de': }}Anlässlich der Open-Access-Woche 2016 vom 24.10. bis 30.10. lädt die UB Sie in Ihrer Mittagspause dazu ein, sich über die <a href="http://www.ub.uni-heidelberg.de/service/openaccess/Welcome.html" title="Informationen über die Publikationsmöglichkeiten im Open Access an der Universität Heidelberg">vielfältigen Publikationsmöglichkeiten im Open Access</a>, die die Uni Heidelberg bereitstellt, zu informieren. Beginn: 13 Uhr im <a href="http://www.ub.uni-heidelberg.de/cgi-bin/ub3d.cgi?bereich=Handschriftenlesesaal&zweig=&sprache=de" title="Lageplan: Handschriftenlesesaal der UB Heidelberg">Handschriftenlesesaal (Rundzimmer)</a> der UB. [<a href="http://www.ub.uni-heidelberg.de/bilder/oa/oa-woche_plakat_A4.pdf">&rsaquo;&rsaquo;Veranstaltungsübersicht</a>]
                       {{elif session.forced_language =='en': }}                     
@@ -339,17 +333,17 @@ Ausgangspunkt der <a href="{{=URL('catalog','book/164')}}" title="Informationen 
                   
                   <div class="media">
                     <div class="media-left pull-left">
-                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                      <img alt="" src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
                     </div>
                     <div class="media-body">
-                      <p class="media-heading">30.08.2016
-                        <br>
+                      <p class="media-heading">30.08.2016</p>
+                        
                         {{if session.forced_language =='de': }} 
                         <h5>{{=T('New')}}: Le Chant du cygne. Die Gazette des Beaux-Arts und die französische Reproduktionsgraphik in der zweiten Hälfte des 19. Jahrhunderts</h5>
                         {{elif session.forced_language =='en': }} 
                         <h5>{{=T('New')}}: Le Chant du cygne. Die Gazette des Beaux-Arts und die französische Reproduktionsgraphik in der zweiten Hälfte des 19. Jahrhunderts</h5>
                         {{pass}}
-                      </p>
+                      
                       <p class="boxText"> {{if session.forced_language =='de': }} 
 Die vorliegende <a href="{{=URL('catalog','book/149')}}" title="Informationen über 'Le Chant du cygne'">Untersuchung der französischen Reproduktionsgraphik</a> basiert auf der 1859 gegründeten Gazette des Beaux-Arts, einer der wichtigsten Kunstzeitschriften des 19. Jahrhunderts. Bis 1927 wurden dort Reproduktionsgraphiken und bis 1933 Originalgraphiken publiziert, die auch Gegenstand zahlreicher Artikel waren. In diesen geht es vor allem um die Erwartungen, die an druckgraphische Reproduktionen gestellt wurden. 
                       {{elif session.forced_language =='en': }} This <a href="{{=URL('catalog','book/149')}}" title="Information on 'Le Chant du cygne'">study of French reproduction</a> prints is based on the Gazette des Beaux-Arts, an art magazine founded in 1859 and one of the most important of its kind in the nineteenth century. Reproduction prints were published in it until 1927, and original works of printmaking until 1933; printmaking was also the subject of numerous articles.
@@ -359,7 +353,7 @@ Die vorliegende <a href="{{=URL('catalog','book/149')}}" title="Informationen ü
                   </div>
                   <div class="media">
                     <div class="media-left pull-left">
-                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                      <img alt="" src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
                     </div>
                     <div class="media-body">
                       <p class="media-heading">12.08.2016
@@ -378,7 +372,7 @@ Die vorliegende <a href="{{=URL('catalog','book/149')}}" title="Informationen ü
                   </div>
                   <div class="media">
                     <div class="media-left pull-left">
-                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                      <img alt="" src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
                     </div>
                     <div class="media-body">
                       <p class="media-heading">11.08.2016
@@ -392,7 +386,7 @@ Die vorliegende <a href="{{=URL('catalog','book/149')}}" title="Informationen ü
                   </div>
                   <div class="media">
                     <div class="media-left pull-left">
-                      <img src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                      <img alt="" src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
                     </div>
                     <div class="media-body">
                       <p class="media-heading"><h5>{{=T('New in')}} arthistoricum.net – ART-Books</h5>
@@ -405,7 +399,7 @@ Die vorliegende <a href="{{=URL('catalog','book/149')}}" title="Informationen ü
                   </div>
                   <div class="media">
                     <div class="media-left pull-left">
-                      <img src="{{=URL('static','images/home/Open_access_logo.png')}}" style="width: 50px;" />
+                      <img alt="" src="{{=URL('static','images/home/Open_access_logo.png')}}" style="width: 50px;" />
                     </div>
                     <div class="media-body">
                       <p class="media-heading"><h5>open-access.net</h5>
@@ -432,7 +426,7 @@ Die vorliegende <a href="{{=URL('catalog','book/149')}}" title="Informationen ü
           <div class="col-lg-3">
             <div class="box">
                 <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4> 
-                 {{=IMG(_src=URL('static','files/presses/2/monographs/263/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}
+                 {{=IMG(_src=URL('static','files/presses/2/monographs/263/simple/cover.jpg'),_width='145px', _class='bildrahmen', _alt='')}}
                 </div>
                 <div class="box-bottom"> 
                   {{=A(T('More Information'),_href=URL('catalog','book/263'))}}
@@ -442,7 +436,7 @@ Die vorliegende <a href="{{=URL('catalog','book/149')}}" title="Informationen ü
           <div class="col-lg-3">
             <div class="box">
                 <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4> 
-                 {{=IMG(_src=URL('static','files/presses/2/monographs/198/simple/cover.jpg'),_width='145px', _class='bildrahmen')}}
+                 {{=IMG(_src=URL('static','files/presses/2/monographs/198/simple/cover.jpg'),_width='145px', _class='bildrahmen', _alt='')}}
                 </div>
                 <div class="box-bottom"> 
                   {{=A(T('More Information'),_href=URL('catalog','book/198'))}}

@@ -118,8 +118,8 @@
     </div>
        <div class="container">
        <div id="headerLogo" class="col-lg-12 print-url">
-         <img id="heiup-logo" class="screen" src="{{=URL('static','images/press/schriftzug_header.png')}}" />
-         <img id="heiup-logo-print" class="print" src="{{=URL('static','images/press/schriftzug_header_print.png')}}" />
+         <img alt="" id="heiup-logo" class="screen" src="{{=URL('static','images/press/schriftzug_header.png')}}" />
+         <img alt="" id="heiup-logo-print" class="print" src="{{=URL('static','images/press/schriftzug_header_print.png')}}" />
        </div> 
        </div>
        
@@ -173,17 +173,14 @@
 
 
                                 <li class="dropdown">
-
                                     <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown"
                                        data-delay="0" data-close-others="false">{{=T('Publishing')}} <b class="icon-angle-down"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="{{=URL('publishing','for_authors')}}">{{=T('Information for Authors')}} </a></li>
                                         <!--li><a href="{{=URL('publishing','book_proposal')}}">{{=T('Book Proposal')}}</a></li-->
                                         <li><a href="{{=URL('publishing','rights_and_licences')}}">{{=T('Rights and Licences')}} </a></li>
-
                                     </ul>
                                 </li>
-
 <!--                                <li class="dropdown">
                                     <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown"
                                        data-delay="0" data-close-others="false">{{=T('Quality Control')}} <b class=" icon-angle-down"></b></a>
@@ -191,25 +188,16 @@
                                         <li><a href="{{=URL('quality_control','peer_review')}}"> {{=T('Peer Review')}}</a></li>
                                         <li><a href="{{=URL('quality_control','plagiarism')}}"> {{=T('Plagiarism')}}</a></li>
                                         <li><a href="{{=URL('quality_control','data_privacy')}}">{{=T('Data Privacy')}} </a></li>
-
-
                                     </ul>
                                 </li>
 -->
-
                             </ul>
                         </div>
-
                         <!-- second -->
                         <div class="navbar-collapse collapse pull-right visible-lg hidden-md">
                             <ul class="nav navbar-navi social-media">
-
-
                                 <li>
-                                    <a><!-- Wozu dient der Anker? 30.05.16 voe -->
-                                    <img id="nav-social-media" src="{{=URL('static','images/press/social-media-icons.png')}}" style="height:30px;"  alt="Planets" usemap="#socialmap">
-
-
+                                    <img id="nav-social-media" src="{{=URL('static','images/press/social-media-icons.png')}}" alt="Planets" usemap="#socialmap">
                                     <map name="socialmap">
 					{{if request.url=='/': }}
 					{{request.url=request.url+request.application}}
@@ -218,29 +206,16 @@
                                         <area shape="rect" coords="30,0,60,30" alt="twitter" href="http://twitter.com/home?status={{=myconf.take('web.url')+request.url}}">
                                         <area shape="rect" coords="60,0,90,30" alt="twitter" href="https://www.linkedin.com/shareArticle?mini=true&url={{=myconf.take('web.url')+request.url}}">
                                         <area shape="rect" coords="90,0,120,30" alt="twitter" href="https://plus.google.com/share?url={{=myconf.take('web.url')+request.url}}">
-
-
                                     </map>
-
-
-                                </a></li>
+                                  </li>
                                 <!-- https://www.addthis.com/get/responsive-sharing-buttons -->
-
-
                             </ul>
                         </div>
-
-
                     </div>
                 </div>
             </div>
-
-
         </header>
-
-
     </div>
-
 
         <!-- end header -->
     <!-- Masthead ===================================== -->
@@ -256,22 +231,16 @@
 
 
     <div class="container-fluid">
-            <div class="container">
-
+       <div class="container">
             <div class="row">
-
                 <div class="col-lg-12">
-
                     <!-- Slider -->
-
                     <div id="main-slider" class="flexslider">
-
                         <ul class="slides">
                             <li>
-                                <img id="hup-logo" src="{{=URL('static','images/press/slideshow/01_ebook_reader.jpg')}}" />
+                                <img alt="" id="hup-logo" src="{{=URL('static','images/press/slideshow/01_ebook_reader.jpg')}}" />
                             </li>
                         </ul>
-
                     </div>
             </div>
         </div>
@@ -280,7 +249,6 @@
         <div class="col-md-3 left-sidebar">
             {{block left_sidebar}}
             <h3>Left Sidebar</h3>
-            <p></p><!-- Löschen? 30.05. voe-->
             {{end}}
         </div>
       {{pass}}
