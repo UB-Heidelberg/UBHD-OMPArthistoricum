@@ -309,7 +309,7 @@ Ausgangspunkt der <a href="{{=URL('catalog','book/164')}}" title="Informationen 
                     <div class="media-left pull-left">
                       <img alt="" src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
                     </div>
-					<div class="media-body">
+					          <div class="media-body">
                       <p class="media-heading">21.10.2016</p>
                       {{if session.forced_language =='de': }}
                       <h5>Veranstaltungsreihe Open Access am Mittag: Publizieren an der Universität Heidelberg</h5>
@@ -350,14 +350,13 @@ Die vorliegende <a href="{{=URL('catalog','book/149')}}" title="Informationen ü
                       <img alt="" src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
                     </div>
                     <div class="media-body">
-                      <p class="media-heading">12.08.2016
-                        <br>
+                      <p class="media-heading">12.08.2016</p>
                         {{if session.forced_language =='de': }} 
                         <h5>{{=T('New')}}: Casting. Ein analoger Weg ins Zeitalter der Digitalisierung?</h5>
                         {{elif session.forced_language =='en': }} 
                         <h5>{{=T('New')}}: Casting. A way to embrace the digital age in analogue fashion?</h5>
                         {{pass}}
-                      </p>
+
                       <p class="boxText"> {{if session.forced_language =='de': }} Die Gipsformerei der Staatlichen Museen zu Berlin feiert 2019 ihr zweihundertjähriges Bestehen. Das ist ein Anlass, um u. a. zu diskutieren, wie sich eine Institution, deren Fokus auf der traditionellen handwerklichen Fertigung liegt, gegenüber technischen Innovationen behaupten kann. Die <a href="{{=URL('catalog','book/95')}}" title="Informationen zu 'Casting. Ein analoger Weg ins Zeitalter der Digitalisierung?">Publikation</a> widmet sich dieser Frage und bietet darüber hinaus einen interessanten Querschnitt zur aktuellen Forschungsdebatte.
                       {{elif session.forced_language =='en': }} In 2019 the Gipsformerei will be celebrating its 200th anniversary which is a welcome opportunity for us to address the following question: How can an institution whose core activity lies in traditional handcrafted production hold its own in the face of technical innovation? The <a href="{{=URL('catalog','book/95')}}" title="Information on Casting. A way to embrace the digital age in analogue fashion?">publication</a> addresses that question and adds an interesting cross-section on the current research debate.
                         {{pass}}
@@ -369,9 +368,9 @@ Die vorliegende <a href="{{=URL('catalog','book/149')}}" title="Informationen ü
                       <img alt="" src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
                     </div>
                     <div class="media-body">
-                      <p class="media-heading">11.08.2016
-                        <br><h5>{{=T('New')}}: EVA Berlin - Elektronische Medien & Kunst, Kultur, Historie</h5>
-                      </p>
+                      <p class="media-heading">11.08.2016</p>
+                        <h5>{{=T('New')}}: EVA Berlin - Elektronische Medien & Kunst, Kultur, Historie</h5>
+                      
                       <p class="boxText"> {{if session.forced_language =='de': }} Die bislang fünfzehn gedruckt erschienenen 
                         <a href="{{=URL('series','info/eva')}}" title="EVA-Berlin-Konferenzbände">EVA-Berlin-Konferenzbände</a> werden sukzessive online im OPEN ACCESS bereit gestellt. Die EVA-Konferenzen sind ein internationales Forum für Anwender, Entwickler und Vermittler elektronischer Dokumentations- und Kommunikationstechniken im Kulturbereich. {{elif session.forced_language =='en': }} Fifteen volumes of 
                         <a href="{{=URL('series','info/eva')}}" title="EVA-Conference papers">EVA-Conference papers</a> have been published so far in print and are successively made available online and in Open Access. The EVA-Conferences are an international forum for users, developers and other stakeholders in electronic documentation and communication technologies for the cultural sector.  {{pass}}
@@ -383,8 +382,7 @@ Die vorliegende <a href="{{=URL('catalog','book/149')}}" title="Informationen ü
                       <img alt="" src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
                     </div>
                     <div class="media-body">
-                      <p class="media-heading"><h5>{{=T('New in')}} arthistoricum.net – ART-Books</h5>
-                      </p>
+                      <h5>{{=T('New in')}} arthistoricum.net – ART-Books</h5>
                       <p class="boxText"> {{if session.forced_language =='de': }} Wir freuen uns über unsere neue Kooperation mit dem gemeinnützigen Verein "
                         <a href="{{=URL('partner','index/dbae')}}" title="Informationsseite zum Verein Das Bild als Ereignis">Das Bild als Ereignis e. V.</a>". In Kürze wird hier der zweite Band seiner Schriftenreihe mit dem Titel "Mediale Dimensionen von Reproduktion" als Open-Access-eBook erscheinen. {{elif session.forced_language =='en': }} Wir freuen uns über unsere neue Kooperation mit dem gemeinnützigen Verein "
                         <a href="{{=URL('partner','index/dbae')}}" title="Informationsseite zum Verein Das Bild als Ereignis">Das Bild als Ereignis e. V.</a>". In Kürze wird hier der zweite Band seiner Schriftenreihe mit dem Titel "Mediale Dimensionen von Reproduktion" als Open-Access-eBook erscheinen. {{pass}}
@@ -396,8 +394,7 @@ Die vorliegende <a href="{{=URL('catalog','book/149')}}" title="Informationen ü
                       <img alt="" src="{{=URL('static','images/home/Open_access_logo.png')}}" style="width: 50px;" />
                     </div>
                     <div class="media-body">
-                      <p class="media-heading"><h5>open-access.net</h5>
-                      </p>
+                      <h5>open-access.net</h5>
                       <p class="boxText">{{if session.forced_language =='de': }} Kennen Sie die Plattform <b>
                           <a href="https://www.open-access.net/startseite/" title="Homepage open-access.net">open-access.net</a></b>? Sie bietet umfassende Information über das Thema Open Access und praktische Umsetzungshilfen an. open-access.net macht Konzepte, rechtliche, organisatorische und technische Rahmenbedingungen, konkrete Erfahrungen bei der Umsetzung, Initiativen, Dienste, Dienstleistungsanbieter und Positionspapiere gut aufbereitet zugänglich. {{elif session.forced_language =='en': }} Are you aware of the platform <b>
                           <a href="https://www.open-access.net/startseite/" title="Homepage open-access.net">open-access.net</a></b>? It offers detailed information on the subject of Open Access and a practical implementation guide. open-access.net provides well-edited, customized concepts, information on legal, organizational and technical framework conditions, shares concrete experiences with the realization, and introduces initiatives, services and position papers. {{pass}} 
