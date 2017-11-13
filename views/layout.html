@@ -6,7 +6,7 @@
     <!-- Always force latest IE rendering engine
          (even in intranet) & Chrome Frame
          Remove this if you use the .htaccess -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge{{=not request.is_local and ',chrome=1' or ''}}">
+
     <!--  Mobile Viewport Fix
           j.mp/mobileviewport & davidbcalhoun.com/2010/viewport-metatag
           device-width: Occupy full width of the screen in its current orientation
@@ -75,7 +75,7 @@
     g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
   })();
 </script>
-<noscript><p><img src="//www.ub.uni-heidelberg.de/piwik/piwik.php?idsite=6" style="border:0;" alt="" /></p></noscript>
+<noscript><img src="//www.ub.uni-heidelberg.de/piwik/piwik.php?idsite=6" style="border:0;" alt="" /></noscript>
 <!-- End Piwik Code -->
 
       {{
@@ -84,10 +84,6 @@
       raise HTTP(404,"statistik plugin not defined : add piwik_plugin=1  or 0 in appconfig.ini")
 
     }}
-
-
-
-
 
   </head>
   <body>
@@ -131,7 +127,7 @@
                     <div class="container">
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">6
-                                <span class="icon-bar"></span><!-- Kann man das span löschen? voe -->
+                                <!--<span class="icon-bar"></span> Kann man das span löschen? voe -->
 
                             </button>
                             <a class="navbar-brand" href="index.html">
@@ -142,23 +138,19 @@
                             <ul class="nav navbar-nav">
                                 <li><a href="{{=URL('home','index')}}">{{=T('Home')}}</a></li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
-                                       data-delay="0" data-close-others="false">{{=T('About us')}}<b class="icon-angle-down"></b><!-- Löschen? 30.05. voe--></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">{{=T('About us')}}</a>
                                     <ul class="dropdown-menu">
                                         <li><a href="{{=URL('about_us', 'profile')}}"> {{=T('Profil')}}</a></li>
                                         <li><a href="{{=URL('about_us','our_service')}}">{{=T('Our Service')}}</a></li>
                                         <li><a href="{{=URL('about_us','technology')}}"> {{=T('Technology')}}</a></li>
                                         
-
                                     </ul>
                                 </li>
                                 <li><a href="{{=URL('catalog','index')}}">{{=T('Books')}}</a></li>
                                 <li><a href="{{=URL('series','index')}}">{{=T('Series')}}</a></li>
                                 <!--<li><a href="{{=URL('journals','index')}}">{{=T('Journals')}}</a></li>-->
                         	<li class="dropdown">
-
-                                    <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown"
-                                       data-delay="0" data-close-others="false">{{=T('Partner')}} <b class="icon-angle-down"></b></a>
+                                    <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown"  data-delay="0" data-close-others="false">{{=T('Partner')}} <b class="icon-angle-down"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="{{=URL('partner','index',args=['ap'])}}">ad picturam Fachverlag</a></li>
                                         <li><a href="{{=URL('partner','index',args=['dbae'])}}">Das Bild als Ereignis e.V.</a></li>
@@ -182,8 +174,7 @@
                                     </ul>
                                 </li>
 <!--                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown"
-                                       data-delay="0" data-close-others="false">{{=T('Quality Control')}} <b class=" icon-angle-down"></b></a>
+                                    <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown"  data-delay="0" data-close-others="false">{{=T('Quality Control')}} <b class=" icon-angle-down"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="{{=URL('quality_control','peer_review')}}"> {{=T('Peer Review')}}</a></li>
                                         <li><a href="{{=URL('quality_control','plagiarism')}}"> {{=T('Plagiarism')}}</a></li>
@@ -197,7 +188,7 @@
                         <div class="navbar-collapse collapse pull-right visible-lg hidden-md">
                             <ul class="nav navbar-navi social-media">
                                 <li>
-                                    <img id="nav-social-media" src="{{=URL('static','images/press/social-media-icons.png')}}" alt="Planets" usemap="#socialmap">
+                                    <img alt="" id="nav-social-media" src="{{=URL('static','images/press/social-media-icons.png')}}" usemap="#socialmap">
                                     <map name="socialmap">
 					{{if request.url=='/': }}
 					{{request.url=request.url+request.application}}
