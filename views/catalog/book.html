@@ -150,6 +150,12 @@ pass
 							 
 							</div>
 
+              <div class="btn-group" role="group" aria-label="3">
+                <button class="btn btn-default" id="anno-btn">
+                  <span class="fa fa-comment">&nbsp;</span>{{=T("Comment")}} (<span class="anno-number">...</span>)
+                </button>
+              </div>
+              <div id="anno-block"> </div>
 							<div class="post-heading">
                 <br/>
                 <h5>
@@ -261,3 +267,64 @@ pass
   </section>
   <div id="vgwpixel"></div>
 </div>
+
+{{ cdn = 'http://www.ub.uni-heidelberg.de/cdn' }}
+<script src="{{= cdn }}/jquery-ui/1.12.1/jquery-ui.js"></script>
+<script src="{{= cdn }}/quill/1.2.4/quill.js"></script>
+<script src="{{= cdn }}/vuex/2.3.1/vuex.js"></script>
+<script src="{{= cdn }}/vue/2.3.1/vue.js"></script>
+<script src="{{= cdn }}/axios/0.16.2/axios.js"></script>
+<script src="{{= cdn }}/semtonotes/latest/semtonotes.js"></script>
+<script src="{{= cdn }}/authorities-client/latest/authorities-client.js"></script>
+<script src="{{= cdn }}/xrx-utils/latest/xrx-utils.js"></script>
+<script src="{{= cdn }}/xrx-vue/latest/xrx-vue.js"></script>
+<script src="{{= cdn }}/anno-common/0.0.4/anno-common.js"></script>
+<script src="{{= cdn }}/anno-frontend/0.0.5/anno-frontend.js"></script>
+
+<script>
+$(function() {
+   // XXX TODO need adapt this
+   const collection = 'arthistoricum'
+   document.styleSheets[0].insertRule(`#anno-block .dropdown-menu .active a { color: white !important; }`, 0)
+
+   // XXX keep as-is
+   const annoEndpoint = 'https://anno.ub.uni-heidelberg.de/anno'
+   $("#anno-btn").click(() => $("#anno-block").is(':hidden') ? showAnnoBlock() : hideAnnoBlock())
+   function showAnnoBlock() {
+     $(".summary > *").each((idx, el) => { if (!el.classList.contains('btn-group')) $(el).hide() })
+     $("div.widget").hide()
+     $("#anno-block").show()
+   }
+   function hideAnnoBlock() {
+     $(".summary > *, div.widget").show()
+     $("#anno-block").hide()
+   }
+   hideAnnoBlock()
+   window.annoapp = displayAnnotations({
+     collection,
+     targetSource: document.location.href.replace(/[#\?].*$/, ''),
+     container: document.getElementById('anno-block'),
+     language: "{{=T.accepted_language or 'de'}}",
+     annoEndpoint,
+     loginEndpoint:    annoEndpoint + '/auth/login?from=' + encodeURIComponent(window.location.href),
+     tokenEndpoint:    annoEndpoint + '/auth/token/' + collection,
+     registerEndpoint: annoEndpoint + '/auth/register',
+     requestEndpoint:  annoEndpoint + '/auth/request?c=' + collection,
+     purlId: document.location.hash.substr(1),
+     enableLogoutButton: true,
+     enableRegisterButton: false,
+     events: {
+       fetched(list) {
+         document.querySelector(".anno-number").innerHTML = list.length
+         if (list.length > 0) {
+           document.querySelector("#anno-btn").classList.remove('btn-default')
+           document.querySelector("#anno-btn").classList.add('btn-primary')
+         }
+       },
+       error(err) { console.warn(err) },
+     }
+   })
+
+
+ })
+</script>
