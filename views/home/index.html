@@ -18,20 +18,20 @@
             <div class="col-lg-3">
               <div class="box">
                 <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4> 
-                 {{=IMG(_src=URL('static','files/presses/2/monographs/299/simple/cover.jpg'),_style='width:145px',_class='bildrahmen',_alt='')}}
+                 {{=IMG(_src=URL('static','files/presses/2/monographs/315/simple/cover.jpg'),_style='width:145px',_class='bildrahmen',_alt='')}}
                 </div>
                 <div class="box-bottom"> 
-                {{=A(T('More Information'),_href=URL('catalog','book/299'))}}  
+                {{=A(T('More Information'),_href=URL('catalog','book/315'))}}  
                 </div>
               </div>
             </div>
             <div class="col-lg-3">
               <div class="box">
                 <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4>
-                {{=IMG(_src=URL('static','files/presses/2/monographs/298/simple/cover.jpg'),_style='width:145px',_class='bildrahmen',_alt='')}}          
+                {{=IMG(_src=URL('static','files/presses/2/monographs/299/simple/cover.jpg'),_style='width:145px',_class='bildrahmen',_alt='')}}          
                 </div>
                 <div class="box-bottom">
-                  {{=A(T('More Information'),_href=URL('catalog','book/298'))}}
+                  {{=A(T('More Information'),_href=URL('catalog','book/299'))}}
                </div>
               </div>
             </div>
@@ -40,6 +40,30 @@
               <div class="box">
                 <div class="box-gray aligncenter" style="overflow-y: scroll"><h4>{{=T('News')}}</h4>
 
+                <div class="media">
+                    <div class="media-left pull-left">
+                      <img alt="" src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                    </div>
+                    <div class="media-body">
+                      <p class="media-heading">12.12.2017</p>
+                        <h5>{{=T('New')}}: 
+                        {{if session.forced_language =='de': }} 
+                        {{=A(T('Sigrid Ruby: Mit Macht verbunden. Bilder der Favoritin im Frankreich der Renaissance'),_href=URL('catalog','book/299'))}}
+                        {{elif session.forced_language =='en': }} 
+                        {{=A(T('Sigrid Ruby: Mit Macht verbunden. Bilder der Favoritin im Frankreich der Renaissance'),_href=URL('catalog','book/299'))}}
+                        {{pass}}  
+                        </h5>
+                      <p class="boxText"> {{if session.forced_language =='de': }} 
+Die Mätressen der französischen Könige prägen unsere Vorstellung vom Leben am frühneuzeitlichen Fürstenhof – ein Leben voll Glamour, Affären und Intrigen, animiert von schönen Frauen, die Macht und Einfluss hatten. In dieser Studie geht es um eine Präzisierung dieser Vorstellung aus kunstgeschichtlicher Perspektive. Untersucht werden Bilder der Favoritin, wie sie das Zeitalter der französischen Renaissance in unterschiedlichen Medien und Gattungen hervorbrachte. Im Zentrum stehen zwei historische Frauenfiguren, Anne de Pisseleu (1508-80?) und Diane de Poitiers (1500-1566).
+ 
+ 
+                      {{elif session.forced_language =='en': }} 
+The mistresses of the French Kings shape our impression of life within the royal court of the early modern times – a life full of glamour, affairs and intrigues, animated by beautiful women that possessed power and influence. This study focuses on the clarification of this impression from an art-historical perspective, and analyses depictions of the “beloved one” in different mediums and art genres throughout the period of the French renaissance. Two historical figures find themselves at the center of our attention, namely Anne de Pisseleu (1508-80?) and Diane de Poitiers (1500-1566).
+ 
+                        {{pass}}
+                      </p>
+                    </div>
+                  </div>
                 
                 <div class="media">
                     <div class="media-left pull-left">
@@ -417,20 +441,20 @@ Die vorliegende <a href="{{=URL('catalog','book/149')}}" title="Informationen ü
           <div class="col-lg-3">
             <div class="box">
                 <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4> 
-                 {{=IMG(_src=URL('static','files/presses/2/monographs/263/simple/cover.jpg'),_style='width:145px',_class='bildrahmen',_alt='')}}
+                 {{=IMG(_src=URL('static','files/presses/2/monographs/298/simple/cover.jpg'),_style='width:145px',_class='bildrahmen',_alt='')}}
                 </div>
                 <div class="box-bottom"> 
-                  {{=A(T('More Information'),_href=URL('catalog','book/263'))}}
+                  {{=A(T('More Information'),_href=URL('catalog','book/298'))}}
                 </div>
             </div>
           </div>
           <div class="col-lg-3">
             <div class="box">
                 <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4> 
-                 {{=IMG(_src=URL('static','files/presses/2/monographs/198/simple/cover.jpg'),_style='width:145px',_class='bildrahmen',_alt='')}}
+                 {{=IMG(_src=URL('static','files/presses/2/monographs/263/simple/cover.jpg'),_style='width:145px',_class='bildrahmen',_alt='')}}
                 </div>
                 <div class="box-bottom"> 
-                  {{=A(T('More Information'),_href=URL('catalog','book/198'))}}
+                  {{=A(T('More Information'),_href=URL('catalog','book/263'))}}
                 </div>
             </div>
           </div>

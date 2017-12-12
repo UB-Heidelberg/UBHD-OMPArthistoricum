@@ -382,6 +382,7 @@
 'set_knv_metadata/': 'set_knv_metadata/',
 'Share': 'Empfehlen',
 'Sign Up': 'Sign Up',
+'Sigrid Ruby: Mit Macht verbunden. Bilder der Favoritin im Frankreich der Renaissance': 'Sigrid Ruby: Mit Macht verbunden. Bilder der Favoritin im Frankreich der Renaissance',
 'Size of cache:': 'Cachegröße:',
 'Soon': 'Demnächst',
 'sort by': 'Sortieren nach',
