@@ -12,6 +12,9 @@
   padding: 20px 60px;
   padding-left: 100px; }
 
+.content-node.text.focussed {
+  background-color: grey; }
+
 /* Paragraph Node
 -------------------------------------------------------------------------------*/
 .content-node.paragraph .content {
@@ -249,7 +252,6 @@ Box
   padding: 20px; }
 
 .document .content-node.quote .content-node.paragraph {
-  /*padding: 0px;*/
   padding: 10px 40px 10px 40px;
   border-left: 3px solid #ccc; }
 
@@ -329,7 +331,8 @@ Definition
   border-collapse: collapse;
   border-spacing: 0;
   margin-bottom: 20px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  width: 100%; }
 
 .lens-article .content-node.html-table thead tr {
   background: #eee; }
@@ -346,8 +349,8 @@ Definition
 
 .lens-article .content-node.html-table table td {
   padding: 5px;
-  font-size: 12px;
-  border: 1px solid lightgrey;
+  /**font-size: 12px;**/
+  border: 0px solid lightgrey;
   /* Enable white-space: nowrap; if author controls wrapping (<br> in HTML)
   /* white-space: nowrap; */ }
 
@@ -639,7 +642,7 @@ out (on iOS 5.1), or flicker (on iOS 6). */
   padding-right: 50px;
   position: relative; }
 
-/* It's not exactly good to have the overflow-y: scroll for the container AND the surface.
+/* It's not exactly good to have the overflow-y: scroll for the container AND the surface.
    There should be just one overflowing container, if possible
 */
 .article .resources .panel {
@@ -681,6 +684,9 @@ out (on iOS 5.1), or flicker (on iOS 6). */
 
 .article .resources .nodes > .content-node > .content {
   border-top: none; }
+
+.article .resources .nodes > .content-node > .content .citation-italic {
+  font-style: italic; }
 
 /* Clickable header */
 .article .resources .content-node .resource-header {
@@ -735,7 +741,7 @@ out (on iOS 5.1), or flicker (on iOS 6). */
 .article .resources .content-node .resource-header .toggle {
   float: left;
   font-size: 12px;
-  font-weight: 600;
+/*  font-weight: 600; */
   bottom: 0px;
   text-align: center;
   line-height: 50px;
@@ -747,13 +753,13 @@ out (on iOS 5.1), or flicker (on iOS 6). */
 
 .article .resources .figures .content-node.highlighted .resource-header .toggle.toggle-res,
 .article .resources .math .content-node.highlighted .resource-header .toggle.toggle-res {
-  color: #91bb04; }
+  color: #990000; }
 
 .article .resources .citations .content-node.highlighted .resource-header .toggle.toggle-res {
-  color: #0b9dd9; }
+  color: #990000; }
 
 article .resources .footnotes .content-node.highlighted .resource-header .toggle.toggle-res {
-  color: #0b9dd9; }
+  color: #990000; }
 
 .article .resources .info .content-node.highlighted .resource-header .toggle.toggle-res {
   color: #5c6570; }
@@ -769,7 +775,7 @@ article .resources .footnotes .content-node.highlighted .resource-header .toggle
 /* Styles for fullscreen toggle on resource cards */
 .article .resources .figures .content-node.fullscreen .resource-header .toggle.toggle-fullscreen,
 .article .resources .math .content-node.fullscreen .resource-header .toggle.toggle-fullscreen {
-  color: #91bb04; }
+  color: #990000; }
 
 #container .article .content-node.fullscreen {
   position: fixed;
@@ -818,8 +824,9 @@ span.annotation.formula_reference, span.publication_reference {
   font-style: italic; }
 
 .article span.superscript, .article sup {
-  vertical-align: super;
-  font-size: 12px; }
+  vertical-align: super; 
+  font-size: 12px;   
+}
 
 .article span.subscript, .article sub {
   vertical-align: sub;
@@ -827,6 +834,9 @@ span.annotation.formula_reference, span.publication_reference {
 
 .article .cover span.superscript, .article .cover span.subscript, .article .cover sup, .article .cover sub {
   font-size: inherit; }
+
+.article span.strike {
+  text-decoration: line-through; }
 
 .article span.strong, .article strong {
   font-weight: bold; }
@@ -852,11 +862,11 @@ span.annotation.formula_reference, span.publication_reference {
   background-color: rgba(237, 96, 48, 0.3); }
 
 .content-node .link {
-  color: #1B6685;
-  font-weight: bold; }
+  color: #900;
+  font-weight: normal; }
 
 .content-node .link:hover, .content-node .link.highlighted {
-  color: #0b9dd9; }
+  color: #990000; }
 
 /* Inline Code Annotations */
 .content-node .code {
@@ -896,10 +906,13 @@ span.annotation.formula_reference, span.publication_reference {
 .content-node .strong {
   font-weight: bold; }
 
+.content-node .capitalize {
+  text-transform: uppercase; }
+
 .content-node .figure_reference {
-  background: rgba(145, 187, 4, 0.15);
-  border-bottom: 1px solid rgba(145, 187, 4, 0.6);
-  color: #495A11;
+  background: rgba(153, 0, 0, 0.15);
+  border-bottom: 1px solid rgba(153, 0, 0, 0.6);
+  color: #990000;
   cursor: pointer; }
 
 .content-node .contributor_reference {
@@ -907,22 +920,40 @@ span.annotation.formula_reference, span.publication_reference {
   cursor: pointer; }
 
 .content-node .citation_reference {
-  background: rgba(11, 157, 217, 0.075);
-  color: #1B6685;
-  border-bottom: 1px solid rgba(11, 157, 217, 0.4);
+  background: rgba(11, 157, 217, 0);
+  color: #900;
+  border-bottom: 1px solid rgba(11, 157, 217, 0);
   cursor: pointer;
   padding-right: 3px;
   padding-left: 3px; }
 
 .content-node .footnote_reference {
-  background: rgba(11, 157, 217, 0.075);
-  color: #1B6685;
-  border-bottom: 1px solid rgba(11, 157, 217, 0.4);
+  background: rgba(11, 157, 217, 0);
+  border-bottom: 1px solid rgba(11, 157, 217, 0);
+  color: #900;
   cursor: pointer;
+  font-size: smaller;   
   padding-right: 3px;
   padding-left: 3px;
-  vertical-align: super;
-  font-size: smaller; }
+  vertical-align: super; 
+}
+
+/** Issue Nr. 102: Korrektur Zeilenhöhe und Vereinheitlichung der Größe Fußnoten-Ziffern - 24.11.17 voe **/
+.content-node .footnote_reference {
+  font-size: 12px;
+  line-height: 0; 
+}
+
+.footnote_reference > span.superscript {
+ font-size: 12px;
+ vertical-align: baseline;
+}
+
+.content-node.text .content {
+	line-height: 1em;
+}
+
+/**************************************************************/
 
 .content-node .cross_reference {
   background: rgba(0, 0, 0, 0.05);
@@ -937,10 +968,10 @@ span.annotation.formula_reference, span.publication_reference {
 
 /* Hover states */
 .content-node .figure_reference:hover {
-  background-color: rgba(145, 187, 4, 0.35); }
+  background-color: rgba(153, 0, 0, 0.35); }
 
 .content-node .citation_reference:hover {
-  background-color: rgba(11, 157, 217, 0.3); }
+  background-color: rgba(11, 157, 217, 0); }
 
 .content-node .contributor_reference:hover {
   background-color: rgba(0, 0, 0, 0.05); }
@@ -949,14 +980,14 @@ span.annotation.formula_reference, span.publication_reference {
   background-color: rgba(0, 0, 0, 0.1); }
 
 .content-node .footnote_reference:hover {
-  background-color: rgba(11, 157, 217, 0.3); }
+  background-color: rgba(11, 157, 217, 0); }
 
 /* Highlighted states */
 .content-node .figure_reference.highlighted {
-  background: rgba(145, 187, 4, 0.7); }
+  background: rgba(153, 0, 0, 0.7); }
 
 .content-node .citation_reference.highlighted {
-  background: rgba(11, 157, 217, 0.6); }
+  background: rgba(153, 0, 0, 0.15); }
 
 .content-node .contributor_reference.highlighted {
   background-color: #5c6570;
@@ -967,7 +998,7 @@ span.annotation.formula_reference, span.publication_reference {
   color: white; }
 
 .content-node .footnote_reference.highlighted {
-  background: rgba(11, 157, 217, 0.6); }
+  background: rgba(153, 0, 0, 0.15); }
 
 /* Cross Reference */
 .content-node .cross_reference:hover {
@@ -978,8 +1009,8 @@ span.annotation.formula_reference, span.publication_reference {
 /* For the main content area
 ----------------------------------------------------------------------- */
 .surface.content .nodes > .content-node {
-  padding-top: 10px;
-  padding-bottom: 15px;
+  padding-top: 0px;
+  padding-bottom: 0px;
   padding-left: 30px;
   padding-right: 30px;
   word-wrap: break-word; }
@@ -1081,20 +1112,20 @@ as we have a plugin concept for functionality / panels */
 
 /* active citation */
 .article .resources .citations .content-node.highlighted {
-  border-left: 1px solid #0b9dd9;
-  border-right: 1px solid #0b9dd9;
-  border-top: 1px solid #0b9dd9;
-  border-bottom: 1px solid #0b9dd9; }
+  border-left: 1px solid #990000;
+  border-right: 1px solid #990000;
+  border-top: 1px solid #990000;
+  border-bottom: 1px solid #990000; }
 
 .article .resources .figures .content-node.highlighted {
-  border-left: 3px solid #91bb04; }
+  border-left: 3px solid #990000; }
 
 /* active footnote */
 .article .resources .footnotes .content-node.highlighted {
-  border-left: 1px solid #0b9dd9;
-  border-right: 1px solid #0b9dd9;
-  border-top: 1px solid #0b9dd9;
-  border-bottom: 1px solid #0b9dd9; }
+  border-left: 1px solid #990000;
+  border-right: 1px solid #990000;
+  border-top: 1px solid #990000;
+  border-bottom: 1px solid #990000; }
 
 /* active definition */
 .article .resources .definitions .content-node.highlighted {
@@ -1111,6 +1142,18 @@ as we have a plugin concept for functionality / panels */
 /*
 TOC
 --------------------------------------- */
+.resource-view.toc .navigation {
+  color: #c86464;
+  vertical-align: top;
+  text-align: right;
+  padding: 4px 10px;
+  line-height: 20px;
+  border: 1px solid transparent;
+  background-color: #ffffff;
+  /* Green */
+  text-decoration: none;
+  font-size: 16px; }
+
 .resource-view.toc .heading-ref {
   cursor: pointer;
   display: block;
@@ -1150,8 +1193,36 @@ TOC
   padding-left: 80px;
   font-size: 14px; }
 
+.resource-view.toc .heading-ref.level-6 {
+  padding-left: 100px;
+  font-size: 14px; }
+
+.resource-view.toc .heading-ref.level-7 {
+  padding-left: 120px;
+  font-size: 14px; }
+
+.resource-view.toc .heading-ref.level-8 {
+  padding-left: 140px;
+  font-size: 14px; }
+
+.resource-view.toc .heading-ref.level-9 {
+  padding-left: 160px;
+  font-size: 14px; }
+
+.resource-view.toc .heading-ref.level-10 {
+  padding-left: 180px;
+  font-size: 14px; }
+
 .resource-view.toc .heading-ref:hover {
   color: black; }
+
+.resource-view.toc .heading-ref.level-2 .authors .author{
+  padding-left: 10px;
+  padding-right: 5px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: normal;
+}
 
 /* Scrollbar
 --------------------------------------- */
@@ -1195,19 +1266,19 @@ TOC
 /* Colors for scroll-bar overlays */
 .article .resources .figures .surface-scrollbar .highlighted,
 .article .content .surface-scrollbar .highlighted.figure_reference {
-  background-color: #91bb04; }
+  background-color: rgba(153, 0, 0, 0.45); }
 
 .article .resources .footnotes .surface-scrollbar .highlighted,
 .article .content .surface-scrollbar .highlighted.footnote_reference {
-  background-color: #0b9dd9; }
+  background-color: #990000; }
 
 .article .resources .definitions .surface-scrollbar .highlighted,
 .article .content .surface-scrollbar .highlighted.definition_reference {
-  background-color: #5c6570; }
+  background-color: rgba(153, 0, 0, 0.4); }
 
 .article .resources .citations .surface-scrollbar .highlighted,
 .article .content .surface-scrollbar .highlighted.citation_reference {
-  background-color: #0b9dd9; }
+  background-color: #990000; }
 
 /* new FOCUS handles */
 .panel.document .nodes > .content-node > .focus-handle {
@@ -1223,6 +1294,13 @@ TOC
 
 .panel.document .nodes > .content-node > .focus-handle:hover {
   border-left: 3px solid #bbb; }
+
+/** Ticket#66 ***/
+.panel.content.document > .surface.resource-view.content > .nodes > .content-node.heading.level-3 {
+  padding-top: 20px; }
+
+.panel.content.document > .surface.resource-view.content > .nodes > .content-node.heading.level-4 {
+  padding-top: 20px; }
 
 /*
   Typography / Basics
@@ -1259,7 +1337,7 @@ body.reader {
   clear: both; }
 
 /*
-General Layout 
+General Layout
 --------------------------------------- */
 #container {
   position: relative;
@@ -1277,7 +1355,7 @@ body, textarea, p, input {
   color: #505050; }
 
 a {
-  color: #1B6685;
+  color: #900;
   font-weight: normal;
   text-decoration: none;
   /*  -moz-transition: background-color 100ms linear, color 100ms linear, opacity 100ms linear;
@@ -1420,21 +1498,105 @@ body.loading .spinner-wrapper {
 #MathJax_Message {
   display: none; }
 
-@media print {
-  .resources * {
-    display: none !important; } }
-
 .content-node.speech > .content {
-  padding: 20px; }
+  padding: 2px; }
 
 .document .content-node.speech .content-node.paragraph {
-  padding: 0px;
-  /** padding: 0px 40px 10px 40px; **/
-  border-left: 3px solid #000; }
+  padding: 0px 0px 0px 0px;
+  border-left: 3px solid #ffffff; }
+
+.content-node.speech > .content table.speeches tr td.speaker {
+  width: 100px;
+  font-weight: bold;
+  vertical-align: baseline; }
+
+.content-node.speech > .content table.speeches tr td.speech {
+  vertical-align: baseline;
+  font-style: italic; }
+
+.content-node.speech > .content table.speeches tr {
+  vertical-align: baseline; }
 
 .surface.content .content-node.speech > .content > .label {
   font-weight: 600;
-  padding-bottom: 20px; }
+  padding-bottom: 0px; }
+
+.lens-article .content-node.sec-meta .authors .text {
+  float: left;
+  padding: 0px;
+  margin: 0px;
+  font-size: 17px;
+  margin-right: 10px;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 10; }
 
 .altmetrics-panel .altmetrics {
   padding: 20px; }
+
+/*** Anpassungen Abstract, Keywords, Listenformatierungen, Kapitelabstand - voe 08-09/17 anlässlich 'The Transformative Power of the Copy' ***/
+
+.document .content-node.text /* Test: Alle einzelnen Vorkommen der Klasse .test haben Anweisungen erhalten, die das in den Zeilen 12 und 13 notierte Format wieder aufheben, der Test soll etablieren, ob ZZ 12 u. 13 pauschal konterkariert werden können.*/ {
+  padding-left: 0;
+}
+
+.lens-article .content-node.sec-meta .authors {
+  overflow: hidden;
+}
+
+.content-node.abstract {
+  margin-bottom: 5em;
+}
+
+.content .text.title {
+  display: block;
+  margin-top: 2em;
+}
+
+.content-node.abstract .title {
+  font-size: 17px !important;
+  font-weight: bold !important;
+  line-height: 28px !important;
+  padding-bottom: 0 !important;
+}
+
+/** Listen **/
+
+.content.simple {
+  list-style-type: none;
+}
+
+/*ul.content {
+  }
+
+ol.content.ordered {
+  }*/
+
+
+.content.alpha-lower {
+  list-style-type: lower-alpha;
+}
+
+.content.alpha-upper {
+  list-style-type: upper-alpha;
+}
+
+.content.roman-lower {
+  list-style-type: lower-roman;
+}
+
+.content.roman-upper {
+  list-style-type: upper-roman;
+}
+
+.content.greek-lower {
+  list-style-type: lower-greek;
+}
+
+.content.greek-upper {
+  list-style-type: upper-greek;
+}
+
+.lens-article .content-node.html-table table td {
+font-size: 0.8em;
+}
