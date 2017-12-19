@@ -76,6 +76,7 @@
 'bei HB:': 'bei HB:',
 'Bei PB ist nur square möglich.': 'Bei PB ist nur square möglich.',
 'bei PB: ': 'bei PB: ',
+'Beiheft': 'Beiheft',
 'Belletristik': 'Belletristik',
 'Bindeart': 'Bindeart',
 'Birgit Franz, Gerhard Vinken (Eds.), Das Digitale und die Denkmalpflege. Bestandserfassung – Denkmalvermittlung – Datenarchivierung – Rekonstruktion verlorener Objekte': 'Birgit Franz, Gerhard Vinken (Hrsg.), Das Digitale und die Denkmalpflege. Bestandserfassung – Denkmalvermittlung – Datenarchivierung – Rekonstruktion verlorener Objekte',
