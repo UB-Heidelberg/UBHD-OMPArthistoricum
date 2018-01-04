@@ -283,7 +283,7 @@ def book():
             submission_id, pf.publication_format_id)
         full_epub_file  = ompdal.getLatestRevisionOfEBook(submission_id, pf.publication_format_id)
         if full_epub_file:
-            publication_format.associated_items['full_epub_file'] = OMPItem(
+            publication_format.associated_items['full_file'] = OMPItem(
                 full_epub_file, OMPSettings(ompdal.getSubmissionFileSettings(full_epub_file.file_id)))
 
         if full_file:
