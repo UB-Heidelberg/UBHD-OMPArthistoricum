@@ -1107,9 +1107,14 @@ ul.meta-post li a {
 }
 .stats_chapter_title , .stats_chapter_cell .chapter_file,
 #total-chapter-pdf {
-	font-size: 8pt;
-	max-width: 160px;
+	font-size: 0.9em;
+	max-width: 160px;   
 }
+.stats_chapter_title {
+  line-height: 1.5em;
+  margin-bottom: 0.5em;
+}
+
 .stats_chapter_row {
 	border-top: 1px solid #ddd;
 }
