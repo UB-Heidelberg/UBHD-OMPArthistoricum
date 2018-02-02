@@ -221,6 +221,7 @@
 'iw-15: Munken Premium / 080 gr / 1,30 Volumen ': 'iw-15: Munken Premium / 080 gr / 1,30 Volumen ',
 'iw-2: Matt MC / 080 gr / 0,93 Volumen': 'iw-2: Matt MC / 080 gr / 0,93 Volumen',
 'iw-3: Offset weiß / 080 gr / 1,28 Volumen': 'iw-3: Offset weiß / 080 gr / 1,28 Volumen',
+'Janneke Schoene: Beuys’ Hut. Performance und autofiktionale Subjektivität': 'Janneke Schoene: Beuys’ Hut. Performance und autofiktionale Subjektivität',
 'Journals': 'Zeitschriften',
 'Kapitalband': 'Kapitalband',
 'Key': 'Schlüssel',

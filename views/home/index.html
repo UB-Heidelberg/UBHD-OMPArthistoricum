@@ -42,6 +42,29 @@
               <div class="box">
                 <div class="box-gray aligncenter" style="overflow-y: scroll"><h4>{{=T('News')}}</h4>
 
+				<div class="media">
+                    <div class="media-left pull-left">
+                      <img alt="" src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
+                    </div>
+                    <div class="media-body">
+                      <p class="media-heading">29.01.2018</p>
+                        <h5>{{=T('New')}}: 
+                        {{if session.forced_language =='de': }} 
+                        {{=A(T('Janneke Schoene: Beuys’ Hut. Performance und autofiktionale Subjektivität'),_href=URL('catalog','book/201'))}}
+                        {{elif session.forced_language =='en': }} 
+                        {{=A(T('Sanneke Schoene: Beuys’ Hut. Performance und autofiktionale Subjektivität'),_href=URL('catalog','book/201'))}}
+                        {{pass}}  
+                        </h5>
+                      <p class="boxText"> {{if session.forced_language =='de': }} 
+                      Die exegetische Rezeption um Joseph Beuys geht davon aus, dass Beuys ein ‚authentischer‘ Künstler ist, dessen Performance sich durch eine besondere Unmittelbarkeit auszeichnet. Die Studie zeigt anhand einer Untersuchung der Tatarenlegende als Erzählung, einiger autobiographischer Schriftstücke, Performances bzw. Medialisierungen und der Beuys-Retrospektive im New Yorker Guggenheim Museum 1979 als Bühne der Künstlerschaft, dass Beuys eine autofiktionale Figur ist, die ihre Künstlichkeit, Konstruiertheit und Fiktionalität selbst ausstellt. So wird ersichtlich, dass die Beuys’sche Inszenierung als ironischer Kommentar des Stellenwerts und der Rolle des Künstlers zu sehen ist, die er zugleich so offensiv einnahm.  
+ 
+                      {{elif session.forced_language =='en': }} 
+                       The exegetical Beuys-reception assumes that he is an ‘authentic’ artist and that a certain immediacy defines his performance. The study, on the other hand, shows by analysing the tatar-legend as a narrative story, some autobiographical documents, performances and medialisations as well as the Beuys-retrospective at the Guggenheim Museum in 1979 as a platform for the artistic staging that Beuys is an auto-fictional figure, which exposes its artificiality, constructiveness and fictionality. Thus, the irony of Beuys’ performance becomes apparent as a comment on the role and significance of the artist, that he maintained so offensively at the same time. 
+                        {{pass}}
+                      </p>
+                    </div>
+                </div>
+				  
                 <div class="media">
                     <div class="media-left pull-left">
                       <img alt="" src="{{=URL('static','images/home/arthistoricum_logo_klein.png')}}" style="width: 50px;" />
