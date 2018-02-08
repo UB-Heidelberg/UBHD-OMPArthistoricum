@@ -249,11 +249,12 @@ Box
   padding-bottom: 20px; }
 
 .content-node.quote > .content {
-  padding: 20px; }
+  padding: 20px; 
+  border-left: 10px solid #ccc;
 
-.document .content-node.quote .content-node.paragraph {
-  padding: 10px 40px 10px 40px;
-  border-left: 3px solid #ccc; }
+}
+}
+
 
 .surface.content .content-node.quote > .content > .label {
   font-weight: 600;
@@ -1352,9 +1353,7 @@ body.reader #container {
   /* 988px / 16px = 61.75em */
   height: 100%; }
 
-body, textarea, p, input {
-  font-family: 'Source Sans Pro', 'Helvetica', 'Arial', 'Verdana', 'sans-serif', 'Gandhari Unicode';
-  color: #505050; }
+
 
 a {
   color: #900;
