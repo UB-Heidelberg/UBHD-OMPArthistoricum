@@ -1,7 +1,7 @@
 var locales = {
   'Author':'Autor/In',
   'Back':'Zurück',
-  'Contents':'Inhalt',
+  'Contents':'Contents',
   'CopyRightAndLicenses':'Copyright und Lizensen',
   'Figures': 'Bilder', 
   'Focus':'Einblenden',
