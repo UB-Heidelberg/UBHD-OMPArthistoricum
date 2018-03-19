@@ -1,6 +1,15 @@
 {{extend 'layout.html'}}
 <div id="main" class="container">
-
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>  {{if session.forced_language =='de': }}
+                Vorschau 
+                {{elif session.forced_language =='en': }}
+                Preview
+            {{pass}}
+            </h3>
+        </div>   
+	</div>
 
 <section id="content">
     <div style="height: 20px"></div>
@@ -68,6 +77,7 @@
 				<div class="col-lg-2">
 					<article>
 						<div class="post-image">
+						{{=IMG(_src=URL('static','images/catalog/preview.png'),_style='width:230px')}}
 						</div>
 					</article>
 				</div>
@@ -124,6 +134,7 @@
 				<div class="col-lg-2">
 					<article>
 						<div class="post-image">
+						{{=IMG(_src=URL('static','images/catalog/preview.png'),_style='width:230px')}}
 						</div>
 					</article>
 				</div>
@@ -153,6 +164,7 @@
 				<div class="col-lg-2">
 					<article>
 						<div class="post-image">
+						{{=IMG(_src=URL('static','images/catalog/preview.png'),_style='width:230px')}}
 						</div>
 					</article>
 				</div>
@@ -186,6 +198,7 @@
 				<div class="col-lg-2">
 					<article>
 						<div class="post-image">
+						{{=IMG(_src=URL('static','images/catalog/preview.png'),_style='width:230px')}}
 						</div>
 					</article>
 				</div>
@@ -213,6 +226,7 @@
 				<div class="col-lg-2">
 					<article>
 						<div class="post-image">
+						{{=IMG(_src=URL('static','images/catalog/preview.png'),_style='width:230px')}}
 						</div>
 					</article>
 				</div>
@@ -240,6 +254,7 @@
 				<div class="col-lg-2">
 					<article>
 						<div class="post-image">
+						{{=IMG(_src=URL('static','images/catalog/preview.png'),_style='width:230px')}}
 						</div>
 					</article>
 				</div>
@@ -267,7 +282,7 @@
 				<div class="col-lg-2">
 					<article>
 						<div class="post-image">
-							
+							{{=IMG(_src=URL('static','images/catalog/preview.png'),_style='width:230px')}}
 						</div>
 					</article>
 				</div>
@@ -338,7 +353,7 @@
 				<div class="col-lg-2">
 					<article>
 						<div class="post-image">
-							
+							{{=IMG(_src=URL('static','images/catalog/preview.png'),_style='width:230px')}}
 						</div>
 					</article>
 				</div>
@@ -373,7 +388,7 @@
 				<div class="col-lg-2">
 					<article>
 						<div class="post-image">
-						
+						{{=IMG(_src=URL('static','images/catalog/preview.png'),_style='width:230px')}}
 						</div>
 					</article>
 				</div>
