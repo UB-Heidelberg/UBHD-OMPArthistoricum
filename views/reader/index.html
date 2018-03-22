@@ -1,15 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>heiUP {{=authors}}</title>
-    <!--link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,400italic,600italic"-->
-    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <title>{{=myconf.take("web.application")}} {{=authors}}</title>
+    <!--http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,400italic,600italic -->
     <link href="{{=URL('static','css/fonts.css')}}" rel='stylesheet'   type='text/css'>
-     <title>Title</title>
-    <style type="text/css">
-
-
-    </style>
 
     <link rel="stylesheet" type="text/css" media="all"
           href="{{=URL('static','css/font-awesome.min.css')}}"/>
@@ -56,5 +50,3 @@
 
 </body>
 </html>
-{{db.t_usage_statistics.insert()}}
-{{db.commit()}}
