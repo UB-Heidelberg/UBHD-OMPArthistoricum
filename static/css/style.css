@@ -291,6 +291,10 @@ select.selectmenu {
 }
 /* ===================================6. Sliders==================================== */
 /* --- flexslider --- */
+.flexslider .slides > li {
+    display: block;
+}
+
 #featured .flexslider {
 	padding: 0;
 	/*margin: 50px 0 30px;
