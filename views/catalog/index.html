@@ -12,16 +12,19 @@
 
             </div>
             <div class="col-lg-9">
+
             {{try:
             del b.sort_select[1][4]
             except:
             pass
 
             }}
+                <div class="btn-group pull-right">
+
             {{=b.sort_select}}
 
-
-
+            <a href="{{=URL('search','authors')}}" title="{{=T('Authors A-Z')}}" class="right"><button class="btn btn-default " type="button">{{=T('Authors A-Z')}}</button></a>
+                </div>
             </div>
         </div>
 

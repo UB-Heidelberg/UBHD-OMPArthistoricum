@@ -89,7 +89,7 @@
 'book_id': 'book_id',
 'Books': 'Bücher',
 'Breite der Trimbox': 'Breite der Trimbox',
-'Browse Author Index': 'Browse Author Index',
+'Browse Author Index': 'Autor/innenverzeichnis durchblättern',
 'Buchtitel (OMP)': 'Buchtitel (OMP)',
 'Buy this book': 'Dieses Buch kaufen',
 'by': 'bei',
