@@ -22,6 +22,8 @@ def index():
     locale = 'de_DE'
     if session.forced_language == 'en':
         locale = 'en_US'
+    if len(request.args) < 2:
+        raise HTTP(404)
     submission_id = request.args[0]
     file_id = request.args[1]
     path = os.path.join(request.folder, 'static/files/presses', myconf.take('omp.press_id'), 'monographs',
