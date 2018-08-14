@@ -14,7 +14,35 @@
 <section id="content">
     <div style="height: 20px"></div>
 	
-				
+		<div class="container" id="palatium" height="400px">
+		     <div class="row">
+				<div class="col-lg-2">
+					<article>
+						<div class="post-image">
+							{{=IMG(_src=URL('static','images/catalog/cover_palatium.jpg'),_style='width:230px')}}
+						</div>
+					</article>
+				</div>
+				<div class="col-lg-9">
+					<article>
+						<div class="post-heading">
+						    <b>Stephan Hoppe, Stefan Breitling, Krista De Jonge (Hg.)<br />
+							The Interior as an Embodiment of Power<br />
+							The Image of the Princely Patron and its Spatial Setting (1400-1700)</b>
+						</div>
+						
+						<p>
+						    {{if session.forced_language =='de': }}
+							Erscheint 30. August 2018
+							{{elif session.forced_language =='en': }}
+							Coming 30. August 2018
+							{{pass}}
+						</p>
+					</article>
+				</div>
+			</div>
+		</div>
+		
 		<div class="container" id="meier" height="400px">
 			<div class="row">
 				<div class="col-lg-2">
@@ -33,15 +61,16 @@
 						
 						<p>
 						    {{if session.forced_language =='de': }}
-							Erscheint Juli 2018
+							Erscheint Oktober 2018
 							{{elif session.forced_language =='en': }}
-							Coming in July 2018
+							Coming in October 2018
 							{{pass}}
 						</p>
 					</article>
 				</div>
 			</div>
 		</div>
+		
 		
 		<div class="container" id="knaus" height="400px">
 			<div class="row">
