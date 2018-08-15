@@ -11,19 +11,26 @@
             </h3>
         </div>    
 
-                {{if session.forced_language =='de': }}
+        
 <div class="col-lg-9">
-<p>Das <a href="http://www.gnm.de/" title="Homepage">Germanische Nationalmuseum</a> ist das größte kulturhistorische Museum des deutschen Sprachraums. Rund 1,35 Millionen Objekte sind auf 23 Sammlungsbereiche verteilt. Sie geben Zeugnis von 200.000 Jahren deutscher Kulturgeschichte. Das Museum zeichnet sich in besonderem Maße durch gattungsübergreifende Objektforschung aus.  Ein weiteres Hauptaugenmerk des Museums liegt auf der Untersuchung der kulturellen Zusammenhänge, in denen die Werke stehen.
-</p>
-<p>Als Teil der Leibniz-Gemeinschaft hat sich das Germanische Nationalmuseum zu Open Access verpflichtet. Über <b>arthistoricum.net &ndash; ART-Books</b> werden  insbesondere im Rahmen von Tagungen erzielte Forschungsergebnisse der Wissenschaft vollumfänglich und kostenlos zur Verfügung gestellt.
-</p>
+{{if session.forced_language =='de': }}
+	<p>Das <a href="http://www.gnm.de/" title="Homepage">Germanische Nationalmuseum</a> ist das größte kulturhistorische Museum des deutschen Sprachraums. Rund 1,35 Millionen Objekte sind auf 23 Sammlungsbereiche verteilt. Sie geben Zeugnis von 200.000 Jahren deutscher Kulturgeschichte. Das Museum zeichnet sich in besonderem Maße durch gattungsübergreifende Objektforschung aus.  Ein weiteres Hauptaugenmerk des Museums liegt auf der Untersuchung der kulturellen Zusammenhänge, in denen die Werke stehen.</p>
+	<p>Als Teil der Leibniz-Gemeinschaft hat sich das Germanische Nationalmuseum zu Open Access verpflichtet. Über <b>arthistoricum.net &ndash; ART-Books</b> werden  insbesondere im Rahmen von Tagungen erzielte Forschungsergebnisse der Wissenschaft vollumfänglich und kostenlos zur Verfügung gestellt.</p>
+{{elif session.forced_language =='en': }}
+	<p>The <a href="http://www.gnm.de/" title="Homepage">Germanisches Nationalmuseum</a> is the largest museum of cultural history in the German-speaking countries. Around 1.35 million objects, divided into 23 collection areas, show evidence and artefacts from 200,000 years of German cultural history. The Museum’s principle research aim is concerned with objects across genres, another focus lies on the investigation of the cultural context of the works.</p>
+	<p>As part of the Leibniz Association, Germanisches Nationalmuseum is committed to Open Access. Via <b>arthistoricum.net &ndash; ART-Books</b> research results presented during conferences are made available in full and free of charge.</p>
+{{pass}}
+
 <hr>
 <div class="row">
         <div class="col-lg-12">
+		        {{if session.forced_language =='de': }}
                 <h4>Bereits erschienen</h4>
+				{{elif session.forced_language =='en': }}
+				<h4>Publications</h4>
+				{{pass}}
 	    </div>
 </div>
-
         <div class="row">
                 <div class="col-lg-2"><a href="{{=URL('static','files/presses/2/monographs/383/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/383/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
 				        </div>
@@ -40,7 +47,12 @@
                 <div class="col-lg-9">
                 <b>Thomas Eser und Stephanie Arme (Hrsg.)<br>
 				{{=A('Luther, Kolumbus und die Folgen',_href=URL('catalog','book/380'))}}</b><br>
-                Welt im Wandel 1500-1600 : Ausstellung im Germanischen Nationalmuseum, Nürnberg vom 13. Juli bis 12. November 2017<br>
+                Welt im Wandel 1500-1600 : Ausstellung im Germanischen Nationalmuseum, Nürnberg vom 13. Juli bis 12. November 2017
+				{{if session.forced_language =='de': }}
+                <p>Begleitband zur <a href="http://weltimwandel.gnm.de/" title="Link to the exhibition">Ausstellung im Germanischen Nationalmuseum vom 13.07.2017–12.11.2017.</a></p>
+				{{elif session.forced_language =='en': }}
+				<p>Accompanying the <a href="http://weltimwandel.gnm.de/" title="Link to the exhibition">exhibition</a> in the Germanisches Nationalmuseum from 13.07.2017–12.11.2017.</p>
+                {{pass}}
                 </div>
          </div>
 
@@ -50,19 +62,30 @@
                 <div class="col-lg-9">
                 <b>Jutta Zander-Seidel (Hrsg.)<br>
 				{{=A('In Mode',_href=URL('catalog','book/396'))}}</b><br>             
-        Kleider und Bilder aus Renaissance und Frühbarock <br>
+                Kleider und Bilder aus Renaissance und Frühbarock 
+		        {{if session.forced_language =='de': }}
+                <p>Begleitband zur <a href="https://www.gnm.de/ausstellungen/sonderausstellungen-rueckblick/in-mode/" title="Link to the exhibition">Ausstellung im Germanischen Nationalmuseum vom 03.12.2015–06.03.2016.</a></p>
+				{{elif session.forced_language =='en': }}
+				<p>Accompanying the <a href="https://www.gnm.de/ausstellungen/sonderausstellungen-rueckblick/in-mode/" title="Link to the exhibition">exhibition</a> in the Germanisches Nationalmuseum from 03.12.2015–06.03.2016.</p>
+                {{pass}}
                 </div>
          </div>         
 
-		<div class="row">
+		 <div class="row">
                 <div class="col-lg-2"><a href="{{=URL('static','files/presses/2/monographs/401/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/401/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
-				        </div>
+                                        </div>
                 <div class="col-lg-9">
                 <b>Thomas Eser, Dietrich Matthes, G. Ulrich Großmann <br>
-				{{=A('Die älteste Taschenuhr der Welt?',_href=URL('catalog','book/401'))}}</b><br>             
-                Der Henlein-Uhrenstreit <br>
+                                {{=A('Die älteste Taschenuhr der Welt?',_href=URL('catalog','book/401'))}}</b><br>
+                Der Henlein-Uhrenstreit 
+				{{if session.forced_language =='de': }}
+                <p>Begleitband zur <a href="https://www.gnm.de/ausstellungen/sonderausstellungen-rueckblick/henlein-uhrenstreit/" title="Link to the exhibition">Ausstellung im Germanischen Nationalmuseum vom 04.12.2014–12.04.2015.</a></p>
+				{{elif session.forced_language =='en': }}
+				<p>Accompanying the <a href="https://www.gnm.de/ausstellungen/sonderausstellungen-rueckblick/henlein-uhrenstreit/" title="Link to the exhibition">exhibition</a> in the Germanisches Nationalmuseum from 04.12.2014 until 12.04.2015.</p>
+                {{pass}}
                 </div>
-        </div> 
+        </div>
+
 		 
 	     <div class="row">
                 <div class="col-lg-2"><a href="{{=URL('static','files/presses/2/monographs/359/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/359/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
@@ -71,8 +94,12 @@
                 <b>Claudia Selheim, G. Ulrich Großmann, Barbara Stambolis (Hrsg.)<br>                 
                 {{=A('Aufbruch der Jugend',_href=URL('catalog','book/359'))}}<br>
                 Deutsche Jugendbewegung zwischen Selbstbestimmung und Verführung</b>
+				{{if session.forced_language =='de': }}
                 <p>Begleitband zur <a href="https://www.gnm.de/ausstellungen/sonderausstellungen-rueckblick/aufbruch-der-jugend/" title="Link to the exhibition">Ausstellung im Germanischen Nationalmuseum vom 26.09.2013–19.01.2014.</a></p>
-                </div>
+				{{elif session.forced_language =='en': }}
+				<p>Accompanying the <a href="https://www.gnm.de/ausstellungen/sonderausstellungen-rueckblick/aufbruch-der-jugend/" title="Link to the exhibition">exhibition</a> of the same title ("Aufbruch der Jugend - Deutsche Jugendbewegung zwischen Selbstbestimmung und Verführung") in the Germanisches Nationalmuseum from 26 September 2013 until 19 January 2014.</p>
+                {{pass}}
+				</div>
         </div>
      
         <div class="row">
@@ -100,15 +127,25 @@
 
 <div class="row">
         <div class="col-lg-12">
+		        {{if session.forced_language =='de': }}
                 <h4>Vorschau</h4>
+				{{elif session.forced_language =='en': }}
+				<h4>Preview</h4>
+				{{pass}}
 	    </div>
 </div>
+
          <div class="row">
                 <div class="col-lg-2"><a href="{{=URL('static','images/partner/cover_gnm_musikinstrumente.jpg')}}">{{=IMG(_src=URL('static','images/partner/cover_gnm_musikinstrumente.jpg'),_width='80px', _class='bildrahmen')}}</a>
 				</div>
                 <div class="col-lg-9">
+				{{if session.forced_language =='de': }}
                 <b>Erscheint Sommer 2018:</b>
                 <p>Die Publikation der Tagung <a class="extern" href="http://www.gnm.de/forschung/tagungen-und-konferenzen/tagungen-und-konferenzen-2017/" title="Link zur Homepage der Tagung">'Private Passion – Public Challenge. Musikinstrumente Sammeln in Geschichte und Gegenwart'</a>, Dominik von Roth und Linda Escherich (Hrsg.), erfolgt online über <b>arthistoricum.net</b></p>
+				{{elif session.forced_language =='en': }}
+				<b>To be published in summer 2018:</b>
+                <p>Proceedings of the conference <a class="extern" href="http://www.gnm.de/forschung/tagungen-und-konferenzen/tagungen-und-konferenzen-2017/" title="Link zur Homepage der Tagung">'Private Passion – Public Challenge. Collecting Musical Instruments Then and Now'</a>, Dominik von Roth und Linda Escherich (Eds.), will be published online via <b>arthistoricum.net</b></p>
+                {{pass}}
                 </div>
          </div>
 
@@ -116,10 +153,17 @@
                 <div class="col-lg-2"><a href="{{=URL('static','images/catalog/cover_cadolzburg.jpg')}}">{{=IMG(_src=URL('static','images/catalog/cover_cadolzburg.jpg'),_width='80px', _class='bildrahmen')}}</a>
 				</div>
                 <div class="col-lg-9">
+				{{if session.forced_language =='de': }}
                 <b>Erscheint 2018:<br />
                 Daniel Burger<br />
 				Die Cadolzburg<br />
 				Dynastienburg der Hohenzollern und markgräflicher Amtssitz</b>
+				{{elif session.forced_language =='en': }}
+				<b>Coming in 2018:<br />
+                Daniel Burger<br />
+				Die Cadolzburg<br />
+				Dynastienburg der Hohenzollern und markgräflicher Amtssitz</b>
+				{{pass}}
                 </div>
          </div>
 
@@ -127,15 +171,23 @@
 
         
 <hr>
-
-<p>Die weiteren Open-Access-Publikationen des Germanischen Nationalmuseums auf arthistoricum.net umfassen Aufsätze (über <a href="http://archiv.ub.uni-heidelberg.de/artdok/view/collections/c-5.html" title="Link zu ART-DOK">ART-Dok</a>) sowie folgende E-Journals:<br />
-<a href="http://journals.ub.uni-heidelberg.de/index.php/kulturgut/" title="Link zur Zeitschrift">KulturGut</a><br />
-<a href="http://journals.ub.uni-heidelberg.de/index.php/ma/index" title="Link zur Zeitschrift">MonatsAnzeiger</a><br />
-<a href="http://journals.ub.uni-heidelberg.de/index.php/azvzgnm/index" title="Link zur Zeitschrift">Anzeiger für Kunde der deutschen Vorzeit: Organ d. Germanischen Museums</a><br />
-<a href="http://journals.ub.uni-heidelberg.de/index.php/mittgnm/index" title="Link zur Zeitschrift">Mitteilungen aus dem Germanischen Nationalmuseum</a><br />
-<a href="http://digi.ub.uni-heidelberg.de/diglit/schrifttum" title="Link zur Zeitschrift">Schrifttum zur deutschen Kunst</a>
-</p>
-
+{{if session.forced_language =='de': }}
+	<p>Die weiteren Open-Access-Publikationen des Germanischen Nationalmuseums auf arthistoricum.net umfassen Aufsätze (über <a href="http://archiv.ub.uni-heidelberg.de/artdok/view/collections/c-5.html" title="Link zu ART-DOK">ART-Dok</a>) sowie folgende E-Journals:<br />
+	<a href="http://journals.ub.uni-heidelberg.de/index.php/kulturgut/" title="Link zur Zeitschrift">KulturGut</a><br />
+	<a href="http://journals.ub.uni-heidelberg.de/index.php/ma/index" title="Link zur Zeitschrift">MonatsAnzeiger</a><br />
+	<a href="http://journals.ub.uni-heidelberg.de/index.php/azvzgnm/index" title="Link zur Zeitschrift">Anzeiger für Kunde der deutschen Vorzeit: Organ d. Germanischen Museums</a><br />
+	<a href="http://journals.ub.uni-heidelberg.de/index.php/mittgnm/index" title="Link zur Zeitschrift">Mitteilungen aus dem Germanischen Nationalmuseum</a><br />
+	<a href="http://digi.ub.uni-heidelberg.de/diglit/schrifttum" title="Link zur Zeitschrift">Schrifttum zur deutschen Kunst</a>
+	</p>
+{{elif session.forced_language =='en': }}
+	<p>Further Open Access publications by the Germanisches Nationalmuseum on arthistoricum.net include essays (via <a href="http://archiv.ub.uni-heidelberg.de/artdok/view/collections/c-5.html" title="Link to ART-DOK">ART-Dok</a>) and the following e-journals:<br />
+	<a href="http://journals.ub.uni-heidelberg.de/index.php/kulturgut/" title="Link zur Zeitschrift">KulturGut</a><br />
+	<a href="http://journals.ub.uni-heidelberg.de/index.php/ma/index" title="Link zur Zeitschrift">MonatsAnzeiger</a><br />
+	<a href="http://journals.ub.uni-heidelberg.de/index.php/azvzgnm/index" title="Link zur Zeitschrift">Anzeiger für Kunde der deutschen Vorzeit: Organ d. Germanischen Museums</a><br />
+	<a href="http://journals.ub.uni-heidelberg.de/index.php/mittgnm/index" title="Link zur Zeitschrift">Mitteilungen aus dem Germanischen Nationalmuseum</a><br />
+	<a href="http://digi.ub.uni-heidelberg.de/diglit/schrifttum" title="Link zur Zeitschrift">Schrifttum zur deutschen Kunst</a>
+	</p>
+{{pass}}
 </div>        
         
 <div class="col-lg-3">
@@ -143,7 +195,7 @@
   <p>{{=IMG(_src=URL('static','images/partner/gnm_logo.gif'),_width='194px')}}
   </p>
     <br>
-    <p><b>Kontakt</b>
+    <p>{{if session.forced_language =='de': }}<b>Kontakt</b>{{elif session.forced_language =='en': }}<b>Contact</b>{{pass}}
       <br>Germanisches Nationalmuseum Nürnberg
       <br>Verlag
       <br>Kornmarkt 1
@@ -156,154 +208,7 @@
   </div>
 </div>
         
-{{elif session.forced_language =='en': }}
-
-<div class="col-lg-9">
-<p>The <a href="http://www.gnm.de/" title="Homepage">Germanisches Nationalmuseum</a> is the largest museum of cultural history in the German-speaking countries. Around 1.35 million objects, divided into 23 collection areas, show evidence and artefacts from 200,000 years of German cultural history. The Museum’s principle research aim is concerned with objects across genres, another focus lies on the investigation of the cultural context of the works.
-</p>
-<p>As part of the Leibniz Association, Germanisches Nationalmuseum is committed to Open Access. Via <b>arthistoricum.net &ndash; ART-Books</b> research results presented during conferences are made available in full and free of charge.
-</p>
-<hr>
-<div class="row">
-        <div class="col-lg-12">
-                <h4>Publications</h4>
-	    </div>
-</div>
-
-        <div class="row">
-                <div class="col-lg-2"><a href="{{=URL('static','files/presses/2/monographs/383/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/383/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
-				        </div>
-                <div class="col-lg-9">
-                <b>Germanisches Nationalmuseum Nürnberg, Corpus Vitrearum Deutschland (Hrsg.)<br>
-				{{=A('Originale Kaltmalerei auf historischen Glasmalereien',_href=URL('catalog','book/383'))}}</b><br>             
-        Beiträge des Arbeitsgesprächs vom 10./11. März 2016 im Germanischen Nationalmuseum<br>
-                </div>
-         </div>
-		    
-        <div class="row">
-                <div class="col-lg-2"><a href="{{=URL('static','files/presses/2/monographs/380/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/380/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
-				        </div>
-                <div class="col-lg-9">
-                <b>Thomas Eser und Stephanie Arme (Hrsg.)<br>
-				{{=A('Luther, Kolumbus und die Folgen',_href=URL('catalog','book/380'))}}</b><br>
-                Welt im Wandel 1500-1600 : Ausstellung im Germanischen Nationalmuseum, Nürnberg vom 13. Juli bis 12. November 2017<br>
-                </div>
-         </div>
-
-        <div class="row">
-                <div class="col-lg-2"><a href="{{=URL('static','files/presses/2/monographs/396/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/396/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
-				        </div>
-                <div class="col-lg-9">
-                <b>Jutta Zander-Seidel (Hrsg.)<br>
-				{{=A('In Mode',_href=URL('catalog','book/396'))}}</b><br>             
-        Kleider und Bilder aus Renaissance und Frühbarock <br>
-                </div>
-         </div>
-		
-		<div class="row">
-                <div class="col-lg-2"><a href="{{=URL('static','files/presses/2/monographs/401/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/401/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
-				        </div>
-                <div class="col-lg-9">
-                <b>Thomas Eser, Dietrich Matthes, G. Ulrich Großmann <br>
-				{{=A('Die älteste Taschenuhr der Welt?',_href=URL('catalog','book/401'))}}</b><br>             
-                Der Henlein-Uhrenstreit <br>
-                </div>
-        </div> 
-		 
-	    <div class="row">
-                <div class="col-lg-2"><a href="{{=URL('static','files/presses/2/monographs/359/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/359/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
-                </div>
-                <div class="col-lg-9">
-                <b>Claudia Selheim, G. Ulrich Großmann, Barbara Stambolis (Hrsg.)<br>                 
-                {{=A('Aufbruch der Jugend',_href=URL('catalog','book/359'))}}<br>
-                Deutsche Jugendbewegung zwischen Selbstbestimmung und Verführung</b><br>
-                <p>Accompanying the <a href="https://www.gnm.de/ausstellungen/sonderausstellungen-rueckblick/aufbruch-der-jugend/" title="Link to the exhibition">exhibition</a> of the same title ("Aufbruch der Jugend - Deutsche Jugendbewegung zwischen Selbstbestimmung und Verführung") in the Germanisches Nationalmuseum from 26 September 2013 until 19 January 2014.</p>
-                </div>
-      </div>
-				
-        <div class="row">
-                <div class="col-lg-2"><a href="{{=URL('static','files/presses/2/monographs/293/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/293/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
-                </div>
-                <div class="col-lg-9">
-                <b>Daniel Hess, Dagmar Hirschfelder (Hrsg.)<br>                 
-                {{=A('Renaissance · Barock · Aufklärung',_href=URL('catalog','book/293'))}}<br>
-                Kunst und Kultur vom 16. bis zum 18. Jahrhundert</b><br>
-				        <i>Die Schausammlungen des Germanischen Nationalmuseums, Band 3</i>
-               </div>
-         </div>
-         
-        <div class="row">
-                <div class="col-lg-2"><a href="{{=URL('static','files/presses/2/monographs/368/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/368/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
-                </div>
-                <div class="col-lg-9">
-                <b>Jutta Zander-Seidel (Hrsg.) <br>                 
-                {{=A('Kleiderwechsel',_href=URL('catalog','book/368'))}}<br>
-                Frauen-, Männer- und Kinderkleidung des 18. bis 20. Jahrhunderts</b><br>
-				        <i>Die Schausammlungen des Germanischen Nationalmuseums, Band 1</i><br>
-                </div>
-         </div>         
-
-
-
-<div class="row">
-        <div class="col-lg-12">
-                <h4>Preview</h4>
-	    </div>
-</div>
-       <div class="row">
-                <div class="col-lg-2"><a href="{{=URL('static','images/partner/cover_gnm_musikinstrumente.jpg')}}">{{=IMG(_src=URL('static','images/partner/cover_gnm_musikinstrumente.jpg'),_width='80px', _class='bildrahmen')}}</a>
-				</div>
-                <div class="col-lg-9">
-                <b>To be published in summer 2018:</b>
-                <p>Proceedings of the conference <a class="extern" href="http://www.gnm.de/forschung/tagungen-und-konferenzen/tagungen-und-konferenzen-2017/" title="Link zur Homepage der Tagung">'Private Passion – Public Challenge. Collecting Musical Instruments Then and Now'</a>, Dominik von Roth und Linda Escherich (Eds.), will be published online via <b>arthistoricum.net</b></p>
-                </div>
-       </div> 
-	   
-	   <div class="row">
-                <div class="col-lg-2"><a href="{{=URL('static','images/catalog/cover_cadolzburg.jpg')}}">{{=IMG(_src=URL('static','images/catalog/cover_cadolzburg.jpg'),_width='80px', _class='bildrahmen')}}</a>
-				</div>
-                <div class="col-lg-9">
-                <b>Coming in 2018:<br />
-                Daniel Burger<br />
-				Die Cadolzburg<br />
-				Dynastienburg der Hohenzollern und markgräflicher Amtssitz</b>
-                </div>
-         </div>
-
-
-<hr>
-<p>Further Open Access publications by the Germanisches Nationalmuseum on arthistoricum.net include essays (via <a href="http://archiv.ub.uni-heidelberg.de/artdok/view/collections/c-5.html" title="Link to ART-DOK">ART-Dok</a>) and the following e-journals:<br />
-<a href="http://journals.ub.uni-heidelberg.de/index.php/kulturgut/" title="Link zur Zeitschrift">KulturGut</a><br />
-<a href="http://journals.ub.uni-heidelberg.de/index.php/ma/index" title="Link zur Zeitschrift">MonatsAnzeiger</a><br />
-<a href="http://journals.ub.uni-heidelberg.de/index.php/azvzgnm/index" title="Link zur Zeitschrift">Anzeiger für Kunde der deutschen Vorzeit: Organ d. Germanischen Museums</a><br />
-<a href="http://journals.ub.uni-heidelberg.de/index.php/mittgnm/index" title="Link zur Zeitschrift">Mitteilungen aus dem Germanischen Nationalmuseum</a><br />
-<a href="http://digi.ub.uni-heidelberg.de/diglit/schrifttum" title="Link zur Zeitschrift">Schrifttum zur deutschen Kunst</a>
-</div>        
-      
-        
-<div class="col-lg-3">
-  <div id="infoBoxRechts">
-  <p>{{=IMG(_src=URL('static','images/partner/gnm_logo.gif'),_width='194px')}}
-  </p>
-    <br>
-    <p><b>Contact</b>
-      <br>Germanisches Nationalmuseum Nürnberg
-      <br>Verlag
-      <br>Kornmarkt 1
-      <br>D-90403 Nürnberg
-      <br>
-      <br>Tel.: +49  911 1331165
-      <br>(Mon&ndash;Fri, 11.00&ndash;16.00)
-      <br>Internet: 
-      <a href="http://www.gnm.de/" title="Homepage">www.gnm.de</a>
-  </div>
-</div>
-
-
-{{pass}}
-
-
-            
+           
 
     </div>
   </div>
