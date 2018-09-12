@@ -1,0 +1,47 @@
+{{extend 'layout.html'}}
+
+<div id="main" class="container">
+  <div class="row">
+    <div class="col-lg-12">
+	{{if session.forced_language =='de': }}
+	  <h3>Dissertationen der Staatlichen Hochschule für Gestaltung Karlsruhe</h3>
+	{{elif session.forced_language =='en': }}
+	  <h3>Dissertations at Karlsruhe University of Arts and Design</h3>
+	{{pass}}
+    </div>{{if session.forced_language =='de': }} 
+    <div class="col-lg-9">
+      <p>Als Kunsthochschule, die sich der wissenschaftlichen und künstlerischen Erforschung der Möglichkeitsräume in Kunst, Design und ihrem Wechselspiel mit entwickelten Technologien verschrieben hat, bietet die Staatliche Hochschule für Gestaltung Karlsruhe ein breites Spektrum an Promotionsprojekten. Kommunikationsdesign, Produktdesign, Medienkunst, Ausstellungsdesign und Szenografie, Kunstwissenschaft und Medienphilosophie werden in transdisziplinärer Offenheit gelehrt und praktiziert. Die hier veröffentlichten Dissertationen sind Ergebnisse dieser Offenheit und laden dazu ein, sie weiterzudenken.
+      </p>
+      <div class="widget">
+        <ul class="tags">
+          <li>{{=A(T('Volumes'),_href=URL('catalog','series/dhgk'))}} 
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div id="infoBoxRechts">
+	    <p>{{=IMG(_src=URL('static','images/partner/dhgk_logo.png'),_width='230px')}}</p><br>
+        <p><b>Herausgeber</b>
+        </p>
+      </div>
+    </div>{{elif session.forced_language =='en': }} 
+    <div class="col-lg-9">
+      <p>As art school committed to scientific and artistic research in the potential spaces of art, science and technologies, the Karlsruhe University of Arts and Design offers a wide range of doctoral research projects. Communication Design, Product Design, Media Art, Exhibition Design and Scenography, Art Studies and Media Philosophy are being taught and practiced as an open, transdisciplinary approach. The dissertations published here are results of this openness as well as invitations to further develop it.
+      </p>
+      <div class="widget">
+        <ul class="tags">
+          <li>{{=A(T('Volumes'),_href=URL('catalog','series/dhgk'))}} 
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div id="infoBoxRechts">
+	    <p>{{=IMG(_src=URL('static','images/partner/dhgk_logo.png'),_width='230px')}}</p><br>
+        <p><b>Editors</b>
+        </p>
+      </div>
+    </div>{{pass}} 
+  </div>
+</div>
