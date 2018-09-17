@@ -114,7 +114,8 @@ def series():
 
         submissions.append(submission)
 
-    submissions = sorted(submissions, key=lambda s: s.attributes.get("date_submitted"), reverse=True)
+    #submissions = sorted(submissions, key=lambda s: s.attributes.get("date_submitted"), reverse=True)
+    submissions = sorted(submissions, key=lambda s: s.attributes['series_id'], reverse=True)
     series.associated_items['submissions'] = submissions
 
     return locals()
