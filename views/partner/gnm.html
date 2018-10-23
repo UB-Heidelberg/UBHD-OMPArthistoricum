@@ -31,6 +31,21 @@
 				{{pass}}
 	    </div>
 </div>
+
+         <div class="row">
+                <div class="col-lg-2"><a href="{{=URL('static','files/presses/2/monographs/402/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/402/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
+				        </div>
+                <div class="col-lg-9">
+				{{if session.forced_language =='de': }}
+        <b>Dominik von Roth und Linda Escherich (Hrsg.)<br />
+				{{=A(' Private Passion – public challenge. Musikinstrumente sammeln in Geschichte und Gegenwart',_href=URL('catalog','book/402'))}}</b>
+				{{elif session.forced_language =='en': }}
+        <b>Dominik von Roth and Linda Escherich (Eds.)<br />
+				{{=A(' Private Passion – public challenge. Musikinstrumente sammeln in Geschichte und Gegenwart',_href=URL('catalog','book/402'))}}</b>
+        {{pass}}
+                </div>
+         </div>
+
         <div class="row">
                 <div class="col-lg-2"><a href="{{=URL('static','files/presses/2/monographs/383/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/383/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
 				        </div>
@@ -145,7 +160,7 @@
          </div>         
 		 
 
-<div class="row">
+<!--<div class="row">
         <div class="col-lg-12">
 		        {{if session.forced_language =='de': }}
                 <h4>Vorschau</h4>
@@ -153,21 +168,9 @@
 				<h4>Preview</h4>
 				{{pass}}
 	    </div>
-</div>
+</div>-->
 
-         <div class="row">
-                <div class="col-lg-2"><a href="{{=URL('static','images/partner/cover_gnm_musikinstrumente.jpg')}}">{{=IMG(_src=URL('static','images/partner/cover_gnm_musikinstrumente.jpg'),_width='80px', _class='bildrahmen')}}</a>
-				</div>
-                <div class="col-lg-9">
-				{{if session.forced_language =='de': }}
-                <b>Erscheint Sommer 2018:</b>
-                <p>Die Publikation der Tagung <a class="extern" href="http://www.gnm.de/forschung/tagungen-und-konferenzen/tagungen-und-konferenzen-2017/" title="Link zur Homepage der Tagung">'Private Passion – Public Challenge. Musikinstrumente Sammeln in Geschichte und Gegenwart'</a>, Dominik von Roth und Linda Escherich (Hrsg.), erfolgt online über <b>arthistoricum.net</b></p>
-				{{elif session.forced_language =='en': }}
-				<b>To be published in summer 2018:</b>
-                <p>Proceedings of the conference <a class="extern" href="http://www.gnm.de/forschung/tagungen-und-konferenzen/tagungen-und-konferenzen-2017/" title="Link zur Homepage der Tagung">'Private Passion – Public Challenge. Collecting Musical Instruments Then and Now'</a>, Dominik von Roth und Linda Escherich (Eds.), will be published online via <b>arthistoricum.net</b></p>
-                {{pass}}
-                </div>
-         </div>
+
 
          
 
