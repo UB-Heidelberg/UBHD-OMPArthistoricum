@@ -130,7 +130,7 @@
 				<div class="col-lg-2">
 					<article>
 						<div class="post-image">
-						{{=IMG(_src=URL('static','images/catalog/preview.png'),_style='width:230px')}}
+						{{=IMG(_src=URL('static','images/catalog/cover_lehmann.jpg'),_style='width:230px')}}
 						</div>
 					</article>
 				</div>
@@ -333,6 +333,32 @@
 							Erscheint Herbst 2018
 							{{elif session.forced_language =='en': }}
 							Coming Autumn 2018
+							{{pass}}
+						</p>
+					</article>
+				</div>
+			</div>
+
+			<div class="row" id="nille">
+				<div class="col-lg-2">
+					<article>
+						<div class="post-image">
+							{{=IMG(_src=URL('static','images/catalog/cover_nille.jpg'),_style='width:230px')}}
+						</div>
+					</article>
+				</div>
+				<div class="col-lg-9">
+					<article>
+						<div class="post-heading">
+						    <b>Christian Nille<br />
+							Von der Alltagsanschauung zur kunsthistorischen <i>Raum</i>-Kritik</b>
+						</div>
+
+						<p style="margin-top: 1em;">
+						    {{if session.forced_language =='de': }}
+							Erscheint Winter 2018
+							{{elif session.forced_language =='en': }}
+							Coming Winter 2018
 							{{pass}}
 						</p>
 					</article>
