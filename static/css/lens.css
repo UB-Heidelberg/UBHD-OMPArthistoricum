@@ -794,7 +794,7 @@ out (on iOS 5.1), or flicker (on iOS 6). */
   float: left;
   overflow: hidden;
   height: 100%;
-  width: 70%;
+  width: 60%;
   border-right: 1px solid #ddd; }
 
 .article .document .surface.content {
@@ -863,7 +863,7 @@ out (on iOS 5.1), or flicker (on iOS 6). */
 .article .resources {
   float: right;
   line-height: 25px;
-  width: 30%;
+  width: 40%;
   height: 100%;
   padding-left: 50px;
   padding-right: 50px;
@@ -1260,7 +1260,7 @@ span.annotation.formula_reference, span.publication_reference {
   right: 0px;
   width: 20px;
   overflow: hidden;
-  background: #fff; }
+  background: #eee; }
 
 /* Disable native scrollbar for resources except TOC */
 .article .resources .panel::-webkit-scrollbar,
@@ -1439,7 +1439,7 @@ TOC
 .surface-scrollbar {
   background: #eee;
   position: absolute;
-  left: 0px;
+  right: 0px;
   width: 20px;
   top: 0px;
   bottom: 0px; }
