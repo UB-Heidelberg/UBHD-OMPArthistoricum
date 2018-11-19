@@ -1,0 +1,75 @@
+{{extend 'layout.html'}}
+
+<div id="main" class="container">
+  <div class="row">
+    <div class="col-lg-12">
+  	{{if session.forced_language =='de': }}
+  	  <h3>Computing in Art and Architecture</h3>
+  	{{elif session.forced_language =='en': }}
+  	  <h3>Computing in Art and Architecture</h3>
+  	{{pass}}
+  </div>
+  </div>
+ <div class="row">   
+  <div class="col-lg-3">
+    <article>
+    <div class="post-image">
+    {{=IMG(_src=URL('static','images/catalog/cover_kuroczynski.jpg'),_width='250px')}}
+    </div>
+    </article>
+  </div>  
+    {{if session.forced_language =='de': }} 
+  <div class="col-lg-6">
+      <p>Die Buchreihe <strong>Computing in Art and Architecture</strong> beschäftigt sich mit dem Einsatz und den Potenzialen digitaler Forschungswerkzeuge sowie den Herausforderungen einer digital orientierten Methodik in den objektbezogenen Fächern der Archäologie, Architektur- und Kunstgeschichte. Sie ist eine gemeinsame Initiative des Arbeitskreises Digitale Kunstgeschichte und der Arbeitsgruppe Digitale Rekonstruktion beim Verein für Digital Humanities im deutschsprachigen Raum.
+      </p>
+      <div class="widget">
+        <ul class="tags">
+          <li>{{=A(T('Volumes'),_href=URL('catalog','series/caa'))}} 
+          </li>
+        </ul>
+      </div>
+  </div>
+  <div class="col-lg-3">
+      <div id="infoBoxRechts">
+	    <!--<p>{{=IMG(_src=URL('static','images/partner/dhfgk_logo.png'),_width='230px')}}</p><br>-->
+        <p><b>Herausgeber</b><br />
+		 Arbeitskreis Digitale Kunstgeschichte<br />
+     Arbeitsgruppe Digitale Rekonstruktion beim Verein für Digital Humanities im deutschsprachigen Raum
+		<!--<p><b>Kontakt</b><br />
+		Waldemar Präg<br>
+         Leitung Studium und Prüfungen<br>
+         E-Mail:  wpraeg@hfg-karlsruhe.de
+        </p>
+        <p><b>ISSN</b></p>
+        <p>ISSN 2626-5192 (Print)<br>
+       ISSN 2626-5206 (online)</p>-->
+      </div>
+    </div>{{elif session.forced_language =='en': }} 
+    <div class="col-lg-6">
+      <p>Die Buchreihe <strong>Computing in Art and Architecture</strong> beschäftigt sich mit dem Einsatz und den Potenzialen digitaler Forschungswerkzeuge sowie den Herausforderungen einer digital orientierten Methodik in den objektbezogenen Fächern der Archäologie, Architektur- und Kunstgeschichte. Sie ist eine gemeinsame Initiative des Arbeitskreises Digitale Kunstgeschichte und der Arbeitsgruppe Digitale Rekonstruktion beim Verein für Digital Humanities im deutschsprachigen Raum.
+      </p>
+      <div class="widget">
+        <ul class="tags">
+          <li>{{=A(T('Volumes'),_href=URL('catalog','series/caa'))}} 
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div id="infoBoxRechts">
+	    <!--<p>{{=IMG(_src=URL('static','images/partner/dhfgk_logo.png'),_width='230px')}}</p><br>-->
+        <p><b>Editor</b><br />
+		 Arbeitskreis Digitale Kunstgeschichte<br />
+     Arbeitsgruppe Digitale Rekonstruktion beim Verein für Digital Humanities im deutschsprachigen Raum
+		<!--<p><b>Contact</b><br />
+		Waldemar Präg<br>
+         Head of Studium und Prüfungen<br>
+         E-Mail:  wpraeg@hfg-karlsruhe.de
+        </p>
+    <p><b>ISSN</b></p>
+        <p>ISSN 2626-5192 (Print)<br>
+       ISSN 2626-5206 (online)</p> -->
+      </div>
+    </div>{{pass}} 
+  </div>
+</div>
