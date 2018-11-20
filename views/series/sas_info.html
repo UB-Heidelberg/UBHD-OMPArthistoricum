@@ -3,17 +3,34 @@
 <div id="main" class="container">
   <div class="row">
     <div class="col-lg-12"><h3>Stuttgarter Akademieschriften</h3></div>
+  
+  <div class="col-lg-3">
+    <article>
+      <div class="post-image">
+      {{=IMG(_src=URL('static','files/presses/2/series/38-series.jpg'),_width='250px')}}
+      </div>
+    </article>
+  </div>                                                      
+    
     {{if session.forced_language =='de': }} 
-    <div class="col-lg-9">
-      <p>Die &bdquo;Stuttgarter Akademieschriften&rdquo; sind eine Schriftenreihe der <a href="http://www.abk-stuttgart.de/" title="Link zur Homepage">Staatlichen Akademie der Bildenden Künste Stuttgart</a>. In dieser Reihe werden Dissertationen publiziert, die mit Auszeichnung abgeschlossen wurden.</p> 
-      <p>Als erster Band wird im Herbst 2018 die Dissertation von Gitta Bertram unter dem Titel "Rubens as a Designer of Title Pages" erscheinen.</p>
-      <p>Weitere an der Staatlichen Akademie der Bildenden Künste abgeschlossene Dissertationen finden Sie gesammelt auf der <a href="http://archiv.ub.uni-heidelberg.de/artdok/view/collections/c-13.html" title="Homepage arthistoricum.net; Liste der Dissertationen an der Staatlichen Akademie der Bildenden Künste">Publikationsplattform ART-Dok</a>.</p>
-      <div class="widget">
+    <div class="col-lg-6">
+      <p>Die <a href="http://www.abk-stuttgart.de/" title="Homepage Staatliche Akademie der Bildenden Künste Stuttgart">Staatliche Akademie der Bildenden Künste Stuttgart</a> ist mit ihrer mehr als 250-jährigen Geschichte eine der größten Kunsthochschulen in Deutschland. Nach dem Baden-Württembergischen Landeshochschulgesetz ist die Stuttgarter Akademie den Universitäten gleichgestellt. Bereits 1770 wurde die neun Jahre zuvor von Herzog Carl Eugen von Württemberg gegründete Académie des Arts der Hohen Carlsschule eingegliedert, die 1782 in den Universitätsrang erhoben wurde. Das damit verbundene Promotionsrecht wird seit 2002 praktiziert.</p> 
+
+<p>Die Staatliche Akademie der Bildenden Künste Stuttgart hat das Promotionsrecht auf den Gebieten der Architektur (Dr.-Ing.), der Kunstwissenschaften, der Medientheorie, der Kunstpädagogik und der Ästhetik (Dr. phil.).</p>
+
+<p>Seit 2018 erscheinen die mit dem Prädikat &bdquo;summa cum laude&ldquo; ausgezeichneten Dissertationen unter dem gemeinsamen Titel &bdquo;Stuttgarter Akademieschriften&ldquo; durch die Universitätsbibliothek Heidelberg.</p>
+ 
+      
+      
+   <div class="widget">
         <ul class="tags">
           <li>{{=A(T('Volumes'),_href=URL('catalog','series/sas'))}} 
           </li>
         </ul>
       </div>
+      
+<p>Weitere an der Staatlichen Akademie der Bildenden Künste abgeschlossene Dissertationen finden Sie gesammelt auf der <a href="http://archiv.ub.uni-heidelberg.de/artdok/view/collections/c-13.html" title="Homepage arthistoricum.net; Liste der Dissertationen an der Staatlichen Akademie der Bildenden Künste">Publikationsplattform ART-Dok</a>.</p>
+      
     </div>
     <div class="col-lg-3">
       <div id="infoBoxRechts">
@@ -32,9 +49,11 @@
     </div>
     {{elif session.forced_language =='en': }} 
     <div class="col-lg-9">
-      <p>Die &bdquo;Stuttgarter Akademieschriften&rdquo; sind eine Schriftenreihe der <a href="http://www.abk-stuttgart.de/" title="Link zur Homepage">Staatlichen Akademie der Bildenden Künste Stuttgart</a>. In dieser Reihe werden Dissertationen publiziert, die mit Auszeichnung abgeschlossen wurden.</p> 
-      <p>Als erster Band wird im Herbst 2018 die Dissertation von Gitta Bertram unter dem Titel "Rubens as a Designer of Title Pages" erscheinen.</p>
-      <p>Weitere an der Staatlichen Akademie der Bildenden Künste abgeschlossene Dissertationen finden Sie gesammelt auf der <a href="http://archiv.ub.uni-heidelberg.de/artdok/view/collections/c-13.html" title="Homepage arthistoricum.net; Liste der Dissertationen an der Staatlichen Akademie der Bildenden Künste">Publikationsplattform ART-Dok</a>.</p>
+      <p>Die <a href="http://www.abk-stuttgart.de/" title="Homepage Staatliche Akademie der Bildenden Künste Stuttgart">Staatliche Akademie der Bildenden Künste Stuttgart</a> ist mit ihrer mehr als 250-jährigen Geschichte eine der größten Kunsthochschulen in Deutschland. Nach dem Baden-Württembergischen Landeshochschulgesetz ist die Stuttgarter Akademie den Universitäten gleichgestellt. Bereits 1770 wurde die neun Jahre zuvor von Herzog Carl Eugen von Württemberg gegründete Académie des Arts der Hohen Carlsschule eingegliedert, die 1782 in den Universitätsrang erhoben wurde. Das damit verbundene Promotionsrecht wird seit 2002 praktiziert.</p> 
+
+<p>Die Staatliche Akademie der Bildenden Künste Stuttgart hat das Promotionsrecht auf den Gebieten der Architektur (Dr.-Ing.), der Kunstwissenschaften, der Medientheorie, der Kunstpädagogik und der Ästhetik (Dr. phil.).</p>
+
+<p>Seit 2018 erscheinen die mit dem Prädikat &bdquo;summa cum laude&ldquo; ausgezeichneten Dissertationen unter dem gemeinsamen Titel &bdquo;Stuttgarter Akademieschriften&ldquo; durch die Universitätsbibliothek Heidelberg.</p>
       
       <div class="widget">
         <ul class="tags">
