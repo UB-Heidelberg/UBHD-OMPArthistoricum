@@ -1,0 +1,72 @@
+{{extend 'layout.html'}}
+
+<div id="main" class="container">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>  {{if session.forced_language =='de': }}
+                  edition metzel
+                {{elif session.forced_language =='en': }}
+                  edition metzel
+            {{pass}}
+            </h3>
+        </div>
+            
+                {{if session.forced_language =='de': }}
+
+        <div class="col-lg-9">                
+                <p>Der Verlag – 1982 in München von Silke Schreiber gegründet und bis vor kurzem unter „Verlag Silke Schreiber“ firmieren,  wird seit 1996 von der Kunsthistorikerin Dr. Luise Metzel geführt.</p> 
+                <p>Das Programm umfasst Themen und Diskurse aus dem Bereich der Kunst des 20. und 21. Jahrhunderts. Schwerpunkte bilden neben zahlreichen monographischen Titeln jeweils aktuelle wissenschaftliche Forschungen zur Kunst- und Kulturgeschichte von der klassischen Moderne bis zur Gegenwart: Ästhetik, Ausstellungsgeschichte, Bildwissenschaft, Entwicklung der Kunstgattungen, Gender Studies, Kunstkritik, Materialästhetik, Museologie, Stilgeschichte etc.  Außerdem werden bei edition Metzel Künstlerschriften – kommentiert und in deutscher Übersetzung – publiziert, ebenso auch Künstlerbücher und -kataloge der zeitgenössischen Generation.</p>
+                <p>Seit 2018 werden ausgewählte Bände - Jahre nach dem Erscheinen der Printversion - frei zugänglich im Open Access auf arthistoricum.net - ART-Books als eBook veröffentlicht.</p> 
+ 
+        </div>        
+                
+                
+      <div class="col-lg-3">
+        <div id="infoBoxRechts">
+        <p>{{=IMG(_src=URL('static','images/partner/edition_metzel.jpg'),_width='188px')}}</p>
+                      <p><b>Kontakt</b><br>
+                      edition metzel<br>
+                      Verlag Silke Schreiber<br>
+                      Dr. Luise Metzel<br>
+                      Agnesstr. 12<br>
+                      80798 München<br><br>
+                      Tel.: +49 89 2710180<br>
+                      E-Mail: info@editionmetzel.de<br>
+                      Internet: <a href="http://editionmetzel.de/" title="Homepage">edition metzel</a></p>
+        </div>                
+      </div>
+                
+{{elif session.forced_language =='en': }}
+
+        <div class="col-lg-9">                
+                <p>Der Verlag – 1982 in München von Silke Schreiber gegründet und bis vor kurzem unter „Verlag Silke Schreiber“ firmieren,  wird seit 1996 von der Kunsthistorikerin Dr. Luise Metzel geführt.</p> 
+                <p>Das Programm umfasst Themen und Diskurse aus dem Bereich der Kunst des 20. und 21. Jahrhunderts. Schwerpunkte bilden neben zahlreichen monographischen Titeln jeweils aktuelle wissenschaftliche Forschungen zur Kunst- und Kulturgeschichte von der klassischen Moderne bis zur Gegenwart: Ästhetik, Ausstellungsgeschichte, Bildwissenschaft, Entwicklung der Kunstgattungen, Gender Studies, Kunstkritik, Materialästhetik, Museologie, Stilgeschichte etc. Außerdem werden bei edition Metzel Künstlerschriften – kommentiert und in deutscher Übersetzung – publiziert, ebenso auch Künstlerbücher und -kataloge der zeitgenössischen Generation.</p>
+ 
+        </div>        
+                
+                
+      <div class="col-lg-3">
+        <div id="infoBoxRechts">
+        <p>{{=IMG(_src=URL('static','images/partner/edition_metzel.jpg'),_width='188px')}}</p>
+                      <p><b>Kontakt</b><br>
+                      edition metzel<br>
+                      Verlag Silke Schreiber<br>
+                      Dr. Luise Metzel<br>
+                      Agnesstr. 12<br>
+                      80798 München<br><br>
+                      Tel.: +49 89 2710180<br>
+                      E-Mail: info@editionmetzel.de<br>
+                      Internet: <a href="http://editionmetzel.de/" title="Homepage">edition metzel</a></p>
+        </div>                
+      </div>
+
+                {{pass}}
+
+
+
+
+
+    </div>
+  </div>
+
