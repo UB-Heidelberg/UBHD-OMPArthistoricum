@@ -12,7 +12,60 @@
 	</div>
 
 <section id="content">
+
+      <div class="row" id="frank">
+				<div class="col-lg-2">
+					<article>
+						<div class="post-image">
+							{{=IMG(_src=URL('static','files/presses/2/series/38-series.jpg'),_style='width:230px')}}
+						</div>
+					</article>
+				</div>
+				<div class="col-lg-9">
+					<article>
+						<div class="post-heading">
+						    <b>Katharina Frank<br />
+							Die biblischen Historiengemälde der Cranach-Werkstatt<br />
+              Christus und die Ehebrecherin als lehrreiche &bdquo;Historie&ldquo; im Zeitalter der Reformation</b>
+						</div>
+
+						<p style="margin-top: 1em;">
+						    {{if session.forced_language =='de': }}
+							Erscheint Winter 2018/2019
+							{{elif session.forced_language =='en': }}
+							Coming Winter 2018/2019
+							{{pass}}
+						</p>
+					</article>
+				</div>
+			</div> 
 		
+			<div class="row" id="hagen">
+				<div class="col-lg-2">
+					<article>
+						<div class="post-image">
+						{{=IMG(_src=URL('static','images/catalog/cover_hagen.jpg'),_style='width:230px')}}
+						</div>
+					</article>
+				</div>
+				<div class="col-lg-9">
+					<article>
+						<div class="post-heading">
+						    <b>Kristina Hagen<br />
+							Architektur als Argument: Frühneuzeitliche Klosterhöfe der Abtei St. Blasien im Dienste herrschaftlicher Verwaltung und institutioneller Rangansprüche</b>
+						</div>
+
+						<p style="margin-top: 1em;">
+						    {{if session.forced_language =='de': }}
+							Erscheint Winter 2018/19
+							{{elif session.forced_language =='en': }}
+							Coming in Winter 2018/19
+							{{pass}}
+						</p>
+					</article>
+				</div>
+			</div>
+      
 			<div class="row" id="knaus">
 				<div class="col-lg-2">
 					<article>
@@ -39,52 +92,26 @@
 						</p>
 					</article>
 				</div>
-			</div>
-	
-			
-			<div class="row" id="muenster">
+			</div>      
+
+
+      <div class="row" id="koenig">
 				<div class="col-lg-2">
 					<article>
 						<div class="post-image">
-						{{=IMG(_src=URL('static','images/catalog/preview.png'),_style='width:230px')}}
+						{{=IMG(_src=URL('static','images/catalog/cover_koenig.jpg'),_style='width:230px')}}
 						</div>
 					</article>
 				</div>
 				<div class="col-lg-9">
 					<article>
 						<div class="post-heading">
-						    <b>Piotr Kuroczyński, Mieke Pfarr-Harfst, Sander Münster (Hrsgg.)<br />
-							Der Modelle Tugend 2.0</b>
+						    <b>Sandra König<br />
+							Albinmüller (1871–1941) – Raumkunst zwischen Jugendstil, Neoklassizismus und Werkbund</b>
 						</div>
 
 						<p style="margin-top: 1em;">
-						    {{if session.forced_language =='de': }}
-							Erscheint Frühjahr 2019 
-							{{elif session.forced_language =='en': }}
-							Coming in Spring 2019
-							{{pass}}
-						</p>
-					</article>
-				</div>
-			</div>
-
-			<div class="row" id="hagen">
-				<div class="col-lg-2">
-					<article>
-						<div class="post-image">
-						{{=IMG(_src=URL('static','images/catalog/cover_hagen.jpg'),_style='width:230px')}}
-						</div>
-					</article>
-				</div>
-				<div class="col-lg-9">
-					<article>
-						<div class="post-heading">
-						    <b>Kristina Hagen<br />
-							Architektur als Argument: Frühneuzeitliche Klosterhöfe der Abtei St. Blasien im Dienste herrschaftlicher Verwaltung und institutioneller Rangansprüche</b>
-						</div>
-
-						<p style="margin-top: 1em;">
-						    {{if session.forced_language =='de': }}
+						  {{if session.forced_language =='de': }}
 							Erscheint Winter 2018/19
 							{{elif session.forced_language =='en': }}
 							Coming in Winter 2018/19
@@ -145,9 +172,9 @@
 						</p>
 						<p>
 						    {{if session.forced_language =='de': }}
-							Erscheint 2018
+							Erscheint Winter 2018/19
 							{{elif session.forced_language =='en': }}
-							Coming in 2018
+							Coming in Winter 2018/19
 							{{pass}}
 						</p>
 
@@ -155,6 +182,32 @@
 				</div>
 			</div>
 
+			<div class="row" id="nille">
+				<div class="col-lg-2">
+					<article>
+						<div class="post-image">
+							{{=IMG(_src=URL('static','images/catalog/cover_nille.jpg'),_style='width:230px')}}
+						</div>
+					</article>
+				</div>
+				<div class="col-lg-9">
+					<article>
+						<div class="post-heading">
+						    <b>Christian Nille<br />
+							Von der Alltagsanschauung zur kunsthistorischen <i>Raum</i>-Kritik</b>
+						</div>
+
+						<p style="margin-top: 1em;">
+						    {{if session.forced_language =='de': }}
+							Erscheint Winter 2018/19
+							{{elif session.forced_language =='en': }}
+							Coming Winter 2018/19
+							{{pass}}
+						</p>
+					</article>
+				</div>
+			</div>    
+    
     
 			<div class="row" id="raband">
 				<div class="col-lg-2">
@@ -180,7 +233,7 @@
 						</p>
 						<p>
 						    {{if session.forced_language =='de': }}
-							Erscheint 2018
+							Erscheint Winter 2018/19
 							{{elif session.forced_language =='en': }}
 							Coming in 2018
 							{{pass}}
@@ -215,9 +268,9 @@
 						</p>
 						<p>
 						    {{if session.forced_language =='de': }}
-							Erscheint 2018
+							Erscheint Winter 2018/19
 							{{elif session.forced_language =='en': }}
-							Coming in 2018
+							Coming in Winter 2018/19
 							{{pass}}
 						</p>
 
@@ -227,31 +280,7 @@
 
 		
 
-			<div class="row" id="koenig">
-				<div class="col-lg-2">
-					<article>
-						<div class="post-image">
-						{{=IMG(_src=URL('static','images/catalog/cover_koenig.jpg'),_style='width:230px')}}
-						</div>
-					</article>
-				</div>
-				<div class="col-lg-9">
-					<article>
-						<div class="post-heading">
-						    <b>Sandra König<br />
-							Albinmüller (1871–1941) – Raumkunst zwischen Jugendstil, Neoklassizismus und Werkbund</b>
-						</div>
 
-						<p style="margin-top: 1em;">
-						  {{if session.forced_language =='de': }}
-							Erscheint 2018
-							{{elif session.forced_language =='en': }}
-							Coming in 2018
-							{{pass}}
-						</p>
-					</article>
-				</div>
-			</div>
 
 		
 
@@ -281,85 +310,61 @@
 				</div>
 			</div>
 
-			<div class="row" id="nille">
+    
+			<div class="row" id="muenster">
 				<div class="col-lg-2">
 					<article>
 						<div class="post-image">
-							{{=IMG(_src=URL('static','images/catalog/cover_nille.jpg'),_style='width:230px')}}
+						{{=IMG(_src=URL('static','images/catalog/preview.png'),_style='width:230px')}}
 						</div>
 					</article>
 				</div>
 				<div class="col-lg-9">
 					<article>
 						<div class="post-heading">
-						    <b>Christian Nille<br />
-							Von der Alltagsanschauung zur kunsthistorischen <i>Raum</i>-Kritik</b>
+						    <b>Piotr Kuroczyński, Mieke Pfarr-Harfst, Sander Münster (Hrsgg.)<br />
+							Der Modelle Tugend 2.0</b>
 						</div>
 
 						<p style="margin-top: 1em;">
 						    {{if session.forced_language =='de': }}
-							Erscheint Winter 2018/19
+							Erscheint Frühjahr 2019 
 							{{elif session.forced_language =='en': }}
-							Coming Winter 2018/19
+							Coming in Spring 2019
 							{{pass}}
 						</p>
 					</article>
 				</div>
 			</div>
-
-     <div class="row" id="steinmetz">
-				<div class="col-lg-2">
-					<article>
-						<div class="post-image">
-							{{=IMG(_src=URL('static','images/catalog/cover_steinmetz.jpg'),_style='width:230px')}}
-						</div>
-					</article>
-				</div>
-				<div class="col-lg-9">
-					<article>
-						<div class="post-heading">
-						    <b>Thomas Steinmetz<br />
-							Automotives Googiedesign der 50er Jahre: Gestern &ndash; Heute &ndash; Morgen</b>
-						</div>
-
-						<!--<p style="margin-top: 1em;">
-						    {{if session.forced_language =='de': }}
-							Erscheint Winter 2018
-							{{elif session.forced_language =='en': }}
-							Coming Winter 2018
-							{{pass}}
-						</p>-->
-					</article>
-				</div>
-			</div>
       
-     <div class="row" id="frank">
+      
+      <div class="row" id="verstegen">
 				<div class="col-lg-2">
 					<article>
 						<div class="post-image">
-							{{=IMG(_src=URL('static','files/presses/2/series/38-series.jpg'),_style='width:230px')}}
+						{{=IMG(_src=URL('static','images/catalog/preview.png'),_style='width:230px')}}
 						</div>
 					</article>
 				</div>
 				<div class="col-lg-9">
 					<article>
 						<div class="post-heading">
-						    <b>Katharina Frank<br />
-							Die biblischen Historiengemälde der Cranach-Werkstatt<br />
-              Christus und die Ehebrecherin als lehrreiche &bdquo;Historie&ldquo; im Zeitalter der Reformation</b>
+						    <b>Ian Verstegen<br />
+							Federico Barocci and the Science of Drawing in Early Modern Italy</b>
 						</div>
 
 						<p style="margin-top: 1em;">
 						    {{if session.forced_language =='de': }}
-							Erscheint Winter 2018/2019
+							Erscheint Frühjahr 2019 
 							{{elif session.forced_language =='en': }}
-							Coming Winter 2018/2019
+							Coming in Spring 2019
 							{{pass}}
 						</p>
 					</article>
 				</div>
-			</div>  
-      
+			</div>      
+
+
      <div class="row" id="icom">
 				<div class="col-lg-2">
 					<article>
@@ -390,7 +395,37 @@
 						</p>-->
 					</article>
 				</div>
-			</div>           
+			</div>
+
+     <div class="row" id="steinmetz">
+				<div class="col-lg-2">
+					<article>
+						<div class="post-image">
+							{{=IMG(_src=URL('static','images/catalog/cover_steinmetz.jpg'),_style='width:230px')}}
+						</div>
+					</article>
+				</div>
+				<div class="col-lg-9">
+					<article>
+						<div class="post-heading">
+						    <b>Thomas Steinmetz<br />
+							Automotives Googiedesign der 50er Jahre: Gestern &ndash; Heute &ndash; Morgen</b>
+						</div>
+
+						<!--<p style="margin-top: 1em;">
+						    {{if session.forced_language =='de': }}
+							Erscheint Winter 2018
+							{{elif session.forced_language =='en': }}
+							Coming Winter 2018
+							{{pass}}
+						</p>-->
+					</article>
+				</div>
+			</div>
+      
+     
+      
+           
 		
     </div>
     
