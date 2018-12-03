@@ -1,0 +1,88 @@
+{{extend 'layout.html'}}
+
+<div id="main" class="container">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>  {{if session.forced_language =='de': }}
+                  Dietrich Reimer Verlag
+                {{elif session.forced_language =='en': }}
+                  Dietrich Reimer Verlag
+            {{pass}}
+            </h3>
+        </div>
+            
+                {{if session.forced_language =='de': }}
+
+        <div class="col-lg-9">                
+                <p>Weitere Informationen folgen</p>  
+        </div>        
+                
+                
+      <div class="col-lg-3">
+        <div id="infoBoxRechts">
+        <p>{{=IMG(_src=URL('static','images/partner/reimer_logo.png'),_width='150px')}}</p>
+                      <p style="padding-top: 1em;"><b>Kontakt</b><br>
+                      Dietrich Reimer Verlag<br>
+                      Beate Behrens<br>
+                      Berliner Str. 53<br>
+                      10713 Berlin<br><br>
+                      Tel.: +49 30 700 13 88 - 73 <br>
+                      E-Mail: behrens@reimer-verlag.de<br>
+                      Internet: <a href="http://www.reimer-mann-verlag.de/reimer/" title="Homepage Reimer Verlag">Dietrich Reimer Verlag</a></p>
+        </div>                
+      </div>
+	  <hr>
+
+                <h4>Bereits erschienen</h4>
+                <div class="row">
+                <div class="col-lg-2"><a href="{{=URL('static','images/catalog/cover_schoenheit.jpg')}}">{{=IMG(_src=URL('static','images/catalog/cover_schoenheit.jpg'),_width='80px', _class='bildrahmen')}}</a>
+                </div>
+                <div class="col-lg-9">
+                <b>Romana Sammern, Julia Saviello (Hg.)</b><br>                 
+                <b>Schönheit — Der Körper als Kunstprodukt</b><br>
+                ISBN: 978-3-496015-93-2, Paperback, 374 Seiten<br>
+                </div>
+                </div>  
+                
+{{elif session.forced_language =='en': }}
+
+        <div class="col-lg-9">                
+                <p>More Informationen coming soon</p> 
+        </div>        
+                
+                
+      <div class="col-lg-3">
+        <div id="infoBoxRechts">
+        <p>{{=IMG(_src=URL('static','images/partner/reimer_logo.png'),_width='150px')}}</p>
+                      <p style="padding-top: 1em;"><b>Contact</b><br>
+                      Dietrich Reimer Verlag<br>
+                      Beate Behrens<br>
+                      Berliner Str. 53<br>
+                      10713 Berlin<br><br>
+                      Tel.: +49 30 700 13 88 - 73 <br>
+                      E-Mail: behrens@reimer-verlag.de<br>
+                      Internet: <a href="http://www.reimer-mann-verlag.de/reimer/" title="Homepage Reimer Verlag">Dietrich Reimer Verlag</a></p>
+        </div>                
+      </div>
+	  <hr>
+
+                <h4>Already Published</h4>
+                <div class="row">
+                <div class="col-lg-2"><a href="{{=URL('static','images/catalog/cover_schoenheit.jpg')}}">{{=IMG(_src=URL('static','images/catalog/cover_schoenheit.jpg'),_width='80px', _class='bildrahmen')}}</a>
+                </div>
+                <div class="col-lg-9">
+                <b>Romana Sammern, Julia Saviello (Hg.)</b><br>                 
+                <b>Schönheit — Der Körper als Kunstprodukt</b><br>
+                ISBN: 978-3-496015-93-2, Paperback, 374 Seiten<br>
+                </div>
+                </div>
+                {{pass}}
+
+
+
+
+
+    </div>
+  </div>
+
