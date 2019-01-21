@@ -12,15 +12,24 @@
             </h3>
         </div>
             
-                {{if session.forced_language =='de': }}
 
+{{if session.forced_language =='de': }}
+      <div class="col-lg-9">                
+          <p>Der Dietrich Reimer Verlag ist ein wissenschaftlicher Buchverlag mit den Schwerpunkten Kunstgeschichte, Ethnologie, Architektur und Archäologie. Eine Reihe mit Architekturführern zu verschiedenen deutschen Städten und eine Studienbibliothek, in der Einführungsbände sowie zahlreiche Standard- und Nachschlagewerke herausgegeben werden, sprechen sowohl ein akademisches Publikum als auch interessierte Laien an. Der Dietrich Reimer Verlag bildet gemeinsam mit dem Gebr. Mann Verlag eine GmbH. </p>
+          <p>Der Verlag wurde 1845 von Dietrich Arnold Reimer gegründet mit der Maxime, nur ernsthafte und brauchbare Bücher auf den Markt zu bringen. Das Programm umfasst heute Monografien, Tagungsbände und Zeitschriften. Neben umfänglicher Beratung bietet der Verlag ein Lektorat und einen internationalen Vertrieb.</p>
+          <p>Seit 2018 besteht auch die Möglichkeit, Werke frei zugänglich als Open Access zu veröffentlichen, z. B. auf arthistoricum.net – ART-Books oder auf der Homepage eines SFBs oder DFG-Projektes. Ergänzend können kleine Auflagen im Digitaldruck oder als Print on Demand angeboten werden.</p>  
+      </div> 
+      
+{{elif session.forced_language =='en': }}
         <div class="col-lg-9">                
-                <p>Der Dietrich Reimer Verlag ist ein wissenschaftlicher Buchverlag mit den Schwerpunkten Kunstgeschichte, Ethnologie, Architektur und Archäologie. Eine Reihe mit Architekturführern zu verschiedenen deutschen Städten und eine Studienbibliothek, in der Einführungsbände sowie zahlreiche Standard- und Nachschlagewerke herausgegeben werden, sprechen sowohl ein akademisches Publikum als auch interessierte Laien an. Der Dietrich Reimer Verlag bildet gemeinsam mit dem Gebr. Mann Verlag eine GmbH. </p>
-                <p>Der Verlag wurde 1845 von Dietrich Arnold Reimer gegründet mit der Maxime, nur ernsthafte und brauchbare Bücher auf den Markt zu bringen. Das Programm umfasst heute Monografien, Tagungsbände und Zeitschriften. Neben umfänglicher Beratung bietet der Verlag ein Lektorat und einen internationalen Vertrieb.</p>
-                <p>Seit 2018 besteht auch die Möglichkeit, Werke frei zugänglich als Open Access zu veröffentlichen, z. B. auf arthistoricum.net – ART-Books oder auf der Homepage eines SFBs oder DFG-Projektes. Ergänzend können kleine Auflagen im Digitaldruck oder als Print on Demand angeboten werden.</p>  
-        </div>        
-                
-                
+           <p>Dietrich Reimer Verlag is a scientific publishing house specialising on history of art, anthropology and archeology. A series of architectural guides of several German cities and a study library containing introductory volumes as well as several reference books are aimed at academics as well as interested amateurs. Together with Gebr. Mann Verlag, Dietrich Reimer Verlag forms a limited liability company (GmbH).</p>  
+           <p>Dietrich Arnold Reimer founded the publishing house in 1845 with the aim to publish only serious and useful books. Today the program includes monographs, conference transcripts and journals. Apart from extensive consulting, the publishing house offers editorial services and international distribution and sales.</p> 
+           <p>Since 2018 works can also be published in Open Access, i.e. on arthistoricum.net – ART-Books or on the homepage of a SFB or DFG project. Additionally, shorter print runs are available in digital print or print on demand.</p> 
+        </div>                  
+{{pass}}
+
+
+{{if session.forced_language =='de': }}                
       <div class="col-lg-3">
         <div id="infoBoxRechts">
         <p>{{=IMG(_src=URL('static','images/partner/reimer_logo.png'),_width='150px')}}</p>
@@ -34,35 +43,7 @@
                       Internet: <a href="http://www.reimer-mann-verlag.de/reimer/" title="Homepage Reimer Verlag">Dietrich Reimer Verlag</a></p>
         </div>                
       </div>
-	  <hr>
-
-                <h4>Bereits erschienen</h4>
-                <div class="row">
-                <div class="col-lg-2"><a href="{{=URL('static','images/catalog/cover_schoenheit.jpg')}}">{{=IMG(_src=URL('static','images/catalog/cover_schoenheit.jpg'),_width='80px', _class='bildrahmen')}}</a>
-                </div>
-                <div class="col-lg-9">
-                <b>Romana Sammern, Julia Saviello (Hg.)</b><br>                 
-                <b>Schönheit — Der Körper als Kunstprodukt</b><br>
-                ISBN: 978-3-496015-93-2, Paperback, 374 Seiten<br>
-                </div>
-                </div>
-                
-                <div class="row">
-                <div class="col-lg-2"><a href="{{=URL('static','files/presses/2/monographs/445/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/445/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
-				</div>
-                <div class="col-lg-9">
-                <b>Thomas W. Gaehtgens, Uwe Fleckner (Hrsg.) <br />
-				{{=A('Historienmalerei',_href=URL('catalog','book/445'))}}</b>
-                </div>
-         </div>  
-                
-{{elif session.forced_language =='en': }}
-
-        <div class="col-lg-9">                
-                <p>More Informationen coming soon</p> 
-        </div>        
-                
-                
+{{elif session.forced_language =='en': }}      
       <div class="col-lg-3">
         <div id="infoBoxRechts">
         <p>{{=IMG(_src=URL('static','images/partner/reimer_logo.png'),_width='150px')}}</p>
@@ -70,40 +51,63 @@
                       Reimer Verlag<br>
                       Beate Behrens/Verlagsleitung<br>
                       Berliner Str. 53<br>
-                      10713 Berlin<br><br>
+                      10713 Berlin<br>
+                      Germany<br><br>
                       Tel.: +49 30 700 13 88 0<br>
                       E-Mail: behrens@reimer-verlag.de<br>
                       Internet: <a href="http://www.reimer-mann-verlag.de/reimer/" title="Homepage Reimer Verlag">Dietrich Reimer Verlag</a></p>
         </div>                
-      </div>
-	  <hr>
+       </div>
+{{pass}}       
 
-                <h4>Already Published</h4>
-                <div class="row">
-                <div class="col-lg-2"><a href="{{=URL('static','images/catalog/cover_schoenheit.jpg')}}">{{=IMG(_src=URL('static','images/catalog/cover_schoenheit.jpg'),_width='80px', _class='bildrahmen')}}</a>
-                </div>
-                <div class="col-lg-9">
-                <b>Romana Sammern, Julia Saviello (Hg.)</b><br>                 
-                <b>Schönheit — Der Körper als Kunstprodukt</b><br>
-                ISBN: 978-3-496015-93-2, Paperback, 374 Seiten<br>
-                </div>
-                </div>
+      
+   </div>
+
+{{if session.forced_language =='de': }}
+   <div class="row">
+      <div class="col-xs-12"><h4>Bereits erschienen</h4></div>
+      <div class="col-lg-1"><a href="{{=URL('static','images/catalog/cover_schoenheit.jpg')}}">{{=IMG(_src=URL('static','images/catalog/cover_schoenheit.jpg'),_width='80px', _class='bildrahmen')}}</a>
+      </div>
+      <div class="col-lg-11">
+      <b>Romana Sammern, Julia Saviello (Hg.)</b><br>                 
+      <b>Schönheit — Der Körper als Kunstprodukt</b><br>
+      ISBN: 978-3-496015-93-2, Paperback, 374 Seiten<br>
+     </div>
+    </div>
                 
-                <div class="row">
-                <div class="col-lg-2"><a href="{{=URL('static','files/presses/2/monographs/445/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/445/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
+    <div class="row">
+        <div class="col-lg-1"><a href="{{=URL('static','files/presses/2/monographs/445/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/445/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
 				</div>
-                <div class="col-lg-9">
-                <b>Thomas W. Gaehtgens, Uwe Fleckner (Hrsg.) <br />
-				{{=A('Historienmalerei',_href=URL('catalog','book/445'))}}</b>
-                </div>
-         </div>
+        <div class="col-lg-11">
+           <b>Thomas W. Gaehtgens, Uwe Fleckner (Hrsg.) <br />
+		   		{{=A('Historienmalerei',_href=URL('catalog','book/445'))}}</b>
+        </div>
+    </div>  
+                
+{{elif session.forced_language =='en': }}
+
+     
+      <div class="row">
+           <div class="col-xs-12">
+           <h4>Already Published</h4>
+           </div>
+           <div class="col-lg-1"><a href="{{=URL('static','images/catalog/cover_schoenheit.jpg')}}">{{=IMG(_src=URL('static','images/catalog/cover_schoenheit.jpg'),_width='80px', _class='bildrahmen')}}</a>
+           </div>
+           <div class="col-lg-11">
+             <b>Romana Sammern, Julia Saviello (Eds.)</b><br>                 
+             <b>Schönheit — Der Körper als Kunstprodukt</b><br>
+                ISBN: 978-3-496015-93-2, Paperback, 374 Seiten<br>
+           </div>
+        </div>
+                
+           <div class="row">
+             <div class="col-lg-1"><a href="{{=URL('static','files/presses/2/monographs/445/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/445/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
+				     </div>
+             <div class="col-lg-11">
+               <b>Thomas W. Gaehtgens, Uwe Fleckner (Eds.) <br />
+				       {{=A('Historienmalerei',_href=URL('catalog','book/445'))}}</b>
+              </div>
+           </div>
                 
                 {{pass}}
-
-
-
-
-
-    </div>
-  </div>
-
+     </div>   
