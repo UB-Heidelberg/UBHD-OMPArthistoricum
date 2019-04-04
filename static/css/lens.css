@@ -48,16 +48,16 @@
   padding: 0px; }
 
 .content-node.paragraph.margin-top-1 {
-  margin-top: 1em; }
+  margin-top: 1em !important; }
 
 .content-node.paragraph.margin-top-2 {
-  margin-top: 2em; }
+  margin-top: 2em !important; }
 
 .content-node.paragraph.margin-bottom-1 {
-  margin-bottom: 1em; }
+  margin-bottom: 1em !important; }
 
 .content-node.paragraph.margin-bottom-2 {
-  margin-bottom: 2em; }
+  margin-bottom: 2em !important; }
 
 .content-node.paragraph.margin-left-1 {
   margin-left: 2ex; }
@@ -210,8 +210,10 @@ td > .content-node.paragraph + .content-node.paragraph {
   display: inline;
   padding-right: 10px; }
 
-.content-node.heading .title, .content-node.heading .content .title .content {
-  display: inline; }
+.content-node.heading .title, .content-node.heading .content .title .content {         /*war vorher: display: inline, ohne Angabe für line-height - aktuelle Anweisungen eingetragen, um ZAB bei Ausgabe auf Mobilgeräten zu verringern auf Wunsch ak, 13.02.19*/
+  display: inline-block;
+  line-height: 1.3em;
+  margin-top: 0.8em; }
 
 .content-node.heading .content {
   color: rgba(0, 0, 0, 0.8);
@@ -221,11 +223,30 @@ td > .content-node.paragraph + .content-node.paragraph {
 .content-node.heading.level-1 .content {
   font-size: 24px; }
 
+
+/*.panel.content.document > .surface.resource-view.content > .nodes > .content-node.heading.level-3 - probeweise kürzere Notation '.content-node.heading.level-3' eingesetzt */
+.content-node.heading.level-2,
+.content-node.heading.level-3 {
+  margin-top: 2em;
+}
+
+.content-node.heading.level-2 + .content-node.heading.level-3 {
+  margin-top: 0.7em !important;
+} 
+
 .content-node.heading.level-2 .content {
   font-size: 21px; }
 
 .content-node.heading.level-3 .content {
   font-size: 18px; }
+
+
+
+
+
+
+.panel.content.document > .surface.resource-view.content > .nodes > .content-node.heading.level-4 {
+  padding-top: 20px; }
 
 /* List Node
 -------------------------------------------------------------------------------*/
@@ -485,7 +506,8 @@ Definition
 .layout-tabelle {
   border: 0;
   width: auto;
-  margin-left: 0; }
+  margin: 1em 0 2em 0;
+   }
 
 .layout-tabelle td {
   border: 0;
@@ -497,21 +519,24 @@ Definition
   border: 1px solid lightgray;
   border-collapse: collapse;
   width: auto;
-  margin-left: 0; }
+  margin: 0.5em 0 2em 0;
+   }
 
 .gitter-tabelle td {
   border: 1px solid lightgray;
   border-collapse: collapse;
-  padding: 3px; }
+  padding: 10px; }
 
 /** Layout Daten-Tabelle Issue Nr. 58
- für heiUP auskommentiert, um mehrspaltigen Satz ohne Färbung zu ermöglichen, - neues default ist layout-tabelle, deshalb testweise wieder einkommentiert - 07.08. voe**/
+ für heiUP auskommentiert, um mehrspaltigen Satz ohne Färbung zu ermöglichen, - neues default ist layout-tabelle, deshalb wieder einkommentiert - 07.08. voe**/
 .lens-article .content-node.table > .content {
   padding-left: 0; }
 
 .daten-tabelle {
   border: 1px solid #f8f8f8;
-  overflow-x: scroll; }
+  overflow-x: scroll;
+  margin-top: 0.5em;
+  margin-bottom: 2em; }
 
 .daten-tabelle tr {
   vertical-align: top; }
@@ -1032,7 +1057,8 @@ article .resources .footnotes .content-node.highlighted .resource-header .toggle
       transition-duration: 0.1s;*/ }
 
 /* Small caps */
-span.annotation.sc {
+span.annotation.sc,
+span.annotation.capitalize {
   font-variant: small-caps; }
 
 span.annotation.formula_reference, span.publication_reference {
@@ -1125,7 +1151,7 @@ span.annotation.formula_reference, span.publication_reference {
   font-weight: bold; }
 
 .content-node .capitalize {
-  text-transform: uppercase; }
+  /*text-transform: uppercase;*/ }
 
 .content-node .figure_reference {
   background: rgba(153, 0, 0, 0.15);
@@ -1310,7 +1336,7 @@ as we have a plugin concept for functionality / panels */
 
 /* Active resource */
 .article .resources .content-node.highlighted .resource-header .name {
-  color: #fff; }
+  color: #888; }
 
 /* active citation */
 .article .resources .citations .content-node.highlighted {
@@ -1496,13 +1522,6 @@ TOC
 
 .panel.document .nodes > .content-node > .focus-handle:hover {
   border-left: 3px solid #bbb; }
-
-/** Ticket#66 ***/
-.panel.content.document > .surface.resource-view.content > .nodes > .content-node.heading.level-3 {
-  padding-top: 20px; }
-
-.panel.content.document > .surface.resource-view.content > .nodes > .content-node.heading.level-4 {
-  padding-top: 20px; }
 
 /** Listen **/
 .content.simple {
