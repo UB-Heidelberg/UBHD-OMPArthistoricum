@@ -329,6 +329,7 @@
 'Preview': 'Vorschau',
 'previous %s rows': 'vorherige %s Reihen',
 'Print On Demand': 'Print On Demand',
+'Privacy Notice': 'Datenschutzhinweis',
 'Produktform/Medienart': 'Produktform/Medienart',
 'Produktionsjahr': 'Produktionsjahr',
 'Profil': 'Profil',
