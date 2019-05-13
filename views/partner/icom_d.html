@@ -1,0 +1,57 @@
+{{extend 'layout.html'}}
+
+<div id="main" class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>  {{if session.forced_language =='de': }}
+                ICOM Deutschland e.V. 
+                {{elif session.forced_language =='en': }}
+                ICOM Deutschland e.V. 
+            {{pass}}
+            </h3>
+        </div>    
+
+        
+<div class="col-lg-9">
+{{if session.forced_language =='de': }}
+<p><a class="extern" href="http://www.icom-deutschland.de/" title="Homepage ICOM Deutschland">ICOM Deutschland e.V.</a> ist das deutsche Nationalkomitee des Internationalen Museumsrates ICOM und mit mehr als 6.400 Mitgliedern die größte Organisation von Museen und Museumsfachleuten in Deutschland. Sie vertritt im Dialog und Zusammenwirken mit anderen Kultur- und Museumsorganisationen die Interessen der Museen und der Museumsfachleute im öffentlichen Leben.</p>
+<p>Der <a href="http://www.icom.museum/" class="extern" title="Homepage Internationale Museumsrat ICOM">Internationale Museumsrat ICOM</a> (International Council of Museums) ist dem Erhalt, der Pflege und der Vermittlung des kulturellen und natürlichen Welterbes verpflichtet. Mit mehr als 40.000 Mitgliedern weltweit ist ICOM das internationale Netzwerk von Museen und Museumsfachleuten quer durch alle Fachgebiete. ICOM gehören 119 Nationalkomitees und 31 internationale Komitees sowie zahlreiche regionale und angegliederte Organisationen an.</p>
+{{elif session.forced_language =='en': }}
+<p><a class="extern" href="http://www.icom-deutschland.de/" title="Homepage ICOM Deutschland">ICOM Deutschland e.V.</a>  ist das deutsche Nationalkomitee des Internationalen Museumsrates ICOM und mit mehr als 6.400 Mitgliedern die größte Organisation von Museen und Museumsfachleuten in Deutschland. Sie vertritt im Dialog und Zusammenwirken mit anderen Kultur- und Museumsorganisationen die Interessen der Museen und der Museumsfachleute im öffentlichen Leben.</p>
+<p>Der <a href="http://www.icom.museum/" class="extern" title="Homepage Internationale Museumsrat ICOM">Internationale Museumsrat ICOM</a> (International Council of Museums) ist dem Erhalt, der Pflege und der Vermittlung des kulturellen und natürlichen Welterbes verpflichtet. Mit mehr als 40.000 Mitgliedern weltweit ist ICOM das internationale Netzwerk von Museen und Museumsfachleuten quer durch alle Fachgebiete. ICOM gehören 119 Nationalkomitees und 31 internationale Komitees sowie zahlreiche regionale und angegliederte Organisationen an.</p>
+{{pass}}
+
+</div>        
+        
+<div class="col-lg-3">
+  <div id="infoBoxRechts">
+  <p>{{=IMG(_src=URL('static','images/series/icom_logo.png'),_width='230px')}}</p>
+  {{if session.forced_language =='de': }}
+    <p><b>Kontakt</b><br>
+       ICOM Deutschland e. V.<br>
+       In der Halde 1<br>
+       14195 Berlin<br><br>
+       Tel.: +49 30 69504525<br>
+       Fax: +49 30 69504526<br>
+       E-Mail:<br>icom@icom-deutschland.de<br>
+       Internet: <a href="http://www.icom-deutschland.de/index.php" title="Homepage ICOM Deutschland"><br>Homepage ICOM Deutschland</a>
+    </p>
+	{{elif session.forced_language =='en': }}
+	<p><b>Contact</b><br>
+       ICOM Deutschland e. V.<br>
+       In der Halde 1<br>
+       14195 Berlin<br><br>
+       Phone: +49 30 69504525<br>
+       Fax: +49 30 69504526<br>
+       Email:<br>icom@icom-deutschland.de<br>
+       Internet: <a href="http://www.icom-deutschland.de/index.php" title="Homepage ICOM Deutschland"><br>Homepage ICOM Deutschland</a>
+    </p>
+	{{pass}}
+  </div>
+</div>
+        
+           
+
+    </div>
+  </div>
+
