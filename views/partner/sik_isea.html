@@ -4,9 +4,9 @@
     <div class="row">
         <div class="col-lg-12">
             <h3>  {{if session.forced_language =='de': }}
-                Schweizerisches Institut für Kunstwissenschaft (SIK-ISEA), Zürich / Lausanne 
+                Schweizerisches Institut für Kunstwissenschaft (SIK-ISEA),<br>Zürich / Lausanne 
                 {{elif session.forced_language =='en': }}
-                Schweizerisches Institut für Kunstwissenschaft (SIK-ISEA), Zürich / Lausanne
+                Schweizerisches Institut für Kunstwissenschaft (SIK-ISEA),<br>Zürich / Lausanne
             {{pass}}
             </h3>
         </div>    
@@ -50,8 +50,12 @@
       Zollikerstrasse 32<br>
       Postfach<br>
       CH-8032 Zürich<br>
-      E-Mail: sik@sik-isea.ch<br>
-      Internet: <a href="https://www.sik-isea.ch/de-ch/" title="Homepage SIK ISEA">Homepage SIK ISEA</a>
+      E-Mail: sik@sik-isea.ch<br><br>
+	  Internet: <a href="https://www.sik-isea.ch/de-ch/" title="Homepage SIK ISEA">Homepage SIK ISEA</a><br>
+	  <br>Elektronische Publikationen
+      <br><a href="mailto:katharina.ammann@sik-isea.ch">Dr. Katharina Ammann</a>
+      <br><a href="mailto:regula.kraehenbuehl@sik-isea.ch">lic. phil. Regula Krähenbühl</a>
+      
     </p>
 	{{elif session.forced_language =='en': }}
 	<p><b>Contact</b><br>
@@ -60,7 +64,10 @@
       Postfach<br>
       CH-8032 Zürich<br>
       Email: sik@sik-isea.ch<br>
-      Internet: <a href="https://www.sik-isea.ch/de-ch/" title="Homepage SIK ISEA">Homepage SIK ISEA</a>    </p>
+      Internet: <a href="https://www.sik-isea.ch/de-ch/" title="Homepage SIK ISEA">Homepage SIK ISEA</a>    <br>
+	  <br>Electronic Publications 
+      <br><a href="mailto:katharina.ammann@sik-isea.ch">Dr. Katharina Ammann</a>
+      <br><a href="mailto:regula.kraehenbuehl@sik-isea.ch">lic. phil. Regula Krähenbühl</a></p>
 	{{pass}}
   </div>
 </div>
