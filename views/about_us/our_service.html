@@ -9,27 +9,23 @@
                 Our service
             {{pass}}
             </h3>
-
-            <p>
-                {{if session.forced_language =='de': }}
-<p>Die Universitätsbibliothek Heidelberg gewährleistet das nachhaltige Hosting der Software Open Monograph Press (OMP) für Ihre Monografie, Ihr Sammelwerk oder Ihre Schriftenreihe. Dieses Angebot ist im Regelfall kostenfrei.</p>
-
-<p>Die Publikation des Werkes erfolgt parallel in mehreren Versionen: sowohl in digitaler Form (als PDF- und ggf. auch als  HTML-Datei) als auch als gedrucktes Buch (Hard- oder Softcover), erhältlich im Sortiments- wie auch im Online-Buchhandel.</p>
-
-<p>Alle Publikationen erhalten eine ISBN (<a href="https://de.wikipedia.org/wiki/Internationale_Standardbuchnummer" title="ISBN bei Wikipedia">Internationale Standardbuchnummer</a>) und eine DOI (<a href="https://de.wikipedia.org/wiki/Digital_Object_Identifier" title="DOI bei Wikipedia">Digital Object Identifier</a>), um den dauerhaften Zugang und die Sichtbarkeit der Veröffentlichungen zu gewährleisten. Durch die formale und inhaltliche Erschließung sind die Publikationen in nationalen und internationalen Bibliothekskatalogen (HEIDI, SWB, KVK, WorldCat, DOAB etc.) nachgewiesen sowie im Volltext über Suchmaschinen indexiert.<br />
-Weitere Informationen finden Sie unter "<a href="{{=URL('publishing','for_authors')}}">{{=T('Information for Authors')}}</a>".</p>
-
-<p>Wenn Sie Interesse an unserem Angebot haben, melden Sie sich bei <a href="{{=URL('contact','index')}}" style="padding-right: 0;">uns</a> – egal, ob sich Ihr Open-Access-E-Book noch in der Planungsphase befindet oder ob eine bereits im Printformat existierende Schriftenreihe in eine elektronische Ausgabe transformiert werden soll.</p>
-
-{{elif session.forced_language =='en': }}
-<p>Heidelberg University Library hosts the open source software Open Monograph Press (OMP) for publishing your E-book, your collected edition or your series at no charge.</p>
-             <p>Your work will be published in various formats – a digital edition as a PDF or HTML-file or a print edition (hard or soft cover) that can be purchased via local or online booksellers.</p>
-             <p>All publications get an ISBN (<a href="https://en.wikipedia.org/wiki/International_Standard_Book_Number" title="Wikipedia-Entry about ISBN">International Standard Book Number</a>) and a DOI (<a href="https://en.wikipedia.org/wiki/International_Standard_Book_Number" title="Wikipedia-Entry about DOI">Digital Object Identifier</a>) for long-term accessibility and the best possible visibility. The publications on arthistoricum-net - ART-Books will be catalogued and referenced in national and international library catalogues, such as HEIDI, SWB, KVK, WorldCat, DOAB etc. and the full text will be furthermore indexed by search engines.<br>For more information please see <a href="{{=URL('publishing','for_authors')}}" title="Information for Autors">“{{=T('Information for Authors')}}”</a>.</p>
-             <p>If you are interested in publishing on arthistoricum-net - ART-Books then please contact <a href="{{=URL('contact','index')}}" title="Contact" style="padding-right: 0;">us</a> – independent on whether you are still planning your Open Access eBook or wish to turn a printed version of a book or a series into an electronic edition.</p>
-                {{pass}}
+			
+			      {{if session.forced_language =='de': }}
+        <p>Die Publikation erfolgt parallel in mehreren Versionen: <strong>in digitaler Form Open Access als PDF und ggf. auch in HTML</strong> sowie – wenn gewünscht – als <strong>gedrucktes Buch</strong> in einer Hard- oder Softcover-Ausgabe, die kostenpflichtig im Sortiments- und Online-Buchhandel erhältlich ist.</p> 
+        <p>Weitere Informationen finden Sie unter <a href="{{=URL('publishing','for_authors')}}">&bdquo;Informationen für Autorinnen und Autoren&ldquo;</a></p> 
+        <p>Alle Publikationen erhalten eine ISBN (<a href="https://de.wikipedia.org/wiki/Internationale_Standardbuchnummer" title="ISBN bei Wikipedia">Internationale Standardbuchnummer</a>) und eine DOI (<a href="https://de.wikipedia.org/wiki/Digital_Object_Identifier" title="DOI bei Wikipedia">Digital Object Identifier</a>), um den dauerhaften Zugang und die Sichtbarkeit der Veröffentlichungen zu gewährleisten. Durch die formale und inhaltliche Erschließung sind die Publikationen in nationalen und internationalen Bibliothekskatalogen (HEIDI, SWB, KVK, WorldCat, etc.) nachgewiesen sowie im Volltext über Suchmaschinen indexiert.</p>
+        <p>Neben unserem E-Publishing-Angebot für Monographien und Sammelbände etc. bietet arthistoricum-net - ART-Books auch die Möglichkeit, zugehörige <a href="https://www.arthistoricum.net/publizieren/forschungsdaten/">Forschungsdaten</a> dauerhaft zu archivieren.</p>
+        <p>Die Universitätsbibliothek Heidelberg gewährleistet das nachhaltige Hosting der <a href="https://pkp.sfu.ca/omp/">Software Open Monograph Press (OMP)</a> mit der Ihre Monographie, Ihr Sammelwerk oder Ihre Schriftenreihe dauerhaft online verfügbar ist.</p> 
+        <p>Wenn Sie Interesse an unserem Angebot haben, nehmen Sie mit uns <a href="{{=URL('contact','index')}}">Kontakt</a> auf – unabhängig davon, ob sich Ihr Open-Access-E-Book noch in der Planungsphase befindet oder ob eine bereits im Printformat existierende Schriftenreihe in eine elektronische Ausgabe transformiert werden soll.</p>
 
 
-            </p>
+			{{elif session.forced_language =='en': }}
+				<p>Heidelberg University Library hosts the open source software Open Monograph Press (OMP) for publishing your E-book, your collected edition or your series at no charge.</p>
+				<p>Your work will be published in various formats – a digital edition as a PDF or HTML-file or a print edition (hard or soft cover) that can be purchased via local or online booksellers.</p>
+				<p>All publications get an ISBN (<a href="https://en.wikipedia.org/wiki/International_Standard_Book_Number" title="Wikipedia-Entry about ISBN">International Standard Book Number</a>) and a DOI (<a href="https://en.wikipedia.org/wiki/International_Standard_Book_Number" title="Wikipedia-Entry about DOI">Digital Object Identifier</a>) for long-term accessibility and the best possible visibility. The publications on Propylaeum eBooks will be catalogued and referenced in national and international library catalogues, such as HEIDI, SWB, KVK, WorldCat, DOAB etc. and the full text will be furthermore indexed by search engines.<br>For more information please see <a href="{{=URL('publishing','for_authors')}}" title="Information for Autors">“{{=T('Information for Authors')}}”</a>.</p>
+				<p>If you are interested in publishing on arthistoricum-net - ART-Books then please contact <a href="{{=URL('contact','index')}}" title="Contact" style="padding-right: 0;">us</a> – independent on whether you are still planning your Open Access eBook or wish to turn a printed version of a book or a series into an electronic edition.</p>
+            {{pass}}
+
 
         </div>
     </div>
