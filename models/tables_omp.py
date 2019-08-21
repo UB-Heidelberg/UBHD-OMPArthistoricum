@@ -384,7 +384,7 @@ db.define_table('submission_files',
                 Field('uploader_user_id', 'integer'),
                 Field('assoc_type', 'integer'),
                 Field('assoc_id', 'integer'),
-                primarykey=['file_id', 'revision'],
+		        primarykey=['file_id', 'revision'],
                 migrate=False
                 )
 
