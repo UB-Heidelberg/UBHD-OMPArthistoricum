@@ -4,73 +4,74 @@
 
 <div id="main" class="container">
 
-
 <section id="content">
-    <div style="height: 20px"></div>
-            <div class="row">
+
+        <div class="row">
             <div class="col-lg-3">
 
             </div>
             <div class="col-lg-9">
-
+            <div class="btn-group pull-right">
+            <a href="{{=URL('search','authors')}}" title="{{=T('Authors A-Z')}}"><button class="btn btn-default" type="button">{{=T('Authors A-Z')}}</button></a>
+            </div>
+            {{=b.filter_select}}
             {{try:
             del b.sort_select[1][4]
             except:
             pass
 
             }}
-                <div class="btn-group pull-right">
-
             {{=b.sort_select}}
 
-            <a href="{{=URL('search','authors')}}" title="{{=T('Authors A-Z')}}" class="right"><button class="btn btn-default " type="button">{{=T('Authors A-Z')}}</button></a>
-                </div>
-            </div>
+            </div> 
         </div>
 
     {{for submission in submissions:}}
-            <div class="container" height="400px">
-        <div class="row">
-            <div class="col-lg-3">
-                <article>
-                    <div class="post-image">
-                        <a href="{{=URL('catalog','book/'+str(submission.attributes.submission_id))}}">
-                        {{=IMG(_src=coverImageLink(request, press.press_id, submission.attributes.submission_id))}}
-                        </a>
-                    </div>
-                </article>
-            </div>
-            <div class="col-lg-9">
-                <article>
-                    <div class="post-heading">
-						{{include 'catalog/snippets/submission.html'}}
-                        {{series = submission.associated_items.get('series', None)}}
 
-                        {{if series:}}
-                        	{{series_title = series.settings.getLocalizedValue('title', locale)}}
-                        	{{series_subtitle = series.settings.getLocalizedValue('subtitle', locale)}}
-                        	<i>{{=series_title}}{{ if series_subtitle: }} – {{=series_subtitle}}{{pass}}{{if submission.attributes.series_position:}}, {{=formatSeriesPosition(submission.attributes.series_position)}}{{pass}}</i>
-                        {{pass}}
-                    </div>
-                    <p>
-                        <i class="icon-quote-left"></i>
-                        {{abstract = submission.settings.getLocalizedValue('abstract', locale)}}
-                        {{if abstract:}}
-                        	{{=XML(abstract)}}
-                        {{pass}}
-                    </p>
-                    <div class="widget">
-                        <h5 class="widgetheading"></h5>
-                        <ul class="tags">
-                          <li><a href="{{=URL('catalog','book/'+str(submission.attributes.submission_id))}}">{{=T('More information' )}}</a></li>
-                        </ul>
-                    </div>
-                </article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <article>
+                        <div class="post-image">
+                            {{
+                             reference_link=URL('catalog','book/'+str(submission.attributes.submission_id))
+                            for s in submission.associated_items.get("digital_publication_formats"):
+                                if s['remote_url'] :
+                                reference_link= s['remote_url']
+                                pass
+                             pass
+                            }}
+                            <a href="{{=reference_link}}">{{=IMG(_src=coverImageLink(request, press.press_id, submission.attributes.submission_id))}}</a>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-9">
+                    <article>
+                        <div class="post-heading">
+                            {{include 'catalog/snippets/submission.html'}}
+                            {{series = submission.associated_items.get('series', None)}}
+
+                            {{if series:}}
+                                {{series_title = series.settings.getLocalizedValue('title', locale)}}
+                                {{series_subtitle = series.settings.getLocalizedValue('subtitle', locale)}}
+                                <i>{{=series_title}}{{ if series_subtitle: }} – {{=series_subtitle}}{{pass}}{{if submission.attributes.series_position:}}, {{=formatSeriesPosition(submission.attributes.series_position)}}{{pass}}</i>
+                            {{pass}}
+                        </div>
+                        <p>
+                            <i class="icon-quote-left"></i>
+                            {{abstract = submission.settings.getLocalizedValue('abstract', locale)}}
+                            {{if abstract:}}
+                                {{=XML(abstract)}}
+                            {{pass}}
+                        </p>
+                        {{include 'catalog/snippets/reference.html'}}
+                    </article>
+                </div>
             </div>
+
         </div>
-            </div>
     {{pass}}
-<div class="container">
+     <div class="container">
             <div class="row">
             <div class="col-lg-3">
             </div>
@@ -80,5 +81,11 @@
              </div>   
             </div>
      </div>
-</section>
+
+
+
+  </section>
 </div>
+
+
+
