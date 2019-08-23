@@ -33,9 +33,15 @@
                 <div class="col-lg-3">
                     <article>
                         <div class="post-image">
-                            <a href="{{=URL('catalog','book/'+str(submission.attributes.submission_id))}}">
-                                {{=IMG(_src=coverImageLink(request, press.press_id, submission.attributes.submission_id))}}
-                            </a>
+                            {{
+                             reference_link=URL('catalog','book/'+str(submission.attributes.submission_id))
+                            for s in submission.associated_items.get("digital_publication_formats"):
+                                if s['remote_url'] :
+                                reference_link= s['remote_url']
+                                pass
+                             pass
+                            }}
+                            <a href="{{=reference_link}}">{{=IMG(_src=coverImageLink(request, press.press_id, submission.attributes.submission_id))}}</a>
                         </div>
                     </article>
                 </div>
