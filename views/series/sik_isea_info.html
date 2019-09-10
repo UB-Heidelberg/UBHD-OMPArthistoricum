@@ -1,0 +1,108 @@
+{{extend 'layout.html'}}
+
+<div id="main" class="container">
+    <div class="row">
+<div class="col-lg-12">
+            <h3>  {{if session.forced_language =='de': }}
+                outlines 
+                {{elif session.forced_language =='en': }}
+                outlines  
+            {{pass}}
+            </h3>
+</div>            
+
+
+                {{if session.forced_language =='de': }}
+
+<!--<div class="col-lg-3">
+<article>
+<div class="post-image">
+{{=IMG(_src=URL('static','files/presses/2/series/10-series.jpg'),_width='250px')}}
+</div>
+</article>
+<div class="box">
+<div class="box-gray alignleft" style="height: auto;">
+	 <h5 style="color: #656565; margin-bottom: 0.5em;">In Vorbereitung:</h5>
+Katharina Frank / Sabine Koßmann (Hrsg.),<br />
+Mediale Dimensionen von Reproduktion,<br />
+Heidelberg, arthistoricum.net
+</div>
+</div>
+</div>-->
+<div class="col-lg-9">
+<p>Die vom <a class="extern" href="https://www.sik-isea.ch/de-ch/" title="Homepage sik-isea">Schweizerischen Institut für Kunstwissenschaft (SIK-ISEA)</a> herausgegebene mehrsprachige Buchreihe <strong>outlines</strong> erscheint seit 2004 in unregelmässiger Folge und bei wechselnden Verlagen. Sie vermittelt der wissenschaftlichen Fachwelt, aber auch einem an Kunstgeschichte, Gegenwartskunst und Kunsttheorie interessierten Publikum aktuelle Themen, Positionen und Tendenzen der kunsthistorischen und kulturwissenschaftlichen Forschung in knapper, attraktiver Form und will zu weiterführenden Diskussionen anregen. Aufgemacht als lesefreundliche, bebilderte Reader, sind die Bände jeweils einem aktuellen Thema aus dem Wissenschaftsbetrieb gewidmet und versammeln hauptsächlich Tagungsbeiträge, präsentieren aber auch eigens in Auftrag gegebene Studien. Verantwortlich für die Auswahl der Texte und die Herausgabe bei SIK-ISEA sind Roger Fayet und Regula Krähenbühl.</p>
+
+<div class="widget">
+         <ul class="tags">
+              <li>
+              {{=A(T('Volumes'),_href=URL('catalog','series/sik_isea'))}}
+              </li>
+         </ul>
+</div>
+</div>
+<div class="col-lg-3">
+  <div id="infoBoxRechts">
+    <p>{{=IMG(_src=URL('static','images/series/sik_logo.png'),_width='230px')}}</p>
+    <p><b>Kontakt</b><br>
+       Schweizerisches Institut für Kunstwissenschaft (SIK-ISEA), Zürich / Lausanne<br>
+       PD Dr. Roger Fayet, Direktor, Zürich<br>
+       lic. phil. Regula Krähenbühl, Leiterin Wissenschaftsforum, Zürich<br><br>
+       
+       Internet: <a href="https://www.sik-isea.ch/de-ch/" title="Homepage"><br>Homepage Schweizerisches Institut für Kunstwissenschaft (SIK-ISEA)</a>
+    </p>
+    
+  </div>
+</div>                
+
+                     {{elif session.forced_language =='en': }}
+
+<!--<div class="col-lg-3">
+<article>
+<div class="post-image">
+{{=IMG(_src=URL('static','files/presses/2/series/10-series.jpg'),_width='250px')}}
+</div>
+</article>
+<div class="box">
+<div class="box-gray alignleft" style="height: auto;">
+	 <h5 style="color: #656565; margin-bottom: 0.5em;">In Vorbereitung:</h5>
+Katharina Frank / Sabine Koßmann (Hrsg.),<br />
+Mediale Dimensionen von Reproduktion,<br />
+Heidelberg, arthistoricum.net
+</div>
+</div>
+</div>     -->
+
+<div class="col-lg-9">
+<p><strong>outlines</strong> is a series of books published by the <a class="extern" href="https://www.sik-isea.ch/de-ch/" title="Homepage">Swiss Institute for Art Research (SIK-ISEA)</a> with contributions in different languages. Since its inception in 2004 it has appeared at irregular intervals in partnership with various publishers. Aimed both at the scientific community and at a broader audience interested in art history, contemporary art and art theory, and designed to stimulate further discussion, outlines adopts a concise, attractive format to present themes, positions and trends in current research into the history and scientific analysis of art. Each issue provides an accessible, well-illustrated reader devoted to a particular academic theme of current relevance. Conference papers make up much of the content, but specially commissioned studies also feature. Texts are selected and edited on behalf of the Institute by Roger Fayet and Regula Krähenbühl.</p>
+
+<div class="widget">
+         <ul class="tags">
+              <li>
+              {{=A(T('Volumes'),_href=URL('catalog','series/sik_isea'))}}
+              </li>
+         </ul>
+</div>
+</div>
+
+<div class="col-lg-3">
+  <div id="infoBoxRechts">
+    <p>{{=IMG(_src=URL('static','images/series/sik_logo.png'),_width='230px')}}</p> 
+    <p><b>Contact</b><br>
+       Schweizerisches Institut für Kunstwissenschaft (SIK-ISEA), Zürich / Lausanne<br>
+       PD Dr. Roger Fayet, Direktor, Zürich<br>
+       lic. phil. Regula Krähenbühl, Leiterin Wissenschaftsforum, Zürich<br><br>
+       
+       Internet: <a href="https://www.sik-isea.ch/de-ch/" title="Homepage"><br>Homepage Schweizerisches Institut für Kunstwissenschaft (SIK-ISEA)</a>
+    </p>
+    <p><b>ISSN</b><br>ISSN (Print): 2627-6526<br>ISSN (online): 2627-6771</p>
+  </div>
+</div>   
+
+
+
+{{pass}}
+
+        </div>
+    </div>
+                      
+
