@@ -1,5 +1,5 @@
 /* ==== Google font ==== */
-	@import url('fonts.css');
+	@import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700,700italic&subset=latin,latin-ext);
 	/*@import url('http://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700');
 */
 	/**Originalfont des Templates: font-family: 'Open Sans', Arial, sans-serif;
@@ -271,7 +271,6 @@ header ul.nav li ul li ul {
 	border-right: none;
 	border-bottom: none;
 	border-left: none;
-	border-bottom-color: none;
 	content: none;
 }
 ul.nav li.dropdown a {
@@ -305,8 +304,6 @@ select.selectmenu {
 }
 .flex-caption {
 	background: none;
-	-ms-filter: progid: DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C000000);
-	filter: progid: DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C000000);
 	zoom: 1;
 }
 .flex-caption {
@@ -638,7 +635,6 @@ ul.portfolio-categ li {
 }
 ul.portfolio-categ li a {
 	display: block;
-	padding: 35x 0 35x 0;
 	color: #353535;
 }
 ul.portfolio-categ li.active a:hover, ul.portfolio-categ li a:hover, ul.portfolio-categ li a:focus, ul.portfolio-categ li a:active {
@@ -1337,7 +1333,7 @@ ul.time-post li {
 ul.time-post li a img:hover {
 	opacity: 0.8;
 /* For IE 5-7 */
-	filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=80);
+
 /* For IE 8 8 */
 	-MS-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=80)";
 }
@@ -1360,7 +1356,6 @@ ul.time-post li.time {
 	color: #919191;
 }
 .post-meta strong {
-	font-weight: 200px;
 	color: #c7c7c7;
 }
 .item .text {
