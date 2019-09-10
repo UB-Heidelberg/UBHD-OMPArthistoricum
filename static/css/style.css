@@ -2085,12 +2085,13 @@ footer {
 	display: none;
 }
 #heiup-logo-print {
-	border: 0  margin: 0 auto;
+	border: 0;
+  margin: 0 auto;
 	padding: 0;
 }
 .print-url::after {
 	color: #656565 !important;
-	content: "http://books.ub.uni-heidelberg.de/arthistoricum";
+	content: "https://books.ub.uni-heidelberg.de/arthistoricum";
 	float: right;
 	font-size: 9pt;
 }
