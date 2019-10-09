@@ -1746,6 +1746,11 @@ footer #sub-footer .container .col-lg-12 .row .col-lg-3 img {
 }
 }
 /*Anpassungen WWW Heidelberg*/
+
+
+li.show {
+  display: list-item !important;
+}
 .bildrahmen, .post-image img {
 	border: 1px solid #cdcbcc
 }
