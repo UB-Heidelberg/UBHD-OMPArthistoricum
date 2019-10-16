@@ -5,7 +5,7 @@ Distributed under the GNU GPL v3. For full terms see the file
 LICENSE.md
 '''
 
-from ompdal import OMPDAL, OMPSettings, OMPItem
+from ompdal import OMPDAL, OMPSettings, OMPItem, DOI_SETTING_NAME
 from ompformat import dateFromRow, seriesPositionCompare, formatDoi, dateToStr, downloadLink
 
 from ompsolr import OMPSOLR
@@ -322,6 +322,7 @@ def book():
 
     # Get digital publication formats, settings, files, and identification codes
     c = None
+    chapter_doi = None
     digital_publication_formats = []
     for pf in ompdal.getDigitalPublicationFormats(submission_id, available=True, approved=True):
         publication_format = OMPItem(pf, OMPSettings(ompdal.getPublicationFormatSettings(pf.publication_format_id)), {'identification_codes': ompdal.getIdentificationCodesByPublicationFormat(pf.publication_format_id), 'publication_dates': ompdal.getPublicationDatesByPublicationFormat(pf.publication_format_id)})
@@ -341,6 +342,14 @@ def book():
                 i.associated_items.setdefault('files', {})[pf.publication_format_id] = OMPItem(chapter_file, OMPSettings(ompdal.getSubmissionFileSettings(chapter_file.file_id)))
             if chapter_id > 0 and chapter_id == i.attributes.chapter_id:
                 c = i
+    if c:
+        c_title = c.settings.getLocalizedValue('title', locale)
+        c_subtitle = c.settings.getLocalizedValue('subtitle', locale)
+        c_abstract = c.settings.getLocalizedValue('abstract', locale)
+        c_authors = c.associated_items.get('authors', [])
+        c_files = c.associated_items.get('files', {})
+        chapter_doi = i.settings.getLocalizedValue(DOI_SETTING_NAME, '')
+
 
     # Get physical publication formats, settings, and identification codes
     physical_publication_formats = []
@@ -350,11 +359,12 @@ def book():
     pdf = ompdal.getPublicationFormatByName(submission_id, myconf.take('omp.doi_format_name')).first()
 
     doi = ""
-    submission_doi = ompdal.getSubmissionSettings(submission_id).find(lambda row: row.setting_name == 'pub-id::doi')
+    submission_doi = submission_settings.getLocalizedValue(DOI_SETTING_NAME, '')
     if submission_doi:
-        doi = submission_doi.first().get('setting_value')
+        doi = submission_doi
     elif pdf:
-        doi = OMPSettings(ompdal.getPublicationFormatSettings(pdf.publication_format_id)).getLocalizedValue("pub-id::doi", "")  # DOI always has empty locale
+        # DOI always has empty locale
+        doi = OMPSettings(ompdal.getPublicationFormatSettings(pdf.publication_format_id)).getLocalizedValue(DOI_SETTING_NAME, "")
 
     date_published = None
     date_first_published = None
@@ -408,6 +418,3 @@ def book():
 
 
     return locals()
-
-
-
