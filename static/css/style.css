@@ -394,6 +394,10 @@ a[href^="https://doi.org/10.11588"] {
   width: 170px;
   display: block;
 }
+
+.widget > ul.tags > li > a[href^="https://doi.org/10.11588"] {
+  width: auto;
+}
 /* ===================================9. Section: Bottom==================================== */
 #bottom {
 	background: #fcfcfc;
