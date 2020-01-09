@@ -11,8 +11,7 @@ def index():
     if request.args == []:
         redirect( URL('home', 'index'))
     partner_token = request.args[0]
-    
-    if exists(request.folder+'views/partner/'+partner_token+'.html'):
+    if exists(request.folder+'/views/partner/'+partner_token+'.html'):
         content = 'partner/'+partner_token+'.html'
     else:
         redirect( URL('home', 'index'))
