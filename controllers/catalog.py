@@ -223,24 +223,7 @@ def index():
         'omp.ignore_submissions') else -1
 
     submissions = []
-    session.filters = request.vars.get('filter_by').strip('[').strip(']') if request.vars.get(
-            'filter_by') else session.get('filters', '')
-    session.per_page = int(request.vars.get('per_page')) if request.vars.get('per_page') else int(
-            session.get('per_page', 20))
-    '''
-    if request.vars.get('sort_by'):
-        session.sort_by = request.vars.get('sort_by')
-    elif session.get('sort_by'):
-        session.sort_by = session.get('sort_by')
-    else:
-        session.sort_by = 'datePublished-2'
-    '''
-    current_page = int(request.vars.get('page_nr', 1)) - 1
-    page_begin = current_page * session.per_page
-    page_end = (current_page+1) * session.per_page
-
-
-    submission_rows = ompdal.getSubmissionsRangeByPress(press.press_id, page_begin,page_end, ignored_submission_id)
+    submission_rows = ompdal.getSubmissionsByPress(press.press_id, ignored_submission_id)
 
     for submission_row in submission_rows:
         authors = [OMPItem(author, OMPSettings(ompdal.getAuthorSettings(author.author_id)))
@@ -275,34 +258,27 @@ def index():
 
         submissions.append(submission)
 
-    all_submissions = len(ompdal.getSubmissionsByPress(press.press_id, ignored_submission_id))
-    navigation_select = get_navigation_select() if all_submissions > 20 else DIV()
-    navigation_list = get_navigation_list(current_page, all_submissions, session.per_page)  if all_submissions > 20 else DIV()
+    session.filters = request.vars.get('filter_by').strip('[').strip(']') if request.vars.get(
+        'filter_by') else session.get('filters', '')
+    session.per_page = int(request.vars.get('per_page')) if request.vars.get('per_page') else int(
+        session.get('per_page', 20))
+    if request.vars.get('sort_by'):
+        session.sort_by = request.vars.get('sort_by')
+    elif session.get('sort_by'):
+        session.sort_by = session.get('sort_by')
+    else:
+        session.sort_by = 'datePublished-2'
 
+    current = int(request.vars.get('page_nr', 1)) - 1
+
+    b = Browser(submissions, current, locale, session.get('per_page'), session.get('sort_by'), session.get('filters'))
+    submissions = b.process_submissions(submissions)
 
     return locals()
 
-def get_navigation_list(current_page, all_submissions, per_page):
-        li = []
-        al = {'_aria-label': "Page navigation"}
-        total = all_submissions / per_page + 1 if all_submissions % per_page > 0 else all_submissions / per_page
-        for i in range(0, int(total)):
-            l = A(i + 1, _href=URL('index?page_nr=' + str(i + 1)))
-            li.append(LI(l, _class="active")) if i == current_page else li.append(LI(l))
-
-        return TAG.nav(UL(li, _class="pagination pull-left"), **al)
 
 
-def get_navigation_select():
-    per_page = [10, 20, 30]
-    li = [LI(A(i, _href=URL('index?per_page=' + str(i)))) for i in per_page]
-    ul = UL(li, _class="dropdown-menu")
-    button_cs = {
-        "_type"         : "button", "_class": "btn btn-default dropdown-toggle", "_data-toggle": "dropdown",
-        "_aria-haspopup": "true", "_aria-expanded": "false"
-        }
-    button = TAG.button(current.T("Results per Page"), SPAN(_class='caret'), **button_cs)
-    return DIV(button, ul, _class="btn-group pull-left")
+
 def preview():
     return locals()
 
