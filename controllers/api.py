@@ -5,13 +5,11 @@ Distributed under the GNU GPL v3. For full terms see the file
 LICENSE.md
 '''
 
-import gluon.contrib.simplejson as sj
 from ompdal import OMPDAL
 from ompcsl import OMPCSL
 from os.path import join
 from ompformat import dateFromRow, seriesPositionCompare, formatDoi, dateToStr, downloadLink
 import re
-import json
 
 response.headers['Content-Type'] = 'application/json'
 response.view = 'generic.json'
@@ -121,7 +119,7 @@ def submissions():
     result["itemsMax"] = len(submissions)
     result["items"] = items
 
-    return sj.dumps(result, separators=(',', ':'))
+    return response.json(result)
 
 
 def series():
@@ -139,7 +137,7 @@ def series():
             series[sn][locale_] = {}
         series[sn][locale_] = srs["setting_value"]
 
-    return sj.dumps(series, separators=(',', ':'))
+    return response.json(series)
 
 
 def submission():
@@ -270,7 +268,7 @@ def submission():
 
         chapters.append(ch)
     item["chapters"] = chapters
-    return sj.dumps(item, separators=(',', ':'))
+    return response.json(item)
 
 
 def createFile(e_file, pf):
@@ -377,7 +375,7 @@ def oastatistik():
 
             result.append(chs_)
 
-    return sj.dumps(result, separators=(',', ':'))
+    return response.json(result)
 
 
 def get_submission_files(book_id):
@@ -428,4 +426,4 @@ def csl():
         # Invalid argument
         raise HTTP(400, e.message)
 
-    return sj.dumps(cls_data, separators=(',', ':'), sort_keys=True)
+    return response.json(cls_data)

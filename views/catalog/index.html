@@ -1,7 +1,6 @@
 {{extend 'layout.html'}}
 {{import re, os}}
 {{from ompformat import formatContributors, coverImageLink, formatSeriesPosition}}
-
 <div id="main" class="container">
 
 <section id="content">
@@ -34,13 +33,7 @@
                     <article>
                         <div class="post-image">
                             {{
-                             reference_link=URL('catalog','book/'+str(submission.attributes.submission_id))
-                            for s in submission.associated_items.get("digital_publication_formats"):
-                                if s['remote_url'] :
-                                reference_link= s['remote_url']
-                                pass
-                             pass
-                            }}
+                             reference_link=submission.associated_items.get("frontpage_url")}}
                             <a href="{{=reference_link}}">{{=IMG(_src=coverImageLink(request, press.press_id, submission.attributes.submission_id))}}</a>
                         </div>
                     </article>
@@ -57,14 +50,15 @@
                                 <i>{{=series_title}}{{ if series_subtitle: }} – {{=series_subtitle}}{{pass}}{{if submission.attributes.series_position:}}, {{=formatSeriesPosition(submission.attributes.series_position)}}{{pass}}</i>
                             {{pass}}
                         </div>
-                        <p>
-                            <i class="icon-quote-left"></i>
-                            {{abstract = submission.settings.getLocalizedValue('abstract', locale)}}
-                            {{if abstract:}}
-                                {{=XML(abstract)}}
-                            {{pass}}
-                        </p>
-                        {{include 'catalog/snippets/reference.html'}}
+                        {{abstract = submission.settings.getLocalizedValue('abstract', locale)}}
+                        {{if abstract:}}
+                            <p><i class="icon-quote-left"></i>{{=XML(abstract)}}</p>
+                        {{pass}}
+                        <div class="widget">
+                            <ul class="tags">
+                                <li><a href="{{=reference_link}}">{{=T('More information' )}}</a></li>
+                            </ul>
+                        </div>
                     </article>
                 </div>
             </div>
