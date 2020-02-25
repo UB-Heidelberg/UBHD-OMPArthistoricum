@@ -4,7 +4,7 @@ Copyright (c) 2015 Heidelberg University Library
 Distributed under the GNU GPL v3. For full terms see the file
 LICENSE.md
 '''
-
+import gluon.contrib.simplejson as sj
 from ompdal import OMPDAL
 from ompcsl import OMPCSL
 from os.path import join
@@ -137,6 +137,7 @@ def series():
             series[sn][locale_] = {}
         series[sn][locale_] = srs["setting_value"]
 
+
     return response.json(series)
 
 
@@ -165,12 +166,12 @@ def submission():
     item["dateStatusModified"] = str(submission["date_status_modified"])
 
     item["urlPublished"] = web_url + URL(a=request.application, c='catalog', f='book',
-                                         args=[submission_id])
+                                                        args=[submission_id])
     # formats
     pf = ompdal.getPublicationFormatByName(submission_id, myconf.take('omp.doi_format_name')).first()
     if pf:
         date_published = dateFromRow(
-            ompdal.getPublicationDatesByPublicationFormat(pf.publication_format_id, "01").first())
+                ompdal.getPublicationDatesByPublicationFormat(pf.publication_format_id, "01").first())
         item["datePublished"] = str(date_published)
     item["status"] = {"id": STATUS_PUBLISHED, "label": "Published"}
     # submission settings
@@ -186,6 +187,7 @@ def submission():
     series_id = submission.get("series_id")
     if series_id:
         series_url = web_url + URL(a=request.application, c='api', f='series', args=[series_id])
+
 
         series_path = ompdal.getSeriesBySubmissionId(submission_id).as_dict()["path"]
         series = {"id": series_url, "position": submission["series_position"]}
@@ -252,7 +254,7 @@ def submission():
             st = chapter["setting_name"]
             if st == 'pub-id::doi':
                 ch['urlPublished'] = web_url + URL(a=request.application, c='catalog', f='book',
-                                                   args=[submission_id, 'c' + str(c['chapter_id'])])
+                                                                  args=[submission_id, 'c' + str(c['chapter_id'])])
 
             if not ch.get(st):
                 ch[st] = {}
@@ -375,7 +377,7 @@ def oastatistik():
 
             result.append(chs_)
 
-    return response.json(result)
+    return sj.dumps(result, separators=(',', ':'))
 
 
 def get_submission_files(book_id):
