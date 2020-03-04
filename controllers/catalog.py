@@ -141,8 +141,10 @@ def series():
         ompdal.getSeriesSettings(series_row.series_id)))
     submission_rows = ompdal.getSubmissionsBySeries(
         series_row.series_id, ignored_submission_id=ignored_submission_id, status=3)
-    submissions = []
+    submissions = {}
+
     for submission_row in submission_rows:
+
         contributors_by_group = defaultdict(list)
         for contrib in ompdal.getAuthorsBySubmission(submission_row.submission_id, filter_browse=True):
             contrib_item = OMPItem(contrib, OMPSettings(ompdal.getAuthorSettings(contrib.author_id)))
@@ -179,13 +181,11 @@ def series():
                              ompdal.getPublicationDatesByPublicationFormat(pf.publication_format_id)]
         if publication_dates:
             submission.associated_items['publication_dates'] = publication_dates
-        submissions.append(submission)
+        submissions[submission_row.series_position] = submission
 
-    sort_option = ompdal.getSeriesSettings(series_row.series_id).find(lambda row: row.setting_name == 'sortOption')
-    sortby = sort_option.first()
-    b = Browser(submissions, 0, locale, 100, sortby.get('setting_value'), [])
-    submissions = b.process_submissions(submissions)
-
+    import natsort as ns
+    s = ns.natsorted(submissions.items(), reverse=True)
+    submissions = [i[1] for i in s]
     series.associated_items['submissions'] = submissions
 
     return locals()
