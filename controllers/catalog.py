@@ -80,8 +80,7 @@ def category():
         submission = OMPItem(submission_row,
                              OMPSettings(ompdal.getSubmissionSettings(
                                  submission_row.submission_id)),
-                             {'authors': authors, 'editors': editors,
-                              'chapter_authors': chapter_authors})
+                             {'authors': authors, 'editors': editors})
         if authors:
             attribution = ompformat.formatContributors(authors, max_contributors=4, with_and=True)
             additional_attribution = ompformat.formatAttribution(editors, [], translators, [])
@@ -143,7 +142,7 @@ def series():
         series_row.series_id, ignored_submission_id=ignored_submission_id, status=3)
     submissions = {}
 
-    for submission_row in submission_rows:
+    for row_id, submission_row in enumerate(submission_rows):
 
         contributors_by_group = defaultdict(list)
         for contrib in ompdal.getAuthorsBySubmission(submission_row.submission_id, filter_browse=True):
@@ -181,7 +180,7 @@ def series():
                              ompdal.getPublicationDatesByPublicationFormat(pf.publication_format_id)]
         if publication_dates:
             submission.associated_items['publication_dates'] = publication_dates
-        submissions[submission_row.series_position] = submission
+        submissions[row_id] = submission
 
     import natsort as ns
     s = ns.natsorted(submissions.items(), reverse=True)
@@ -244,10 +243,6 @@ def search():
 def index():
     ompdal = OMPDAL(db, myconf)
     press = ompdal.getPress(myconf.take('omp.press_id'))
-    editor_group_id = myconf.take('omp.editor_id', cast=int)
-    author_group_id = myconf.take('omp.author_id', cast=int)
-    chapter_author_group_id = myconf.take('omp.chapter_author_id', cast=int)
-    translator_group_id = int(myconf.get('omp.translator_id')) if myconf.get('omp.translator_id') else None
 
     if not press:
         redirect(URL('home', 'index'))
@@ -257,26 +252,45 @@ def index():
         'omp.ignore_submissions') else -1
 
     submissions = []
-    submission_rows = ompdal.getSubmissionsByPress(press.press_id, ignored_submission_id)
+    session.filters = request.vars.get('filter_by').strip('[').strip(']') if request.vars.get(
+            'filter_by') else session.get('filters', '')
+    session.per_page = int(request.vars.get('per_page')) if request.vars.get('per_page') else int(
+            session.get('per_page', 20))
+    '''
+    if request.vars.get('sort_by'):
+        session.sort_by = request.vars.get('sort_by')
+    elif session.get('sort_by'):
+        session.sort_by = session.get('sort_by')
+    else:
+        session.sort_by = 'datePublished-2'
+    '''
+    current_page = int(request.vars.get('page_nr', 1)) - 1
+    page_begin = current_page * session.per_page
+    page_end = (current_page+1) * session.per_page
 
-    for submission_row in submission_rows:
+
+    submission_rows = ompdal.getPublishedSubmissionsRangeByPressSorted(
+        press.press_id, page_begin, page_end, ignored_submission_id, order_by_ascending=False)
+
+    for submission_row in (row.submissions for row in submission_rows):
         # Get contributors and contributor settings
         contributors_by_group = defaultdict(list)
         for contrib in ompdal.getAuthorsBySubmission(submission_row.submission_id, filter_browse=True):
             contrib_item = OMPItem(contrib, OMPSettings(ompdal.getAuthorSettings(contrib.author_id)))
             contributors_by_group[contrib.user_group_id].append(contrib_item)
 
-        editors = contributors_by_group[editor_group_id]
-        authors = contributors_by_group[author_group_id]
-        chapter_authors = contributors_by_group[chapter_author_group_id]
+        editors = contributors_by_group[myconf.take('omp.editor_id', cast=int)]
+        authors = contributors_by_group[myconf.take('omp.author_id', cast=int)]
+        chapter_authors = contributors_by_group[myconf.take('omp.chapter_author_id', cast=int)]
         translators = []
 
-        if translator_group_id:
-            translators = contributors_by_group[translator_group_id]
+        if myconf.get('omp.translator_id'):
+            translators = contributors_by_group[int(myconf.take('omp.translator_id'))]
         publication_dates = [ompformat.dateFromRow(pd) for pf in
                              ompdal.getAllPublicationFormatsBySubmission(submission_row.submission_id, available=True,
                                                                          approved=True)
                              for pd in ompdal.getPublicationDatesByPublicationFormat(pf.publication_format_id)]
+
         for s in ompdal.getDigitalPublicationFormats(submission_row.submission_id, available=True, approved=True):
             if s['remote_url']:
                 frontpage_url = s['remote_url']
@@ -286,7 +300,9 @@ def index():
         submission = OMPItem(submission_row,
                              OMPSettings(ompdal.getSubmissionSettings(submission_row.submission_id)),
                              {'authors': authors, 'editors': editors, 'translators': translators,
-                              'chapter_authors': chapter_authors, 'frontpage_url': frontpage_url})
+                            'frontpage_url': frontpage_url, 'chapter_authors': chapter_authors
+                             }
+                             )
         if authors:
             attribution = ompformat.formatContributors(authors, max_contributors=4, with_and=True)
             additional_attribution = ompformat.formatAttribution(editors, [], translators, [])
@@ -295,7 +311,9 @@ def index():
             additional_attribution = ""
         submission.attribution = attribution
         submission.additional_attribution = additional_attribution
-        category_row = ompdal.getCategoryBySubmissionId(submission_row.submission_id)
+
+        category_row = ompdal.getCategoryBySubmissionId(
+            submission_row.submission_id)
         if category_row:
             submission.associated_items['category'] = OMPItem(
                 category_row, OMPSettings(ompdal.getCategorySettings(category_row.category_id)))
@@ -309,39 +327,48 @@ def index():
 
         submissions.append(submission)
 
-    session.filters = request.vars.get('filter_by').strip('[').strip(']') if request.vars.get(
-        'filter_by') else session.get('filters', '')
-    session.per_page = int(request.vars.get('per_page')) if request.vars.get('per_page') else int(
-        session.get('per_page', 20))
-    if request.vars.get('sort_by'):
-        session.sort_by = request.vars.get('sort_by')
-    elif session.get('sort_by'):
-        session.sort_by = session.get('sort_by')
-    else:
-        session.sort_by = 'datePublished-2'
+    s = db.submissions
+    all_submissions = db((s.context_id == press.press_id)
+                         & (s.submission_id != ignored_submission_id)
+                         & (s.status == 3)).count()
 
-    current = int(request.vars.get('page_nr', 1)) - 1
+    navigation_select = get_navigation_select() if all_submissions > 20 else DIV()
+    navigation_list = get_navigation_list(current_page, all_submissions, session.per_page)  if all_submissions > 20 else DIV()
 
-    b = Browser(submissions, current, locale, session.get('per_page'), session.get('sort_by'), session.get('filters'))
-    submissions = b.process_submissions(submissions)
+    #print("DB Queries: {}, Total time (s): {}".format(len(db._timings), sum(map(lambda x: x[1], db._timings))))
 
     return locals()
 
+def get_navigation_list(current_page, all_submissions, per_page):
+        li = []
+        al = {'_aria-label': "Page navigation"}
+        total = all_submissions / per_page + 1 if all_submissions % per_page > 0 else all_submissions / per_page
+        for i in range(0, int(total)):
+            l = A(i + 1, _href=URL('index?page_nr=' + str(i + 1)))
+            li.append(LI(l, _class="active")) if i == current_page else li.append(LI(l))
 
+        return TAG.nav(UL(li, _class="pagination pull-left"), **al)
+
+
+def get_navigation_select():
+    per_page = [10, 20, 30]
+    li = [LI(A(i, _href=URL('index?per_page=' + str(i)))) for i in per_page]
+    ul = UL(li, _class="dropdown-menu")
+    button_cs = {
+        "_type"         : "button", "_class": "btn btn-default dropdown-toggle", "_data-toggle": "dropdown",
+        "_aria-haspopup": "true", "_aria-expanded": "false"
+        }
+    button = TAG.button(T("Results per Page"), SPAN(_class='caret'), **button_cs)
+    return DIV(button, ul, _class="btn-group pull-left")
 def preview():
     return locals()
 
-
 def book():
+
     ompdal = OMPDAL(db, myconf)
 
     submission_id = request.args[0] if request.args  and request.args[0].isdigit() else raise400()
     press_id = myconf.take('omp.press_id')
-    editor_group_id = myconf.take('omp.editor_id', cast=int)
-    author_group_id = myconf.take('omp.author_id', cast=int)
-    chapter_author_group_id = myconf.take('omp.chapter_author_id', cast=int)
-    translator_group_id = int(myconf.get('omp.translator_id')) if myconf.get('omp.translator_id') else None
-
     press = ompdal.getPress(press_id)
     submission = ompdal.getPublishedSubmission(submission_id, press_id=press_id)
     chapter_id = int(str(request.args[1])[1:]) if len(request.args) > 1 else 0
@@ -352,16 +379,15 @@ def book():
     submission_settings = OMPSettings(ompdal.getSubmissionSettings(submission_id))
     press_settings = OMPSettings(ompdal.getPressSettings(press.press_id))
 
-    # Get chapters and chapter authors
     chapters = []
-    chapter = {}
+    # Get chapters and chapter authors
     for i in ompdal.getChaptersBySubmission(submission_id):
         item = OMPItem(i, OMPSettings(ompdal.getChapterSettings(i.chapter_id)), {
             'authors': [OMPItem(a, OMPSettings(ompdal.getAuthorSettings(a.author_id))) for a in
                         ompdal.getAuthorsByChapter(i.chapter_id)]
         })
         chapters.append(item)
-
+    # Get contributors and contributor settings
     contributors_by_group = defaultdict(list)
     contributors_by_id = {}
     for contrib in ompdal.getAuthorsBySubmission(submission_id, filter_browse=True):
@@ -369,15 +395,14 @@ def book():
         contributors_by_group[contrib.user_group_id].append(contrib_item)
         contributors_by_id[contrib.author_id] = contrib_item
 
-    editors = contributors_by_group[editor_group_id]
-    authors = contributors_by_group[author_group_id]
-    chapter_authors = contributors_by_group[chapter_author_group_id]
-    # if no editors or authors are saved for this submission, treat chapter authors as authors
-    if not editors and not authors:
-        authors = chapter_authors
+    editors = contributors_by_group[myconf.take('omp.editor_id', cast=int)]
+    authors = contributors_by_group[myconf.take('omp.author_id', cast=int)]
+    chapter_authors = contributors_by_group[myconf.take('omp.chapter_author_id', cast=int)]
     translators = []
-    if translator_group_id:
-        translators = contributors_by_group[translator_group_id]
+
+    if myconf.get('omp.translator_id'):
+        translators = contributors_by_group[int(myconf.take('omp.translator_id'))]
+
     # Get digital publication formats, settings, files, and identification codes
     c = None
     chapter_doi = None
@@ -446,9 +471,7 @@ def book():
     # Get purchase info
     representatives = ompdal.getRepresentativesBySubmission(submission_id, myconf.take('omp.representative_id_type'))
 
-    # stats = OMPStats(myconf, db, locale)
     onix_types = ONIX_PRODUCT_IDENTIFIER_TYPE_CODES
-    # submissions = sorted(submissions, key=lambda s: s.attributes['series_id'], reverse=True)
     pfs = digital_publication_formats + physical_publication_formats
     idntfrs = {}
 
@@ -474,11 +497,11 @@ def book():
         series_subtitle = series.settings.getLocalizedValue('subtitle', locale)
         series_name = " – ".join([t for t in [series_title.strip(), series_subtitle] if t])
 
-    citation = ompformat.formatCitation(cleanTitle, subtitle, authors, editors, translators,
-                                        date_published, press_settings.getLocalizedValue('location', ''),
-                                        press_settings.getLocalizedValue('publisher', ''), locale=locale,
-                                        series_name=series_name, series_pos=submission.series_position,
-                                        max_contrib=3, date_first_published=date_first_published)
+    citation = ompformat.formatCitation(cleanTitle, subtitle, authors, editors, translators, date_published,
+                              press_settings.getLocalizedValue('location', ''),
+                              press_settings.getLocalizedValue('publisher', ''), locale=locale,
+                              series_name=series_name, series_pos=submission.series_position,
+                              max_contrib=3, date_first_published=date_first_published)
     if authors:
         attribution = ompformat.formatContributors(authors, max_contributors=4, with_and=True)
         additional_attribution = ompformat.formatAttribution(editors, [], translators, [])
