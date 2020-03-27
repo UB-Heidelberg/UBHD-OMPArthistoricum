@@ -697,6 +697,12 @@ blockquote cite a, blockquote cite a:visited, blockquote cite a:visited {
 .btn-theme:hover {
 	color: #eee;
 }
+
+/* Buch Download-Button auf Buchseite */
+#dropdownMenu1 {
+  background: #0077bb;
+  color: white;
+}
 /* --- list style --- */
 ul.general {
 	list-style: none;
