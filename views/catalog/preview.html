@@ -38,6 +38,31 @@
 					</article>
 				</div>
 			</div>
+            
+    		<div class="row" id="boehme">
+				<div class="col-lg-2">
+					<article>
+						<div class="post-image">
+							{{=IMG(_src=URL('static','images/catalog/cover_kohle.jpg'),_style='width:230px')}}
+						</div>
+					</article>
+				</div>
+				<div class="col-lg-9">
+					<article>
+						<div class="post-heading">
+						    <b>HMaria Effinger, Hubertus Kohle {{=T('(Eds.)')}}<br />
+                            Die Zukunft des kunsthistorischen Publizierens</b>
+						</div>
+						<p>
+						  {{if session.forced_language =='de': }}
+                            Erscheint Sommer 2020
+							{{elif session.forced_language =='en': }}
+							Coming in summer 2020
+							{{pass}}
+						</p>
+					</article>
+				</div>
+			</div>            
 
 
 
@@ -57,9 +82,9 @@
 						</div>
 						<p>
 						  {{if session.forced_language =='de': }}
-              Erscheint Winter 2019/20
+              Erscheint Sommer 2020
 							{{elif session.forced_language =='en': }}
-							Coming in winter 2019/20
+							Coming in summer 2020
 							{{pass}}
 						</p>
 					</article>
@@ -162,7 +187,7 @@
 				<div class="col-lg-2">
 					<article>
 						<div class="post-image">
-							{{=IMG(_src=URL('static','images/catalog/preview.png'),_style='width:230px')}}
+							{{=IMG(_src=URL('static','images/catalog/cover_messemer.jpg'),_style='width:230px')}}
 						</div>
 					</article>
 				</div>
@@ -268,9 +293,9 @@
 						</p>
 						<p>
 						    {{if session.forced_language =='de': }}
-							Erscheint Frühjahr 2020
+							Erscheint Sommer 2020
 							{{elif session.forced_language =='en': }}
-							Coming in spring 2020
+							Coming in summer 2020
 							{{pass}}
 						</p>
 
