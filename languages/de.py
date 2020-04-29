@@ -107,6 +107,7 @@
 'category': 'sparte',
 'Category': 'Sparte',
 'Chapters': 'Kapitel',
+'Chapter Download': 'Kapitel Download',
 'Charles VII et le conseil municipal rouennais': 'Charles VII et le conseil municipal rouennais',
 'Check to delete': 'Auswählen um zu löschen',
 'Choose citation style': 'Zitationsstil auswählen',
