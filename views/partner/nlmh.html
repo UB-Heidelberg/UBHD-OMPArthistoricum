@@ -1,0 +1,75 @@
+{{extend 'layout.html'}}
+
+<div id="main" class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>  {{if session.forced_language =='de': }}
+                Landesmuseum Hannover. Das WeltenMuseum  
+                {{elif session.forced_language =='en': }}
+                Landesmuseum Hannover. Das WeltenMuseum
+            {{pass}}
+            </h3>
+        </div>
+            
+                {{if session.forced_language =='de': }}
+
+        <div class="col-lg-9">                
+                <p>Vor mehr als 150 Jahren aus dem Engagement interessierter Bürger entstanden präsentiert das <b><a href="https://www.landesmuseum-hannover.de/" title="Link zur Homepage">Landesmuseum Hannover</a></b> als WeltenMuseum fünf Sammlungen in drei Welten: Die NaturWelten geben mit der einzigartigen Verbindung von lebendigem Tier und Präparat Einblick in die große naturkundliche Sammlung, die MenschenWelten verbinden die Bereiche Archäologie und Völkerkunde und die KunstWelten zeigen herausragende Stücke der Gemälde-, Skulpturen und Münzsammlung. Neben den neukonzipierten Dauerausstellungen zeigt das größte staatliche Museum Niedersachsens regelmäßig wechselnde Sonderausstellungen.</p>
+                <p>Über <b>arthistoricum.net – ART-Books</b> werden die Bestandskataloge der KunstWelten nun erstmals als Open Access-Angebot zur Verfügung gestellt.</p>			
+ 
+        </div>        
+                
+                
+      <div class="col-lg-3">
+	  <!--
+        <div id="infoBoxRechts">
+        <p>{{=IMG(_src=URL('static','images/partner/ad_picturam_logo.png'),_width='230px')}}</p>
+               
+            <p><b>Kontakt</b><br>
+            ad picturam<br>
+            Fachverlag für kunstwissenschaftliche<br />
+            Literatur e. K.<br>
+            In den Sauermatten 6a<br>
+            D-79249 Merzhausen<br><br>
+            Tel.: +49 (0)761 48911235  <br>
+            E-Mail: info@ad-picturam.de<br>
+            Internet: <a href="http://www.ad-picturam.de/" title="Homepage">ad picturam</a></p>
+        </div>                
+		-->
+      </div>
+                
+{{elif session.forced_language =='en': }}
+
+        <div class="col-lg-9">                
+                <p>Vor mehr als 150 Jahren aus dem Engagement interessierter Bürger entstanden präsentiert das <b><a href="https://www.landesmuseum-hannover.de/" title="Link zur Homepage">Landesmuseum Hannover</a></b> als WeltenMuseum fünf Sammlungen in drei Welten: Die NaturWelten geben mit der einzigartigen Verbindung von lebendigem Tier und Präparat Einblick in die große naturkundliche Sammlung, die MenschenWelten verbinden die Bereiche Archäologie und Völkerkunde und die KunstWelten zeigen herausragende Stücke der Gemälde-, Skulpturen und Münzsammlung. Neben den neukonzipierten Dauerausstellungen zeigt das größte staatliche Museum Niedersachsens regelmäßig wechselnde Sonderausstellungen.</p>
+                <p>Über <b>arthistoricum.net – ART-Books</b> werden die Bestandskataloge der KunstWelten nun erstmals als Open Access-Angebot zur Verfügung gestellt.</p>						
+        </div>        
+                
+                
+      <div class="col-lg-3">
+	  <!--
+        <div id="infoBoxRechts">
+        <p>{{=IMG(_src=URL('static','images/partner/ad_picturam_logo.png'),_width='230px')}}</p>
+               
+                      <p><b>Kontakt</b><br>
+                      ad picturam<br>
+                      Fachverlag für kunstwissenschaftliche<br />Literatur e. K.<br>
+                      In den Sauermatten 6a<br>
+                      D-79249 Merzhausen<br><br>
+                      Tel.: +49 (0)761 48911235  <br>
+                      E-Mail: info@ad-picturam.de<br>
+                      Internet: <a href="http://www.ad-picturam.de/" title="Homepage">ad picturam</a></p>
+        </div>    
+
+-->		
+      </div>
+
+                {{pass}}
+
+
+
+
+
+    </div>
+  </div>
+
