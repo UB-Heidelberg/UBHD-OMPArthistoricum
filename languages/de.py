@@ -306,6 +306,7 @@
 'Online examples': 'Online Beispiele',
 'Open Access': 'Open  Access',
 'or import from csv file': 'oder von csv Datei importieren',
+'Order and Sales': 'Bestellungen und Vertrieb',
 'Origin': 'Ursprung',
 'Originally published': 'Die Originalausgabe erschien',
 'Ort': 'Ort',
