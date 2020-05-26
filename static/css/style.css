@@ -698,10 +698,19 @@ blockquote cite a, blockquote cite a:visited, blockquote cite a:visited {
 	color: #eee;
 }
 
-/* Buch Download-Button auf Buchseite */
+/* Button-Leiste auf Buchseite */
+
+.summary > .btn-group:first-child > .btn.btn-default:first-child {
+  background: #0077bb;
+}
+
+.summary > .btn-group:first-child > .btn.btn-default:first-child > a {
+  color: #ffffff;
+}
+
 #dropdownMenu1 {
   background: #0077bb;
-  color: white;
+  color: #ffffff;
 }
 /* --- list style --- */
 ul.general {
