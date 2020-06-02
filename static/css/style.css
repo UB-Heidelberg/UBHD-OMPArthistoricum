@@ -700,6 +700,10 @@ blockquote cite a, blockquote cite a:visited, blockquote cite a:visited {
 
 /* Button-Leiste auf Buchseite */
 
+.btn.btn-default > a {
+    font-weight: normal;
+}
+
 .summary > .btn-group:first-child > .btn.btn-default:first-child {
   background: #0077bb;
 }
