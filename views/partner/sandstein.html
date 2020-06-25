@@ -1,0 +1,94 @@
+{{extend 'layout.html'}}
+
+<div id="main" class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>  {{if session.forced_language =='de': }}
+                Sandstein Verlag  
+                {{elif session.forced_language =='en': }}
+                Sandstein Verlag
+            {{pass}}
+            </h3>
+        </div>
+            
+                {{if session.forced_language =='de': }}
+
+        <div class="col-lg-9">                
+                <p>Sandstein wurde 1990 aus der Wendezeit heraus gegründet, um gesellschaftliche Debatten anzustoßen und zu begleiten. Als unabhängiger Verlag verbindet er heute einen kritischen Geist mit anspruchsvollem Design. Dabei leitet ihn die Leidenschaft, kulturhistorischen, künstlerischen und kunsthistorischen Themen eine möglichst perfekte Form zu geben: schön, lesbar, aufregend und informativ.</p>
+				<hr>
+
+                <h4>Bereits erschienen</h4>
+                <div class="row">
+                <div class="col-lg-2"><a href="{{=URL('static','images/partner/cover_raband.jpg')}}">{{=IMG(_src=URL('static','images/partner/cover_raband.jpg'),_width='80px', _class='bildrahmen')}}</a>
+                </div>
+                <div class="col-lg-9">
+                <b>Katja Lembke (Hrsg.)</b><br>                 
+                <b>{{=A('best of',_href=URL('catalog','book/668'))}}<br>
+				111 Geschichten aus dem Weltenmuseum</b><br>
+                ISBN 978-3-95498-277-6<br>
+                </div>
+                </div> 
+				
+ 
+        </div>        
+                
+                
+      <div class="col-lg-3">
+        <div id="infoBoxRechts">
+        <p>{{=IMG(_src=URL('static','images/partner/sandstein_logo.gif'),_width='230px')}}</p>
+               
+            <p><b>Kontakt</b><br>
+                  Sandstein Verlag<br>
+				  Goetheallee 6<br>
+				  D-01309 Dresden<br>
+				  Tel.: 0351 44078-0<br>
+				  Fax: 0351 44078-12<br>
+				  E-Mail: verlag@sandstein.de<br>
+				  Internet: <a href="http://www.sandstein-verlag.de" title="Homepage">Sandstein Verlag</a></p>
+        </div>                
+      </div>
+                
+{{elif session.forced_language =='en': }}
+
+        <div class="col-lg-9">                
+                <p>Sandstein wurde 1990 aus der Wendezeit heraus gegründet, um gesellschaftliche Debatten anzustoßen und zu begleiten. Als unabhängiger Verlag verbindet er heute einen kritischen Geist mit anspruchsvollem Design. Dabei leitet ihn die Leidenschaft, kulturhistorischen, künstlerischen und kunsthistorischen Themen eine möglichst perfekte Form zu geben: schön, lesbar, aufregend und informativ.</p>
+				<hr>
+                <h4>Publications</h4>
+                <div class="row">
+                <div class="col-lg-2"><a href="{{=URL('static','images/partner/cover_raband.jpg')}}">{{=IMG(_src=URL('static','images/partner/cover_raband.jpg'),_width='80px', _class='bildrahmen')}}</a>
+                </div>
+                <div class="col-lg-9">
+                <b>Katja Lembke (Hrsg.)</b><br>                 
+                <b>{{=A('best of',_href=URL('catalog','book/668'))}}<br>
+				111 Geschichten aus dem Weltenmuseum</b><br>
+                ISBN 978-3-95498-277-6<br>
+                </div>
+                </div> 				
+			
+        </div>        
+                
+                
+      <div class="col-lg-3">
+        <div id="infoBoxRechts">
+        <p>{{=IMG(_src=URL('static','images/partner/sandstein_logo.gif'),_width='230px')}}</p>
+               
+                      <p><b>Contact</b><br>
+                      Sandstein Verlag<br>
+					  Goetheallee 6<br>
+					  D-01309 Dresden<br>
+					  Tel.: 0351 44078-0<br>
+					  Fax: 0351 44078-12<br>
+					  E-Mail: verlag@sandstein.de<br>
+					  Internet: <a href="http://www.sandstein-verlag.de" title="Homepage">Sandstein Verlag</a></p>
+        </div>                
+      </div>
+
+                {{pass}}
+
+
+
+
+
+    </div>
+  </div>
+
