@@ -1,0 +1,89 @@
+{{extend 'layout.html'}}
+
+<div id="main" class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>  {{if session.forced_language =='de': }}
+                Veröffentlichungen des Netzwerks Provenienzforschung in Niedersachsen  
+                {{elif session.forced_language =='en': }}
+                Veröffentlichungen des Netzwerks Provenienzforschung in Niedersachsen
+            {{pass}}
+            </h3>
+       </div>
+
+                {{if session.forced_language =='de': }}
+
+
+<div class="col-lg-9">   
+<p>Im Bewusstsein seiner kulturpolitischen Verantwortung im Sinne der „Washingtoner Prinzipien“ und der „Gemeinsamen Erklärung“ hat das Land Niedersachsen 2015 das Netzwerk Provenienzforschung gegründet. Es bündelt die Kräfte und Kompetenzen im Bereich der Provenienzforschung auf Landesebene und verzahnt sie mit den Initiativen der Stiftung Deutsches Zentrum Kulturgutverluste.</p>
+<p>In der vorliegenden Reihe veröffentlicht das Netzwerk Provenienzforschung in Niedersachsen die Ergebnisse der jährlich veranstalteten Tagungen sowie ausgewählte wissenschaftliche Beiträge seiner Mitglieder und Partner. Im Fokus der Netzwerkarbeit stehen alle relevanten Kontexte der Herkunftsforschung: Recherchen zu NS-Raubgut und Provenienzforschung zu Sammlungsgut aus kolonialen Kontexten sowie zu Kulturgutentziehungen in der ehemaligen Sowjetischen Besatzungszone und der DDR.</p>
+<div class="widget">
+         <ul class="tags">
+                            <li>
+                               {{=A(T('Volumes'),_href=URL('catalog','series/vnpn'))}}
+                            </li>
+
+        </ul>
+</div>
+</div>
+
+<div class="col-lg-3">
+  <div  id="infoBoxRechts">
+ <!-- <p>{{=IMG(_src=URL('static','images/partner/skd_logo.png'),_width='230px')}}</p>-->
+                <br>
+                <p><b>Kontakt</b><br>
+                Claudia Andratschke <br>
+				<!--
+                Kurator<br>
+                Mathematisch-Physikalischer Salon<br>
+                Zwinger<br>
+                D-01067 Dresden<br><br>
+                Tel.: +49 351 4914 6661<br>
+                Fax: +49 351 4914 6666<br>
+                E-Mail: mps@skd.museum<br>
+                E-Mail: Michael.Korey@skd.museum-->
+				</p>
+   </div>
+</div>
+
+                     {{elif session.forced_language =='en': }}
+<div class="col-lg-9">   
+<p>Being aware of its culture political responsibility in the sense of the Washington Principles and the Joint Statement, the state of Lower Saxony founded a network for provenance research in 2015. It concentrates all forces and competences of provenance research on state level and connects them with the German Lost Art Foundation.</p>
+<p>In this book series the Network for Provenance Research in Lower Saxony publishes the results of its annual conferences, as well as chosen academic contributions of its members and partners. The network focuses on all relevant issues of provenance research, such as research on assets seized through Nazi persecution, on cultural goods from colonial contexts and on confiscation of cultural assets in the Soviet Occupation Zone and the GDR.</p>
+<div class="widget">
+         <ul class="tags">
+                            <li>
+                               {{=A(T('Volumes'),_href=URL('catalog','series/vnpn'))}}
+                            </li>
+
+        </ul>
+</div>
+</div>
+
+<div class="col-lg-3">
+  <div  id="infoBoxRechts">
+ <!-- <p>{{=IMG(_src=URL('static','images/partner/skd_logo.png'),_width='230px')}}</p>-->
+                <br>
+                <p><b>Kontakt</b><br>
+				Claudia Andratschke <br>
+				<!--
+                Kurator<br>
+                Mathematisch-Physikalischer Salon<br>
+                Zwinger<br>
+                D-01067 Dresden<br><br>
+                Tel.: +49 351 4914 6661<br>
+                Fax: +49 351 4914 6666<br>
+                E-Mail: mps@skd.museum<br>
+                E-Mail: Michael.Korey@skd.museum
+				-->
+				</p>
+   </div>
+</div>
+
+
+{{pass}}
+
+        </div>
+    </div>
+
+
