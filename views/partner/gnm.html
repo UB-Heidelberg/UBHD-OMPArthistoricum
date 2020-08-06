@@ -140,7 +140,7 @@
 				{{if session.forced_language =='de': }}
                 <p>Begleitband zur <a href="https://www.gnm.de/ausstellungen/sonderausstellungen-rueckblick/henlein-uhrenstreit/" title="Link to the exhibition">Ausstellung im Germanischen Nationalmuseum vom 04.12.2014–12.04.2015.</a></p>
 				{{elif session.forced_language =='en': }}
-				        <p>Accompanying the <a href="https://www.gnm.de/ausstellungen/sonderausstellungen-rueckblick/henlein-uhrenstreit/" title="Link to the exhibition">exhibition</a> in the Germanisches Nationalmuseum from 04.12.2014-12.04.2015.</p>
+				 <p>Accompanying the <a href="https://www.gnm.de/ausstellungen/sonderausstellungen-rueckblick/henlein-uhrenstreit/" title="Link to the exhibition">exhibition</a> in the Germanisches Nationalmuseum from 04.12.2014-12.04.2015.</p>
                 {{pass}}
                 </div>
         </div>
@@ -310,13 +310,18 @@ Restaurierte Kunstwerke von Riemenschneider bis Kremser Schmidt</b><br>
   <p>{{=IMG(_src=URL('static','images/partner/gnm_logo.gif'),_width='194px')}}
   </p>
     <br>
-    <p>{{if session.forced_language =='de': }}<b>Kontakt</b>{{elif session.forced_language =='en': }}<b>Contact</b>{{pass}}
+    <p>
+{{if session.forced_language =='de': }}
+    <b>Kontakt</b>
+{{elif session.forced_language =='en': }}
+    <b>Contact</b>
+{{pass}}
       <br>Germanisches Nationalmuseum Nürnberg
       <br>Verlag
       <br>Kornmarkt 1
       <br>D-90402 Nürnberg
       <br>
-      <br>Tel.: +49  911 1331165
+      <br>Tel.: +49 911 1331-255
       <br>(Mo&ndash;Fr, 11.00&ndash;16.00 Uhr)
       <br>Internet: 
       <a href="http://www.gnm.de/" title="Homepage">www.gnm.de</a>
