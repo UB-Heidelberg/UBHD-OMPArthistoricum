@@ -24,7 +24,7 @@
 				<div class="col-lg-9">
 					<article>
 						<div class="post-heading">
-						    <b>Claudia Andratschke, Maik Jachens  {{=T('(Eds.)')}}<br />
+						    <b>Claudia Andratschke, Maik Jachens {{=T('(Eds.)')}}<br />
                             Nach dem Erstcheck</b><br />
 							Provenienzforschung nachhaltig vermitteln<br />
 							<i>Veröffentlichungen des Netzwerks Provenienzforschung in Niedersachsen, Bd. 1</i>
@@ -38,7 +38,32 @@
 						</p>
 					</article>
 				</div>
-			</div> 			
+			</div> 		
+            
+    		<div class="row" id="weiger">
+				<div class="col-lg-2">
+					<article>
+						<div class="post-image">
+							{{=IMG(_src=URL('static','images/catalog/preview.png'),_style='width:230px')}}
+						</div>
+					</article>
+				</div>
+				<div class="col-lg-9">
+					<article>
+						<div class="post-heading">
+						    <b>Katharina Weiger<br />
+                            Studien zu einer Kreuzigung im Louvre. Malerei nach Giotto in Unteritalien und Kunst am Anjou-Hof<
+						</div>
+						<p>
+						  {{if session.forced_language =='de': }}
+                            Erscheint Winter 2020
+							{{elif session.forced_language =='en': }}
+							Coming in winter 2020
+							{{pass}}
+						</p>
+					</article>
+				</div>
+			</div>            	
  
     		<div class="row" id="kohle">
 				<div class="col-lg-2">
