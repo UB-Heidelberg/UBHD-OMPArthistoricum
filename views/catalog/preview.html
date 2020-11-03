@@ -39,6 +39,7 @@
 					</article>
 				</div>
 			</div> 		
+
             
     		<div class="row" id="weiger">
 				<div class="col-lg-2">
@@ -65,6 +66,32 @@
 				</div>
 			</div>            	
  
+    		<div class="row" id="zeichen">
+				<div class="col-lg-2">
+					<article>
+						<div class="post-image">
+							{{=IMG(_src=URL('static','images/catalog/cover_zeichen.jpg'),_style='width:230px')}}
+						</div>
+					</article>
+				</div>
+				<div class="col-lg-9">
+					<article>
+						<div class="post-heading">
+						    <b>Zeichen der Zukunft. Wahrsagen in Ostasien und Europa</b><br />
+							Katalog zur <a href="https://www.gnm.de/ausstellungen/aktuell-und-vorschau/zeichen-der-zukunft/" title="Homepage Germanisches Nationalmuseum Nürnberg, Ausstellung 'Zeichen der Zukunft'">gleichnamigen Ausstellung im Germanischen Nationalmuseum Nürnberg</a>
+						</div>
+						<p>
+						  {{if session.forced_language =='de': }}
+                            Erscheint Winter 2020
+							{{elif session.forced_language =='en': }}
+							Coming in winter 2020
+							{{pass}}
+						</p>
+					</article>
+				</div>
+			</div>
+
+
     		<div class="row" id="kohle">
 				<div class="col-lg-2">
 					<article>
@@ -219,7 +246,7 @@
 				<div class="col-lg-2">
 					<article>
 						<div class="post-image">
-							{{=IMG(_src=URL('static','images/catalog/preview.png'),_style='width:230px')}}
+							{{=IMG(_src=URL('static','images/catalog/cover_treffpunkt_rom.jpg'),_style='width:230px')}}
 						</div>
 					</article>
 				</div>
