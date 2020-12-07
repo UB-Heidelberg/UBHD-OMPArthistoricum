@@ -40,6 +40,31 @@
 				</div>
 			</div> 		
 
+    		<div class="row" id="giromette">
+				<div class="col-lg-2">
+					<article>
+						<div class="post-image">
+							{{=IMG(_src=URL('static','images/catalog/preview.png'),_style='width:230px')}}
+						</div>
+					</article>
+				</div>
+				<div class="col-lg-9">
+					<article>
+						<div class="post-heading">
+						    <b>Staatliche Kunstsammlungen Dresden, Nationalgalerie in Prag {{=T('(Eds.)')}}<br />
+                            „Aufzeichnungen des Prof. Barvitius über seine Reise nach Dresden, Berlin u. München“. Online-Edition einer Schlüsselquelle zur deutsch-böhmischen Museumsgeschichte des späten 19. Jahrhunderts</b><br>
+							Online-Edition einer Schlüsselquelle zur deutsch-böhmischen Museumsgeschichte des späten 19. Jahrhunderts
+						</div>
+						<p>
+						  {{if session.forced_language =='de': }}
+                            Erscheint Winter 2020
+							{{elif session.forced_language =='en': }}
+							Coming in winter 2020
+							{{pass}}
+						</p>
+					</article>
+				</div>
+			</div>   
             
     		<div class="row" id="weiger">
 				<div class="col-lg-2">
