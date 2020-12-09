@@ -339,10 +339,15 @@ def book():
 
     press = ompdal.getPress(press_id)
     submission = ompdal.getPublishedSubmission(submission_id, press_id=press_id)
-    chapter_id = int(str(request.args[1])[1:]) if len(request.args) > 1 else 0
-
     if not submission or not press:
         raise HTTP(400)
+    if len(request.args) > 1 and request.args[1][0] == 'c' and request.args[1][1:].isdigit():
+        chapter_id = int(request.args[1][1:])
+    elif len(request.args) > 1:
+        redirect(URL(r=request, args=request.args[0:1]))
+    else:
+        chapter_id = 0
+
 
     submission_settings = OMPSettings(ompdal.getSubmissionSettings(submission_id))
     press_settings = OMPSettings(ompdal.getPressSettings(press.press_id))
