@@ -115,10 +115,6 @@
 				</div>
 			</div>            
 
-    		             
-
-
-
 			<div class="row" id="hoefer">
 				<div class="col-lg-2">
 					<article>
@@ -179,7 +175,30 @@
 				</div>
 			</div>
 		           
-
+    		<div class="row" id="perrier">
+				<div class="col-lg-2">
+					<article>
+						<div class="post-image">
+							{{=IMG(_src=URL('static','images/catalog/cover_perrier.jpg'),_style='width:230px')}}
+						</div>
+					</article>
+				</div>
+				<div class="col-lg-9">
+					<article>
+						<div class="post-heading">
+						    <b>Danièle Perrier, AICA Deutschland {{=T('(Ed.)')}}<br />
+                            Walter Grasskamp. Ein Engel verschwindet. Künstlerportraits aus vierzig Jahren</b>
+						</div>
+						<p>
+						  {{if session.forced_language =='de': }}
+                            Erscheint Frühjahr 2021
+							{{elif session.forced_language =='en': }}
+							Coming in spring 2021
+							{{pass}}
+						</p>
+					</article>
+				</div>
+			</div>
             
 			<div class="row" id="stoltz">
 				<div class="col-lg-2">
