@@ -200,7 +200,32 @@
 					</article>
 				</div>
 			</div>
-            
+			
+    		<div class="row" id="schmiedlechner">
+				<div class="col-lg-2">
+					<article>
+						<div class="post-image">
+							{{=IMG(_src=URL('static','images/catalog/preview.png'),_style='width:230px')}}
+						</div>
+					</article>
+				</div>
+				<div class="col-lg-9">
+					<article>
+						<div class="post-heading">
+						    <b>Patricia Schmiedlechner<br />
+                            Modi Operandi in Rubens’s Workshop. A Study on the Creative Process and Studio Practice</b>
+						</div>
+						<p>
+						    {{if session.forced_language =='de': }}
+							Erscheint Frühjahr 2021
+							{{elif session.forced_language =='en': }}
+							Coming in spring 2021
+							{{pass}}
+						</p>
+					</article>
+				</div>
+			</div>  
+
 			<div class="row" id="stoltz">
 				<div class="col-lg-2">
 					<article>
@@ -233,32 +258,8 @@
 
 					</article>
 				</div>
-			</div> 
-			
-    		<div class="row" id="schmiedlechner">
-				<div class="col-lg-2">
-					<article>
-						<div class="post-image">
-							{{=IMG(_src=URL('static','images/catalog/preview.png'),_style='width:230px')}}
-						</div>
-					</article>
-				</div>
-				<div class="col-lg-9">
-					<article>
-						<div class="post-heading">
-						    <b>Patricia Schmiedlechner<br />
-                            Modi Operandi in Rubens’s Workshop. A Study on the Creative Process and Studio Practice</b>
-						</div>
-						<p>
-						    {{if session.forced_language =='de': }}
-							Erscheint Frühjahr 2021
-							{{elif session.forced_language =='en': }}
-							Coming in spring 2021
-							{{pass}}
-						</p>
-					</article>
-				</div>
-			</div>  
+			</div>
+
 
     		<div class="row" id="cordez">
 				<div class="col-lg-2">
