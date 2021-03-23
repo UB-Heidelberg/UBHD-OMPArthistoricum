@@ -84,6 +84,8 @@
 'Belletristik': 'Belletristik',
 'Bindeart': 'Bindeart',
 'Book': 'Buch',
+'Book (PDF)': 'Buch (PDF)',
+'Book (XML)': 'Buch (XML)',
 'Book Download (PDF)': 'Buch herunterladen (PDF)',
 'book not found': 'book not found',
 'Book Proposal': 'Book Proposal',

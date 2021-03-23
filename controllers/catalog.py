@@ -389,7 +389,11 @@ def book():
         if full_epub_file:
             publication_format.associated_items['full_file'] = OMPItem(full_epub_file, OMPSettings(ompdal.getSubmissionFileSettings(full_epub_file.file_id)))
 
-        if full_file:
+        if full_file and full_file.file_type == 'text/xml':
+            full_file_xml = full_file
+            publication_format.associated_items['full_file_xml'] = OMPItem(full_file_xml, OMPSettings(ompdal.getSubmissionFileSettings(full_file.file_id)))
+
+        if full_file and full_file.file_type == 'application/pdf':
             publication_format.associated_items['full_file'] = OMPItem(full_file, OMPSettings(ompdal.getSubmissionFileSettings(full_file.file_id)))
 
         digital_publication_formats.append(publication_format)
