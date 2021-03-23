@@ -84,6 +84,7 @@
 'Belletristik': 'Belletristik',
 'Bindeart': 'Bindeart',
 'Book': 'Buch',
+'Book (HTML)': 'Buch (HTML)',
 'Book (PDF)': 'Buch (PDF)',
 'Book (XML)': 'Buch (XML)',
 'Book Download (PDF)': 'Buch herunterladen (PDF)',

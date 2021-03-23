@@ -1,9 +1,10 @@
 {{
 
 for pf in digital_publication_formats:
-    full_file_xml = pf.associated_items.get('full_file_xml')
-    if full_file_xml:
-        = A(T('Book (XML)'), _href=downloadLink(request, full_file_xml.attributes, myconf.take('web.url'), override_op='download', attachment=True), _target="_blank", _class="btn btn-default")
+    full_file = pf.associated_items.get('full_file')
+    format_name = pf.settings.getLocalizedValue('name', locale)
+    if full_file and format_name.lower() == 'xml':
+        = A(T('Book (XML)'), _href=downloadLink(request, full_file.attributes, myconf.take('web.url'), override_op='download', attachment=True), _target="_blank", _class="btn btn-default")
     pass
 pass
 
