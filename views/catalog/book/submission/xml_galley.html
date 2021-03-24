@@ -5,10 +5,12 @@ for pf in digital_publication_formats:
     format_name = pf.settings.getLocalizedValue('name', locale)
     if pf.attributes.remote_url:
         pf_href = pf.attributes.remote_url
-    else:
+    elif full_file:
         pf_href = downloadLink(request, full_file.attributes, myconf.take('web.url'), override_op='download', attachment=True)
+    else:
+	pf_href = ''
     pass
-    if full_file and format_name.lower() == 'xml':
+    if pf_href and format_name.lower() == 'xml':
         = A(T('Book (XML)'), _href=pf_href, _target="_blank", _class="btn btn-default")
     pass
 pass

@@ -397,6 +397,7 @@ def book():
         for i in chapters:
             chapter_file = ompdal.getLatestRevisionOfChapterFileByPublicationFormat(i.attributes.chapter_id, pf.publication_format_id)
             if chapter_file:
+                publication_format.associated_items['has_chapter_files'] = True
                 i.associated_items.setdefault('files', {})[pf.publication_format_id] = OMPItem(chapter_file, OMPSettings(ompdal.getSubmissionFileSettings(chapter_file.file_id)))
             if chapter_id > 0 and chapter_id == i.attributes.chapter_id:
                 c = i
