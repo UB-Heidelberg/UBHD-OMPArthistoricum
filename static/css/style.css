@@ -717,6 +717,12 @@ blockquote cite a, blockquote cite a:visited, blockquote cite a:visited {
 .summary > .btn-group:first-child > .btn.btn-default:first-child > a {
   color: #ffffff;
 }
+/* bestimmte Buttons hervorheben, hinzugefügt von nw am 24.3.2021*/
+
+.btn.btn-highlight {
+	background: #0077bb;
+	color: #ffffff;
+}
 
 .btn.btn-highlight {
 	background: #0077bb;
