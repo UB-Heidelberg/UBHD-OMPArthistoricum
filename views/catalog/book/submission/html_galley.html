@@ -3,7 +3,7 @@ for pf in digital_publication_formats:
     full_file = pf.associated_items.get('full_file')
     format_name = pf.settings.getLocalizedValue('name', locale)
     if format_name.lower() == 'html' and full_file and ("xml" in full_file.attributes.file_type or "html" in full_file.attributes.file_type):
-        = A(T('Book (HTML)'), _href=downloadLink(request, full_file.attributes, myconf.take('web.url'), full_file.settings.getLocalizedValue("vgWortPublic", "")), _target="_blank", _class="btn btn-primary")
+        = A(T('Book (HTML)'), _href=downloadLink(request, full_file.attributes, myconf.take('web.url'), full_file.settings.getLocalizedValue("vgWortPublic", "")), _target="_blank", _class="btn btn-default btn-highlight")
     pass
 pass
 }}
