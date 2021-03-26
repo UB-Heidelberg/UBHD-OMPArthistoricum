@@ -37,8 +37,11 @@
                         <!--vgwPixelCall script - has to be included before pdf_galley.html and chapter_list.html -->
                         {{include '../static/omp-resources/views/catalog/vgwort.html'}}
                         <div class="summary">
-                        {{include 'catalog/book/submission/html_galley.html'}}
-                        {{include 'catalog/book/submission/pdf_galley.html'}}
+                            <span class="book-file-links">
+                            {{include 'catalog/book/submission/html_galley.html'}}
+                            {{include 'catalog/book/submission/pdf_galley.html'}}
+                            {{include 'catalog/book/submission/xml_galley.html'}}
+                            </span>
                         <!--purchase -->
                         {{include 'catalog/book/submission/purchase.html'}}
                          <!--purchase -->

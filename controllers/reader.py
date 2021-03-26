@@ -84,10 +84,12 @@ def home():
 def download():
     submission_id = request.args[0]
     submission_file = request.args[1]
+    if 'attachment' in request.vars and request.vars['attachment'].lower() == 'true':
+        response.headers['Content-Disposition'] = "attachment; filename=" + submission_file
     path = os.path.join(request.folder, 'static/files/presses', myconf.take('omp.press_id'), 'monographs',
                         submission_id, 'submission/proof', submission_file)
-    response.headers['ContentType'] = "application/pdf"
-    #response.headers['Content-Disposition'] = "attachment; filename=" + submission_file
+    #response.headers['ContentType'] = "application/pdf"
+
     return response.stream(path, chunk_size=1048576)
 
 

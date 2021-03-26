@@ -5,7 +5,7 @@
             <div class="chapter_cell">{{=T('Contents')}}</div>
                 {{for pf in digital_publication_formats:}}
                 {{format_name=pf.settings.getLocalizedValue('name', locale)}}
-                {{if format_name != 'EPUB':}}
+                {{if format_name != 'EPUB' and pf.associated_items.get('has_chapter_files'):}}
                     <div class="chapter_cell">{{=TD(format_name)}}</div>
                 {{pass}}
                 {{pass}}

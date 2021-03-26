@@ -273,7 +273,8 @@ def index():
                                                                          approved=True)
                              for pd in ompdal.getPublicationDatesByPublicationFormat(pf.publication_format_id)]
         for s in ompdal.getDigitalPublicationFormats(submission_row.submission_id, available=True, approved=True):
-            if s['remote_url']:
+            pub_format_settings = OMPSettings(ompdal.getPublicationFormatSettings(s.publication_format_id))
+            if s['remote_url'] and pub_format_settings.getLocalizedValue('name', locale) != 'XML':
                 frontpage_url = s['remote_url']
                 break
         else:
@@ -397,6 +398,7 @@ def book():
         for i in chapters:
             chapter_file = ompdal.getLatestRevisionOfChapterFileByPublicationFormat(i.attributes.chapter_id, pf.publication_format_id)
             if chapter_file:
+                publication_format.associated_items['has_chapter_files'] = True
                 i.associated_items.setdefault('files', {})[pf.publication_format_id] = OMPItem(chapter_file, OMPSettings(ompdal.getSubmissionFileSettings(chapter_file.file_id)))
             if chapter_id > 0 and chapter_id == i.attributes.chapter_id:
                 c = i
