@@ -110,6 +110,8 @@
 'Categories': 'Sparten',
 'category': 'sparte',
 'Category': 'Sparte',
+'Chapter (HTML)': 'Kapitel (HTML)',
+'Chapter (PDF)': 'Kapitel (PDF)',
 'Chapter Download': 'Kapitel Download',
 'Chapters': 'Kapitel',
 'Charles VII et le conseil municipal rouennais': 'Charles VII et le conseil municipal rouennais',
