@@ -273,7 +273,8 @@ def index():
                                                                          approved=True)
                              for pd in ompdal.getPublicationDatesByPublicationFormat(pf.publication_format_id)]
         for s in ompdal.getDigitalPublicationFormats(submission_row.submission_id, available=True, approved=True):
-            if s['remote_url']:
+            pub_format_settings = OMPSettings(ompdal.getPublicationFormatSettings(s.publication_format_id))
+            if s['remote_url'] and pub_format_settings.getLocalizedValue('name', locale) != 'XML':
                 frontpage_url = s['remote_url']
                 break
         else:
