@@ -6,7 +6,7 @@ for pf in digital_publication_formats:
     if pf.attributes.remote_url:
         pf_href = pf.attributes.remote_url
     elif full_file:
-        pf_href = downloadLink(full_file, override_op='download', attachment=True)
+        pf_href = downloadLink(full_file.attributes, override_op='download', attachment=True)
     else:
 	pf_href = ''
     pass
