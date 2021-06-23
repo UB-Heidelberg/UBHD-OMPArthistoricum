@@ -73,7 +73,7 @@
                                                 <div class="chapter_cell"> {{=format}}</div>
                                                 <div class="chapter_cell">
                                                     <div class="chapter_file pull-right">
-                                                        {{=A(I(_class=css_class),_target=target, _href=downloadLink(request, c_file.attributes, myconf.take('web.url'), c_file.settings.getLocalizedValue('vgWortPublic', '')))}}
+                                                        {{=A(I(_class=css_class),_target=target, _href=downloadLink(c_file.attributes))}}
                                                     </div>
                                                 </div>
                                                 <div class="chapter_cell"> </div>
