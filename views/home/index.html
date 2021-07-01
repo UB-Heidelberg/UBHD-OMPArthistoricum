@@ -123,16 +123,16 @@ We are using the Open-Source-Software OMP (Open Monograph Press) by the Public K
                   </div>
                 </div>
         
-          	   	<div class="col-lg-3">
-                  <div class="box">
-                    <div class="box-gray aligncenter"><h4>{{=T('New Titles')}}</h4> 
-                      {{=A(IMG(_src=URL(myconf.take('web.application'),'static','files/presses/2/monographs/863/simple/cover.jpg'),_alt='',_style='width:145px', _class='bildrahmen'),_href=URL('catalog','book/863'))}}                                    
-                    </div>
-                    <div class="box-bottom"> 
-                    {{=A(T('More Information'),_href=URL('catalog','book/863'))}}  
-                    </div>
+		  	<div class="col-lg-3">              
+                <div class="box">
+                  <div class="box-gray aligncenter">
+                <h4>{{=T('Soon')}}</h4>
+                {{=A(IMG(_src=URL(myconf.take('web.application'),'static','/images/catalog/cover_hofbauer.jpg'),_alt='',_style='width:145px', _class='bildrahmen'),_href=URL('catalog','preview#hofbauer'))}} 
+      			  </div>
+                  <div class="box-bottom">{{=A(T('More Information'),_href=URL('catalog','preview#hofbauer'))}}
                   </div>
-                </div>        
+                </div>
+            </div>    
               
          
 		  	<div class="col-lg-3">              
@@ -144,7 +144,7 @@ We are using the Open-Source-Software OMP (Open Monograph Press) by the Public K
                   <div class="box-bottom">{{=A(T('More Information'),_href=URL('catalog','preview#lang'))}}
                   </div>
                 </div>
-          </div>
+            </div>
 
     	 <div class="col-lg-3">
                   <div class="box">
