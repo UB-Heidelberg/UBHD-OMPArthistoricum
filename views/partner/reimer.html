@@ -64,7 +64,17 @@
    </div>
 
 {{if session.forced_language =='de': }}
-   <div class="row">
+    <div class="row">
+      <div class="col-xs-12"><h4>Bereits erschienen</h4>
+    </div> 
+     <div class="col-lg-1"><a href="{{=URL('static','files/presses/2/monographs/908/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/908/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
+        </div>
+        <div class="col-lg-11">
+          <b>Antoinette Maget Dominicé, Claudius Stein und Niklas Wolf (Hrsg.)<br />
+          {{=A('Lehr- und Schausammlungen im Wandel – Archive, Displays, Objekte',_href=URL('catalog','book/908'))}}</b>
+        </div>
+    </div>
+    <div class="row">
       <div class="col-xs-12"><h4>Bereits erschienen</h4></div> 
               <div class="col-lg-1"><a href="{{=URL('static','files/presses/2/monographs/674/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/674/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
 				</div>
@@ -79,8 +89,7 @@
       </div>
       <div class="col-lg-11">
       <b>Romana Sammern, Julia Saviello (Hg.)</b><br>                 
-      <b>{{=A('Schönheit — Der Körper als Kunstprodukt',_href=URL('catalog','book/425'))}}</b><br>
-      ISBN: 978-3-496015-93-2, Paperback, 374 Seiten<br>
+      <b>{{=A('Schönheit — Der Körper als Kunstprodukt',_href=URL('catalog','book/425'))}}</b>
      </div>
     </div>
                 
@@ -103,11 +112,18 @@
            <h4>Already Published</h4>
            </div>
            
-           
+
+        <div class="col-lg-1"><a href="{{=URL('static','files/presses/2/monographs/908/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/908/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
+           </div>
+           <div class="col-lg-11">
+             <b>Antoinette Maget Dominicé, Claudius Stein und Niklas Wolf (Eds.)<br />
+             {{=A('Lehr- und Schausammlungen im Wandel – Archive, Displays, Objekte',_href=URL('catalog','book/908'))}}</b>
+           </div>
+       </div>
         <div class="col-lg-1"><a href="{{=URL('static','files/presses/2/monographs/674/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/674/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
 				</div>
         <div class="col-lg-11">
-           <b>Karen Fromm, Sophia Greiff, Malte Radtki, Anna Stemmler (Hrsg.) <br />
+           <b>Karen Fromm, Sophia Greiff, Malte Radtki, Anna Stemmler (Eds.) <br />
 		   		{{=A('image/con/text',_href=URL('catalog','book/674'))}}</b>
         </div>
     </div>  
