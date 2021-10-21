@@ -1,0 +1,98 @@
+{{extend 'layout.html'}}
+
+<div id="main" class="container">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>  {{if session.forced_language =='de': }}
+              Gebr. Mann Verlag
+                {{elif session.forced_language =='en': }}
+              Gebr. Mann Verlag
+            {{pass}}
+            </h3>
+        </div>
+            
+
+{{if session.forced_language =='de': }}
+      <div class="col-lg-9">                
+          <p>Der Gebr. Mann Verlag in Berlin gehört zu den wichtigsten Verlagen für Veröffentlichungen in den Fachgebieten Kunstgeschichte, Architekturgeschichte und Archäologie. Die Anfänge der verlegerischen Tätigkeit gehen auf die Zusammenarbeit mit dem Deutschen Archäologischen Institut und seinen weltweiten Abteilungen seit den 1920er Jahren zurück. Das Verlagsprogramm ist durch zahlreiche Einzelveröffentlichungen sowie durch groß angelegte Reihenpublikationen geprägt, deren Herausgabe renommierte Wissenschaftsinstitutionen verantworten. Einen weiteren Schwerpunkt bilden hochwertige Reprints von kunsthistorischen Schlüsselwerken sowie Veröffentlichungen zur Architektur der klassischen Moderne.</p>  
+          <p>1998 wurde der Gebr. Mann Verlag mit dem Dietrich Reimer Verlag zusammengeführt zu einer GmbH. Dazu gehört auch der Deutsche Verlag für Kunstwissenschaft. Zudem verantwortet der Verlag den Vertrieb der bibliophilen kunsthistorischen Publikationen aus der Edition Imorde.</p>
+          <p>2006 übernahm Dr. Hans-Robert Cram das Gesamtunternehmen und führt die Entwicklung systematisch fort. Er öffnete das Programm für Bücher, die das breiter interessierte Publikum ansprechen. Der Verlag wählt Veröffentlichungen sorgfältig nach inhaltlicher Qualität aus und bietet individuelle Lösungen zur Realisierung an. Ein professionelles Lektorat sowie eine hohe Gestaltungs-, Satz- und Druckqualität sind das Markenzeichen der Bücher. Wir liefern über LKG aus und haben internationale Kooperationspartner für den Vertrieb.</p>
+          <p>Seit 2018 besteht zusätzlich die Möglichkeit, Werke Open Access zu veröffentlichen, zum Beispiel auf arthistoricum.net – ART-Books oder auf der Homepage eines SFBs oder DFG-Projektes. Ergänzend können kleine Auflagen im Digitaldruck oder als Print on Demand angeboten werden.</p>
+      </div> 
+      
+{{elif session.forced_language =='en': }}
+        <div class="col-lg-9">                
+          <p>Der Gebr. Mann Verlag in Berlin gehört zu den wichtigsten Verlagen für Veröffentlichungen in den Fachgebieten Kunstgeschichte, Architekturgeschichte und Archäologie. Die Anfänge der verlegerischen Tätigkeit gehen auf die Zusammenarbeit mit dem Deutschen Archäologischen Institut und seinen weltweiten Abteilungen seit den 1920er Jahren zurück. Das Verlagsprogramm ist durch zahlreiche Einzelveröffentlichungen sowie durch groß angelegte Reihenpublikationen geprägt, deren Herausgabe renommierte Wissenschaftsinstitutionen verantworten. Einen weiteren Schwerpunkt bilden hochwertige Reprints von kunsthistorischen Schlüsselwerken sowie Veröffentlichungen zur Architektur der klassischen Moderne.</p>  
+          <p>1998 wurde der Gebr. Mann Verlag mit dem Dietrich Reimer Verlag zusammengeführt zu einer GmbH. Dazu gehört auch der Deutsche Verlag für Kunstwissenschaft. Zudem verantwortet der Verlag den Vertrieb der bibliophilen kunsthistorischen Publikationen aus der Edition Imorde.</p>
+          <p>2006 übernahm Dr. Hans-Robert Cram das Gesamtunternehmen und führt die Entwicklung systematisch fort. Er öffnete das Programm für Bücher, die das breiter interessierte Publikum ansprechen. Der Verlag wählt Veröffentlichungen sorgfältig nach inhaltlicher Qualität aus und bietet individuelle Lösungen zur Realisierung an. Ein professionelles Lektorat sowie eine hohe Gestaltungs-, Satz- und Druckqualität sind das Markenzeichen der Bücher. Wir liefern über LKG aus und haben internationale Kooperationspartner für den Vertrieb.</p>
+          <p>Seit 2018 besteht zusätzlich die Möglichkeit, Werke Open Access zu veröffentlichen, zum Beispiel auf arthistoricum.net – ART-Books oder auf der Homepage eines SFBs oder DFG-Projektes. Ergänzend können kleine Auflagen im Digitaldruck oder als Print on Demand angeboten werden.</p> 
+        </div>                  
+{{pass}}
+
+
+{{if session.forced_language =='de': }}                
+      <div class="col-lg-3">
+        <div id="infoBoxRechts">
+        <p>{{=IMG(_src=URL('static','images/partner/logo_gmv.jpg'),_width='150px')}}</p>
+                      <p style="padding-top: 1em;"><b>Kontakt</b><br>
+                      Gebr. Mann Verlag<br>
+                      Dr. Hans-Robert Cram / Verleger<br>
+                      Berliner Str. 53<br>
+                      10713 Berlin<br><br>
+                      Tel.: +49 30 700 13 88 0 <br>
+                      E-Mail: hrcram@reimer-verlag.de<br>
+                      Internet: <a href="http://www.reimer-mann-verlag.de/mann/index.php" title="Homepage Gebr. Mann Verlag">Gebr. Mann Verlag</a></p>
+        </div>                
+      </div>
+{{elif session.forced_language =='en': }}      
+      <div class="col-lg-3">
+        <div id="infoBoxRechts">
+        <p>{{=IMG(_src=URL('static','images/partner/logo_gmv.jpg'),_width='150px')}}</p>
+                      <p style="padding-top: 1em;"><b>Contact</b><br>
+                      Gebr. Mann Verlag<br>
+                      Dr. Hans-Robert Cram / Verleger<br>
+                      Berliner Str. 53<br>
+                      10713 Berlin<br>
+                      Germany<br><br>
+                      Tel.: +49 30 700 13 88 0<br>
+                      E-Mail: hrcram@reimer-verlag.de<br>
+                      Internet: <a href="http://www.reimer-mann-verlag.de/mann/index.php" title="Homepage Gebr. Mann Verlag">Gebr. Mann Verlag</a></p>
+        </div>                
+       </div>
+{{pass}}       
+
+      
+   </div>
+
+{{if session.forced_language =='de': }}
+    <div class="row">
+      <div class="col-xs-12"><h4>Bereits erschienen</h4>
+    </div> 
+
+     <div class="col-lg-1"><a href="{{=URL('static','files/presses/2/monographs/787/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/787/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
+        </div>
+        <div class="col-lg-11">
+          <b>Anika Reineke<br />
+          {{=A('Der Stoff der Räume',_href=URL('catalog','book/787'))}}, Edition Imorde 2020 </b>
+        </div>
+    </div>
+
+                
+{{elif session.forced_language =='en': }}
+
+     
+      <div class="row">
+           <div class="col-xs-12">
+           <h4>Already Published</h4>
+           </div>           
+           <div class="col-lg-1"><a href="{{=URL('static','files/presses/2/monographs/787/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/787/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
+           </div>
+           <div class="col-lg-11">
+             <b>Anika Reineke<br />
+             {{=A('Der Stoff der Räume',_href=URL('catalog','book/787'))}}, Edition Imorde 2020 </b>
+           </div>
+       </div>
+          
+                {{pass}}
+     </div>   
