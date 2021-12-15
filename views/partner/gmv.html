@@ -66,26 +66,48 @@
    </div>
 
 {{if session.forced_language =='de': }}
-    <div class="row">
+  <div class="row">
       <div class="col-xs-12"><h4>Bereits erschienen</h4>
-    </div> 
+      </div>
+  </div> 
+  
+  <div class="row">
+    <div class="col-lg-1"><a href="{{=URL('static','files/presses/2/monographs/953/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/953/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
+    </div>
+    <div class="col-lg-11">
+      <b>Thomas Schleper (Hrsg.) <br />
+      {{=A('Kultur unterwegs: Relevanz einer Instanz. Reisebilder, Dingwelten, Perspektiven',_href=URL('catalog','book/953'))}}</b>
+    </div>
+  </div>
 
+  <div class="row">
      <div class="col-lg-1"><a href="{{=URL('static','files/presses/2/monographs/787/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/787/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
         </div>
         <div class="col-lg-11">
           <b>Anika Reineke<br />
           {{=A('Der Stoff der Räume',_href=URL('catalog','book/787'))}}, Edition Imorde 2020 </b>
         </div>
-    </div>
+  </div>
 
                 
 {{elif session.forced_language =='en': }}
+    <div class="row">
+          <div class="col-xs-12">
+            <h4>Already Published</h4>
+            </div>       
+    </div>
 
+    <div class="row">
+        <div class="col-lg-1"><a href="{{=URL('static','files/presses/2/monographs/953/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/953/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
+        </div>
+        <div class="col-lg-11">
+          <b>Thomas Schleper (Ed.) <br />
+          {{=A('Kultur unterwegs: Relevanz einer Instanz. Reisebilder, Dingwelten, Perspektiven',_href=URL('catalog','book/953'))}}</b>
+        </div>
+    </div>
      
       <div class="row">
-           <div class="col-xs-12">
-           <h4>Already Published</h4>
-           </div>           
+      
            <div class="col-lg-1"><a href="{{=URL('static','files/presses/2/monographs/787/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/787/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
            </div>
            <div class="col-lg-11">
