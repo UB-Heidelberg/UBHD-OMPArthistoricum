@@ -82,8 +82,12 @@ def home():
 
 
 def download():
+    if len(request.args) < 2:
+        raise HTTP(404)
     submission_id = request.args[0]
     submission_file = request.args[1]
+    if not submission_id or not submission_file:
+        raise HTTP(404)
     if 'attachment' in request.vars and request.vars['attachment'].lower() == 'true':
         response.headers['Content-Disposition'] = "attachment; filename=" + submission_file
     path = os.path.join(request.folder, 'static/files/presses', myconf.take('omp.press_id'), 'monographs',
