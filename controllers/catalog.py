@@ -250,7 +250,10 @@ def index():
 
     ignored_submission_id = myconf.take('omp.ignore_submissions') if myconf.take(
         'omp.ignore_submissions') else -1
-
+    try:
+        current_page = int(request.vars.get('page_nr', 1)) - 1
+    except ValueError as e:
+        raise HTTP(400, "Error with value of page_nr: " + str(e)) from e
     submissions = []
     submission_rows = ompdal.getSubmissionsByPress(press.press_id, ignored_submission_id)
 
@@ -316,9 +319,7 @@ def index():
     else:
         session.sort_by = 'datePublished-2'
 
-    current = int(request.vars.get('page_nr', 1)) - 1
-
-    b = Browser(submissions, current, locale, session.get('per_page'), session.get('sort_by'), session.get('filters'))
+    b = Browser(submissions, current_page, locale, session.get('per_page'), session.get('sort_by'), session.get('filters'))
     submissions = b.process_submissions(submissions)
 
     return locals()
