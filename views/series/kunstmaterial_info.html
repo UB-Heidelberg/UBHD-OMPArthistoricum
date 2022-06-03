@@ -1,1 +1,83 @@
+{{extend 'layout.html'}}
+
+<div id="main" class="container">
+    <div class="row">
+<div class="col-lg-12">
+            <h3>  {{if session.forced_language =='de': }}
+                outlines 
+                {{elif session.forced_language =='en': }}
+                outlines  
+            {{pass}}
+            </h3>
+</div>            
+
+
+                {{if session.forced_language =='de': }}
+
+
+<div class="col-lg-9">
+<p>Die vom Schweizerischen Institut für Kunstwissenschaft (SIK-ISEA) herausgegebene Schriftenreihe <strong>KUNSTmaterial</strong> erscheint seit 2007 in unregelmässigen Zeitabständen und bei wechselnden Verlagen. Sie präsentiert wissenschaftliche Ergebnisse, welche im Austausch der Disziplinen Kunsttechnologie/Restaurierungswissenschaft, Materialanalytik und Kunstgeschichte, auch in Zusammenarbeit mit anderen Institutionen und Fachpersonen, erarbeitet wurden. Der thematische Schwerpunkt liegt bei Materialien und Techniken der Malerei um 1900. Verantwortlich ist Karoline Beltinger, die Artikelvergabe erfolgt auf Einladung.</p>
+
+  <!--
+<div class="widget">
+         <ul class="tags">
+              <li>
+              {{=A(T('Volumes'),_href=URL('catalog','series/kunstmaterial'))}}
+              </li>
+         </ul>
+</div>
+-->
+</div>
+<div class="col-lg-3">
+  <div id="infoBoxRechts">
+  <!--  <p>{{=IMG(_src=URL('static','images/series/sik_logo.png'),_width='230px')}}</p>-->
+    <p><b>Kontakt</b><br>
+       Schweizerisches Institut für Kunstwissenschaft (SIK-ISEA), Zürich / Lausanne<br>
+       PD Dr. Roger Fayet, Direktor, Zürich<br>
+       lic. phil. Regula Krähenbühl, Leiterin Wissenschaftsforum, Zürich<br><br>
+       
+       Internet: <a href="https://www.sik-isea.ch/de-ch/" title="Homepage"><br>Homepage Schweizerisches Institut für Kunstwissenschaft (SIK-ISEA)</a>
+    </p>
+    
+  </div>
+</div>                
+
+                     {{elif session.forced_language =='en': }}
+
+
+<div class="col-lg-9">
+<p>Die vom Schweizerischen Institut für Kunstwissenschaft (SIK-ISEA) herausgegebene Schriftenreihe <strong>KUNSTmaterial</strong> erscheint seit 2007 in unregelmässigen Zeitabständen und bei wechselnden Verlagen. Sie präsentiert wissenschaftliche Ergebnisse, welche im Austausch der Disziplinen Kunsttechnologie/Restaurierungswissenschaft, Materialanalytik und Kunstgeschichte, auch in Zusammenarbeit mit anderen Institutionen und Fachpersonen, erarbeitet wurden. Der thematische Schwerpunkt liegt bei Materialien und Techniken der Malerei um 1900. Verantwortlich ist Karoline Beltinger, die Artikelvergabe erfolgt auf Einladung.</p>
+<!--
+<div class="widget">
+         <ul class="tags">
+              <li>
+              {{=A(T('Volumes'),_href=URL('catalog','series/kunstmaterial'))}}
+              </li>
+         </ul>
+</div>
+-->
+</div>
+
+<div class="col-lg-3">
+  <div id="infoBoxRechts">
+   <!-- <p>{{=IMG(_src=URL('static','images/series/sik_logo.png'),_width='230px')}}</p> -->
+    <p><b>Contact</b><br>
+       Schweizerisches Institut für Kunstwissenschaft (SIK-ISEA), Zürich / Lausanne<br>
+       PD Dr. Roger Fayet, Direktor, Zürich<br>
+       lic. phil. Regula Krähenbühl, Leiterin Wissenschaftsforum, Zürich<br><br>
+       
+       Internet: <a href="https://www.sik-isea.ch/de-ch/" title="Homepage"><br>Homepage Schweizerisches Institut für Kunstwissenschaft (SIK-ISEA)</a>
+    </p>
+<!--    <p><b>ISSN</b><br>ISSN (Print): 2627-6526<br>ISSN (online): 2627-6771</p>-->
+  </div>
+</div>   
+
+
+
+{{pass}}
+
+        </div>
+    </div>
+                      
+
 
