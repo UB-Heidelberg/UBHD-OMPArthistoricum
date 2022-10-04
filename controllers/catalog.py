@@ -499,4 +499,5 @@ def book():
         # Select different template for chapters
         citation = ompformat.formatChapterCitation(citation, c, locale)
         response.view = 'catalog/book/chapter/index.html'
+    has_download_format = [(pf.associated_items.get('full_file', None).attributes.file_type != "text/html" and pf.associated_items.get('full_file', None).attributes.file_type != "text/xml") for pf in digital_publication_formats if pf.associated_items.get('full_file', None)].count(True)
     return locals()
