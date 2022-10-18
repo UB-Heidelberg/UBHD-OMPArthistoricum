@@ -4,7 +4,9 @@ identifiers_title = T("Identifiers") if not c else T("Identifiers (Book)")
 identification_codes = [i for i in [pf.associated_items.get('identification_codes', []) for pf in digital_publication_formats + physical_publication_formats] if i]
 ic = []
 ic.append(H5(identifiers_title, _style="color: #656565; margin-bottom: 0.5em; margin-top: 1.2em;")  if identification_codes else DIV())
-ic.append(DIV(A(formatDoi(doi), _href=formatDoi(doi))))
+if doi:
+  ic.append(DIV(A(formatDoi(doi), _href=formatDoi(doi))))
+pass
 for p in idntfrs:
     if len(p[1]) == 3:
         if p[1][1] == 22:
