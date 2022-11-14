@@ -12,6 +12,8 @@ import ompformat
 from ompsolr import OMPSOLR
 from ompbrowse import Browser
 
+import heiviewer
+
 
 ONIX_PRODUCT_IDENTIFIER_TYPE_CODES = {"01": "Proprietary",
                                       "02": "ISBN-10",
@@ -500,4 +502,4 @@ def book():
         citation = ompformat.formatChapterCitation(citation, c, locale)
         response.view = 'catalog/book/chapter/index.html'
     has_download_format = [(pf.associated_items.get('full_file', None).attributes.file_type != "text/html" and pf.associated_items.get('full_file', None).attributes.file_type != "text/xml") for pf in digital_publication_formats if pf.associated_items.get('full_file', None)].count(True)
-    return locals()
+    return dict(locals(), heiviewer=heiviewer)

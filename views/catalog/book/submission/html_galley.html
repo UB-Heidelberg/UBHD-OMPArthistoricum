@@ -2,7 +2,9 @@
 for pf in digital_publication_formats:
     full_file = pf.associated_items.get('full_file')
     format_name = pf.settings.getLocalizedValue('name', locale)
-    if format_name.lower() == 'html' and full_file and ("xml" in full_file.attributes.file_type or "html" in full_file.attributes.file_type):
+    if full_file and heiviewer.is_enabled_for_publication_format(pf):
+        = A(T('Book (HTML)'), _href=heiviewer.build_reader_url(pf, full_file), _target="_blank", _class="btn btn-default btn-highlight")
+    elif format_name.lower() == 'html' and full_file and ("xml" in full_file.attributes.file_type or "html" in full_file.attributes.file_type):
         = A(T('Book (HTML)'), _href=downloadLink(full_file.attributes), _target="_blank", _class="btn btn-default btn-highlight")
     pass
 pass
