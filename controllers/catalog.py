@@ -388,12 +388,14 @@ def book():
     digital_publication_formats = []
     for pf in ompdal.getDigitalPublicationFormats(submission_id, available=True, approved=True):
         publication_format = OMPItem(pf, OMPSettings(ompdal.getPublicationFormatSettings(pf.publication_format_id)), {'identification_codes': ompdal.getIdentificationCodesByPublicationFormat(pf.publication_format_id), 'publication_dates': ompdal.getPublicationDatesByPublicationFormat(pf.publication_format_id)})
-        full_file = ompdal.getLatestRevisionOfFullBookFileByPublicationFormat(submission_id, pf.publication_format_id)
         full_epub_file = ompdal.getLatestRevisionOfEBook(submission_id, pf.publication_format_id)
+        if heiviewer.is_enabled(publication_format):
+            full_file = ompdal.getLatestRevisionOfFileByPublicationFormatAndGenreKey(submission_id, pf.publication_format_id, 'MANUSCRIPT')
+        else:
+            full_file = ompdal.getLatestRevisionOfFullBookFileByPublicationFormat(submission_id, pf.publication_format_id)
         if full_epub_file:
             publication_format.associated_items['full_file'] = OMPItem(full_epub_file, OMPSettings(ompdal.getSubmissionFileSettings(full_epub_file.file_id)))
-
-        if full_file:
+        elif full_file:
             publication_format.associated_items['full_file'] = OMPItem(full_file, OMPSettings(ompdal.getSubmissionFileSettings(full_file.file_id)))
 
         digital_publication_formats.append(publication_format)
