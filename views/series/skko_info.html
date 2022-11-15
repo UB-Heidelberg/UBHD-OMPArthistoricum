@@ -1,0 +1,56 @@
+{{extend 'layout.html'}}
+
+<div id="main" class="container">
+  <div class="row">
+    <div class="col-lg-12"><h3> {{if session.forced_language =='de': }} Studien zur Kunst und Kulturgeschichte am Oberrhein{{elif session.forced_language =='en': }} Studien zur Kunst und Kulturgeschichte am Oberrhein{{pass}} </h3>
+    </div>{{if session.forced_language =='de': }} 
+    <div class="col-lg-9">
+      <p>Die Reihe behandelt kunst- und kulturhistorisch relevante Einzelobjekte sowie ganze Ensembles vornehmlich der Zeit des Mittelalters und der frühen Neuzeit im Oberrheingebiet inklusive der angrenzenden Landschaften. Gattungsübergreifend finden dabei sowohl kunsthandwerkliche Stücke, wie Goldschmiedearbeiten und Schatzkammerobjekte, aber auch Bildwerke, Altarretabel, Graphiken sowie anderes mehr Berücksichtigung.</p>
+      <p>Ausgehend von den materialen und technischen Befunden, der Objekt-, Provenienz- und Forschungsgeschichte werden dabei die Untersuchungsgegenstände hinsichtlich verschiedener Aspekte (Verwendung, Ikonographie, künstlerische Gestaltung, Hersteller, Datierung, Lokalisierung) in durchaus unterschiedlicher Gewichtung eingehender erörtert. Ziel der Studien ist, die behandelten Stücke bzw. Komplexe wissenschaftlich tiefer zu erschließen und sie konkreter in ihrem kulturellen bzw. kunsthistorischen Kontext zu verorten.</p>
+      <!--
+      <div class="widget">
+        <ul class="tags">
+          <li>{{=A(T('Volumes'),_href=URL('catalog','series/skko'))}} 
+          </li>
+        </ul>
+      </div>
+	  -->
+    </div>
+    <div class="col-lg-3">
+      <div id="infoBoxRechts">
+	  <!--
+        <p>{{=IMG(_src=URL('static','images/series/palatium_logo.png'),_width='230px')}}
+        </p>-->
+        <p><b>Kontakt</b><br />
+		  PD Dr. Sebastian Bock<br />
+          Schwabentorring 8<br />
+          79098 Freiburg<br />
+       </p>
+      </div>
+    </div>{{elif session.forced_language =='en': }} 
+    <div class="col-lg-9">
+      <p>Die Reihe behandelt kunst- und kulturhistorisch relevante Einzelobjekte sowie ganze Ensembles vornehmlich der Zeit des Mittelalters und der frühen Neuzeit im Oberrheingebiet inklusive der angrenzenden Landschaften. Gattungsübergreifend finden dabei sowohl kunsthandwerkliche Stücke, wie Goldschmiedearbeiten und Schatzkammerobjekte, aber auch Bildwerke, Altarretabel, Graphiken sowie anderes mehr Berücksichtigung.</p>
+      <p>Ausgehend von den materialen und technischen Befunden, der Objekt-, Provenienz- und Forschungsgeschichte werden dabei die Untersuchungsgegenstände hinsichtlich verschiedener Aspekte (Verwendung, Ikonographie, künstlerische Gestaltung, Hersteller, Datierung, Lokalisierung) in durchaus unterschiedlicher Gewichtung eingehender erörtert. Ziel der Studien ist, die behandelten Stücke bzw. Komplexe wissenschaftlich tiefer zu erschließen und sie konkreter in ihrem kulturellen bzw. kunsthistorischen Kontext zu verorten.</p>
+     <!--
+	 <div class="widget">
+        <ul class="tags">
+          <li>{{=A(T('Volumes'),_href=URL('catalog','series/skko'))}} 
+          </li>
+        </ul>
+      </div>
+	  -->
+    </div>
+    <div class="col-lg-3">
+      <div id="infoBoxRechts">
+	  <!--
+        <p>{{=IMG(_src=URL('static','images/series/palatium_logo.png'),_width='230px')}}
+        </p>-->
+        <p><b>Contact</b><br />
+		  PD Dr. Sebastian Bock<br />
+          Schwabentorring 8<br />
+          79098 Freiburg<br />
+       </p>
+      </div>
+    </div>{{pass}} 
+  </div>
+</div>
