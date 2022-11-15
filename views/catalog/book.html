@@ -34,7 +34,7 @@
                 </div>
                 <div class="col-lg-9">
                     <article>
-                        <!--vgwPixelCall script - has to be included before pdf_galley.html and chapter_list.html -->
+                        <!--vgwPixelCall script - has to be included before pdf_galley.html and table of contents-->
                         {{include '../static/omp-resources/views/catalog/vgwort.html'}}
                         <div class="summary">
                             <span class="book-file-links">
@@ -83,7 +83,7 @@
                         {{if abstract:}}<p>{{=XML(abstract)}}</p> {{pass}}
                         {{include '../static/omp-resources/views/catalog/reviews.html' }}
                         {{include 'catalog/book/submission/author_biography.html'}}
-                        {{include 'catalog/book/submission/chapter_list.html'}}
+                        {{=table_of_contents}}
                         </div>
                     </article>
                 </div>

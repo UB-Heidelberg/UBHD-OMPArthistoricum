@@ -12,8 +12,6 @@ import ompformat
 from ompsolr import OMPSOLR
 from ompbrowse import Browser
 
-import heiviewer
-
 
 ONIX_PRODUCT_IDENTIFIER_TYPE_CODES = {"01": "Proprietary",
                                       "02": "ISBN-10",
@@ -332,6 +330,7 @@ def preview():
 
 
 def book():
+    import heiviewer
     ompdal = OMPDAL(db, myconf)
 
     submission_id = request.args[0] if request.args  and request.args[0].isdigit() else raise400()
@@ -498,10 +497,13 @@ def book():
         additional_attribution = ""
 
     response.title = "{} - {}".format(cleanTitle, settings.short_title if settings.short_title else settings.title)
-
+    table_of_contents = ''
     if c:
-        # Select different template for chapters
+        # Chapter landing page was requested, select different template
         citation = ompformat.formatChapterCitation(citation, c, locale)
         response.view = 'catalog/book/chapter/index.html'
+    elif chapters:
+        import ompcatalog
+        table_of_contents = ompcatalog.table_of_contents(submission_id, chapters, digital_publication_formats, locale)
     has_download_format = [(pf.associated_items.get('full_file', None).attributes.file_type != "text/html" and pf.associated_items.get('full_file', None).attributes.file_type != "text/xml") for pf in digital_publication_formats if pf.associated_items.get('full_file', None)].count(True)
-    return dict(locals(), heiviewer=heiviewer)
+    return dict(locals())
