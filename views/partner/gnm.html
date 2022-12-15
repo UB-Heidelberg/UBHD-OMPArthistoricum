@@ -22,6 +22,7 @@
 {{pass}}
 
 <hr>
+ 
         <div class="row">
                 <div class="col-lg-12">
         		        {{if session.forced_language =='de': }}
@@ -31,7 +32,17 @@
         				{{pass}}
         	    </div>
         </div>
-		<div class="row">
+        <div class="row">
+            <div class="col-lg-2"><a href="{{=URL('static','files/presses/2/monographs/1122/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/1122/simple/cover.jpg'),_width='80px', _class='bildrahmen')}}</a>
+            </div>
+            <div class="col-lg-9">
+            <b>Esther Meier und Adelheid Rasche<br>                 
+            {{=A('Stoff der Protestanten',_href=URL('catalog','book/1122'))}}<br>
+            Textilien und Kleidung in den lutherischen und reformierten Konfessionen</b><br>
+                    <i>Wissenschaftliche Beibände zum Anzeiger des Germanischen Nationalmuseums, Band 46</i>
+            </div>
+        </div> 
+        <div class="row">
                 <div class="col-lg-2"><a href="{{=URL('static','files/presses/2/monographs/1007/simple/cover.jpg')}}">{{=IMG(_src=URL('static','files/presses/2/monographs/1007/simple/cover.jpg'),_width='80px',_class='bildrahmen')}}</a>
 				        </div>
                 <div class="col-lg-9">
