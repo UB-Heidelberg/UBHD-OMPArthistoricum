@@ -1,0 +1,61 @@
+{{extend 'layout.html'}}
+
+<div id="main" class="container">
+  <div class="row">
+    <div class="col-lg-12"><h3> {{if session.forced_language =='de': }} Aurora – Chemnitzer Studien zu Kunst und Kultur{{elif session.forced_language =='en': }} Aurora – Chemnitz Studies on Art and Culture {{pass}} </h3>
+    </div>{{if session.forced_language =='de': }} 
+    <div class="col-lg-9">
+      <p>Unter dem Titel <em>Aurora</em> veröffentlichen die Kunstsammlungen Chemnitz seit 2023 die <em>Chemnitzer Studien zu Kunst und Kultur</em>. Die Schriftenreihe bietet Raum für wissenschaftliche Publikationen im Sinne des fachlichen Austausches über eine große Bandbreite von Themen der Kunst, Kultur und Geschichte. Jenseits von Ausstellungsprojekten bietet sich durch die Open Access-Publikation auf dem ArtDok-Server der Universität Heidelberg ein offenes, frei zugängliches Forum. Das Spektrum der Veröffentlichungen umfasst sowohl monografische Untersuchungen als auch Quelleneditionen und Tagungsbände. Die Themen stehen in Verbindung mit Chemnitz und der Region oder auch den Beständen der verschiedenen Museen unter dem Dach der Kunstsammlungen Chemnitz. Dazu zählen die Kunstsammlungen am Theaterplatz, das Haupthaus mit dem Carlfriedrich Claus Archiv, ferner das Museum Gunzenhauser, das Schloßbergmuseum mit der Burg Rabenstein sowie das Henry van de Velde Museum in der Villa Esche. </p>
+      <p>Der Haupttitel der Reihe, <em>Aurora</em>, mutet vielleicht ein wenig anachronistisch und vermessen an, da wir zum klassischen Topos der Morgenröte heute nur noch wenig Bezug haben. Der Begriff steht jedoch in mehrerlei Hinsicht in einem engen Verhältnis zur Geschichte und dem Selbstverständnis der Kunstsammlungen Chemnitz. So bezeichnete Friedrich Schreiber-Weigand, der erste Direktor der städtischen Kunstsammlung Chemnitz, das Gründungsjahr des Museums, 1920, rückblickend als »im Morgenlicht der Republik«. Damit verbunden war für ihn der Auftrag an das Museum, nicht den Fürsten zum Plaisir zu dienen, sondern der Kunst und der Republik, dem Gemeinwohl und der Bildung breiter Bevölkerungsschichten, ganz im Geiste Alfred Lichtwarks. Diesen Überzeugungen fühlen sich die Kunstsammlungen Chemnitz noch heute verpflichtet als ein der Gesellschaft und Gegenwart zugewandter Museumsverbund, der auf unterschiedlichen Kanälen durch die Vermittlung von Kunst, Kultur und Geschichte zum Wohle der Gesellschaft und zur Förderung von Kunst und Wissenschaft agiert.</p>
+      
+      <div class="widget">
+        <ul class="tags">
+          <li>{{=A(T('Volumes'),_href=URL('catalog','series/skko'))}} 
+          </li>
+        </ul>
+      </div>
+	  
+    </div>
+    <div class="col-lg-3">
+      <div id="infoBoxRechts">
+	  <!--
+        <p>{{=IMG(_src=URL('static','images/series/palatium_logo.png'),_width='230px')}}
+        </p>-->
+        <p><b>Kontakt</b><br />
+		      Kunstsammlungen Chemnitz<br />
+          Theaterplatz 1<br />
+          09111 Chemnitz
+       </p>
+       <!--<p><b>ISSN</b><br />
+       ISSN  2940-2107</p>-->       
+      </div>
+    </div>{{elif session.forced_language =='en': }} 
+    <div class="col-lg-9">
+      <p>Under the title <em>Aurora</em>, the Chemnitz Art Collections have been publishing the <em>Chemnitz Studies on Art and Culture</em> since 2023. The series offers space for academic publications in the sense of professional exchange on a wide range of topics in art, culture and history. Beyond exhibition projects, open access publication on the ArtDok server of Heidelberg University provides an open, freely accessible forum. The spectrum of publications includes monographic studies as well as source editions and conference proceedings. The topics are related to Chemnitz and the region or to the holdings of the various museums under the umbrella of the Kunstsammlungen Chemnitz. These include the art collections on Theaterplatz, the main building with the Carlfriedrich Claus Archive, furthermore the Gunzenhauser Museum, the Schloßberg Museum with Rabenstein Castle as well as the Henry van de Velde Museum in Villa Esche.</p>
+      <p>The main title of the series, <em>Aurora</em>, may seem a little anachronistic and presumptuous, since we have little connection to the classical topos of dawn today. However, the term is closely related to the history and self-image of the Chemnitz Art Collections in several respects. Thus Friedrich Schreiber-Weigand, the first director of the Chemnitz Municipal Art Collection, described the year of the museum's founding, 1920, in retrospect as &ldquo;in the morning light of the Republic&rdquo;. For him, this was linked to the museum's mission not to serve the princes for their plaisir, but to serve art and the republic, the common good and the education of broad sections of the population, entirely in the spirit of Alfred Lichtwark. The Kunstsammlungen Chemnitz are still committed to these convictions today as a museum association that is oriented towards society and the present and acts through various channels by communicating art, culture and history for the benefit of society and for the promotion of art and science.</p>
+     
+	 <!--<div class="widget">
+        <ul class="tags">
+          <li>{{=A(T('Volumes'),_href=URL('catalog','series/aurora'))}} 
+          </li>
+        </ul>
+      </div>-->
+	  
+    </div>
+    <div class="col-lg-3">
+      <div id="infoBoxRechts">
+	    <!--
+        <p>{{=IMG(_src=URL('static','images/series/palatium_logo.png'),_width='230px')}}
+        </p>-->
+        <p><b>Contact</b><br />
+		      Kunstsammlungen Chemnitz<br />
+          Theaterplatz 1<br />
+          09111 Chemnitz<br />
+          Germany
+       </p>
+       <!--<p><b>ISSN</b><br />
+        ISSN  2940-2107</p>-->
+      </div>
+    </div>{{pass}} 
+  </div>
+</div>
