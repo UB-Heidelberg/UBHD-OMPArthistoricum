@@ -16,7 +16,32 @@
 
             
 <!-- Frühjahr 2023 -->          
+			<div class="row" id="bussmann">
+				<div class="col-lg-2">
+					<article>
+						<div class="post-image">
+							{{=IMG(_src=URL('static','images/catalog/preview.png'),_style='width:230px')}}
+						</div>
+					</article>
+				</div>
+				<div class="col-lg-9">
+					<article>
+						<div class="post-heading">
+							<b>Frédéric Bußmann, Diana Kopka {{=T('(Eds.)')}}<br />
+								Matrix Moderne | Ostmoderne. Bauen, baubezogene Kunst und Formgestaltung in Ostdeutschland und dem Europa der Nachkriegszeit</b><br />
+							<i>Aurora. Chemnitzer Schriften zu Kunst und Kultur, Band 3</i>
+						</div>
+						<p>
+							{{if session.forced_language =='de': }}
+							Erscheint Frühjahr 2023
+							{{elif session.forced_language =='en': }}
+							Coming in Spring 2023
+							{{pass}}
+						</p>
 
+					</article>
+				</div>
+			</div>
 
 
 			<div class="row" id="diekmann">
@@ -221,32 +246,7 @@
 			</div>
 
 
-			<div class="row" id="bussmann">
-				<div class="col-lg-2">
-					<article>
-						<div class="post-image">
-							{{=IMG(_src=URL('static','images/catalog/preview.png'),_style='width:230px')}}
-						</div>
-					</article>
-				</div>
-				<div class="col-lg-9">
-					<article>
-						<div class="post-heading">
-							<b>Frédéric Bußmann, Diana Kopka {{=T('(Eds.)')}}<br />
-								Matrix Moderne | Ostmoderne. Bauen, baubezogene Kunst und Formgestaltung in Ostdeutschland und dem Europa der Nachkriegszeit</b><br />
-							<i>Aurora. Chemnitzer Schriften zu Kunst und Kultur, Band 3</i>
-						</div>
-						<p>
-							{{if session.forced_language =='de': }}
-							Erscheint Sommer 2023
-							{{elif session.forced_language =='en': }}
-							Coming in Summer 2023
-							{{pass}}
-						</p>
 
-					</article>
-				</div>
-			</div>
 
 
 			<div class="row" id="castor">
@@ -495,32 +495,6 @@
 					</article>
 				</div>
 			</div> 	
-
-
-			<div class="row" id="hoefer">
-				<div class="col-lg-2">
-					<article>
-						<div class="post-image">
-							{{=IMG(_src=URL('static','images/catalog/cover_hoefer.jpg'),_style='width:230px')}}
-						</div>
-					</article>
-				</div>
-				<div class="col-lg-9">
-					<article>
-						<div class="post-heading">
-							<b>Regina Höfer<br />
-			  Ein Habsburger auf Trophäenjagd. Die Südasiensammlung Franz Ferdinand von Österreich-Estes zwischen kolonialem Weltbild, Kunst und Souvenir</b>
-						</div>
-						<p>
-						  {{if session.forced_language =='de': }}
-							Erscheint Winter 2023/24
-							{{elif session.forced_language =='en': }}
-							Coming in Winter 2023/24
-							{{pass}}
-						</p>
-					</article>
-				</div>
-			</div>
 
 
 			<div class="row" id="lehmann">
